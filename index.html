@@ -299,9 +299,9 @@
       <a href="#contact"    class="nav-link">Contact</a>
     </nav>
     <div class="flex items-center gap-2 mt-4 pt-4 border-t border-border text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;">
-      <button class="text-charcoal font-medium border-b border-charcoal">EN</button>
+      <button class="text-charcoal font-medium border-b border-charcoal" lang="en">EN</button>
       <span>|</span>
-      <button>AR</button>
+      <button class="hover:text-charcoal transition-colors" lang="ar">AR</button>
     </div>
     <a href="#start" class="btn-primary mt-4 w-full text-center block">Get Started</a>
   </div>
@@ -933,24 +933,213 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // i18n scaffold — placeholder for future localization
-  // Usage: setLanguage('ar') would iterate [data-i18n] elements and swap text
+  // ── i18n ──────────────────────────────────────────────────────────────────
   const i18n = {
-    en: {}, // populated at build time or via JSON fetch
-    ar: {},
-    fr: {},
-    nl: {},
-    es: {},
+    en: {
+      'nav.about': 'About', 'nav.how': 'How It Works', 'nav.compliance': 'Compliance',
+      'nav.pricing': 'Pricing', 'nav.contact': 'Contact', 'nav.cta': 'Get Started',
+      'hero.label': 'Official Digital Agreement Platform',
+      'hero.headline': 'Clarity Before Commitment.',
+      'hero.sub': 'A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.',
+      'hero.cta1': 'Create Your Agreement', 'hero.cta2': 'Learn How It Works',
+      'hero.box.title': 'Structured for Legal Recognition',
+      'hero.box.body': 'Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.',
+      'why.label': 'Why This Matters',
+      'why.1.title': 'Prevent Conflict Before It Begins',
+      'why.1.body': 'Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.',
+      'why.2.title': 'Align Expectations Clearly',
+      'why.2.body': 'Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.',
+      'why.3.title': 'Digitally Secure & Court-Ready',
+      'why.3.body': 'Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.',
+      'how.label': 'The Process',
+      'how.headline': 'Four structured steps to a complete, signed agreement.',
+      'how.1.title': 'Define Terms Before Marriage',
+      'how.1.body': 'Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.',
+      'how.2.title': 'Mutual Review & Agreement',
+      'how.2.body': 'Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.',
+      'how.3.title': 'Digital Signature',
+      'how.3.body': 'Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.',
+      'how.4.title': 'Secure Storage & Legal Documentation',
+      'how.4.body': 'The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.',
+      'compliance.label': 'Legal & Sharia Compliance',
+      'compliance.headline': 'Built for Legal and Sharia Compliance',
+      'compliance.sub': 'Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.',
+      'compliance.badge': 'Sharia-Aware Framework',
+      'compliance.1.title': 'Aligned with Islamic Marital Principles',
+      'compliance.1.body': 'All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi\'i, Maliki, and Hanafi schools of jurisprudence.',
+      'compliance.2.title': 'Supports Documentation Requirements',
+      'compliance.2.body': 'Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.',
+      'compliance.3.title': 'Transparent and Voluntary Framework',
+      'compliance.3.body': 'The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.',
+      'compliance.4.title': 'Structured for Legal Recognition',
+      'compliance.4.body': 'Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.',
+      'compliance.disclaimer': 'Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.',
+      'security.label': 'Document Security',
+      'security.headline': 'Infrastructure Built for Sensitive Documents.',
+      'security.sub': 'Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.',
+      'security.1.title': 'End-to-End Encryption',
+      'security.1.body': 'All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.',
+      'security.2.title': 'Tamper-Proof Document Storage',
+      'security.2.body': 'Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.',
+      'security.3.title': 'Timestamped Agreements',
+      'security.3.body': 'Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.',
+      'security.4.title': 'Digital Verification Integrity',
+      'security.4.body': 'Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.',
+      'pricing.label': 'Agreement Structure Options',
+      'pricing.headline': 'Agreement Structure Options',
+      'pricing.sub': 'Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.',
+      'pricing.onetime': 'One-Time Fee',
+      'pricing.silver.tier': 'Silver', 'pricing.silver.desc': 'Standard asset and beneficiary documentation.',
+      'pricing.silver.f1': 'Limited number of assets', 'pricing.silver.f2': 'Single jurisdiction',
+      'pricing.silver.f3': 'Standard beneficiary structure', 'pricing.silver.f4': 'Digital documentation',
+      'pricing.gold.tier': 'Gold', 'pricing.gold.desc': 'Expanded listing with multi-category coverage.',
+      'pricing.gold.f1': 'Expanded asset listing', 'pricing.gold.f2': 'Multiple asset categories',
+      'pricing.gold.f3': 'Optional cross-location documentation', 'pricing.gold.f4': 'Custom beneficiary designation',
+      'pricing.platinum.tier': 'Platinum', 'pricing.platinum.desc': 'Multi-jurisdiction and business asset inclusion.',
+      'pricing.platinum.f1': 'Multi-jurisdiction asset documentation', 'pricing.platinum.f2': 'Business ownership inclusion',
+      'pricing.platinum.f3': 'Detailed inheritance clauses', 'pricing.platinum.f4': 'Advanced beneficiary structures',
+      'pricing.diamond.tier': 'Diamond', 'pricing.diamond.desc': 'Full cross-border and investment-grade structuring.',
+      'pricing.diamond.f1': 'Multi-country asset and investment structuring', 'pricing.diamond.f2': 'Business and partnership documentation',
+      'pricing.diamond.f3': 'Multi-layer beneficiary mapping', 'pricing.diamond.f4': 'Enhanced legal documentation format',
+      'pricing.tagline': 'Transparent. Structured. One-Time.',
+      'pricing.cta': 'Select Your Structure',
+      'pricing.note': 'All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.',
+      'cta.headline': 'Start With Clarity.', 'cta.btn': 'Draft Your Agreement',
+      'cta.sub': 'A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.',
+      'cta.trust1': 'Sharia-Aware Framework', 'cta.trust2': 'End-to-End Encrypted',
+      'cta.trust3': 'Court-Structured Format', 'cta.trust4': 'No Hidden Terms',
+      'footer.terms': 'Terms of Use', 'footer.privacy': 'Privacy Policy',
+      'footer.contact': 'Contact', 'footer.copyright': '© 2026 Mithaq. All rights reserved.',
+    },
+    ar: {
+      'nav.about': 'عن المنصة', 'nav.how': 'آلية العمل', 'nav.compliance': 'الامتثال',
+      'nav.pricing': 'الأسعار', 'nav.contact': 'التواصل', 'nav.cta': 'ابدأ الآن',
+      'hero.label': 'منصة عقود الزواج الرقمية الرسمية',
+      'hero.headline': 'الوضوح قبل الالتزام.',
+      'hero.sub': 'منصة رقمية لعقود الزواج المتوافقة مع أحكام الشريعة الإسلامية، مصمَّمة لتحقيق الشفافية والحماية والاحترام المتبادل.',
+      'hero.cta1': 'إنشاء اتفاقيتك', 'hero.cta2': 'تعرّف على آلية العمل',
+      'hero.box.title': 'منظَّم للاعتراف القانوني',
+      'hero.box.body': 'تُصاغ اتفاقيات ميثاق وفق أحكام الفقه الإسلامي في الزواج، وتُهيَّأ لاستيفاء متطلبات التوثيق المعترف به لدى الجهات القضائية في الإمارات ودول الخليج العربي.',
+      'why.label': 'لماذا هذا مهم',
+      'why.1.title': 'تجنّب النزاعات قبل وقوعها',
+      'why.1.body': 'يُعدّ الغموض في التوقعات الزوجية من أبرز أسباب النزاعات بعد الزواج. تُحدّد الاتفاقية الموثَّقة بوضوح الالتزامات والحقوق والتوقعات قبل إبرام عقد الزواج.',
+      'why.2.title': 'توافق واضح في التوقعات',
+      'why.2.body': 'الترتيبات المالية والاعتبارات المتعلقة بالحضانة والحدود الشخصية — موثَّقة بعناية، مُراجَعة معاً، وموقَّعة بتفاهم متبادل. تُرشد المنصة الطرفين عبر إجراء منظَّم ومدروس قانونياً.',
+      'why.3.title': 'آمن رقمياً وجاهز للمحاكم',
+      'why.3.body': 'كل اتفاقية مختومة زمنياً ومشفَّرة ومحفوظة بنزاهة قابلة للتحقق. وإن طُلبت الوثيقة في أي سياق قانوني أو قضائي، أمكن التحقق من صحتها باستقلالية.',
+      'how.label': 'مراحل العملية',
+      'how.headline': 'أربع خطوات منظَّمة للحصول على اتفاقية موقَّعة ومكتملة.',
+      'how.1.title': 'تحديد الشروط قبل الزواج',
+      'how.1.body': 'يُكمل الطرفان نموذجاً إرشادياً منظَّماً يشمل الشؤون المالية والحقوق والالتزامات وأي شروط مباحة وفق أحكام الفقه الإسلامي.',
+      'how.2.title': 'المراجعة المشتركة والموافقة',
+      'how.2.body': 'يتلقى كل طرف وثيقة رسمية للمراجعة المستقلة، وله طلب التعديلات عبر المنصة قبل المضي قدماً. ولا يجوز التوقيع تحت أي إكراه.',
+      'how.3.title': 'التوقيع الرقمي',
+      'how.3.body': 'يُوقِّع كل طرف رقمياً بعد التحقق من هويته. تُسجِّل المنصة وقت ومكان وجهاز كل حدث توقيع في سجل تدقيق غير قابل للتغيير.',
+      'how.4.title': 'التخزين الآمن والتوثيق القانوني',
+      'how.4.body': 'تُشفَّر الاتفاقية النهائية وتُختم زمنياً وتُحفظ في خزنة محمية من التلاعب. يمكن الحصول على نسخ موثَّقة في أي وقت للأغراض القانونية والتوثيقية وتقديمها للمحاكم.',
+      'compliance.label': 'الامتثال القانوني والشرعي',
+      'compliance.headline': 'مبنيّة للامتثال القانوني والشرعي',
+      'compliance.sub': 'طُوِّرت منصة ميثاق بالتشاور مع علماء الشريعة والممارسين القانونيين في الإمارات. لا تقدم المنصة استشارات قانونية، بل توفر إطار توثيق منظَّماً ومتحقَّقاً منه يُتيح للزوجين تسجيل شروطهم المتفَق عليها رسمياً.',
+      'compliance.badge': 'إطار متوافق مع الشريعة',
+      'compliance.1.title': 'متوافق مع أحكام الزواج الإسلامي',
+      'compliance.1.body': 'تُراعي جميع نماذج الاتفاقيات الحقوق والواجبات الأساسية المقررة في الشريعة الإسلامية، بما فيها المهر والنفقة، والشروط الجائزة في المذاهب الحنبلي والشافعي والمالكي والحنفي.',
+      'compliance.2.title': 'يستوفي متطلبات التوثيق',
+      'compliance.2.body': 'تُنسَّق الاتفاقيات وفق معايير التوثيق التي تشترطها وزارة العدل الإماراتية ومحاكم الأحوال الشخصية، ويمكن تقديمها كوثائق مكمِّلة لإجراءات تسجيل الزواج الرسمية.',
+      'compliance.3.title': 'إطار شفاف وطوعي',
+      'compliance.3.body': 'صُمِّمت المنصة لمنع الإكراه؛ يوقِّع كل طرف باستقلالية مع مهلة مراجعة إلزامية، ولا تُنفَّذ الاتفاقيات بالوكالة إلا بتفويض موثَّق صريح.',
+      'compliance.4.title': 'منظَّم للاعتراف القانوني',
+      'compliance.4.body': 'يمتثل هيكل الوثيقة ولغتها وتنسيقها لمتطلبات الصكوك القانونية. يُدعَم التوثيق من طرف ثالث حيثما اقتضى ذلك القانون المحلي المعمول به.',
+      'compliance.disclaimer': 'ميثاق ليست مكتب محاماة ولا تقدم استشارات قانونية. جميع الاتفاقيات أدوات توثيق. يُنصح المستخدمون باستشارة ممارس قانوني مؤهَّل في ولايتهم القضائية.',
+      'security.label': 'أمان الوثائق',
+      'security.headline': 'بنية تحتية مبنية للوثائق الحساسة.',
+      'security.sub': 'تتضمن اتفاقيات الزواج بعضاً من أكثر المعلومات حساسية التي يُودعها الزوجان الكتابةَ. تُعامَل الأمان ونزاهة البيانات باعتبارهما متطلبات أساسية لا ميزات اختيارية.',
+      'security.1.title': 'تشفير شامل من طرف إلى طرف',
+      'security.1.body': 'تُشفَّر جميع البيانات أثناء النقل وعند التخزين باستخدام AES-256. لا يحق لأي موظف في ميثاق الاطلاع على محتوى أي اتفاقية دون تفويض صريح من المستخدم.',
+      'security.2.title': 'تخزين وثائق محمي من التلاعب',
+      'security.2.body': 'تُحفظ الوثائق باستخدام تخزين عنوانه المحتوى وقابل للتحقق التشفيري. أي تعديل على اتفاقية محفوظة يمكن اكتشافه فوراً.',
+      'security.3.title': 'اتفاقيات مختومة زمنياً',
+      'security.3.body': 'يُسجَّل كل حدث توقيع بختم زمني معتمد من جهة ختم زمني موثوقة، مما يُرسِّخ سجلاً زمنياً لا جدال فيه.',
+      'security.4.title': 'نزاهة التحقق الرقمي',
+      'security.4.body': 'تحمل كل اتفاقية نهائية رمز تحقق فريداً. يمكن للأطراف الثالثة — بما فيها المحاكم والكتّاب العدليون والمستشارون القانونيون — التحقق من الأصالة باستقلالية دون الاطلاع على الوثيقة كاملة.',
+      'pricing.label': 'خيارات هيكل الاتفاقية',
+      'pricing.headline': 'خيارات هيكل الاتفاقية',
+      'pricing.sub': 'اختر مستوى التوثيق بناءً على تعقيد الأصول والولايات القضائية وهيكل المستفيدين.',
+      'pricing.onetime': 'رسوم لمرة واحدة',
+      'pricing.silver.tier': 'فضي', 'pricing.silver.desc': 'توثيق أصول ومستفيدين قياسي.',
+      'pricing.silver.f1': 'عدد محدود من الأصول', 'pricing.silver.f2': 'ولاية قضائية واحدة',
+      'pricing.silver.f3': 'هيكل مستفيدين قياسي', 'pricing.silver.f4': 'توثيق رقمي',
+      'pricing.gold.tier': 'ذهبي', 'pricing.gold.desc': 'قائمة موسَّعة بتغطية متعددة الفئات.',
+      'pricing.gold.f1': 'قائمة أصول موسَّعة', 'pricing.gold.f2': 'فئات أصول متعددة',
+      'pricing.gold.f3': 'توثيق عبر مواقع متعددة (اختياري)', 'pricing.gold.f4': 'تعيين مستفيدين مخصَّص',
+      'pricing.platinum.tier': 'بلاتيني', 'pricing.platinum.desc': 'توثيق متعدد الولايات مع تضمين أصول الأعمال.',
+      'pricing.platinum.f1': 'توثيق أصول متعدد الولايات', 'pricing.platinum.f2': 'تضمين ملكية الأعمال',
+      'pricing.platinum.f3': 'بنود ميراث مفصَّلة', 'pricing.platinum.f4': 'هياكل مستفيدين متقدمة',
+      'pricing.diamond.tier': 'ألماسي', 'pricing.diamond.desc': 'هيكلة كاملة عابرة للحدود وبمستوى استثماري.',
+      'pricing.diamond.f1': 'هيكلة أصول واستثمارات متعددة الدول', 'pricing.diamond.f2': 'توثيق الأعمال والشراكات',
+      'pricing.diamond.f3': 'رسم خرائط مستفيدين متعددة الطبقات', 'pricing.diamond.f4': 'صيغة توثيق قانونية معزَّزة',
+      'pricing.tagline': 'شفاف. منظَّم. لمرة واحدة.',
+      'pricing.cta': 'اختر هيكلك',
+      'pricing.note': 'تُنجز جميع الهياكل كتعامل واحد لمرة واحدة. لا رسوم متكررة ولا التزامات تجديد ولا رسوم خفية. يُفصَح عن الأسعار قبل بدء الاتفاقية.',
+      'cta.headline': 'ابدأ بالوضوح.', 'cta.btn': 'ابدأ صياغة اتفاقيتك',
+      'cta.sub': 'الاتفاقية المنظَّمة جيداً، التي يُبرمها الطرفان بحرية وشفافية، هي تعبير عن الرعاية — لشريك حياتك، وللأساس الذي تبنيانه معاً.',
+      'cta.trust1': 'إطار متوافق مع الشريعة', 'cta.trust2': 'تشفير شامل',
+      'cta.trust3': 'صيغة منظَّمة قضائياً', 'cta.trust4': 'لا رسوم خفية',
+      'footer.terms': 'شروط الاستخدام', 'footer.privacy': 'سياسة الخصوصية',
+      'footer.contact': 'التواصل', 'footer.copyright': '© 2026 ميثاق. جميع الحقوق محفوظة.',
+    },
   };
+
+  // ── Arabic font — load Noto Naskh Arabic on first AR switch ───────────────
+  let arabicFontLoaded = false;
+  function loadArabicFont() {
+    if (arabicFontLoaded) return;
+    arabicFontLoaded = true;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600&display=swap';
+    document.head.appendChild(link);
+  }
+
+  // ── Language switcher ─────────────────────────────────────────────────────
   function setLanguage(lang) {
     const dict = i18n[lang] || {};
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (dict[key]) el.textContent = dict[key];
     });
+    const isAr = lang === 'ar';
     document.documentElement.setAttribute('lang', lang);
-    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+
+    // Swap font stack for Arabic
+    if (isAr) {
+      loadArabicFont();
+      document.body.style.fontFamily = "'Noto Naskh Arabic', serif";
+      document.querySelectorAll('.font-display').forEach(el => {
+        el.style.fontFamily = "'Noto Naskh Arabic', serif";
+      });
+    } else {
+      document.body.style.fontFamily = "";
+      document.querySelectorAll('.font-display').forEach(el => {
+        el.style.fontFamily = "";
+      });
+    }
+
+    // Update active button state
+    document.querySelectorAll('[lang="ar"], [lang="en"]').forEach(btn => {
+      const active = btn.getAttribute('lang') === lang;
+      btn.style.borderBottom = active ? '1px solid currentColor' : 'none';
+      btn.style.fontWeight = active ? '500' : '400';
+    });
   }
+
+  // Wire up EN / AR buttons
+  document.querySelectorAll('[lang="en"]').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage('en'));
+  });
+  document.querySelectorAll('[lang="ar"]').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage('ar'));
+  });
 </script>
 
 </body>
