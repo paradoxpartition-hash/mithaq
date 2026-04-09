@@ -48,6 +48,12 @@
   height: 1px;
   background-color: #C6A75E;
   display: block;
+  border: none;
+  outline: none;
+  flex-shrink: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
 }
 
 /* Subtle geometric motif — top-right corner */
@@ -235,6 +241,13 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
   opacity: 1;
   transform: translateY(0);
 }
+/* Ensure desktop lang switcher only shows on md+ screens */
+@media (min-width: 768px) {
+  #desktop-nav { display: flex !important; }
+  #desktop-lang-switcher { display: flex !important; }
+  #desktop-cta { display: inline-block !important; }
+  #hamburger { display: none !important; }
+}
 ```
 
   </style>
@@ -264,7 +277,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
   </a>
 
   <!-- Desktop nav -->
-  <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation" data-i18n-section="nav">
+  <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation" data-i18n-section="nav" id="desktop-nav" style="display:none;">
     <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
     <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
     <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
@@ -275,7 +288,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
   <!-- Right side -->
   <div class="flex items-center gap-4">
     <!-- Language switcher -->
-    <div class="hidden md:flex items-center gap-1 text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;" aria-label="Language selection">
+    <div class="hidden md:flex items-center gap-1 text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;display:none;" aria-label="Language selection" id="desktop-lang-switcher">
       <button class="px-1 py-0.5 text-charcoal font-medium border-b border-charcoal" data-lang="en">EN</button>
       <span class="text-border">|</span>
       <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="ar">AR</button>
@@ -285,10 +298,10 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
       <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="ur">UR</button>
     </div>
 
-    <a href="#start" class="btn-primary hidden md:inline-block" data-i18n="nav.cta">Get Started</a>
+    <a href="#start" class="btn-primary hidden md:inline-block" data-i18n="nav.cta" id="desktop-cta" style="display:none;">Get Started</a>
 
     <!-- Mobile hamburger -->
-    <button id="hamburger" class="md:hidden p-2 text-charcoal" aria-label="Toggle menu">
+    <button id="hamburger" class="md:hidden p-2 text-charcoal" aria-label="Toggle menu" style="display:block;">
       <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
         <line y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/>
         <line y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/>
@@ -349,7 +362,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 ```
   <!-- Label -->
   <div class="flex items-center gap-4 mb-8 reveal">
-    <span class="gold-rule"></span>
+    <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
     <span class="section-label" data-i18n="hero.label">Official Digital Agreement Platform</span>
   </div>
 
@@ -401,7 +414,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
 ```
 <div class="flex items-center gap-4 mb-14 reveal">
-  <span class="gold-rule"></span>
+  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
   <span class="section-label" data-i18n="why.label">Why This Matters</span>
 </div>
 
@@ -465,7 +478,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
 ```
 <div class="flex items-center gap-4 mb-14 reveal">
-  <span class="gold-rule"></span>
+  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
   <span class="section-label" data-i18n="how.label">The Process</span>
 </div>
 
@@ -531,7 +544,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
 ```
 <div class="flex items-center gap-4 mb-14 reveal">
-  <span class="gold-rule"></span>
+  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
   <span class="section-label" style="color:#C6A75E;" data-i18n="compliance.label">Legal &amp; Sharia Compliance</span>
 </div>
 
@@ -607,7 +620,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
 ```
 <div class="flex items-center gap-4 mb-14 reveal">
-  <span class="gold-rule"></span>
+  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
   <span class="section-label" data-i18n="security.label">Document Security</span>
 </div>
 
@@ -693,7 +706,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 ```
 <!-- Section label -->
 <div class="flex items-center gap-4 mb-6 reveal">
-  <span class="gold-rule"></span>
+  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
   <span class="section-label" data-i18n="pricing.label">Agreement Structure Options</span>
 </div>
 
@@ -872,7 +885,7 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
 ```
 <div class="flex justify-center mb-8 reveal">
-  <span class="gold-rule mx-auto"></span>
+  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;margin-left:auto;margin-right:auto;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
 </div>
 
 <h2 class="font-display text-4xl lg:text-6xl font-medium text-charcoal mb-6 reveal" style="transition-delay:0.06s;" data-i18n="cta.headline">
