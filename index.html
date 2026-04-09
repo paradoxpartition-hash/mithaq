@@ -6,278 +6,540 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mithaq — Sharia-Compliant Marriage Agreement Platform</title>
   <meta name="description" content="A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect." />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            emerald: { DEFAULT: '#0F3D2E', dark: '#0A2B1F', light: '#1A5C44' },
-            gold:    { DEFAULT: '#C6A75E', light: '#D4BA80', muted: '#A8864A' },
-            offwhite: '#F8F7F3',
-            charcoal: '#1E1E1E',
-            muted:    '#6B6B6B',
-            border:   '#D8D4C9',
-          },
-          fontFamily: {
-            display: ['Cormorant Garamond', 'Georgia', 'serif'],
-            body:    ['DM Sans', 'system-ui', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background-color: #F8F7F3;
-      color: #1E1E1E;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-weight: 300;
-      -webkit-font-smoothing: antialiased;
-    }
 
 ```
-/* Gold rule divider */
+/* ── Tokens ────────────────────────────────────────────────── */
+:root {
+  --emerald:   #0F3D2E;
+  --emerald-dk:#0A2B1F;
+  --gold:      #C6A75E;
+  --offwhite:  #F8F7F3;
+  --white:     #FFFFFF;
+  --charcoal:  #1E1E1E;
+  --muted:     #6B6B6B;
+  --border:    #D8D4C9;
+  --f-display: 'Cormorant Garamond', Georgia, serif;
+  --f-body:    'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+body {
+  background: var(--offwhite);
+  color: var(--charcoal);
+  font-family: var(--f-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { background: none; border: none; cursor: pointer; font-family: inherit; }
+
+/* ── Layout helpers ────────────────────────────────────────── */
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 1024px) { .container { padding: 0 32px; } }
+
+/* ── Gold rule ─────────────────────────────────────────────── */
 .gold-rule {
+  display: block;
   width: 48px;
   height: 1px;
-  background-color: #C6A75E;
-  display: block;
-  border: none;
-  outline: none;
+  background: var(--gold);
   flex-shrink: 0;
   font-size: 0;
   line-height: 0;
-  overflow: hidden;
+  border: none;
+}
+.gold-rule-center { margin: 0 auto; }
+
+/* ── Section label ─────────────────────────────────────────── */
+.label {
+  font-family: var(--f-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
-/* Subtle geometric motif — top-right corner */
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--emerald);
+  color: var(--offwhite);
+  font-family: var(--f-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: 1px solid var(--emerald);
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--emerald-dk); }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--emerald);
+  font-family: var(--f-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border: 1px solid var(--emerald);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover { background: var(--emerald); color: var(--offwhite); }
+
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--emerald);
+  font-family: var(--f-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: 1px solid var(--gold);
+  transition: background 0.2s;
+}
+.btn-gold:hover { background: #A8864A; border-color: #A8864A; }
+
+/* ── Nav link ──────────────────────────────────────────────── */
+.nav-link {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--charcoal);
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--emerald); }
+
+/* ── HEADER ────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--offwhite);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* Logo */
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.logo-text {
+  font-family: var(--f-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--charcoal);
+}
+
+/* Desktop nav — hidden on mobile */
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+@media (min-width: 768px) { .desktop-nav { display: flex; } }
+
+/* Header right side */
+.header-right { display: flex; align-items: center; gap: 16px; }
+
+/* Language switcher */
+.lang-switcher {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--f-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+@media (min-width: 768px) { .lang-switcher { display: flex; } }
+.lang-switcher button {
+  padding: 2px 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.lang-switcher button:hover { color: var(--charcoal); }
+.lang-switcher button.active {
+  color: var(--charcoal);
+  font-weight: 500;
+  border-bottom: 1px solid var(--charcoal);
+}
+.lang-sep { color: var(--border); }
+
+/* Desktop CTA */
+.header-cta { display: none; }
+@media (min-width: 768px) { .header-cta { display: inline-block; } }
+
+/* Hamburger */
+.hamburger { display: flex; padding: 8px; color: var(--charcoal); }
+@media (min-width: 768px) { .hamburger { display: none; } }
+
+/* ── MOBILE MENU ───────────────────────────────────────────── */
+.mobile-menu {
+  display: none;
+  border-top: 1px solid var(--border);
+  background: var(--offwhite);
+  padding: 0 24px 24px;
+}
+.mobile-menu.open { display: block; }
+.mobile-nav { display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
+.mobile-lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.mobile-lang button {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.mobile-lang button.active {
+  color: var(--charcoal);
+  font-weight: 500;
+  border-bottom: 1px solid var(--charcoal);
+}
+.mobile-cta { display: block; margin-top: 16px; text-align: center; }
+
+/* ── HERO ──────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--offwhite);
+  padding: 96px 0 144px;
+}
+@media (min-width: 1024px) { .hero { padding: 144px 0; } }
+
 .geo-corner {
   position: absolute;
   top: 0; right: 0;
   width: 220px; height: 220px;
   overflow: hidden;
   pointer-events: none;
-}
-.geo-corner svg { opacity: 0.055; }
-
-/* Bordered content box */
-.bordered-box {
-  border: 1px solid #D8D4C9;
-  background: #FFFFFF;
+  opacity: 0.055;
 }
 
-/* Section label */
-.section-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.6875rem;
+.hero-label { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+.hero-headline {
+  font-family: var(--f-display);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #C6A75E;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  max-width: 600px;
 }
+.hero-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+@media (min-width: 1024px) { .hero-sub { font-size: 1.125rem; } }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 64px; }
 
-/* Compliance badge */
+.info-box {
+  border: 1px solid var(--border);
+  background: var(--white);
+  padding: 24px;
+  max-width: 560px;
+}
+@media (min-width: 1024px) { .info-box { padding: 32px; } }
+.info-box-inner { display: flex; align-items: flex-start; gap: 16px; }
+.info-box-title {
+  font-family: var(--f-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+.info-box-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* ── WHY SECTION ───────────────────────────────────────────── */
+.why-section { background: var(--white); border-top: 1px solid var(--border); }
+.section-pad { padding: 80px 0; }
+@media (min-width: 1024px) { .section-pad { padding: 112px 0; } }
+
+.section-label-row { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; }
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--border);
+}
+@media (min-width: 768px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
+.three-col-item { padding: 32px; border-bottom: 1px solid var(--border); }
+@media (min-width: 768px) {
+  .three-col-item { border-bottom: none; border-right: 1px solid var(--border); }
+  .three-col-item:last-child { border-right: none; }
+}
+@media (min-width: 1024px) { .three-col-item { padding: 40px; } }
+.col-icon { margin-bottom: 20px; }
+.col-title {
+  font-family: var(--f-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.col-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* ── HOW IT WORKS ──────────────────────────────────────────── */
+.how-section { background: var(--offwhite); border-top: 1px solid var(--border); }
+.section-headline {
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 64px;
+  max-width: 480px;
+}
+.four-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+@media (min-width: 1024px) { .four-col { grid-template-columns: repeat(4, 1fr); } }
+.step-item { padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+@media (min-width: 1024px) {
+  .step-item { padding-bottom: 0; border-bottom: none; border-right: 1px solid var(--border); padding-right: 40px; }
+  .step-item:not(:first-child) { padding-left: 40px; }
+  .step-item:last-child { border-right: none; }
+}
+.step-item:not(:last-child) { margin-bottom: 40px; }
+@media (min-width: 1024px) { .step-item:not(:last-child) { margin-bottom: 0; } }
+.step-num {
+  font-family: var(--f-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.7;
+}
+.step-rule { border: none; border-top: 1px solid var(--border); margin: 16px 0 20px; }
+.step-title {
+  font-family: var(--f-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.step-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* ── COMPLIANCE ────────────────────────────────────────────── */
+.compliance-section { background: var(--emerald); }
+.compliance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (min-width: 1024px) { .compliance-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
+.compliance-headline {
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+.compliance-sub { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 32px; }
 .compliance-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid #C6A75E;
-  color: #C6A75E;
+  border: 1px solid var(--gold);
+  color: var(--gold);
   font-size: 0.6875rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 4px 12px;
-  font-family: 'DM Sans', sans-serif;
   font-weight: 500;
 }
-
-/* Step number */
-.step-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: #C6A75E;
-  line-height: 1;
-  opacity: 0.7;
-}
-
-/* Nav link */
-.nav-link {
-  font-size: 0.8125rem;
-  font-weight: 400;
+.compliance-blocks { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.compliance-block { border-left: 2px solid var(--gold); padding-left: 20px; }
+.compliance-block-title { font-size: 0.875rem; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+.compliance-block-body { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; }
+.compliance-footer {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
   letter-spacing: 0.04em;
-  color: #1E1E1E;
-  transition: color 0.2s;
 }
-.nav-link:hover { color: #0F3D2E; }
 
-/* Primary button */
-.btn-primary {
-  display: inline-block;
-  background-color: #0F3D2E;
-  color: #F8F7F3;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8125rem;
+/* ── SECURITY ──────────────────────────────────────────────── */
+.security-section { background: var(--white); border-top: 1px solid var(--border); }
+.security-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (min-width: 1024px) { .security-grid { grid-template-columns: 1fr 1fr; } }
+.security-headline {
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border: 1px solid #0F3D2E;
-  transition: background-color 0.2s, color 0.2s;
-  text-decoration: none;
-  cursor: pointer;
+  color: var(--charcoal);
+  margin-bottom: 16px;
 }
-.btn-primary:hover {
-  background-color: #0A2B1F;
-}
-
-/* Secondary button */
-.btn-secondary {
-  display: inline-block;
-  background-color: transparent;
-  color: #0F3D2E;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 13px 32px;
-  border: 1px solid #0F3D2E;
-  transition: background-color 0.2s, color 0.2s;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-secondary:hover {
-  background-color: #0F3D2E;
-  color: #F8F7F3;
-}
-
-/* Gold button */
-.btn-gold {
-  display: inline-block;
-  background-color: #C6A75E;
-  color: #0F3D2E;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 14px 36px;
-  border: 1px solid #C6A75E;
-  transition: background-color 0.2s;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-gold:hover {
-  background-color: #A8864A;
-  border-color: #A8864A;
-}
-
-/* Horizontal rule */
-hr.fine { border: none; border-top: 1px solid #D8D4C9; }
-
-/* Pricing card */
-.pricing-card {
-  border: 1px solid #D8D4C9;
-  background: #FFFFFF;
-}
-.pricing-card.featured {
-  border-color: #0F3D2E;
-}
-
-/* Feature check row */
-.feature-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid #EAE8E2;
-  font-size: 0.875rem;
-  color: #1E1E1E;
-}
-.feature-row:last-child { border-bottom: none; }
-
-.check-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: #0F3D2E;
-}
-
-/* Compliance block */
-.compliance-block {
-  border-left: 2px solid #C6A75E;
-  padding-left: 20px;
-}
-
-/* Security item */
-.security-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid #D8D4C9;
-}
+.security-sub { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+.security-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
 .security-item:last-child { border-bottom: none; }
+.security-title { font-size: 0.875rem; font-weight: 500; color: var(--charcoal); }
+.security-body { font-size: 0.75rem; color: var(--muted); margin-top: 4px; line-height: 1.7; font-weight: 300; }
 
-/* Mobile menu toggle */
-#mobile-menu { display: none; }
-#mobile-menu.open { display: block; }
+/* ── PRICING ───────────────────────────────────────────────── */
+.pricing-section { background: var(--offwhite); border-top: 1px solid var(--border); }
+.pricing-headline {
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.pricing-sub { font-size: 0.875rem; color: var(--muted); max-width: 480px; margin-bottom: 56px; font-weight: 300; }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--border);
+}
+@media (min-width: 640px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1280px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
 
-/* Scroll fade-in */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+.pricing-card { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+@media (min-width: 640px) {
+  .pricing-card { border-bottom: none; border-right: 1px solid var(--border); }
+  .pricing-card:nth-child(2n) { border-right: none; }
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 1280px) {
+  .pricing-card { border-right: 1px solid var(--border); }
+  .pricing-card:last-child { border-right: none; }
 }
-/* Ensure desktop lang switcher only shows on md+ screens */
-@media (min-width: 768px) {
-  #desktop-nav { display: flex !important; }
-  #desktop-lang-switcher { display: flex !important; }
-  #desktop-cta { display: inline-block !important; }
-  #hamburger { display: none !important; }
+.pricing-card-head { padding: 28px 28px 24px; border-bottom: 1px solid var(--border); }
+.pricing-card-dark { background: var(--emerald); }
+.pricing-card-dark .pricing-card-head { border-bottom-color: rgba(255,255,255,0.12); }
+.tier-mark { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.tier-name { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.tier-desc { font-family: var(--f-display); font-size: 1rem; font-weight: 500; color: var(--charcoal); line-height: 1.3; margin-bottom: 8px; }
+.tier-desc-light { color: var(--offwhite); }
+.tier-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  letter-spacing: 0.06em;
 }
+.tier-badge-dark { color: var(--gold); border-color: rgba(198,167,94,0.4); }
+.pricing-features { flex: 1; padding: 24px 28px; }
+.feature-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EAE8E2; font-size: 0.875rem; color: var(--charcoal); }
+.feature-row:last-child { border-bottom: none; }
+.feature-row-dark { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
+.feature-row-dark:last-child { border-bottom: none; }
+.check-icon { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+
+.pricing-footer { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.pricing-tagline { font-size: 0.875rem; color: var(--charcoal); letter-spacing: 0.03em; }
+.pricing-note { font-size: 0.75rem; color: var(--muted); margin-top: 24px; font-weight: 300; }
+
+/* ── CTA ───────────────────────────────────────────────────── */
+.cta-section { background: var(--white); border-top: 1px solid var(--border); text-align: center; }
+.cta-section .section-pad { padding: 96px 0 144px; }
+@media (min-width: 1024px) { .cta-section .section-pad { padding: 144px 0; } }
+.cta-headline {
+  font-family: var(--f-display);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+.cta-sub { font-size: 0.875rem; color: var(--muted); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
+.cta-trust { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; font-weight: 300; }
+.trust-sep { color: var(--border); }
+
+/* ── FOOTER ────────────────────────────────────────────────── */
+.site-footer { background: var(--offwhite); border-top: 1px solid var(--border); }
+.footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 0; }
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-brand-text { font-family: var(--f-display); font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; color: var(--charcoal); }
+.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.footer-link { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+.footer-link:hover { color: var(--charcoal); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+
+/* ── Scroll reveal ─────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Bordered box ──────────────────────────────────────────── */
+.bordered-box { border: 1px solid var(--border); background: var(--white); }
 ```
 
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════════════════════ -->
+<!-- HEADER -->
 
-<header class="sticky top-0 z-50 bg-offwhite border-b border-border">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
 
 ```
   <!-- Logo -->
-  <a href="#" class="flex items-center gap-3 no-underline">
-    <div class="w-7 h-7 flex-shrink-0" aria-hidden="true">
-      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-      </svg>
-    </div>
-    <span class="font-display text-xl font-semibold tracking-wide text-charcoal" style="letter-spacing:0.05em;">Mithaq</span>
+  <a href="#" class="logo">
+    <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
+      <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
+      <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
+      <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
+    </svg>
+    <span class="logo-text">Mithaq</span>
   </a>
 
   <!-- Desktop nav -->
-  <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation" data-i18n-section="nav" id="desktop-nav" style="display:none;">
+  <nav class="desktop-nav" aria-label="Main navigation">
     <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
     <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
     <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
@@ -286,29 +548,28 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
   </nav>
 
   <!-- Right side -->
-  <div class="flex items-center gap-4">
+  <div class="header-right">
     <!-- Language switcher -->
-    <div class="hidden md:flex items-center gap-1 text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;display:none;" aria-label="Language selection" id="desktop-lang-switcher">
-      <button class="px-1 py-0.5 text-charcoal font-medium border-b border-charcoal" data-lang="en">EN</button>
-      <span class="text-border">|</span>
-      <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="ar">AR</button>
-      <span class="text-border">|</span>
-      <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="hi">HI</button>
-      <span class="text-border">|</span>
-      <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="ur">UR</button>
+    <div class="lang-switcher" aria-label="Language selection">
+      <button class="active" data-lang="en">EN</button>
+      <span class="lang-sep">|</span>
+      <button data-lang="ar">AR</button>
+      <span class="lang-sep">|</span>
+      <button data-lang="hi">HI</button>
+      <span class="lang-sep">|</span>
+      <button data-lang="ur">UR</button>
     </div>
-
-    <a href="#start" class="btn-primary hidden md:inline-block" data-i18n="nav.cta" id="desktop-cta" style="display:none;">Get Started</a>
-
-    <!-- Mobile hamburger -->
-    <button id="hamburger" class="md:hidden p-2 text-charcoal" aria-label="Toggle menu" style="display:block;">
+    <a href="#start" class="btn-primary header-cta" data-i18n="nav.cta">Get Started</a>
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-        <line y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/>
-        <line y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/>
+        <line y1="1"  x2="20" y2="1"  stroke="currentColor" stroke-width="1.5"/>
+        <line y1="7"  x2="20" y2="7"  stroke="currentColor" stroke-width="1.5"/>
         <line y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/>
       </svg>
     </button>
   </div>
+
 </div>
 ```
 
@@ -316,979 +577,685 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
   <!-- Mobile menu -->
 
-  <div id="mobile-menu" class="md:hidden border-t border-border bg-offwhite px-6 pb-6">
-    <nav class="flex flex-col gap-4 pt-4" data-i18n-section="nav">
+  <div id="mobile-menu" class="mobile-menu">
+    <nav class="mobile-nav">
       <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
       <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
       <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
       <a href="#pricing"    class="nav-link" data-i18n="nav.pricing">Pricing</a>
       <a href="#contact"    class="nav-link" data-i18n="nav.contact">Contact</a>
     </nav>
-    <div class="flex items-center gap-2 mt-4 pt-4 border-t border-border text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;">
-      <button class="text-charcoal font-medium border-b border-charcoal" data-lang="en">EN</button>
+    <div class="mobile-lang">
+      <button class="active" data-lang="en">EN</button>
       <span>|</span>
-      <button class="hover:text-charcoal transition-colors" data-lang="ar">AR</button>
+      <button data-lang="ar">AR</button>
       <span>|</span>
-      <button class="hover:text-charcoal transition-colors" data-lang="hi">HI</button>
+      <button data-lang="hi">HI</button>
       <span>|</span>
-      <button class="hover:text-charcoal transition-colors" data-lang="ur">UR</button>
+      <button data-lang="ur">UR</button>
     </div>
-    <a href="#start" class="btn-primary mt-4 w-full text-center block" data-i18n="nav.cta">Get Started</a>
+    <a href="#start" class="btn-primary mobile-cta" data-i18n="nav.cta">Get Started</a>
   </div>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════════════════ -->
+<!-- HERO -->
 
-<section id="about" class="relative overflow-hidden" style="background:#F8F7F3;" data-i18n-section="hero">
-
-  <!-- Geometric corner motif -->
-
-  <div class="geo-corner">
+<section id="about" class="hero">
+  <div class="geo-corner" aria-hidden="true">
     <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="2" width="216" height="216" stroke="#0F3D2E" stroke-width="1"/>
+      <rect x="2"  y="2"  width="216" height="216" stroke="#0F3D2E" stroke-width="1"/>
       <rect x="22" y="22" width="176" height="176" stroke="#0F3D2E" stroke-width="1"/>
       <rect x="42" y="42" width="136" height="136" stroke="#C6A75E" stroke-width="0.8"/>
-      <rect x="62" y="62" width="96" height="96" stroke="#0F3D2E" stroke-width="0.6"/>
+      <rect x="62" y="62" width="96"  height="96"  stroke="#0F3D2E" stroke-width="0.6"/>
       <line x1="2" y1="2" x2="218" y2="218" stroke="#0F3D2E" stroke-width="0.5"/>
       <line x1="218" y1="2" x2="2" y2="218" stroke="#0F3D2E" stroke-width="0.5"/>
     </svg>
   </div>
-
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-36">
-    <div class="max-w-3xl">
-
-```
-  <!-- Label -->
-  <div class="flex items-center gap-4 mb-8 reveal">
-    <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-    <span class="section-label" data-i18n="hero.label">Official Digital Agreement Platform</span>
-  </div>
-
-  <!-- Headline -->
-  <h1 class="font-display text-5xl lg:text-7xl font-medium leading-none tracking-tight text-charcoal mb-6 reveal" style="transition-delay:0.08s;" data-i18n="hero.headline">
-    Clarity Before<br>Commitment.
-  </h1>
-
-  <!-- Subheadline -->
-  <p class="font-body text-base lg:text-lg text-muted leading-relaxed max-w-xl mb-10 reveal" style="transition-delay:0.14s; font-weight:300;" data-i18n="hero.sub">
-    A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.
-  </p>
-
-  <!-- CTA group -->
-  <div class="flex flex-wrap gap-3 mb-16 reveal" style="transition-delay:0.2s;">
-    <a href="#start" class="btn-primary" data-i18n="hero.cta1">Create Your Agreement</a>
-    <a href="#how"   class="btn-secondary" data-i18n="hero.cta2">Learn How It Works</a>
-  </div>
-
-  <!-- Bordered content box -->
-  <div class="bordered-box p-6 lg:p-8 max-w-2xl reveal" style="transition-delay:0.26s;">
-    <div class="flex items-start gap-4">
-      <div class="flex-shrink-0 mt-0.5">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <rect x="1" y="1" width="18" height="18" stroke="#C6A75E" stroke-width="1"/>
-          <path d="M6 10l3 3 5-5" stroke="#0F3D2E" stroke-width="1.3" stroke-linecap="square"/>
-        </svg>
+  <div class="container">
+    <div style="max-width:600px">
+      <div class="hero-label reveal">
+        <span class="gold-rule"></span>
+        <span class="label" data-i18n="hero.label">Official Digital Agreement Platform</span>
       </div>
-      <div>
-        <p class="font-body text-sm text-charcoal font-medium mb-1" data-i18n="hero.box.title">Structured for Legal Recognition</p>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="hero.box.body">
-          Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.
-        </p>
+      <h1 class="hero-headline reveal" style="transition-delay:0.08s" data-i18n="hero.headline">Clarity Before<br>Commitment.</h1>
+      <p class="hero-sub reveal" style="transition-delay:0.14s" data-i18n="hero.sub">A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.</p>
+      <div class="hero-ctas reveal" style="transition-delay:0.2s">
+        <a href="#start" class="btn-primary" data-i18n="hero.cta1">Create Your Agreement</a>
+        <a href="#how"   class="btn-secondary" data-i18n="hero.cta2">Learn How It Works</a>
+      </div>
+      <div class="info-box reveal" style="transition-delay:0.26s">
+        <div class="info-box-inner">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" flex-shrink="0" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
+            <rect x="1" y="1" width="18" height="18" stroke="#C6A75E" stroke-width="1"/>
+            <path d="M6 10l3 3 5-5" stroke="#0F3D2E" stroke-width="1.3" stroke-linecap="square"/>
+          </svg>
+          <div>
+            <p class="info-box-title" data-i18n="hero.box.title">Structured for Legal Recognition</p>
+            <p class="info-box-body" data-i18n="hero.box.body">Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-```
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     WHY THIS MATTERS
-═══════════════════════════════════════════════════════════ -->
+<!-- WHY THIS MATTERS -->
 
-<section class="bg-white border-t border-border" id="why" data-i18n-section="why">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
-
-```
-<div class="flex items-center gap-4 mb-14 reveal">
-  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-  <span class="section-label" data-i18n="why.label">Why This Matters</span>
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
-
-  <!-- Column 1 -->
-  <div class="p-8 lg:p-10 border-b md:border-b-0 md:border-r border-border reveal">
-    <div class="mb-5">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
-        <path d="M5 12h14M12 5v14" stroke="#0F3D2E" stroke-width="1.2"/>
-      </svg>
+<section class="why-section" id="why">
+  <div class="container section-pad">
+    <div class="section-label-row reveal">
+      <span class="gold-rule"></span>
+      <span class="label" data-i18n="why.label">Why This Matters</span>
     </div>
-    <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.1.title">Prevent Conflict Before It Begins</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.1.body">
-      Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.
-    </p>
-  </div>
-
-  <!-- Column 2 -->
-  <div class="p-8 lg:p-10 border-b md:border-b-0 md:border-r border-border reveal" style="transition-delay:0.08s;">
-    <div class="mb-5">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
-        <circle cx="12" cy="12" r="5" stroke="#0F3D2E" stroke-width="1.2"/>
-        <path d="M12 7v5l3 2" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
-      </svg>
+    <div class="three-col">
+      <div class="three-col-item reveal">
+        <div class="col-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/><path d="M5 12h14M12 5v14" stroke="#0F3D2E" stroke-width="1.2"/></svg>
+        </div>
+        <h3 class="col-title" data-i18n="why.1.title">Prevent Conflict Before It Begins</h3>
+        <p class="col-body" data-i18n="why.1.body">Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.</p>
+      </div>
+      <div class="three-col-item reveal" style="transition-delay:0.08s">
+        <div class="col-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/><circle cx="12" cy="12" r="5" stroke="#0F3D2E" stroke-width="1.2"/><path d="M12 7v5l3 2" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </div>
+        <h3 class="col-title" data-i18n="why.2.title">Align Expectations Clearly</h3>
+        <p class="col-body" data-i18n="why.2.body">Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.</p>
+      </div>
+      <div class="three-col-item reveal" style="transition-delay:0.16s">
+        <div class="col-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/><path d="M7 12l3 3 7-7" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </div>
+        <h3 class="col-title" data-i18n="why.3.title">Digitally Secure &amp; Court-Ready</h3>
+        <p class="col-body" data-i18n="why.3.body">Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.</p>
+      </div>
     </div>
-    <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.2.title">Align Expectations Clearly</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.2.body">
-      Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.
-    </p>
-  </div>
-
-  <!-- Column 3 -->
-  <div class="p-8 lg:p-10 reveal" style="transition-delay:0.16s;">
-    <div class="mb-5">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
-        <path d="M7 12l3 3 7-7" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
-      </svg>
-    </div>
-    <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.3.title">Digitally Secure &amp; Court-Ready</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.3.body">
-      Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.
-    </p>
-  </div>
-
-</div>
-```
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HOW IT WORKS
-═══════════════════════════════════════════════════════════ -->
+<!-- HOW IT WORKS -->
 
-<section id="how" class="border-t border-border" style="background:#F8F7F3;" data-i18n-section="how">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
-
-```
-<div class="flex items-center gap-4 mb-14 reveal">
-  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-  <span class="section-label" data-i18n="how.label">The Process</span>
-</div>
-
-<h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-16 max-w-xl reveal" data-i18n="how.headline">
-  Four structured steps to a complete, signed agreement.
-</h2>
-
-<!-- Steps grid -->
-<div class="grid grid-cols-1 lg:grid-cols-4 gap-0">
-
-  <!-- Step 1 -->
-  <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:pr-10 reveal">
-    <span class="step-num">01</span>
-    <hr class="fine mt-4 mb-5"/>
-    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.1.title">Define Terms Before Marriage</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.1.body">
-      Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.
-    </p>
-  </div>
-
-  <!-- Step 2 -->
-  <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:px-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.07s;">
-    <span class="step-num">02</span>
-    <hr class="fine mt-4 mb-5"/>
-    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.2.title">Mutual Review &amp; Agreement</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.2.body">
-      Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.
-    </p>
-  </div>
-
-  <!-- Step 3 -->
-  <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:px-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.14s;">
-    <span class="step-num">03</span>
-    <hr class="fine mt-4 mb-5"/>
-    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.3.title">Digital Signature</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.3.body">
-      Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.
-    </p>
-  </div>
-
-  <!-- Step 4 -->
-  <div class="pb-0 lg:pl-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.21s;">
-    <span class="step-num">04</span>
-    <hr class="fine mt-4 mb-5"/>
-    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.4.title">Secure Storage &amp; Legal Documentation</h3>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.4.body">
-      The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.
-    </p>
-  </div>
-
-</div>
-```
-
+<section class="how-section" id="how">
+  <div class="container section-pad">
+    <div class="section-label-row reveal">
+      <span class="gold-rule"></span>
+      <span class="label" data-i18n="how.label">The Process</span>
+    </div>
+    <h2 class="section-headline reveal" data-i18n="how.headline">Four structured steps to a complete, signed agreement.</h2>
+    <div class="four-col">
+      <div class="step-item reveal">
+        <span class="step-num">01</span>
+        <hr class="step-rule">
+        <h3 class="step-title" data-i18n="how.1.title">Define Terms Before Marriage</h3>
+        <p class="step-body" data-i18n="how.1.body">Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.</p>
+      </div>
+      <div class="step-item reveal" style="transition-delay:0.07s">
+        <span class="step-num">02</span>
+        <hr class="step-rule">
+        <h3 class="step-title" data-i18n="how.2.title">Mutual Review &amp; Agreement</h3>
+        <p class="step-body" data-i18n="how.2.body">Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.</p>
+      </div>
+      <div class="step-item reveal" style="transition-delay:0.14s">
+        <span class="step-num">03</span>
+        <hr class="step-rule">
+        <h3 class="step-title" data-i18n="how.3.title">Digital Signature</h3>
+        <p class="step-body" data-i18n="how.3.body">Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.</p>
+      </div>
+      <div class="step-item reveal" style="transition-delay:0.21s">
+        <span class="step-num">04</span>
+        <hr class="step-rule">
+        <h3 class="step-title" data-i18n="how.4.title">Secure Storage &amp; Legal Documentation</h3>
+        <p class="step-body" data-i18n="how.4.body">The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     COMPLIANCE
-═══════════════════════════════════════════════════════════ -->
+<!-- COMPLIANCE -->
 
-<section id="compliance" class="bg-emerald" style="background:#0F3D2E;" data-i18n-section="compliance">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
-
-```
-<div class="flex items-center gap-4 mb-14 reveal">
-  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-  <span class="section-label" style="color:#C6A75E;" data-i18n="compliance.label">Legal &amp; Sharia Compliance</span>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-  <!-- Left: Headline + sub -->
-  <div class="reveal">
-    <h2 class="font-display text-3xl lg:text-4xl font-medium text-white mb-6 leading-snug" data-i18n="compliance.headline">
-      Built for Legal and Sharia Compliance
-    </h2>
-    <p class="font-body text-sm leading-relaxed mb-8" style="color:rgba(255,255,255,0.6); font-weight:300;" data-i18n="compliance.sub">
-      Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.
-    </p>
-    <div class="compliance-badge" style="border-color:#C6A75E; color:#C6A75E;" data-i18n="compliance.badge">
-      <svg width="10" height="10" viewBox="0 0 10 10">
-        <rect x="0.5" y="0.5" width="9" height="9" stroke="#C6A75E" stroke-width="0.8"/>
-      </svg>
-      Sharia-Aware Framework
+<section class="compliance-section" id="compliance">
+  <div class="container section-pad">
+    <div class="section-label-row reveal" style="margin-bottom:56px">
+      <span class="gold-rule"></span>
+      <span class="label" data-i18n="compliance.label">Legal &amp; Sharia Compliance</span>
     </div>
-  </div>
-
-  <!-- Right: Compliance blocks -->
-  <div class="grid grid-cols-1 gap-6 reveal" style="transition-delay:0.1s;">
-
-    <div class="compliance-block" style="border-left-color:#C6A75E;">
-      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.1.title">Aligned with Islamic Marital Principles</p>
-      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.1.body">
-        All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi'i, Maliki, and Hanafi schools of jurisprudence.
-      </p>
+    <div class="compliance-grid">
+      <div class="reveal">
+        <h2 class="compliance-headline" data-i18n="compliance.headline">Built for Legal and Sharia Compliance</h2>
+        <p class="compliance-sub" data-i18n="compliance.sub">Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.</p>
+        <span class="compliance-badge" data-i18n="compliance.badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><rect x="0.5" y="0.5" width="9" height="9" stroke="#C6A75E" stroke-width="0.8"/></svg>
+          Sharia-Aware Framework
+        </span>
+      </div>
+      <div class="compliance-blocks reveal" style="transition-delay:0.1s">
+        <div class="compliance-block">
+          <p class="compliance-block-title" data-i18n="compliance.1.title">Aligned with Islamic Marital Principles</p>
+          <p class="compliance-block-body" data-i18n="compliance.1.body">All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi'i, Maliki, and Hanafi schools of jurisprudence.</p>
+        </div>
+        <div class="compliance-block">
+          <p class="compliance-block-title" data-i18n="compliance.2.title">Supports Documentation Requirements</p>
+          <p class="compliance-block-body" data-i18n="compliance.2.body">Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.</p>
+        </div>
+        <div class="compliance-block">
+          <p class="compliance-block-title" data-i18n="compliance.3.title">Transparent and Voluntary Framework</p>
+          <p class="compliance-block-body" data-i18n="compliance.3.body">The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.</p>
+        </div>
+        <div class="compliance-block">
+          <p class="compliance-block-title" data-i18n="compliance.4.title">Structured for Legal Recognition</p>
+          <p class="compliance-block-body" data-i18n="compliance.4.body">Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.</p>
+        </div>
+      </div>
     </div>
-
-    <div class="compliance-block" style="border-left-color:#C6A75E;">
-      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.2.title">Supports Documentation Requirements</p>
-      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.2.body">
-        Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.
-      </p>
-    </div>
-
-    <div class="compliance-block" style="border-left-color:#C6A75E;">
-      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.3.title">Transparent and Voluntary Framework</p>
-      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.3.body">
-        The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.
-      </p>
-    </div>
-
-    <div class="compliance-block" style="border-left-color:#C6A75E;">
-      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.4.title">Structured for Legal Recognition</p>
-      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.4.body">
-        Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.
-      </p>
-    </div>
-
-  </div>
-</div>
-
-<!-- Bottom strip -->
-<div class="mt-16 pt-10 border-t reveal" style="border-top-color:rgba(255,255,255,0.1); transition-delay:0.18s;">
-  <p class="font-body text-xs text-center" style="color:rgba(255,255,255,0.35); font-weight:300; letter-spacing:0.04em;" data-i18n="compliance.disclaimer">
-    Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.
-  </p>
-</div>
-```
-
+    <p class="compliance-footer reveal" style="transition-delay:0.18s" data-i18n="compliance.disclaimer">Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SECURITY
-═══════════════════════════════════════════════════════════ -->
+<!-- SECURITY -->
 
-<section class="bg-white border-t border-border" id="security" data-i18n-section="security">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
-
-```
-<div class="flex items-center gap-4 mb-14 reveal">
-  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-  <span class="section-label" data-i18n="security.label">Document Security</span>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-  <div class="reveal">
-    <h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-4" data-i18n="security.headline">
-      Infrastructure Built for Sensitive Documents.
-    </h2>
-    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="security.sub">
-      Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.
-    </p>
-  </div>
-
-  <div class="reveal" style="transition-delay:0.1s;">
-
-    <div class="security-item">
-      <div class="flex-shrink-0 mt-0.5">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-        </svg>
+<section class="security-section" id="security">
+  <div class="container section-pad">
+    <div class="section-label-row reveal">
+      <span class="gold-rule"></span>
+      <span class="label" data-i18n="security.label">Document Security</span>
+    </div>
+    <div class="security-grid">
+      <div class="reveal">
+        <h2 class="security-headline" data-i18n="security.headline">Infrastructure Built for Sensitive Documents.</h2>
+        <p class="security-sub" data-i18n="security.sub">Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.</p>
       </div>
-      <div>
-        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.1.title">End-to-End Encryption</p>
-        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.1.body">All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.</p>
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="security-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/><path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/></svg>
+          <div>
+            <p class="security-title" data-i18n="security.1.title">End-to-End Encryption</p>
+            <p class="security-body" data-i18n="security.1.body">All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.</p>
+          </div>
+        </div>
+        <div class="security-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/><path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/></svg>
+          <div>
+            <p class="security-title" data-i18n="security.2.title">Tamper-Proof Document Storage</p>
+            <p class="security-body" data-i18n="security.2.body">Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.</p>
+          </div>
+        </div>
+        <div class="security-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/><path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/></svg>
+          <div>
+            <p class="security-title" data-i18n="security.3.title">Timestamped Agreements</p>
+            <p class="security-body" data-i18n="security.3.body">Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.</p>
+          </div>
+        </div>
+        <div class="security-item">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/><path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/></svg>
+          <div>
+            <p class="security-title" data-i18n="security.4.title">Digital Verification Integrity</p>
+            <p class="security-body" data-i18n="security.4.body">Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.</p>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="security-item">
-      <div class="flex-shrink-0 mt-0.5">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.2.title">Tamper-Proof Document Storage</p>
-        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.2.body">Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.</p>
-      </div>
-    </div>
-
-    <div class="security-item">
-      <div class="flex-shrink-0 mt-0.5">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.3.title">Timestamped Agreements</p>
-        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.3.body">Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.</p>
-      </div>
-    </div>
-
-    <div class="security-item">
-      <div class="flex-shrink-0 mt-0.5">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-        </svg>
-      </div>
-      <div>
-        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.4.title">Digital Verification Integrity</p>
-        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.4.body">Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-```
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     AGREEMENT STRUCTURE OPTIONS
-═══════════════════════════════════════════════════════════ -->
+<!-- PRICING -->
 
-<section id="pricing" class="border-t border-border" style="background:#F8F7F3;" data-i18n-section="pricing">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+<section class="pricing-section" id="pricing">
+  <div class="container section-pad">
+    <div class="section-label-row reveal">
+      <span class="gold-rule"></span>
+      <span class="label" data-i18n="pricing.label">Agreement Structure Options</span>
+    </div>
+    <h2 class="pricing-headline reveal" data-i18n="pricing.headline">Agreement Structure Options</h2>
+    <p class="pricing-sub reveal" style="transition-delay:0.06s" data-i18n="pricing.sub">Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.</p>
 
 ```
-<!-- Section label -->
-<div class="flex items-center gap-4 mb-6 reveal">
-  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;flex-shrink:0;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-  <span class="section-label" data-i18n="pricing.label">Agreement Structure Options</span>
-</div>
-
-<!-- Headlines -->
-<h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-3 reveal" data-i18n="pricing.headline">
-  Agreement Structure Options
-</h2>
-<p class="font-body text-sm text-muted max-w-2xl mb-14 reveal" style="font-weight:300; transition-delay:0.06s;" data-i18n="pricing.sub">
-  Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.
-</p>
-
-<!-- Four cards — equal weight, full width -->
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-0 border border-border reveal" style="transition-delay:0.1s;">
-
-  <!-- ── SILVER ── -->
-  <div class="border-b sm:border-b-0 sm:border-r border-border flex flex-col" data-i18n-section="pricing.silver">
-    <!-- Tier header -->
-    <div class="px-7 pt-8 pb-6 border-b border-border">
-      <div class="flex items-center gap-2 mb-5">
-        <!-- Silver mark -->
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <rect x="0.5" y="0.5" width="11" height="11" stroke="#9CA3AF" stroke-width="1"/>
-          <rect x="2.5" y="2.5" width="7" height="7" fill="#9CA3AF" opacity="0.25"/>
-        </svg>
-        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#6B7280; letter-spacing:0.14em;" data-i18n="pricing.silver.tier">Silver</span>
+<div class="pricing-grid reveal" style="transition-delay:0.1s">
+  <!-- Silver -->
+  <div class="pricing-card">
+    <div class="pricing-card-head">
+      <div class="tier-mark">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#9CA3AF" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#9CA3AF" opacity="0.25"/></svg>
+        <span class="tier-name" style="color:#6B7280" data-i18n="pricing.silver.tier">Silver</span>
       </div>
-      <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.silver.desc">Standard asset and beneficiary documentation.</p>
-      <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
+      <p class="tier-desc" data-i18n="pricing.silver.desc">Standard asset and beneficiary documentation.</p>
+      <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
     </div>
-    <!-- Features -->
-    <ul class="flex-1 px-7 py-6 space-y-0">
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.silver.f1">Limited number of assets</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.silver.f2">Single jurisdiction</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.silver.f3">Standard beneficiary structure</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.silver.f4">Digital documentation</span>
-      </li>
+    <ul class="pricing-features">
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f1">Limited number of assets</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f2">Single jurisdiction</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f3">Standard beneficiary structure</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f4">Digital documentation</span></li>
     </ul>
   </div>
-
-  <!-- ── GOLD ── -->
-  <div class="border-b sm:border-b-0 sm:border-r border-border flex flex-col" data-i18n-section="pricing.gold">
-    <div class="px-7 pt-8 pb-6 border-b border-border">
-      <div class="flex items-center gap-2 mb-5">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <rect x="0.5" y="0.5" width="11" height="11" stroke="#C6A75E" stroke-width="1"/>
-          <rect x="2.5" y="2.5" width="7" height="7" fill="#C6A75E" opacity="0.3"/>
-        </svg>
-        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#C6A75E; letter-spacing:0.14em;" data-i18n="pricing.gold.tier">Gold</span>
+  <!-- Gold -->
+  <div class="pricing-card">
+    <div class="pricing-card-head">
+      <div class="tier-mark">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#C6A75E" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#C6A75E" opacity="0.3"/></svg>
+        <span class="tier-name" style="color:#C6A75E" data-i18n="pricing.gold.tier">Gold</span>
       </div>
-      <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.gold.desc">Expanded listing with multi-category coverage.</p>
-      <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
+      <p class="tier-desc" data-i18n="pricing.gold.desc">Expanded listing with multi-category coverage.</p>
+      <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
     </div>
-    <ul class="flex-1 px-7 py-6 space-y-0">
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.gold.f1">Expanded asset listing</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.gold.f2">Multiple asset categories</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.gold.f3">Optional cross-location documentation</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.gold.f4">Custom beneficiary designation</span>
-      </li>
+    <ul class="pricing-features">
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f1">Expanded asset listing</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f2">Multiple asset categories</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f3">Optional cross-location documentation</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f4">Custom beneficiary designation</span></li>
     </ul>
   </div>
-
-  <!-- ── PLATINUM ── -->
-  <div class="border-b xl:border-b-0 xl:border-r border-border flex flex-col" data-i18n-section="pricing.platinum">
-    <div class="px-7 pt-8 pb-6 border-b border-border" style="background:#FAFAF8;">
-      <div class="flex items-center gap-2 mb-5">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <rect x="0.5" y="0.5" width="11" height="11" stroke="#0F3D2E" stroke-width="1"/>
-          <rect x="2.5" y="2.5" width="7" height="7" fill="#0F3D2E" opacity="0.2"/>
-        </svg>
-        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#0F3D2E; letter-spacing:0.14em;" data-i18n="pricing.platinum.tier">Platinum</span>
+  <!-- Platinum -->
+  <div class="pricing-card">
+    <div class="pricing-card-head" style="background:#FAFAF8">
+      <div class="tier-mark">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#0F3D2E" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#0F3D2E" opacity="0.2"/></svg>
+        <span class="tier-name" style="color:#0F3D2E" data-i18n="pricing.platinum.tier">Platinum</span>
       </div>
-      <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.platinum.desc">Multi-jurisdiction and business asset inclusion.</p>
-      <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
+      <p class="tier-desc" data-i18n="pricing.platinum.desc">Multi-jurisdiction and business asset inclusion.</p>
+      <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
     </div>
-    <ul class="flex-1 px-7 py-6 space-y-0" style="background:#FAFAF8;">
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.platinum.f1">Multi-jurisdiction asset documentation</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.platinum.f2">Business ownership inclusion</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.platinum.f3">Detailed inheritance clauses</span>
-      </li>
-      <li class="feature-row">
-        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span data-i18n="pricing.platinum.f4">Advanced beneficiary structures</span>
-      </li>
+    <ul class="pricing-features" style="background:#FAFAF8">
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f1">Multi-jurisdiction asset documentation</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f2">Business ownership inclusion</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f3">Detailed inheritance clauses</span></li>
+      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f4">Advanced beneficiary structures</span></li>
     </ul>
   </div>
-
-  <!-- ── DIAMOND ── -->
-  <div class="flex flex-col" style="background:#0F3D2E;" data-i18n-section="pricing.diamond">
-    <div class="px-7 pt-8 pb-6" style="border-bottom:1px solid rgba(255,255,255,0.12);">
-      <div class="flex items-center gap-2 mb-5">
-        <!-- Diamond mark -->
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-          <polygon points="7,1 13,7 7,13 1,7" stroke="#C6A75E" stroke-width="1" fill="none"/>
-          <polygon points="7,4 10,7 7,10 4,7" fill="#C6A75E" opacity="0.3"/>
-        </svg>
-        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#C6A75E; letter-spacing:0.14em;" data-i18n="pricing.diamond.tier">Diamond</span>
+  <!-- Diamond -->
+  <div class="pricing-card pricing-card-dark">
+    <div class="pricing-card-head pricing-card-dark">
+      <div class="tier-mark">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><polygon points="7,1 13,7 7,13 1,7" stroke="#C6A75E" stroke-width="1" fill="none"/><polygon points="7,4 10,7 7,10 4,7" fill="#C6A75E" opacity="0.3"/></svg>
+        <span class="tier-name" style="color:#C6A75E" data-i18n="pricing.diamond.tier">Diamond</span>
       </div>
-      <p class="font-display text-base font-medium leading-snug mb-2" style="color:#F8F7F3;" data-i18n="pricing.diamond.desc">Full cross-border and investment-grade structuring.</p>
-      <span class="inline-block font-body text-xs px-2 py-0.5" style="color:#C6A75E; border:1px solid rgba(198,167,94,0.4); letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
+      <p class="tier-desc tier-desc-light" data-i18n="pricing.diamond.desc">Full cross-border and investment-grade structuring.</p>
+      <span class="tier-badge tier-badge-dark" data-i18n="pricing.onetime">One-Time Fee</span>
     </div>
-    <ul class="flex-1 px-7 py-6 space-y-0">
-      <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
-        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f1">Multi-country asset and investment structuring</span>
-      </li>
-      <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
-        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f2">Business and partnership documentation</span>
-      </li>
-      <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
-        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f3">Multi-layer beneficiary mapping</span>
-      </li>
-      <li class="feature-row" style="border-bottom-color:transparent;">
-        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f4">Enhanced legal documentation format</span>
-      </li>
+    <ul class="pricing-features pricing-card-dark">
+      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f1">Multi-country asset and investment structuring</span></li>
+      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f2">Business and partnership documentation</span></li>
+      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f3">Multi-layer beneficiary mapping</span></li>
+      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f4">Enhanced legal documentation format</span></li>
     </ul>
   </div>
+</div>
 
-</div><!-- /grid -->
-
-<!-- Bottom line + CTA -->
-<div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal" style="transition-delay:0.18s;">
-  <p class="font-body text-sm text-charcoal" style="letter-spacing:0.03em;" data-i18n="pricing.tagline">
-    Transparent.&ensp;Structured.&ensp;One-Time.
-  </p>
+<div class="pricing-footer reveal" style="transition-delay:0.18s">
+  <p class="pricing-tagline" data-i18n="pricing.tagline">Transparent.&ensp;Structured.&ensp;One-Time.</p>
   <a href="#start" class="btn-primary" data-i18n="pricing.cta">Select Your Structure</a>
 </div>
-
-<!-- Clarification note -->
-<p class="font-body text-xs text-muted mt-6 reveal" style="font-weight:300; transition-delay:0.22s;" data-i18n="pricing.note">
-  All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.
-</p>
+<p class="pricing-note reveal" style="transition-delay:0.22s" data-i18n="pricing.note">All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.</p>
 ```
 
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FINAL CTA
-═══════════════════════════════════════════════════════════ -->
+<!-- CTA -->
 
-<section id="start" class="bg-white border-t border-border" data-i18n-section="cta">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-36 text-center">
-
-```
-<div class="flex justify-center mb-8 reveal">
-  <span style="display:block;width:48px;height:1px;background-color:#C6A75E;margin-left:auto;margin-right:auto;font-size:0;line-height:0;overflow:hidden;" aria-hidden="true"></span>
-</div>
-
-<h2 class="font-display text-4xl lg:text-6xl font-medium text-charcoal mb-6 reveal" style="transition-delay:0.06s;" data-i18n="cta.headline">
-  Start With Clarity.
-</h2>
-
-<p class="font-body text-sm text-muted max-w-lg mx-auto mb-10 leading-relaxed reveal" style="font-weight:300; transition-delay:0.12s;" data-i18n="cta.sub">
-  A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.
-</p>
-
-<div class="flex flex-wrap gap-3 justify-center reveal" style="transition-delay:0.18s;">
-  <a href="#" class="btn-gold" data-i18n="cta.btn">Draft Your Agreement</a>
-</div>
-
-<!-- Decorative rule -->
-<div class="mt-16 pt-12 border-t border-border reveal" style="transition-delay:0.24s;">
-  <div class="flex flex-wrap items-center justify-center gap-8 text-xs font-body text-muted" style="font-weight:300; letter-spacing:0.05em;">
-    <span data-i18n="cta.trust1">Sharia-Aware Framework</span>
-    <span class="text-border">—</span>
-    <span data-i18n="cta.trust2">End-to-End Encrypted</span>
-    <span class="text-border">—</span>
-    <span data-i18n="cta.trust3">Court-Structured Format</span>
-    <span class="text-border">—</span>
-    <span data-i18n="cta.trust4">No Hidden Terms</span>
-  </div>
-</div>
-```
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════════ -->
-
-<footer id="contact" class="border-t border-border" style="background:#F8F7F3;" data-i18n-section="footer">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-10">
-    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-
-```
-  <!-- Brand -->
-  <div class="flex items-center gap-3">
-    <div class="w-6 h-6">
-      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-      </svg>
+<section class="cta-section" id="start">
+  <div class="container section-pad">
+    <div style="display:flex;justify-content:center;margin-bottom:32px" class="reveal">
+      <span class="gold-rule gold-rule-center"></span>
     </div>
-    <span class="font-display text-base font-semibold text-charcoal" style="letter-spacing:0.05em;">Mithaq</span>
+    <h2 class="cta-headline reveal" style="transition-delay:0.06s" data-i18n="cta.headline">Start With Clarity.</h2>
+    <p class="cta-sub reveal" style="transition-delay:0.12s" data-i18n="cta.sub">A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.</p>
+    <div class="reveal" style="transition-delay:0.18s">
+      <a href="#" class="btn-gold" data-i18n="cta.btn">Draft Your Agreement</a>
+    </div>
+    <div class="cta-trust reveal" style="transition-delay:0.24s">
+      <span data-i18n="cta.trust1">Sharia-Aware Framework</span>
+      <span class="trust-sep">—</span>
+      <span data-i18n="cta.trust2">End-to-End Encrypted</span>
+      <span class="trust-sep">—</span>
+      <span data-i18n="cta.trust3">Court-Structured Format</span>
+      <span class="trust-sep">—</span>
+      <span data-i18n="cta.trust4">No Hidden Terms</span>
+    </div>
   </div>
+</section>
 
-  <!-- Links -->
-  <nav class="flex flex-wrap items-center gap-6" aria-label="Footer navigation">
-    <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.terms">Terms of Use</a>
-    <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.privacy">Privacy Policy</a>
-    <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.contact">Contact</a>
-  </nav>
+<!-- FOOTER -->
 
-  <!-- Copyright -->
-  <p class="font-body text-xs text-muted" style="font-weight:300;" data-i18n="footer.copyright">
-    &copy; 2026 Mithaq. All rights reserved.
-  </p>
-
-</div>
-```
-
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
+          <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
+          <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
+          <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
+        </svg>
+        <span class="footer-brand-text">Mithaq</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#" class="footer-link" data-i18n="footer.terms">Terms of Use</a>
+        <a href="#" class="footer-link" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" class="footer-link" data-i18n="footer.contact">Contact</a>
+      </nav>
+      <p class="footer-copy" data-i18n="footer.copyright">&copy; 2026 Mithaq. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SCRIPTS
-═══════════════════════════════════════════════════════════ -->
-
 <script>
-  // Mobile menu toggle
+  // ── Mobile menu ───────────────────────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  // Close on link click
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  // ── Scroll reveal ─────────────────────────────────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── i18n ──────────────────────────────────────────────────────────────────
+  // ── i18n dictionaries ─────────────────────────────────────────
   const i18n = {
     en: {
-      'nav.about': 'About', 'nav.how': 'How It Works', 'nav.compliance': 'Compliance',
-      'nav.pricing': 'Pricing', 'nav.contact': 'Contact', 'nav.cta': 'Get Started',
-      'hero.label': 'Official Digital Agreement Platform',
-      'hero.headline': 'Clarity Before Commitment.',
-      'hero.sub': 'A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.',
-      'hero.cta1': 'Create Your Agreement', 'hero.cta2': 'Learn How It Works',
-      'hero.box.title': 'Structured for Legal Recognition',
-      'hero.box.body': 'Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.',
-      'why.label': 'Why This Matters',
-      'why.1.title': 'Prevent Conflict Before It Begins',
-      'why.1.body': 'Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.',
-      'why.2.title': 'Align Expectations Clearly',
-      'why.2.body': 'Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.',
-      'why.3.title': 'Digitally Secure & Court-Ready',
-      'why.3.body': 'Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.',
-      'how.label': 'The Process',
-      'how.headline': 'Four structured steps to a complete, signed agreement.',
-      'how.1.title': 'Define Terms Before Marriage',
-      'how.1.body': 'Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.',
-      'how.2.title': 'Mutual Review & Agreement',
-      'how.2.body': 'Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.',
-      'how.3.title': 'Digital Signature',
-      'how.3.body': 'Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.',
-      'how.4.title': 'Secure Storage & Legal Documentation',
-      'how.4.body': 'The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.',
-      'compliance.label': 'Legal & Sharia Compliance',
-      'compliance.headline': 'Built for Legal and Sharia Compliance',
-      'compliance.sub': 'Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.',
-      'compliance.badge': 'Sharia-Aware Framework',
-      'compliance.1.title': 'Aligned with Islamic Marital Principles',
-      'compliance.1.body': "All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi'i, Maliki, and Hanafi schools of jurisprudence.",
-      'compliance.2.title': 'Supports Documentation Requirements',
-      'compliance.2.body': 'Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.',
-      'compliance.3.title': 'Transparent and Voluntary Framework',
-      'compliance.3.body': 'The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.',
-      'compliance.4.title': 'Structured for Legal Recognition',
-      'compliance.4.body': 'Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.',
-      'compliance.disclaimer': 'Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.',
-      'security.label': 'Document Security',
-      'security.headline': 'Infrastructure Built for Sensitive Documents.',
-      'security.sub': 'Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.',
-      'security.1.title': 'End-to-End Encryption',
-      'security.1.body': 'All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.',
-      'security.2.title': 'Tamper-Proof Document Storage',
-      'security.2.body': 'Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.',
-      'security.3.title': 'Timestamped Agreements',
-      'security.3.body': 'Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.',
-      'security.4.title': 'Digital Verification Integrity',
-      'security.4.body': 'Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.',
-      'pricing.label': 'Agreement Structure Options', 'pricing.headline': 'Agreement Structure Options',
-      'pricing.sub': 'Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.',
-      'pricing.onetime': 'One-Time Fee',
-      'pricing.silver.tier': 'Silver', 'pricing.silver.desc': 'Standard asset and beneficiary documentation.',
-      'pricing.silver.f1': 'Limited number of assets', 'pricing.silver.f2': 'Single jurisdiction',
-      'pricing.silver.f3': 'Standard beneficiary structure', 'pricing.silver.f4': 'Digital documentation',
-      'pricing.gold.tier': 'Gold', 'pricing.gold.desc': 'Expanded listing with multi-category coverage.',
-      'pricing.gold.f1': 'Expanded asset listing', 'pricing.gold.f2': 'Multiple asset categories',
-      'pricing.gold.f3': 'Optional cross-location documentation', 'pricing.gold.f4': 'Custom beneficiary designation',
-      'pricing.platinum.tier': 'Platinum', 'pricing.platinum.desc': 'Multi-jurisdiction and business asset inclusion.',
-      'pricing.platinum.f1': 'Multi-jurisdiction asset documentation', 'pricing.platinum.f2': 'Business ownership inclusion',
-      'pricing.platinum.f3': 'Detailed inheritance clauses', 'pricing.platinum.f4': 'Advanced beneficiary structures',
-      'pricing.diamond.tier': 'Diamond', 'pricing.diamond.desc': 'Full cross-border and investment-grade structuring.',
-      'pricing.diamond.f1': 'Multi-country asset and investment structuring', 'pricing.diamond.f2': 'Business and partnership documentation',
-      'pricing.diamond.f3': 'Multi-layer beneficiary mapping', 'pricing.diamond.f4': 'Enhanced legal documentation format',
-      'pricing.tagline': 'Transparent. Structured. One-Time.',
-      'pricing.cta': 'Select Your Structure',
-      'pricing.note': 'All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.',
-      'cta.headline': 'Start With Clarity.', 'cta.btn': 'Draft Your Agreement',
-      'cta.sub': 'A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.',
-      'cta.trust1': 'Sharia-Aware Framework', 'cta.trust2': 'End-to-End Encrypted',
-      'cta.trust3': 'Court-Structured Format', 'cta.trust4': 'No Hidden Terms',
-      'footer.terms': 'Terms of Use', 'footer.privacy': 'Privacy Policy',
-      'footer.contact': 'Contact', 'footer.copyright': '© 2026 Mithaq. All rights reserved.',
+      'nav.about':'About','nav.how':'How It Works','nav.compliance':'Compliance',
+      'nav.pricing':'Pricing','nav.contact':'Contact','nav.cta':'Get Started',
+      'hero.label':'Official Digital Agreement Platform',
+      'hero.headline':'Clarity Before Commitment.',
+      'hero.sub':'A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.',
+      'hero.cta1':'Create Your Agreement','hero.cta2':'Learn How It Works',
+      'hero.box.title':'Structured for Legal Recognition',
+      'hero.box.body':'Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.',
+      'why.label':'Why This Matters',
+      'why.1.title':'Prevent Conflict Before It Begins',
+      'why.1.body':'Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.',
+      'why.2.title':'Align Expectations Clearly',
+      'why.2.body':'Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.',
+      'why.3.title':'Digitally Secure & Court-Ready',
+      'why.3.body':'Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.',
+      'how.label':'The Process',
+      'how.headline':'Four structured steps to a complete, signed agreement.',
+      'how.1.title':'Define Terms Before Marriage',
+      'how.1.body':'Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.',
+      'how.2.title':'Mutual Review & Agreement',
+      'how.2.body':'Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.',
+      'how.3.title':'Digital Signature',
+      'how.3.body':'Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.',
+      'how.4.title':'Secure Storage & Legal Documentation',
+      'how.4.body':'The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.',
+      'compliance.label':'Legal & Sharia Compliance',
+      'compliance.headline':'Built for Legal and Sharia Compliance',
+      'compliance.sub':'Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.',
+      'compliance.badge':'Sharia-Aware Framework',
+      'compliance.1.title':'Aligned with Islamic Marital Principles',
+      'compliance.1.body':"All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi'i, Maliki, and Hanafi schools of jurisprudence.",
+      'compliance.2.title':'Supports Documentation Requirements',
+      'compliance.2.body':'Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.',
+      'compliance.3.title':'Transparent and Voluntary Framework',
+      'compliance.3.body':'The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.',
+      'compliance.4.title':'Structured for Legal Recognition',
+      'compliance.4.body':'Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.',
+      'compliance.disclaimer':'Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.',
+      'security.label':'Document Security',
+      'security.headline':'Infrastructure Built for Sensitive Documents.',
+      'security.sub':'Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.',
+      'security.1.title':'End-to-End Encryption',
+      'security.1.body':'All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.',
+      'security.2.title':'Tamper-Proof Document Storage',
+      'security.2.body':'Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.',
+      'security.3.title':'Timestamped Agreements',
+      'security.3.body':'Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.',
+      'security.4.title':'Digital Verification Integrity',
+      'security.4.body':'Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.',
+      'pricing.label':'Agreement Structure Options','pricing.headline':'Agreement Structure Options',
+      'pricing.sub':'Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.',
+      'pricing.onetime':'One-Time Fee',
+      'pricing.silver.tier':'Silver','pricing.silver.desc':'Standard asset and beneficiary documentation.',
+      'pricing.silver.f1':'Limited number of assets','pricing.silver.f2':'Single jurisdiction',
+      'pricing.silver.f3':'Standard beneficiary structure','pricing.silver.f4':'Digital documentation',
+      'pricing.gold.tier':'Gold','pricing.gold.desc':'Expanded listing with multi-category coverage.',
+      'pricing.gold.f1':'Expanded asset listing','pricing.gold.f2':'Multiple asset categories',
+      'pricing.gold.f3':'Optional cross-location documentation','pricing.gold.f4':'Custom beneficiary designation',
+      'pricing.platinum.tier':'Platinum','pricing.platinum.desc':'Multi-jurisdiction and business asset inclusion.',
+      'pricing.platinum.f1':'Multi-jurisdiction asset documentation','pricing.platinum.f2':'Business ownership inclusion',
+      'pricing.platinum.f3':'Detailed inheritance clauses','pricing.platinum.f4':'Advanced beneficiary structures',
+      'pricing.diamond.tier':'Diamond','pricing.diamond.desc':'Full cross-border and investment-grade structuring.',
+      'pricing.diamond.f1':'Multi-country asset and investment structuring','pricing.diamond.f2':'Business and partnership documentation',
+      'pricing.diamond.f3':'Multi-layer beneficiary mapping','pricing.diamond.f4':'Enhanced legal documentation format',
+      'pricing.tagline':'Transparent. Structured. One-Time.','pricing.cta':'Select Your Structure',
+      'pricing.note':'All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.',
+      'cta.headline':'Start With Clarity.','cta.btn':'Draft Your Agreement',
+      'cta.sub':'A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.',
+      'cta.trust1':'Sharia-Aware Framework','cta.trust2':'End-to-End Encrypted',
+      'cta.trust3':'Court-Structured Format','cta.trust4':'No Hidden Terms',
+      'footer.terms':'Terms of Use','footer.privacy':'Privacy Policy',
+      'footer.contact':'Contact','footer.copyright':'© 2026 Mithaq. All rights reserved.',
     },
     ar: {
-      'nav.about': 'عن المنصة', 'nav.how': 'آلية العمل', 'nav.compliance': 'الامتثال',
-      'nav.pricing': 'الأسعار', 'nav.contact': 'التواصل', 'nav.cta': 'ابدأ الآن',
-      'hero.label': 'منصة عقود الزواج الرقمية الرسمية',
-      'hero.headline': 'الوضوح قبل الالتزام.',
-      'hero.sub': 'منصة رقمية لعقود الزواج المتوافقة مع أحكام الشريعة الإسلامية.',
-      'hero.cta1': 'إنشاء اتفاقيتك', 'hero.cta2': 'تعرّف على آلية العمل',
-      'hero.box.title': 'منظَّم للاعتراف القانوني',
-      'hero.box.body': 'تُصاغ اتفاقيات ميثاق وفق أحكام الفقه الإسلامي في الزواج.',
-      'why.label': 'لماذا هذا مهم',
-      'why.1.title': 'تجنّب النزاعات قبل وقوعها',
-      'why.1.body': 'يُعدّ الغموض في التوقعات الزوجية من أبرز أسباب النزاعات.',
-      'why.2.title': 'توافق واضح في التوقعات',
-      'why.2.body': 'الترتيبات المالية والاعتبارات المتعلقة بالحضانة والحدود الشخصية.',
-      'why.3.title': 'آمن رقمياً وجاهز للمحاكم',
-      'why.3.body': 'كل اتفاقية مختومة زمنياً ومشفَّرة ومحفوظة بنزاهة قابلة للتحقق.',
-      'how.label': 'مراحل العملية',
-      'how.headline': 'أربع خطوات منظَّمة للحصول على اتفاقية موقَّعة ومكتملة.',
-      'how.1.title': 'تحديد الشروط قبل الزواج',
-      'how.1.body': 'يُكمل الطرفان نموذجاً إرشادياً منظَّماً.',
-      'how.2.title': 'المراجعة المشتركة والموافقة',
-      'how.2.body': 'يتلقى كل طرف وثيقة رسمية للمراجعة المستقلة.',
-      'how.3.title': 'التوقيع الرقمي',
-      'how.3.body': 'يُوقِّع كل طرف رقمياً بعد التحقق من هويته.',
-      'how.4.title': 'التخزين الآمن والتوثيق القانوني',
-      'how.4.body': 'تُشفَّر الاتفاقية النهائية وتُختم زمنياً وتُحفظ في خزنة محمية.',
-      'compliance.label': 'الامتثال القانوني والشرعي',
-      'compliance.headline': 'مبنيّة للامتثال القانوني والشرعي',
-      'compliance.sub': 'طُوِّرت منصة ميثاق بالتشاور مع علماء الشريعة.',
-      'compliance.badge': 'إطار متوافق مع الشريعة',
-      'compliance.1.title': 'متوافق مع أحكام الزواج الإسلامي',
-      'compliance.1.body': 'تُراعي جميع نماذج الاتفاقيات الحقوق والواجبات الأساسية.',
-      'compliance.2.title': 'يستوفي متطلبات التوثيق',
-      'compliance.2.body': 'تُنسَّق الاتفاقيات وفق معايير التوثيق الإماراتية.',
-      'compliance.3.title': 'إطار شفاف وطوعي',
-      'compliance.3.body': 'صُمِّمت المنصة لمنع الإكراه.',
-      'compliance.4.title': 'منظَّم للاعتراف القانوني',
-      'compliance.4.body': 'يمتثل هيكل الوثيقة لمتطلبات الصكوك القانونية.',
-      'compliance.disclaimer': 'ميثاق ليست مكتب محاماة ولا تقدم استشارات قانونية.',
-      'security.label': 'أمان الوثائق', 'security.headline': 'بنية تحتية مبنية للوثائق الحساسة.',
-      'security.sub': 'تعامَل الأمان ونزاهة البيانات باعتبارهما متطلبات أساسية.',
-      'security.1.title': 'تشفير شامل من طرف إلى طرف',
-      'security.1.body': 'تُشفَّر جميع البيانات باستخدام AES-256.',
-      'security.2.title': 'تخزين وثائق محمي من التلاعب',
-      'security.2.body': 'تُحفظ الوثائق باستخدام تخزين قابل للتحقق التشفيري.',
-      'security.3.title': 'اتفاقيات مختومة زمنياً',
-      'security.3.body': 'يُسجَّل كل حدث توقيع بختم زمني معتمد.',
-      'security.4.title': 'نزاهة التحقق الرقمي',
-      'security.4.body': 'تحمل كل اتفاقية نهائية رمز تحقق فريداً.',
-      'pricing.label': 'خيارات هيكل الاتفاقية', 'pricing.headline': 'خيارات هيكل الاتفاقية',
-      'pricing.sub': 'اختر مستوى التوثيق بناءً على تعقيد الأصول.',
-      'pricing.onetime': 'رسوم لمرة واحدة',
-      'pricing.silver.tier': 'فضي', 'pricing.silver.desc': 'توثيق أصول ومستفيدين قياسي.',
-      'pricing.silver.f1': 'عدد محدود من الأصول', 'pricing.silver.f2': 'ولاية قضائية واحدة',
-      'pricing.silver.f3': 'هيكل مستفيدين قياسي', 'pricing.silver.f4': 'توثيق رقمي',
-      'pricing.gold.tier': 'ذهبي', 'pricing.gold.desc': 'قائمة موسَّعة بتغطية متعددة الفئات.',
-      'pricing.gold.f1': 'قائمة أصول موسَّعة', 'pricing.gold.f2': 'فئات أصول متعددة',
-      'pricing.gold.f3': 'توثيق عبر مواقع متعددة (اختياري)', 'pricing.gold.f4': 'تعيين مستفيدين مخصَّص',
-      'pricing.platinum.tier': 'بلاتيني', 'pricing.platinum.desc': 'توثيق متعدد الولايات مع تضمين أصول الأعمال.',
-      'pricing.platinum.f1': 'توثيق أصول متعدد الولايات', 'pricing.platinum.f2': 'تضمين ملكية الأعمال',
-      'pricing.platinum.f3': 'بنود ميراث مفصَّلة', 'pricing.platinum.f4': 'هياكل مستفيدين متقدمة',
-      'pricing.diamond.tier': 'ألماسي', 'pricing.diamond.desc': 'هيكلة كاملة عابرة للحدود وبمستوى استثماري.',
-      'pricing.diamond.f1': 'هيكلة أصول واستثمارات متعددة الدول', 'pricing.diamond.f2': 'توثيق الأعمال والشراكات',
-      'pricing.diamond.f3': 'رسم خرائط مستفيدين متعددة الطبقات', 'pricing.diamond.f4': 'صيغة توثيق قانونية معزَّزة',
-      'pricing.tagline': 'شفاف. منظَّم. لمرة واحدة.',
-      'pricing.cta': 'اختر هيكلك',
-      'pricing.note': 'تُنجز جميع الهياكل كتعامل واحد لمرة واحدة. لا رسوم متكررة.',
-      'cta.headline': 'ابدأ بالوضوح.', 'cta.btn': 'ابدأ صياغة اتفاقيتك',
-      'cta.sub': 'الاتفاقية المنظَّمة جيداً، هي تعبير عن الرعاية.',
-      'cta.trust1': 'إطار متوافق مع الشريعة', 'cta.trust2': 'تشفير شامل',
-      'cta.trust3': 'صيغة منظَّمة قضائياً', 'cta.trust4': 'لا رسوم خفية',
-      'footer.terms': 'شروط الاستخدام', 'footer.privacy': 'سياسة الخصوصية',
-      'footer.contact': 'التواصل', 'footer.copyright': '© 2026 ميثاق. جميع الحقوق محفوظة.',
+      'nav.about':'عن المنصة','nav.how':'آلية العمل','nav.compliance':'الامتثال',
+      'nav.pricing':'الأسعار','nav.contact':'التواصل','nav.cta':'ابدأ الآن',
+      'hero.label':'منصة عقود الزواج الرقمية الرسمية',
+      'hero.headline':'الوضوح قبل الالتزام.',
+      'hero.sub':'منصة رقمية لعقود الزواج المتوافقة مع أحكام الشريعة الإسلامية، مصمَّمة لتحقيق الشفافية والحماية والاحترام المتبادل.',
+      'hero.cta1':'إنشاء اتفاقيتك','hero.cta2':'تعرّف على آلية العمل',
+      'hero.box.title':'منظَّم للاعتراف القانوني',
+      'hero.box.body':'تُصاغ اتفاقيات ميثاق وفق أحكام الفقه الإسلامي في الزواج، وتُهيَّأ لاستيفاء متطلبات التوثيق المعترف به لدى الجهات القضائية في الإمارات ودول الخليج.',
+      'why.label':'لماذا هذا مهم',
+      'why.1.title':'تجنّب النزاعات قبل وقوعها',
+      'why.1.body':'يُعدّ الغموض في التوقعات الزوجية من أبرز أسباب النزاعات بعد الزواج. تُحدّد الاتفاقية الموثَّقة بوضوح الالتزامات والحقوق والتوقعات قبل إبرام عقد الزواج.',
+      'why.2.title':'توافق واضح في التوقعات',
+      'why.2.body':'الترتيبات المالية والاعتبارات المتعلقة بالحضانة والحدود الشخصية — موثَّقة بعناية، مُراجَعة معاً، وموقَّعة بتفاهم متبادل.',
+      'why.3.title':'آمن رقمياً وجاهز للمحاكم',
+      'why.3.body':'كل اتفاقية مختومة زمنياً ومشفَّرة ومحفوظة بنزاهة قابلة للتحقق.',
+      'how.label':'مراحل العملية',
+      'how.headline':'أربع خطوات منظَّمة للحصول على اتفاقية موقَّعة ومكتملة.',
+      'how.1.title':'تحديد الشروط قبل الزواج',
+      'how.1.body':'يُكمل الطرفان نموذجاً إرشادياً منظَّماً يشمل الشؤون المالية والحقوق والالتزامات.',
+      'how.2.title':'المراجعة المشتركة والموافقة',
+      'how.2.body':'يتلقى كل طرف وثيقة رسمية للمراجعة المستقلة، وله طلب التعديلات عبر المنصة.',
+      'how.3.title':'التوقيع الرقمي',
+      'how.3.body':'يُوقِّع كل طرف رقمياً بعد التحقق من هويته. تُسجِّل المنصة وقت ومكان وجهاز كل حدث توقيع.',
+      'how.4.title':'التخزين الآمن والتوثيق القانوني',
+      'how.4.body':'تُشفَّر الاتفاقية النهائية وتُختم زمنياً وتُحفظ في خزنة محمية من التلاعب.',
+      'compliance.label':'الامتثال القانوني والشرعي',
+      'compliance.headline':'مبنيّة للامتثال القانوني والشرعي',
+      'compliance.sub':'طُوِّرت منصة ميثاق بالتشاور مع علماء الشريعة والممارسين القانونيين في الإمارات.',
+      'compliance.badge':'إطار متوافق مع الشريعة',
+      'compliance.1.title':'متوافق مع أحكام الزواج الإسلامي',
+      'compliance.1.body':'تُراعي جميع نماذج الاتفاقيات الحقوق والواجبات الأساسية المقررة في الشريعة الإسلامية.',
+      'compliance.2.title':'يستوفي متطلبات التوثيق',
+      'compliance.2.body':'تُنسَّق الاتفاقيات وفق معايير التوثيق التي تشترطها وزارة العدل الإماراتية.',
+      'compliance.3.title':'إطار شفاف وطوعي',
+      'compliance.3.body':'صُمِّمت المنصة لمنع الإكراه؛ يوقِّع كل طرف باستقلالية مع مهلة مراجعة إلزامية.',
+      'compliance.4.title':'منظَّم للاعتراف القانوني',
+      'compliance.4.body':'يمتثل هيكل الوثيقة ولغتها وتنسيقها لمتطلبات الصكوك القانونية.',
+      'compliance.disclaimer':'ميثاق ليست مكتب محاماة ولا تقدم استشارات قانونية.',
+      'security.label':'أمان الوثائق','security.headline':'بنية تحتية مبنية للوثائق الحساسة.',
+      'security.sub':'تتضمن اتفاقيات الزواج بعضاً من أكثر المعلومات حساسية. تُعامَل الأمان ونزاهة البيانات باعتبارهما متطلبات أساسية.',
+      'security.1.title':'تشفير شامل من طرف إلى طرف',
+      'security.1.body':'تُشفَّر جميع البيانات باستخدام AES-256.',
+      'security.2.title':'تخزين وثائق محمي من التلاعب',
+      'security.2.body':'تُحفظ الوثائق باستخدام تخزين قابل للتحقق التشفيري.',
+      'security.3.title':'اتفاقيات مختومة زمنياً',
+      'security.3.body':'يُسجَّل كل حدث توقيع بختم زمني معتمد.',
+      'security.4.title':'نزاهة التحقق الرقمي',
+      'security.4.body':'تحمل كل اتفاقية نهائية رمز تحقق فريداً.',
+      'pricing.label':'خيارات هيكل الاتفاقية','pricing.headline':'خيارات هيكل الاتفاقية',
+      'pricing.sub':'اختر مستوى التوثيق بناءً على تعقيد الأصول والولايات القضائية.',
+      'pricing.onetime':'رسوم لمرة واحدة',
+      'pricing.silver.tier':'فضي','pricing.silver.desc':'توثيق أصول ومستفيدين قياسي.',
+      'pricing.silver.f1':'عدد محدود من الأصول','pricing.silver.f2':'ولاية قضائية واحدة',
+      'pricing.silver.f3':'هيكل مستفيدين قياسي','pricing.silver.f4':'توثيق رقمي',
+      'pricing.gold.tier':'ذهبي','pricing.gold.desc':'قائمة موسَّعة بتغطية متعددة الفئات.',
+      'pricing.gold.f1':'قائمة أصول موسَّعة','pricing.gold.f2':'فئات أصول متعددة',
+      'pricing.gold.f3':'توثيق عبر مواقع متعددة (اختياري)','pricing.gold.f4':'تعيين مستفيدين مخصَّص',
+      'pricing.platinum.tier':'بلاتيني','pricing.platinum.desc':'توثيق متعدد الولايات مع تضمين أصول الأعمال.',
+      'pricing.platinum.f1':'توثيق أصول متعدد الولايات','pricing.platinum.f2':'تضمين ملكية الأعمال',
+      'pricing.platinum.f3':'بنود ميراث مفصَّلة','pricing.platinum.f4':'هياكل مستفيدين متقدمة',
+      'pricing.diamond.tier':'ألماسي','pricing.diamond.desc':'هيكلة كاملة عابرة للحدود وبمستوى استثماري.',
+      'pricing.diamond.f1':'هيكلة أصول واستثمارات متعددة الدول','pricing.diamond.f2':'توثيق الأعمال والشراكات',
+      'pricing.diamond.f3':'رسم خرائط مستفيدين متعددة الطبقات','pricing.diamond.f4':'صيغة توثيق قانونية معزَّزة',
+      'pricing.tagline':'شفاف. منظَّم. لمرة واحدة.','pricing.cta':'اختر هيكلك',
+      'pricing.note':'تُنجز جميع الهياكل كتعامل واحد لمرة واحدة. لا رسوم متكررة.',
+      'cta.headline':'ابدأ بالوضوح.','cta.btn':'ابدأ صياغة اتفاقيتك',
+      'cta.sub':'الاتفاقية المنظَّمة جيداً، التي يُبرمها الطرفان بحرية وشفافية، هي تعبير عن الرعاية.',
+      'cta.trust1':'إطار متوافق مع الشريعة','cta.trust2':'تشفير شامل',
+      'cta.trust3':'صيغة منظَّمة قضائياً','cta.trust4':'لا رسوم خفية',
+      'footer.terms':'شروط الاستخدام','footer.privacy':'سياسة الخصوصية',
+      'footer.contact':'التواصل','footer.copyright':'© 2026 ميثاق. جميع الحقوق محفوظة.',
     },
     hi: {
-      'nav.about': 'परिचय', 'nav.how': 'कैसे काम करता है', 'nav.compliance': 'अनुपालन',
-      'nav.pricing': 'मूल्य निर्धारण', 'nav.contact': 'संपर्क', 'nav.cta': 'शुरू करें',
-      'hero.label': 'आधिकारिक डिजिटल विवाह समझौता मंच',
-      'hero.headline': 'प्रतिबद्धता से पहले स्पष्टता।',
-      'hero.sub': 'शरिया-अनुपालित डिजिटल विवाह समझौता मंच — पारदर्शिता, सुरक्षा और पारस्परिक सम्मान के लिए।',
-      'hero.cta1': 'अपना समझौता बनाएं', 'hero.cta2': 'जानें कैसे काम करता है',
-      'hero.box.title': 'कानूनी मान्यता के लिए संरचित',
-      'hero.box.body': 'मिथाक समझौते इस्लामी वैवाहिक न्यायशास्त्र के अनुरूप तैयार किए जाते हैं।',
-      'why.label': 'यह क्यों महत्वपूर्ण है',
-      'why.1.title': 'विवाद शुरू होने से पहले रोकें',
-      'why.1.body': 'वैवाहिक अपेक्षाओं में अस्पष्टता विवाद का प्रमुख कारण है।',
-      'why.2.title': 'अपेक्षाओं को स्पष्ट रूप से संरेखित करें',
-      'why.2.body': 'वित्तीय व्यवस्थाएं, अभिरक्षा संबंधी विचार और व्यक्तिगत सीमाएं — सावधानी से दस्तावेज़ की गईं।',
-      'why.3.title': 'डिजिटल रूप से सुरक्षित और न्यायालय-तैयार',
-      'why.3.body': 'प्रत्येक समझौता टाइमस्टैम्प्ड, एन्क्रिप्टेड और सत्यापनयोग्य सालसह संग्रहीत है।',
-      'how.label': 'प्रक्रिया',
-      'how.headline': 'एक पूर्ण, हस्ताक्षरित समझौते के लिए चार संरचित चरण।',
-      'how.1.title': 'विवाह से पहले शर्तें परिभाषित करें',
-      'how.1.body': 'दोनों पक्ष वित्तीय मामलों, अधिकारों और दायित्वों को शामिल करने वाला एक निर्देशित फ़ॉर्म पूरा करते हैं।',
-      'how.2.title': 'पारस्परिक समीक्षा और सहमति',
-      'how.2.body': 'दोनों पक्षों को स्वतंत्र समीक्षा के लिए एक औपचारिक दस्तावेज़ प्राप्त होता है।',
-      'how.3.title': 'डिजिटल हस्ताक्षर',
-      'how.3.body': 'प्रत्येक पक्ष द्वारा पहचान-सत्यापित डिजिटल हस्ताक्षर लागू किए जाते हैं।',
-      'how.4.title': 'सुरक्षित भंडारण और कानूनी दस्तावेज़ीकरण',
-      'how.4.body': 'अंतिम समझौता एन्क्रिप्ट किया जाता है और एक टैम्पर-प्रूफ वॉल्ट में संग्रहीत किया जाता है।',
-      'compliance.label': 'कानूनी और शरिया अनुपालन',
-      'compliance.headline': 'कानूनी और शरिया अनुपालन के लिए निर्मित',
-      'compliance.sub': 'मिथाक को UAE में इस्लामी विद्वानों के साथ परामर्श में विकसित किया गया है।',
-      'compliance.badge': 'शरिया-जागरूक ढांचा',
-      'compliance.1.title': 'इस्लामी वैवाहिक सिद्धांतों के अनुरूप',
-      'compliance.1.body': 'सभी समझौता टेम्पलेट इस्लामी कानून में स्थापित मूलभूत अधिकारों का सम्मान करते हैं।',
-      'compliance.2.title': 'दस्तावेज़ीकरण आवश्यकताओं का समर्थन करता है',
-      'compliance.2.body': 'UAE न्याय मंत्रालय की दस्तावेज़ीकरण आवश्यकताओं को पूरा करने के लिए मानकीकृत।',
-      'compliance.3.title': 'पारदर्शी और स्वैच्छिक ढांचा',
-      'compliance.3.body': 'मंच को जबरदस्ती रोकने के लिए डिज़ाइन किया गया है।',
-      'compliance.4.title': 'कानूनी मान्यता के लिए संरचित',
-      'compliance.4.body': 'दस्तावेज़ संरचना, भाषा और फ़ॉर्मेटिंग कानूनी आवश्यकताओं का पालन करते हैं।',
-      'compliance.disclaimer': 'मिथाक एक लॉ फ़र्म नहीं है और कानूनी सलाह प्रदान नहीं करती।',
-      'security.label': 'दस्तावेज़ सुरक्षा',
-      'security.headline': 'संवेदनशील दस्तावेज़ों के लिए निर्मित अवसंरचना।',
-      'security.sub': 'विवाह समझौतों में सबसे व्यक्तिगत रूप से संवेदनशील जानकारी होती है।',
-      'security.1.title': 'एंड-टु-एंड एन्क्रिप्शन',
-      'security.1.body': 'AES-256 का उपयोग करके सभी डेटा एन्क्रिप्ट किया गया है।',
-      'security.2.title': 'टैम्पर-प्रूफ दस्तावेज़ भंडारण',
-      'security.2.body': 'दस्तावेज़ क्रिप्टोग्राफ़िक रूप से सत्यापनयोग्य भंडारण में संग्रहीत होते हैं।',
-      'security.3.title': 'टाइमस्टैम्प्ड समझौते',
-      'security.3.body': 'प्रत्येक हस्ताक्षर घटना एक प्रमाणित टाइमस्टैम्प के साथ रिकॉर्ड की जाती है।',
-      'security.4.title': 'डिजिटल सत्यापन अखंडता',
-      'security.4.body': 'प्रत्येक अंतिम समझौता एक अद्वितीय सत्यापन कोड वहन करता है।',
-      'pricing.label': 'समझौता संरचना विकल्प', 'pricing.headline': 'समझौता संरचना विकल्प',
-      'pricing.sub': 'संपत्ति जटिलता, क्षेत्राधिकार और लाभार्थी संरचना के आधार पर दस्तावेज़ीकरण स्तर चुनें।',
-      'pricing.onetime': 'एकमुश्त शुल्क',
-      'pricing.silver.tier': 'सिल्वर', 'pricing.silver.desc': 'मानक संपत्ति और लाभार्थी दस्तावेज़ीकरण।',
-      'pricing.silver.f1': 'सीमित संपत्तियां', 'pricing.silver.f2': 'एकल क्षेत्राधिकार',
-      'pricing.silver.f3': 'मानक लाभार्थी संरचना', 'pricing.silver.f4': 'डिजिटल दस्तावेज़ीकरण',
-      'pricing.gold.tier': 'गोल्ड', 'pricing.gold.desc': 'बहु-श्रेणी कवरेज के साथ विस्तारित सूची।',
-      'pricing.gold.f1': 'विस्तारित संपत्ति सूची', 'pricing.gold.f2': 'अनेक संपत्ति श्रेणियां',
-      'pricing.gold.f3': 'वैकल्पिक क्रॉस-लोकेशन दस्तावेज़ीकरण', 'pricing.gold.f4': 'कस्टम लाभार्थी पदनाम',
-      'pricing.platinum.tier': 'प्लैटिनम', 'pricing.platinum.desc': 'बहु-क्षेत्राधिकार और व्यवसाय संपत्ति समावेशन।',
-      'pricing.platinum.f1': 'बहु-क्षेत्राधिकार संपत्ति दस्तावेज़ीकरण', 'pricing.platinum.f2': 'व्यवसाय स्वामित्व समावेशन',
-      'pricing.platinum.f3': 'विस्तृत विरासत खंड', 'pricing.platinum.f4': 'उन्नत लाभार्थी संरचनाएं',
-      'pricing.diamond.tier': 'डायमंड', 'pricing.diamond.desc': 'पूर्ण क्रॉस-बॉर्डर और निवेश-ग्रेड संरचना।',
-      'pricing.diamond.f1': 'बहु-देशीय संपत्ति और निवेश संरचना', 'pricing.diamond.f2': 'व्यवसाय और साझेदारी दस्तावेज़ीकरण',
-      'pricing.diamond.f3': 'बहु-परत लाभार्थी मानचित्रण', 'pricing.diamond.f4': 'उन्नत कानूनी दस्तावेज़ प्रारूप',
-      'pricing.tagline': 'पारदर्शी। संरचित। एकमुश्त।',
-      'pricing.cta': 'अपनी संरचना चुनें',
-      'pricing.note': 'सभी संरचनाएं एकल, एकमुश्त संलग्नता के रूप में पूरी की जाती हैं।',
-      'cta.headline': 'स्पष्टता के साथ शुरू करें।', 'cta.btn': 'अपना समझौता تैयार करें',
-      'cta.sub': 'एक अच्छी तरह से संरचित समझौता देखभाल का कार्य है — आपके साथी के लिए।',
-      'cta.trust1': 'शरिया-जागरूक ढांचा', 'cta.trust2': 'एंड-टु-एंड एन्क्रिप्टेड',
-      'cta.trust3': 'न्यायालय-संरचित प्रारूप', 'cta.trust4': 'कोई छिपा शुल्क नहीं',
-      'footer.terms': 'उपयोग की शर्तें', 'footer.privacy': 'गोपनीयता नीति',
-      'footer.contact': 'संपर्क', 'footer.copyright': '© 2026 मिथाक। सर्वाधिकार सुरक्षित।',
+      'nav.about':'परिचय','nav.how':'कैसे काम करता है','nav.compliance':'अनुपालन',
+      'nav.pricing':'मूल्य निर्धारण','nav.contact':'संपर्क','nav.cta':'शुरू करें',
+      'hero.label':'आधिकारिक डिजिटल विवाह समझौता मंच',
+      'hero.headline':'प्रतिबद्धता से पहले स्पष्टता।',
+      'hero.sub':'शरिया-अनुपालित डिजिटल विवाह समझौता मंच — पारदर्शिता, सुरक्षा और पारस्परिक सम्मान के लिए।',
+      'hero.cta1':'अपना समझौता बनाएं','hero.cta2':'जानें कैसे काम करता है',
+      'hero.box.title':'कानूनी मान्यता के लिए संरचित',
+      'hero.box.body':'मिथाक समझौते इस्लामी वैवाहिक न्यायशास्त्र के अनुरूप तैयार किए जाते हैं और UAE तथा GCC के न्यायिक निकायों द्वारा मान्यता प्राप्त मानकों को पूरा करते हैं।',
+      'why.label':'यह क्यों महत्वपूर्ण है',
+      'why.1.title':'विवाद शुरू होने से पहले रोकें',
+      'why.1.body':'वैवाहिक अपेक्षाओं में अस्पष्टता विवाह के बाद विवाद का प्रमुख कारण है। एक स्पष्ट समझौता दायित्वों, अधिकारों और अपेक्षाओं को परिभाषित करता है।',
+      'why.2.title':'अपेक्षाओं को स्पष्ट रूप से संरेखित करें',
+      'why.2.body':'वित्तीय व्यवस्थाएं, अभिरक्षा संबंधी विचार और व्यक्तिगत सीमाएं — सावधानी से दस्तावेज़ीकृत, एक साथ समीक्षा की गई।',
+      'why.3.title':'डिजिटल रूप से सुरक्षित और न्यायालय-तैयार',
+      'why.3.body':'प्रत्येक समझौता टाइमस्टैम्प्ड, एन्क्रिप्टेड और सत्यापन योग्य अखंडता के साथ संग्रहीत है।',
+      'how.label':'प्रक्रिया',
+      'how.headline':'एक पूर्ण, हस्ताक्षरित समझौते के लिए चार संरचित चरण।',
+      'how.1.title':'विवाह से पहले शर्तें परिभाषित करें',
+      'how.1.body':'दोनों पक्ष वित्तीय मामलों, अधिकारों और दायित्वों को शामिल करने वाला एक निर्देशित फॉर्म पूरा करते हैं।',
+      'how.2.title':'पारस्परिक समीक्षा और सहमति',
+      'how.2.body':'दोनों पक्षों को स्वतंत्र समीक्षा के लिए एक औपचारिक दस्तावेज़ प्राप्त होता है।',
+      'how.3.title':'डिजिटल हस्ताक्षर',
+      'how.3.body':'प्रत्येक पक्ष द्वारा पहचान-सत्यापित डिजिटल हस्ताक्षर लागू किए जाते हैं।',
+      'how.4.title':'सुरक्षित भंडारण और कानूनी दस्तावेज़ीकरण',
+      'how.4.body':'अंतिम समझौता एन्क्रिप्ट किया जाता है और एक टैम्पर-प्रूफ वॉल्ट में संग्रहीत किया जाता है।',
+      'compliance.label':'कानूनी और शरिया अनुपालन',
+      'compliance.headline':'कानूनी और शरिया अनुपालन के लिए निर्मित',
+      'compliance.sub':'मिथाक को UAE में इस्लामी विद्वानों और कानूनी चिकित्सकों के साथ परामर्श में विकसित किया गया है।',
+      'compliance.badge':'शरिया-जागरूक ढांचा',
+      'compliance.1.title':'इस्लामी वैवाहिक सिद्धांतों के अनुरूप',
+      'compliance.1.body':'सभी समझौता टेम्पलेट इस्लामी कानून में स्थापित मूलभूत अधिकारों का सम्मान करते हैं।',
+      'compliance.2.title':'दस्तावेज़ीकरण आवश्यकताओं का समर्थन',
+      'compliance.2.body':'समझौते UAE न्याय मंत्रालय की दस्तावेज़ीकरण आवश्यकताओं को पूरा करते हैं।',
+      'compliance.3.title':'पारदर्शी और स्वैच्छिक ढांचा',
+      'compliance.3.body':'मंच को जबरदस्ती रोकने के लिए डिज़ाइन किया गया है। प्रत्येक पक्ष स्वतंत्र रूप से हस्ताक्षर करता है।',
+      'compliance.4.title':'कानूनी मान्यता के लिए संरचित',
+      'compliance.4.body':'दस्तावेज़ संरचना, भाषा और फ़ॉर्मेटिंग कानूनी आवश्यकताओं का पालन करते हैं।',
+      'compliance.disclaimer':'मिथाक एक लॉ फ़र्म नहीं है और कानूनी सलाह प्रदान नहीं करती।',
+      'security.label':'दस्तावेज़ सुरक्षा',
+      'security.headline':'संवेदनशील दस्तावेज़ों के लिए निर्मित बुनियादी ढांचा।',
+      'security.sub':'विवाह समझौतों में सबसे व्यक्तिगत रूप से संवेदनशील जानकारी होती है। सुरक्षा और डेटा अखंडता मूलभूत आवश्यकताएं हैं।',
+      'security.1.title':'एंड-टू-एंड एन्क्रिप्शन',
+      'security.1.body':'AES-256 का उपयोग करके सभी डेटा एन्क्रिप्ट किया गया है।',
+      'security.2.title':'टैम्पर-प्रूफ दस्तावेज़ भंडारण',
+      'security.2.body':'दस्तावेज़ क्रिप्टोग्राफ़िक रूप से सत्यापन योग्य भंडारण में संग्रहीत होते हैं।',
+      'security.3.title':'टाइमस्टैम्प्ड समझौते',
+      'security.3.body':'प्रत्येक हस्ताक्षर घटना एक प्रमाणित टाइमस्टैम्प के साथ दर्ज की जाती है।',
+      'security.4.title':'डिजिटल सत्यापन अखंडता',
+      'security.4.body':'प्रत्येक अंतिम समझौता एक अद्वितीय सत्यापन कोड वहन करता है।',
+      'pricing.label':'समझौता संरचना विकल्प','pricing.headline':'समझौता संरचना विकल्प',
+      'pricing.sub':'संपत्ति जटिलता, क्षेत्राधिकार और लाभार्थी संरचना के आधार पर स्तर चुनें।',
+      'pricing.onetime':'एकमुश्त शुल्क',
+      'pricing.silver.tier':'सिल्वर','pricing.silver.desc':'मानक संपत्ति और लाभार्थी दस्तावेज़ीकरण।',
+      'pricing.silver.f1':'सीमित संपत्तियां','pricing.silver.f2':'एकल क्षेत्राधिकार',
+      'pricing.silver.f3':'मानक लाभार्थी संरचना','pricing.silver.f4':'डिजिटल दस्तावेज़ीकरण',
+      'pricing.gold.tier':'गोल्ड','pricing.gold.desc':'बहु-श्रेणी कवरेज के साथ विस्तारित सूची।',
+      'pricing.gold.f1':'विस्तारित संपत्ति सूची','pricing.gold.f2':'एकाधिक संपत्ति श्रेणियां',
+      'pricing.gold.f3':'वैकल्पिक क्रॉस-लोकेशन दस्तावेज़ीकरण','pricing.gold.f4':'कस्टम लाभार्थी पदनाम',
+      'pricing.platinum.tier':'प्लैटिनम','pricing.platinum.desc':'बहु-क्षेत्राधिकार और व्यवसाय संपत्ति समावेश।',
+      'pricing.platinum.f1':'बहु-क्षेत्राधिकार संपत्ति दस्तावेज़ीकरण','pricing.platinum.f2':'व्यवसाय स्वामित्व समावेश',
+      'pricing.platinum.f3':'विस्तृत विरासत खंड','pricing.platinum.f4':'उन्नत लाभार्थी संरचनाएं',
+      'pricing.diamond.tier':'डायमंड','pricing.diamond.desc':'पूर्ण क्रॉस-बॉर्डर और निवेश-ग्रेड संरचना।',
+      'pricing.diamond.f1':'बहु-देश संपत्ति और निवेश संरचना','pricing.diamond.f2':'व्यवसाय और साझेदारी दस्तावेज़ीकरण',
+      'pricing.diamond.f3':'बहु-परत लाभार्थी मानचित्रण','pricing.diamond.f4':'उन्नत कानूनी दस्तावेज़ प्रारूप',
+      'pricing.tagline':'पारदर्शी। संरचित। एकमुश्त।','pricing.cta':'अपनी संरचना चुनें',
+      'pricing.note':'सभी संरचनाएं एकल, एकमुश्त संलग्नता के रूप में पूरी की जाती हैं। कोई आवर्ती शुल्क नहीं।',
+      'cta.headline':'स्पष्टता के साथ शुरू करें।','cta.btn':'अपना समझौता तैयार करें',
+      'cta.sub':'एक अच्छी तरह से संरचित समझौता, स्वतंत्र रूप से दर्ज किया गया, देखभाल का कार्य है।',
+      'cta.trust1':'शरिया-जागरूक ढांचा','cta.trust2':'एंड-टू-एंड एन्क्रिप्टेड',
+      'cta.trust3':'न्यायालय-संरचित प्रारूप','cta.trust4':'कोई छिपा शुल्क नहीं',
+      'footer.terms':'उपयोग की शर्तें','footer.privacy':'गोपनीयता नीति',
+      'footer.contact':'संपर्क','footer.copyright':'© 2026 मिथाक। सर्वाधिकार सुरक्षित।',
     },
     ur: {
-      'nav.about': 'تعارف', 'nav.how': 'کیسے کام کرتا ہے', 'nav.compliance': 'تعمیل',
-      'nav.pricing': 'قیمتیں', 'nav.contact': 'رابطہ', 'nav.cta': 'شروع کریں',
-      'hero.label': 'سرکاری ڈیجیٹل نکاح نامہ پلیٹ فارم',
-      'hero.headline': 'عہد سے پہلے وضاحت۔',
-      'hero.sub': 'شریعت کے مطابق ڈیجیٹل نکاح نامہ پلیٹ فارم — شفافیت، تحفظ اور باہمی احترام کے لیے۔',
-      'hero.cta1': 'اپنا معاہدہ بنائیں', 'hero.cta2': 'جانیں کیسے کام کرتا ہے',
-      'hero.box.title': 'قانونی تسلیم کے لیے منظم',
-      'hero.box.body': 'میثاق کے معاہدے اسلامی فقہِ نکاح کے مطابق تیار کیے جاتے ہیں۔',
-      'why.label': 'یہ کیوں اہم ہے',
-      'why.1.title': 'تنازعہ شروع ہونے سے پہلے روکیں',
-      'why.1.body': 'نکاح کی توقعات میں ابہام تنازعات کا ایک بڑا ذریعہ ہے۔',
-      'why.2.title': 'توقعات کو واضح طور پر ہم آہنگ کریں',
-      'why.2.body': 'مالی انتظامات، تحویل کے تحفظات اور ذاتی حدود — احتیاط سے دستاویز کی گئیں۔',
-      'why.3.title': 'ڈیجیٹل طور پر محفوظ اور عدالت کے لیے تیار',
-      'why.3.body': 'ہر معاہدہ ٹائم اسٹیمپ شدہ، انکرپٹڈ اور قابل، تصدیق سالمیت کے ساتھ محفوظ ہے۔',
-      'how.label': 'عمل',
-      'how.headline': 'مکمل، دستخط شدہ معاہدے کے لیے چار منظم مراحل۔',
-      'how.1.title': 'نکاح سے پہلے شرائط طے کریں',
-      'how.1.body': 'دونوں فریق مالی معاملات، حقوق اور ذمہ داریوں پر مشتمل ایک رہنما فارم مکمل کرتے ہیں۔',
-      'how.2.title': 'باہمی جائزہ اور اتفاق',
-      'how.2.body': 'دونوں فریقوں کو آزادانہ جائزے کے لیے ایک رسمی دستاویز موصول ہوتی ہے۔',
-      'how.3.title': 'ڈیجیٹل دستخط',
-      'how.3.body': 'ہر فریق شناخت تصدیق کے بعد ڈیجیٹل دستخط کرتا ہے۔',
-      'how.4.title': 'محفوظ ذخیرہ اور قانونی دستاویز کاری',
-      'how.4.body': 'حتمی معاہدہ انکرپٹ کیا جاتا ہے اور ایک محفوظ والٹ میں ذخیرہ کیا جاتا ہے۔',
-      'compliance.label': 'قانونی اور شرعی تعمیل',
-      'compliance.headline': 'قانونی اور شرعی تعمیل کے لیے تعمیر شدہ',
-      'compliance.sub': 'میثاق کو یو اے إی میں اسلامی علماء کے ساتھ مشاورت میں تیار کیا گیا ہے۔',
-      'compliance.badge': 'شریعت سے آگاہ فریم ورک',
-      'compliance.1.title': 'اسلامی نکاحی اصولوں کے مطابق',
-      'compliance.1.body': 'تمام معاہدہ سانچے اسلامی قانون میں قائم بنیادی حقوق و ذمہ داریوں کا احترام کرتے ہیں۔',
-      'compliance.2.title': 'دستاویز کاری کی ضروریات کی حمایت کرتا ہے',
-      'compliance.2.body': 'یو اے ئی وزارت، عدل کی دستاویز کاری کے معیارات پورے کرتے ہیں۔',
-      'compliance.3.title': 'شفاف اور رضاکارانہ فریم ورک',
-      'compliance.3.body': 'پلیٹ فارم کو جبر روکنے کے لیے ڈیزائن کیا گیا ہے۔',
-      'compliance.4.title': 'قانونی تسلیم کے لیے منظم',
-      'compliance.4.body': 'دستاویز کا ڈھانچہ، زبان اور فارمیٹنگ قانونی آلات کی ضروریات کی تعمیل کرتے ہیں۔',
-      'compliance.disclaimer': 'میثاق ایک قانونی فرم نہیں ہے اور قانونی مشورہ فراہم نہیں کرتی۔',
-      'security.label': 'دستاویز سیکیوریٹی',
-      'security.headline': 'حساس دستاویزات کے لیے تعمیر شدہ بنیادی ڈھانچہ۔',
-      'security.sub': 'نکاح ناموں میں سب سے ذاتی طور پر حساس معلومات ہوتی ہے۔',
-      'security.1.title': 'اینڈ ٹو اینڈ انکرپشن',
-      'security.1.body': 'AES-256 استعمال کر کے تمام ڈیٹا انکرپٹ کیا گیا ہے۔',
-      'security.2.title': 'چھیڑ چھاڑ سے محفوظ دستاویز ذخیرہ',
-      'security.2.body': 'دستاویزات کرپٹوگرافک طور پر قابل، تصدیق ذخیرے میں محفوظ کی جاتی ہیں۔',
-      'security.3.title': 'ٹائم اسٹیمپ شدہ معاہدے',
-      'security.3.body': 'ہر دستخط کا واقعہ ایک قابل، اعتماد ٹائم اسٹیمپ کے ساتھ ریکارڈ کیا جاتا ہے۔',
-      'security.4.title': 'ڈیجیٹل تصدیق سالمیت',
-      'security.4.body': 'ہر حتمی معاہدہ ایک منفرد تصدیقی کوڈ رکھتا ہے۔',
-      'pricing.label': 'معاہدہ ڈھانچہ کے اختیارات', 'pricing.headline': 'معاہدہ ڈھانچہ کے اختیارات',
-      'pricing.sub': 'اثاثہ پیچیدگی، دائرہ اختیار اور مستفید کے ڈھانچے کی بنیاد پر دستاویز کاری کی سطح منتخب کریں۔',
-      'pricing.onetime': 'یکمشت فیس',
-      'pricing.silver.tier': 'سلور', 'pricing.silver.desc': 'معیاری اثاثہ اور مستفید دستاویز کاری۔',
-      'pricing.silver.f1': 'محدود اثاثہ', 'pricing.silver.f2': 'واحد دائرہ اختیار',
-      'pricing.silver.f3': 'معیاری مستفید ڈھانچہ', 'pricing.silver.f4': 'ڈیجیٹل دستاویز کاری',
-      'pricing.gold.tier': 'گولڈ', 'pricing.gold.desc': 'کثیر زمرہ کوریج کے ساتھ توسیع شدہ فہرست۔',
-      'pricing.gold.f1': 'توسیع شدہ اثاثہ فہرست', 'pricing.gold.f2': 'متعدد اثاثہ زمرے',
-      'pricing.gold.f3': 'اختیاری کراس لوکیشن دستاویز کاری', 'pricing.gold.f4': 'کسٹم مستفید تعیین',
-      'pricing.platinum.tier': 'پلاٹینم', 'pricing.platinum.desc': 'کثیر دائرہ اختیار اور کاروباری اثاثہ شامل کرنا۔',
-      'pricing.platinum.f1': 'کثیر دائرہ اختیار اثاثہ دستاویز کاری', 'pricing.platinum.f2': 'کاروباری ملکیت شامل کرنا',
-      'pricing.platinum.f3': 'تفصیلی وراثت کی شقیں', 'pricing.platinum.f4': 'اعلی مستفید ڈھانچے',
-      'pricing.diamond.tier': 'ڈائمنڈ', 'pricing.diamond.desc': 'مکمل کراس بارڈر اور سرمایہ کاری درجے کی ساخت۔',
-      'pricing.diamond.f1': 'کثیر ملکی اثاثہ اور سرمایہ ساخت', 'pricing.diamond.f2': 'کاروبار اور شراکت داری دستاویز کاری',
-      'pricing.diamond.f3': 'کثیر پرتوں کی مستفید نقشہ کشی', 'pricing.diamond.f4': 'بہتر قانونی دستاویز فارمیٹ',
-      'pricing.tagline': 'شفاف۔ منظم۔ یکمشت۔',
-      'pricing.cta': 'اپنا ڈھانچہ منتخب کریں',
-      'pricing.note': 'تمام ڈھانچے ایک واحد، یکمشت مشغولیت کے طور پر مکمل کیے جاتے ہیں۔',
-      'cta.headline': 'وضاحت کے ساتھ شروع کریں۔', 'cta.btn': 'اپنا معاہدہ تیار کریں',
-      'cta.sub': 'ایک اچھی طرح سے منظم معاہدہ دیکھ بھال کا عمل ہے — آپ کے ساتھی کے لیے۔',
-      'cta.trust1': 'شریعت سے آگاہ فریم ورک', 'cta.trust2': 'اینڈ ٹو اینڈ انکرپٹڈ',
-      'cta.trust3': 'عدالت منظم فارمیٹ', 'cta.trust4': 'کوئی پوشیدہ شرائط نہیں',
-      'footer.terms': 'استعمال کی شرائط', 'footer.privacy': 'رازداری کی پالیسی',
-      'footer.contact': 'رابطہ', 'footer.copyright': '© 2026 میثاق۔ جملہ حقوق محفوظ ہیں۔',
+      'nav.about':'تعارف','nav.how':'کیسے کام کرتا ہے','nav.compliance':'تعمیل',
+      'nav.pricing':'قیمتیں','nav.contact':'رابطہ','nav.cta':'شروع کریں',
+      'hero.label':'سرکاری ڈیجیٹل نکاح نامہ پلیٹ فارم',
+      'hero.headline':'عہد سے پہلے وضاحت۔',
+      'hero.sub':'شریعت کے مطابق ڈیجیٹل نکاح نامہ پلیٹ فارم — شفافیت، تحفظ اور باہمی احترام کے لیے۔',
+      'hero.cta1':'اپنا معاہدہ بنائیں','hero.cta2':'جانیں کیسے کام کرتا ہے',
+      'hero.box.title':'قانونی تسلیم کے لیے منظم',
+      'hero.box.body':'میثاق کے معاہدے اسلامی فقہِ نکاح کے مطابق تیار کیے جاتے ہیں اور یو اے ای کے عدالتی اداروں کے معیارات پر پورا اترتے ہیں۔',
+      'why.label':'یہ کیوں اہم ہے',
+      'why.1.title':'تنازعہ شروع ہونے سے پہلے روکیں',
+      'why.1.body':'نکاح کی توقعات میں ابہام تنازعات کا ایک بڑا ذریعہ ہے۔ ایک واضح معاہدہ ذمہ داریوں اور حقوق کی تعریف کرتا ہے۔',
+      'why.2.title':'توقعات کو واضح طور پر ہم آہنگ کریں',
+      'why.2.body':'مالی انتظامات، تحویل کے تحفظات اور ذاتی حدود — احتیاط سے دستاویز کی گئیں۔',
+      'why.3.title':'ڈیجیٹل طور پر محفوظ اور عدالت کے لیے تیار',
+      'why.3.body':'ہر معاہدہ ٹائم اسٹیمپ شدہ، انکرپٹڈ اور قابلِ تصدیق سالمیت کے ساتھ محفوظ ہے۔',
+      'how.label':'عمل',
+      'how.headline':'مکمل، دستخط شدہ معاہدے کے لیے چار منظم مراحل۔',
+      'how.1.title':'نکاح سے پہلے شرائط طے کریں',
+      'how.1.body':'دونوں فریق مالی معاملات، حقوق اور ذمہ داریوں پر مشتمل ایک رہنما فارم مکمل کرتے ہیں۔',
+      'how.2.title':'باہمی جائزہ اور اتفاق',
+      'how.2.body':'دونوں فریقوں کو آزادانہ جائزے کے لیے ایک رسمی دستاویز موصول ہوتی ہے۔',
+      'how.3.title':'ڈیجیٹل دستخط',
+      'how.3.body':'ہر فریق شناخت تصدیق کے بعد ڈیجیٹل دستخط کرتا ہے۔',
+      'how.4.title':'محفوظ ذخیرہ اور قانونی دستاویز کاری',
+      'how.4.body':'حتمی معاہدہ انکرپٹ کیا جاتا ہے اور ایک محفوظ والٹ میں ذخیرہ کیا جاتا ہے۔',
+      'compliance.label':'قانونی اور شرعی تعمیل',
+      'compliance.headline':'قانونی اور شرعی تعمیل کے لیے تعمیر شدہ',
+      'compliance.sub':'میثاق کو یو اے ای میں اسلامی علماء کے ساتھ مشاورت میں تیار کیا گیا ہے۔',
+      'compliance.badge':'شریعت سے آگاہ فریم ورک',
+      'compliance.1.title':'اسلامی نکاحی اصولوں کے مطابق',
+      'compliance.1.body':'تمام معاہدہ سانچے اسلامی قانون میں قائم بنیادی حقوق اور ذمہ داریوں کا احترام کرتے ہیں۔',
+      'compliance.2.title':'دستاویز کاری کی ضروریات کی حمایت',
+      'compliance.2.body':'معاہدے یو اے ای وزارتِ عدل کی دستاویز کاری کے معیارات پورے کرتے ہیں۔',
+      'compliance.3.title':'شفاف اور رضاکارانہ فریم ورک',
+      'compliance.3.body':'پلیٹ فارم کو جبر روکنے کے لیے ڈیزائن کیا گیا ہے۔',
+      'compliance.4.title':'قانونی تسلیم کے لیے منظم',
+      'compliance.4.body':'دستاویز کا ڈھانچہ، زبان اور فارمیٹنگ قانونی آلات کی ضروریات کی تعمیل کرتے ہیں۔',
+      'compliance.disclaimer':'میثاق ایک قانونی فرم نہیں ہے اور قانونی مشورہ فراہم نہیں کرتی۔',
+      'security.label':'دستاویز سیکیورٹی',
+      'security.headline':'حساس دستاویزات کے لیے تعمیر شدہ بنیادی ڈھانچہ۔',
+      'security.sub':'نکاح ناموں میں سب سے ذاتی طور پر حساس معلومات ہوتی ہیں۔',
+      'security.1.title':'اینڈ ٹو اینڈ انکرپشن',
+      'security.1.body':'AES-256 استعمال کر کے تمام ڈیٹا انکرپٹ کیا گیا ہے۔',
+      'security.2.title':'چھیڑ چھاڑ سے محفوظ دستاویز ذخیرہ',
+      'security.2.body':'دستاویزات کرپٹوگرافک طور پر قابلِ تصدیق ذخیرے میں محفوظ کی جاتی ہیں۔',
+      'security.3.title':'ٹائم اسٹیمپ شدہ معاہدے',
+      'security.3.body':'ہر دستخط کا واقعہ ایک قابلِ اعتماد ٹائم اسٹیمپ کے ساتھ ریکارڈ کیا جاتا ہے۔',
+      'security.4.title':'ڈیجیٹل تصدیق سالمیت',
+      'security.4.body':'ہر حتمی معاہدہ ایک منفرد تصدیقی کوڈ رکھتا ہے۔',
+      'pricing.label':'معاہدہ ڈھانچہ کے اختیارات','pricing.headline':'معاہدہ ڈھانچہ کے اختیارات',
+      'pricing.sub':'اثاثہ پیچیدگی اور دائرہ اختیار کی بنیاد پر سطح منتخب کریں۔',
+      'pricing.onetime':'یکمشت فیس',
+      'pricing.silver.tier':'سلور','pricing.silver.desc':'معیاری اثاثہ اور مستفید دستاویز کاری۔',
+      'pricing.silver.f1':'محدود اثاثے','pricing.silver.f2':'واحد دائرہ اختیار',
+      'pricing.silver.f3':'معیاری مستفید ڈھانچہ','pricing.silver.f4':'ڈیجیٹل دستاویز کاری',
+      'pricing.gold.tier':'گولڈ','pricing.gold.desc':'کثیر زمرہ کوریج کے ساتھ توسیع شدہ فہرست۔',
+      'pricing.gold.f1':'توسیع شدہ اثاثہ فہرست','pricing.gold.f2':'متعدد اثاثہ زمرے',
+      'pricing.gold.f3':'اختیاری کراس لوکیشن دستاویز کاری','pricing.gold.f4':'کسٹم مستفید تعیین',
+      'pricing.platinum.tier':'پلاٹینم','pricing.platinum.desc':'کثیر دائرہ اختیار اور کاروباری اثاثہ شامل کرنا۔',
+      'pricing.platinum.f1':'کثیر دائرہ اختیار اثاثہ دستاویز کاری','pricing.platinum.f2':'کاروباری ملکیت شامل کرنا',
+      'pricing.platinum.f3':'تفصیلی وراثت کی شقیں','pricing.platinum.f4':'اعلی مستفید ڈھانچے',
+      'pricing.diamond.tier':'ڈائمنڈ','pricing.diamond.desc':'مکمل کراس بارڈر اور سرمایہ کاری درجے کی ساخت۔',
+      'pricing.diamond.f1':'کثیر ملکی اثاثہ اور سرمایہ کاری ساخت','pricing.diamond.f2':'کاروبار اور شراکت داری کی دستاویز کاری',
+      'pricing.diamond.f3':'کثیر پرتوں کی مستفید نقشہ کشی','pricing.diamond.f4':'بہتر قانونی دستاویز فارمیٹ',
+      'pricing.tagline':'شفاف۔ منظم۔ یکمشت۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں',
+      'pricing.note':'تمام ڈھانچے ایک واحد، یکمشت مشغولیت کے طور پر مکمل کیے جاتے ہیں۔',
+      'cta.headline':'وضاحت کے ساتھ شروع کریں۔','cta.btn':'اپنا معاہدہ تیار کریں',
+      'cta.sub':'ایک اچھی طرح سے منظم معاہدہ دیکھ بھال کا عمل ہے — آپ کے ساتھی کے لیے۔',
+      'cta.trust1':'شریعت سے آگاہ فریم ورک','cta.trust2':'اینڈ ٹو اینڈ انکرپٹڈ',
+      'cta.trust3':'عدالت منظم فارمیٹ','cta.trust4':'کوئی پوشیدہ شرائط نہیں',
+      'footer.terms':'استعمال کی شرائط','footer.privacy':'رازداری کی پالیسی',
+      'footer.contact':'رابطہ','footer.copyright':'© 2026 میثاق۔ جملہ حقوق محفوظ ہیں۔',
     },
   };
 
-  // ── Font loader ───────────────────────────────────────────────────────────
+  // ── Font loader ───────────────────────────────────────────────
   const fontsLoaded = {};
   function loadFont(lang) {
     if (fontsLoaded[lang]) return;
@@ -1300,46 +1267,40 @@ hr.fine { border: none; border-top: 1px solid #D8D4C9; }
     } else if (lang === 'hi') {
       link.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600&display=swap';
     }
-    document.head.appendChild(link);
+    if (link.href) document.head.appendChild(link);
   }
 
-  // ── Language switcher ─────────────────────────────────────────────────────
+  // ── Language switcher ─────────────────────────────────────────
   function setLanguage(lang) {
     const dict = i18n[lang] || {};
+
+    // Swap all text
     document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (dict[key]) el.textContent = dict[key];
+      const val = dict[el.getAttribute('data-i18n')];
+      if (val) el.textContent = val;
     });
 
+    // RTL / LTR
     const isRTL = (lang === 'ar' || lang === 'ur');
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
 
-    // Font stack
+    // Font
     loadFont(lang);
-    let fontFamily = '';
-    if (lang === 'ar' || lang === 'ur') fontFamily = "'Noto Naskh Arabic', serif";
-    else if (lang === 'hi') fontFamily = "'Noto Serif Devanagari', serif";
+    const ff = lang === 'ar' || lang === 'ur' ? "'Noto Naskh Arabic', serif"
+             : lang === 'hi'                   ? "'Noto Serif Devanagari', serif"
+             : '';
+    document.body.style.fontFamily = ff;
 
-    document.body.style.fontFamily = fontFamily;
-    document.querySelectorAll('.font-display').forEach(el => {
-      el.style.fontFamily = fontFamily;
-    });
-
-    // Active button state
-    document.querySelectorAll('[data-lang="en"],[data-lang="ar"],[data-lang="hi"],[data-lang="ur"]').forEach(btn => {
-      const active = btn.getAttribute('data-lang') === lang;
-      btn.style.borderBottom = active ? '1px solid currentColor' : 'none';
-      btn.style.fontWeight = active ? '500' : '400';
-      btn.style.color = active ? '#1E1E1E' : '';
+    // Active state on all switcher buttons
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
   }
 
-  // Wire up all language buttons
-  ['en', 'ar', 'hi', 'ur'].forEach(lang => {
-    document.querySelectorAll(`[data-lang="${lang}"]`).forEach(btn => {
-      btn.addEventListener('click', () => setLanguage(lang));
-    });
+  // Wire up buttons
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
   });
 </script>
 
