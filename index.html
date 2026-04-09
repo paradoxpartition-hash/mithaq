@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
@@ -40,199 +41,202 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Gold rule divider */
-    .gold-rule {
-      width: 48px;
-      height: 1px;
-      background-color: #C6A75E;
-      display: block;
-    }
+```
+/* Gold rule divider */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background-color: #C6A75E;
+  display: block;
+}
 
-    /* Subtle geometric motif — top-right corner */
-    .geo-corner {
-      position: absolute;
-      top: 0; right: 0;
-      width: 220px; height: 220px;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .geo-corner svg { opacity: 0.055; }
+/* Subtle geometric motif — top-right corner */
+.geo-corner {
+  position: absolute;
+  top: 0; right: 0;
+  width: 220px; height: 220px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.geo-corner svg { opacity: 0.055; }
 
-    /* Bordered content box */
-    .bordered-box {
-      border: 1px solid #D8D4C9;
-      background: #FFFFFF;
-    }
+/* Bordered content box */
+.bordered-box {
+  border: 1px solid #D8D4C9;
+  background: #FFFFFF;
+}
 
-    /* Section label */
-    .section-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #C6A75E;
-    }
+/* Section label */
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #C6A75E;
+}
 
-    /* Compliance badge */
-    .compliance-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid #C6A75E;
-      color: #C6A75E;
-      font-size: 0.6875rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-    }
+/* Compliance badge */
+.compliance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #C6A75E;
+  color: #C6A75E;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
 
-    /* Step number */
-    .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: #C6A75E;
-      line-height: 1;
-      opacity: 0.7;
-    }
+/* Step number */
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #C6A75E;
+  line-height: 1;
+  opacity: 0.7;
+}
 
-    /* Nav link */
-    .nav-link {
-      font-size: 0.8125rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: #1E1E1E;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: #0F3D2E; }
+/* Nav link */
+.nav-link {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #1E1E1E;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: #0F3D2E; }
 
-    /* Primary button */
-    .btn-primary {
-      display: inline-block;
-      background-color: #0F3D2E;
-      color: #F8F7F3;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      border: 1px solid #0F3D2E;
-      transition: background-color 0.2s, color 0.2s;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      background-color: #0A2B1F;
-    }
+/* Primary button */
+.btn-primary {
+  display: inline-block;
+  background-color: #0F3D2E;
+  color: #F8F7F3;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: 1px solid #0F3D2E;
+  transition: background-color 0.2s, color 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: #0A2B1F;
+}
 
-    /* Secondary button */
-    .btn-secondary {
-      display: inline-block;
-      background-color: transparent;
-      color: #0F3D2E;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 13px 32px;
-      border: 1px solid #0F3D2E;
-      transition: background-color 0.2s, color 0.2s;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .btn-secondary:hover {
-      background-color: #0F3D2E;
-      color: #F8F7F3;
-    }
+/* Secondary button */
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: #0F3D2E;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border: 1px solid #0F3D2E;
+  transition: background-color 0.2s, color 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: #0F3D2E;
+  color: #F8F7F3;
+}
 
-    /* Gold button */
-    .btn-gold {
-      display: inline-block;
-      background-color: #C6A75E;
-      color: #0F3D2E;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 14px 36px;
-      border: 1px solid #C6A75E;
-      transition: background-color 0.2s;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .btn-gold:hover {
-      background-color: #A8864A;
-      border-color: #A8864A;
-    }
+/* Gold button */
+.btn-gold {
+  display: inline-block;
+  background-color: #C6A75E;
+  color: #0F3D2E;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: 1px solid #C6A75E;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background-color: #A8864A;
+  border-color: #A8864A;
+}
 
-    /* Horizontal rule */
-    hr.fine { border: none; border-top: 1px solid #D8D4C9; }
+/* Horizontal rule */
+hr.fine { border: none; border-top: 1px solid #D8D4C9; }
 
-    /* Pricing card */
-    .pricing-card {
-      border: 1px solid #D8D4C9;
-      background: #FFFFFF;
-    }
-    .pricing-card.featured {
-      border-color: #0F3D2E;
-    }
+/* Pricing card */
+.pricing-card {
+  border: 1px solid #D8D4C9;
+  background: #FFFFFF;
+}
+.pricing-card.featured {
+  border-color: #0F3D2E;
+}
 
-    /* Feature check row */
-    .feature-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #EAE8E2;
-      font-size: 0.875rem;
-      color: #1E1E1E;
-    }
-    .feature-row:last-child { border-bottom: none; }
+/* Feature check row */
+.feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #EAE8E2;
+  font-size: 0.875rem;
+  color: #1E1E1E;
+}
+.feature-row:last-child { border-bottom: none; }
 
-    .check-icon {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      margin-top: 2px;
-      color: #0F3D2E;
-    }
+.check-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #0F3D2E;
+}
 
-    /* Compliance block */
-    .compliance-block {
-      border-left: 2px solid #C6A75E;
-      padding-left: 20px;
-    }
+/* Compliance block */
+.compliance-block {
+  border-left: 2px solid #C6A75E;
+  padding-left: 20px;
+}
 
-    /* Security item */
-    .security-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px 0;
-      border-bottom: 1px solid #D8D4C9;
-    }
-    .security-item:last-child { border-bottom: none; }
+/* Security item */
+.security-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D4C9;
+}
+.security-item:last-child { border-bottom: none; }
 
-    /* Mobile menu toggle */
-    #mobile-menu { display: none; }
-    #mobile-menu.open { display: block; }
+/* Mobile menu toggle */
+#mobile-menu { display: none; }
+#mobile-menu.open { display: block; }
 
-    /* Scroll fade-in */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Scroll fade-in */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
+
   </style>
 </head>
 <body>
@@ -240,88 +244,94 @@
 <!-- ═══════════════════════════════════════════════════════════
      HEADER
 ═══════════════════════════════════════════════════════════ -->
+
 <header class="sticky top-0 z-50 bg-offwhite border-b border-border">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
 
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 no-underline">
-        <div class="w-7 h-7 flex-shrink-0" aria-hidden="true">
-          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-            <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-            <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-            <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-          </svg>
-        </div>
-        <span class="font-display text-xl font-semibold tracking-wide text-charcoal" style="letter-spacing:0.05em;">Mithaq</span>
-      </a>
-
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation" data-i18n-section="nav">
-        <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
-        <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
-        <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
-        <a href="#pricing"    class="nav-link" data-i18n="nav.pricing">Pricing</a>
-        <a href="#contact"    class="nav-link" data-i18n="nav.contact">Contact</a>
-      </nav>
-
-      <!-- Right side -->
-      <div class="flex items-center gap-4">
-        <!-- Language switcher -->
-        <div class="hidden md:flex items-center gap-1 text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;" aria-label="Language selection">
-          <button class="px-1 py-0.5 text-charcoal font-medium border-b border-charcoal" lang="en">EN</button>
-          <span class="text-border">|</span>
-          <button class="px-1 py-0.5 hover:text-charcoal transition-colors" lang="ar">AR</button>
-          <span class="text-border">|</span>
-          <button class="px-1 py-0.5 hover:text-charcoal transition-colors" lang="hi">HI</button>
-          <span class="text-border">|</span>
-          <button class="px-1 py-0.5 hover:text-charcoal transition-colors" lang="ur">UR</button>
-        </div>
-
-        <a href="#start" class="btn-primary hidden md:inline-block" data-i18n="nav.cta">Get Started</a>
-
-        <!-- Mobile hamburger -->
-        <button id="hamburger" class="md:hidden p-2 text-charcoal" aria-label="Toggle menu">
-          <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-            <line y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/>
-            <line y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/>
-            <line y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </button>
-      </div>
+```
+  <!-- Logo -->
+  <a href="#" class="flex items-center gap-3 no-underline">
+    <div class="w-7 h-7 flex-shrink-0" aria-hidden="true">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
+        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
+        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
+        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
+      </svg>
     </div>
+    <span class="font-display text-xl font-semibold tracking-wide text-charcoal" style="letter-spacing:0.05em;">Mithaq</span>
+  </a>
+
+  <!-- Desktop nav -->
+  <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation" data-i18n-section="nav">
+    <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
+    <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
+    <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
+    <a href="#pricing"    class="nav-link" data-i18n="nav.pricing">Pricing</a>
+    <a href="#contact"    class="nav-link" data-i18n="nav.contact">Contact</a>
+  </nav>
+
+  <!-- Right side -->
+  <div class="flex items-center gap-4">
+    <!-- Language switcher -->
+    <div class="hidden md:flex items-center gap-1 text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;" aria-label="Language selection">
+      <button class="px-1 py-0.5 text-charcoal font-medium border-b border-charcoal" data-lang="en">EN</button>
+      <span class="text-border">|</span>
+      <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="ar">AR</button>
+      <span class="text-border">|</span>
+      <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="hi">HI</button>
+      <span class="text-border">|</span>
+      <button class="px-1 py-0.5 hover:text-charcoal transition-colors" data-lang="ur">UR</button>
+    </div>
+
+    <a href="#start" class="btn-primary hidden md:inline-block" data-i18n="nav.cta">Get Started</a>
+
+    <!-- Mobile hamburger -->
+    <button id="hamburger" class="md:hidden p-2 text-charcoal" aria-label="Toggle menu">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+        <line y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/>
+        <line y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/>
+        <line y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+  </div>
+</div>
+```
+
   </div>
 
   <!-- Mobile menu -->
+
   <div id="mobile-menu" class="md:hidden border-t border-border bg-offwhite px-6 pb-6">
     <nav class="flex flex-col gap-4 pt-4" data-i18n-section="nav">
-      <a href="#about"      class="nav-link">About</a>
-      <a href="#how"        class="nav-link">How It Works</a>
-      <a href="#compliance" class="nav-link">Compliance</a>
-      <a href="#pricing"    class="nav-link">Pricing</a>
-      <a href="#contact"    class="nav-link">Contact</a>
+      <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
+      <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
+      <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
+      <a href="#pricing"    class="nav-link" data-i18n="nav.pricing">Pricing</a>
+      <a href="#contact"    class="nav-link" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="flex items-center gap-2 mt-4 pt-4 border-t border-border text-xs font-body font-medium text-muted" style="letter-spacing:0.06em;">
-      <button class="text-charcoal font-medium border-b border-charcoal" lang="en">EN</button>
+      <button class="text-charcoal font-medium border-b border-charcoal" data-lang="en">EN</button>
       <span>|</span>
-      <button class="hover:text-charcoal transition-colors" lang="ar">AR</button>
+      <button class="hover:text-charcoal transition-colors" data-lang="ar">AR</button>
       <span>|</span>
-      <button class="hover:text-charcoal transition-colors" lang="hi">HI</button>
+      <button class="hover:text-charcoal transition-colors" data-lang="hi">HI</button>
       <span>|</span>
-      <button class="hover:text-charcoal transition-colors" lang="ur">UR</button>
+      <button class="hover:text-charcoal transition-colors" data-lang="ur">UR</button>
     </div>
-    <a href="#start" class="btn-primary mt-4 w-full text-center block">Get Started</a>
+    <a href="#start" class="btn-primary mt-4 w-full text-center block" data-i18n="nav.cta">Get Started</a>
   </div>
 </header>
-
 
 <!-- ═══════════════════════════════════════════════════════════
      HERO
 ═══════════════════════════════════════════════════════════ -->
+
 <section id="about" class="relative overflow-hidden" style="background:#F8F7F3;" data-i18n-section="hero">
 
   <!-- Geometric corner motif -->
+
   <div class="geo-corner">
     <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="2" y="2" width="216" height="216" stroke="#0F3D2E" stroke-width="1"/>
@@ -336,587 +346,608 @@
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-36">
     <div class="max-w-3xl">
 
-      <!-- Label -->
-      <div class="flex items-center gap-4 mb-8 reveal">
-        <span class="gold-rule"></span>
-        <span class="section-label" data-i18n="hero.label">Official Digital Agreement Platform</span>
+```
+  <!-- Label -->
+  <div class="flex items-center gap-4 mb-8 reveal">
+    <span class="gold-rule"></span>
+    <span class="section-label" data-i18n="hero.label">Official Digital Agreement Platform</span>
+  </div>
+
+  <!-- Headline -->
+  <h1 class="font-display text-5xl lg:text-7xl font-medium leading-none tracking-tight text-charcoal mb-6 reveal" style="transition-delay:0.08s;" data-i18n="hero.headline">
+    Clarity Before<br>Commitment.
+  </h1>
+
+  <!-- Subheadline -->
+  <p class="font-body text-base lg:text-lg text-muted leading-relaxed max-w-xl mb-10 reveal" style="transition-delay:0.14s; font-weight:300;" data-i18n="hero.sub">
+    A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.
+  </p>
+
+  <!-- CTA group -->
+  <div class="flex flex-wrap gap-3 mb-16 reveal" style="transition-delay:0.2s;">
+    <a href="#start" class="btn-primary" data-i18n="hero.cta1">Create Your Agreement</a>
+    <a href="#how"   class="btn-secondary" data-i18n="hero.cta2">Learn How It Works</a>
+  </div>
+
+  <!-- Bordered content box -->
+  <div class="bordered-box p-6 lg:p-8 max-w-2xl reveal" style="transition-delay:0.26s;">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0 mt-0.5">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="1" y="1" width="18" height="18" stroke="#C6A75E" stroke-width="1"/>
+          <path d="M6 10l3 3 5-5" stroke="#0F3D2E" stroke-width="1.3" stroke-linecap="square"/>
+        </svg>
       </div>
-
-      <!-- Headline -->
-      <h1 class="font-display text-5xl lg:text-7xl font-medium leading-none tracking-tight text-charcoal mb-6 reveal" style="transition-delay:0.08s;" data-i18n="hero.headline">
-        Clarity Before<br>Commitment.
-      </h1>
-
-      <!-- Subheadline -->
-      <p class="font-body text-base lg:text-lg text-muted leading-relaxed max-w-xl mb-10 reveal" style="transition-delay:0.14s; font-weight:300;" data-i18n="hero.sub">
-        A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.
-      </p>
-
-      <!-- CTA group -->
-      <div class="flex flex-wrap gap-3 mb-16 reveal" style="transition-delay:0.2s;">
-        <a href="#start" class="btn-primary" data-i18n="hero.cta1">Create Your Agreement</a>
-        <a href="#how"   class="btn-secondary" data-i18n="hero.cta2">Learn How It Works</a>
-      </div>
-
-      <!-- Bordered content box -->
-      <div class="bordered-box p-6 lg:p-8 max-w-2xl reveal" style="transition-delay:0.26s;">
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0 mt-0.5">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <rect x="1" y="1" width="18" height="18" stroke="#C6A75E" stroke-width="1"/>
-              <path d="M6 10l3 3 5-5" stroke="#0F3D2E" stroke-width="1.3" stroke-linecap="square"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-body text-sm text-charcoal font-medium mb-1" data-i18n="hero.box.title">Structured for Legal Recognition</p>
-            <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="hero.box.body">
-              Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.
-            </p>
-          </div>
-        </div>
+      <div>
+        <p class="font-body text-sm text-charcoal font-medium mb-1" data-i18n="hero.box.title">Structured for Legal Recognition</p>
+        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="hero.box.body">
+          Mithaq agreements are drafted in alignment with Islamic marital jurisprudence and structured to meet documentation standards recognized by judicial bodies in the UAE and across the GCC.
+        </p>
       </div>
     </div>
   </div>
-</section>
+</div>
+```
 
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      WHY THIS MATTERS
 ═══════════════════════════════════════════════════════════ -->
+
 <section class="bg-white border-t border-border" id="why" data-i18n-section="why">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
 
-    <div class="flex items-center gap-4 mb-14 reveal">
-      <span class="gold-rule"></span>
-      <span class="section-label" data-i18n="why.label">Why This Matters</span>
+```
+<div class="flex items-center gap-4 mb-14 reveal">
+  <span class="gold-rule"></span>
+  <span class="section-label" data-i18n="why.label">Why This Matters</span>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
+
+  <!-- Column 1 -->
+  <div class="p-8 lg:p-10 border-b md:border-b-0 md:border-r border-border reveal">
+    <div class="mb-5">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
+        <path d="M5 12h14M12 5v14" stroke="#0F3D2E" stroke-width="1.2"/>
+      </svg>
     </div>
+    <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.1.title">Prevent Conflict Before It Begins</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.1.body">
+      Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.
+    </p>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
-
-      <!-- Column 1 -->
-      <div class="p-8 lg:p-10 border-b md:border-b-0 md:border-r border-border reveal">
-        <div class="mb-5">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
-            <path d="M5 12h14M12 5v14" stroke="#0F3D2E" stroke-width="1.2"/>
-          </svg>
-        </div>
-        <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.1.title">Prevent Conflict Before It Begins</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.1.body">
-          Ambiguity in marital expectations is a leading source of post-marriage dispute. A clearly documented prenuptial agreement defines obligations, rights, and expectations before the marriage contract is concluded.
-        </p>
-      </div>
-
-      <!-- Column 2 -->
-      <div class="p-8 lg:p-10 border-b md:border-b-0 md:border-r border-border reveal" style="transition-delay:0.08s;">
-        <div class="mb-5">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
-            <circle cx="12" cy="12" r="5" stroke="#0F3D2E" stroke-width="1.2"/>
-            <path d="M12 7v5l3 2" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
-          </svg>
-        </div>
-        <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.2.title">Align Expectations Clearly</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.2.body">
-          Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.
-        </p>
-      </div>
-
-      <!-- Column 3 -->
-      <div class="p-8 lg:p-10 reveal" style="transition-delay:0.16s;">
-        <div class="mb-5">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
-            <path d="M7 12l3 3 7-7" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
-          </svg>
-        </div>
-        <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.3.title">Digitally Secure &amp; Court-Ready</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.3.body">
-          Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.
-        </p>
-      </div>
-
+  <!-- Column 2 -->
+  <div class="p-8 lg:p-10 border-b md:border-b-0 md:border-r border-border reveal" style="transition-delay:0.08s;">
+    <div class="mb-5">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
+        <circle cx="12" cy="12" r="5" stroke="#0F3D2E" stroke-width="1.2"/>
+        <path d="M12 7v5l3 2" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
+      </svg>
     </div>
+    <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.2.title">Align Expectations Clearly</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.2.body">
+      Financial arrangements, custodial considerations, and personal boundaries — documented with care, reviewed together, and signed with mutual understanding. The platform guides both parties through a structured, legally-informed process.
+    </p>
+  </div>
+
+  <!-- Column 3 -->
+  <div class="p-8 lg:p-10 reveal" style="transition-delay:0.16s;">
+    <div class="mb-5">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="1" y="1" width="22" height="22" stroke="#C6A75E" stroke-width="1"/>
+        <path d="M7 12l3 3 7-7" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
+      </svg>
+    </div>
+    <h3 class="font-display text-xl font-medium text-charcoal mb-3" data-i18n="why.3.title">Digitally Secure &amp; Court-Ready</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="why.3.body">
+      Every agreement is timestamped, encrypted, and stored with verifiable integrity. Should a document ever be required in a legal or judicial context, its authenticity can be independently confirmed.
+    </p>
+  </div>
+
+</div>
+```
+
   </div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════
      HOW IT WORKS
 ═══════════════════════════════════════════════════════════ -->
+
 <section id="how" class="border-t border-border" style="background:#F8F7F3;" data-i18n-section="how">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
 
-    <div class="flex items-center gap-4 mb-14 reveal">
-      <span class="gold-rule"></span>
-      <span class="section-label" data-i18n="how.label">The Process</span>
-    </div>
+```
+<div class="flex items-center gap-4 mb-14 reveal">
+  <span class="gold-rule"></span>
+  <span class="section-label" data-i18n="how.label">The Process</span>
+</div>
 
-    <h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-16 max-w-xl reveal" data-i18n="how.headline">
-      Four structured steps to a complete, signed agreement.
-    </h2>
+<h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-16 max-w-xl reveal" data-i18n="how.headline">
+  Four structured steps to a complete, signed agreement.
+</h2>
 
-    <!-- Steps grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-0">
+<!-- Steps grid -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-0">
 
-      <!-- Step 1 -->
-      <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:pr-10 reveal">
-        <span class="step-num">01</span>
-        <hr class="fine mt-4 mb-5"/>
-        <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.1.title">Define Terms Before Marriage</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.1.body">
-          Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.
-        </p>
-      </div>
+  <!-- Step 1 -->
+  <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:pr-10 reveal">
+    <span class="step-num">01</span>
+    <hr class="fine mt-4 mb-5"/>
+    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.1.title">Define Terms Before Marriage</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.1.body">
+      Both parties complete a guided, structured form covering financial matters, rights, obligations, and any agreed conditions permitted under Islamic jurisprudence.
+    </p>
+  </div>
 
-      <!-- Step 2 -->
-      <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:px-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.07s;">
-        <span class="step-num">02</span>
-        <hr class="fine mt-4 mb-5"/>
-        <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.2.title">Mutual Review &amp; Agreement</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.2.body">
-          Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.
-        </p>
-      </div>
+  <!-- Step 2 -->
+  <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:px-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.07s;">
+    <span class="step-num">02</span>
+    <hr class="fine mt-4 mb-5"/>
+    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.2.title">Mutual Review &amp; Agreement</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.2.body">
+      Both parties receive a formal document for independent review. Each party may request amendments through the platform before proceeding. No signature may be applied under duress.
+    </p>
+  </div>
 
-      <!-- Step 3 -->
-      <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:px-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.14s;">
-        <span class="step-num">03</span>
-        <hr class="fine mt-4 mb-5"/>
-        <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.3.title">Digital Signature</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.3.body">
-          Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.
-        </p>
-      </div>
+  <!-- Step 3 -->
+  <div class="lg:border-r border-b lg:border-b-0 border-border pb-10 lg:pb-0 lg:px-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.14s;">
+    <span class="step-num">03</span>
+    <hr class="fine mt-4 mb-5"/>
+    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.3.title">Digital Signature</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.3.body">
+      Identity-verified digital signatures are applied by each party. The platform records the time, device, and location metadata of each signature event in an immutable audit trail.
+    </p>
+  </div>
 
-      <!-- Step 4 -->
-      <div class="pb-0 lg:pl-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.21s;">
-        <span class="step-num">04</span>
-        <hr class="fine mt-4 mb-5"/>
-        <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.4.title">Secure Storage &amp; Legal Documentation</h3>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.4.body">
-          The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.
-        </p>
-      </div>
+  <!-- Step 4 -->
+  <div class="pb-0 lg:pl-10 pt-10 lg:pt-0 reveal" style="transition-delay:0.21s;">
+    <span class="step-num">04</span>
+    <hr class="fine mt-4 mb-5"/>
+    <h3 class="font-display text-lg font-medium text-charcoal mb-2" data-i18n="how.4.title">Secure Storage &amp; Legal Documentation</h3>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="how.4.body">
+      The finalized agreement is encrypted, timestamped, and stored in a tamper-proof vault. Certified copies may be obtained at any time for legal, notarial, or court-submission purposes.
+    </p>
+  </div>
 
-    </div>
+</div>
+```
+
   </div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════
      COMPLIANCE
 ═══════════════════════════════════════════════════════════ -->
+
 <section id="compliance" class="bg-emerald" style="background:#0F3D2E;" data-i18n-section="compliance">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
 
-    <div class="flex items-center gap-4 mb-14 reveal">
-      <span class="gold-rule"></span>
-      <span class="section-label" style="color:#C6A75E;" data-i18n="compliance.label">Legal &amp; Sharia Compliance</span>
+```
+<div class="flex items-center gap-4 mb-14 reveal">
+  <span class="gold-rule"></span>
+  <span class="section-label" style="color:#C6A75E;" data-i18n="compliance.label">Legal &amp; Sharia Compliance</span>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+  <!-- Left: Headline + sub -->
+  <div class="reveal">
+    <h2 class="font-display text-3xl lg:text-4xl font-medium text-white mb-6 leading-snug" data-i18n="compliance.headline">
+      Built for Legal and Sharia Compliance
+    </h2>
+    <p class="font-body text-sm leading-relaxed mb-8" style="color:rgba(255,255,255,0.6); font-weight:300;" data-i18n="compliance.sub">
+      Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.
+    </p>
+    <div class="compliance-badge" style="border-color:#C6A75E; color:#C6A75E;" data-i18n="compliance.badge">
+      <svg width="10" height="10" viewBox="0 0 10 10">
+        <rect x="0.5" y="0.5" width="9" height="9" stroke="#C6A75E" stroke-width="0.8"/>
+      </svg>
+      Sharia-Aware Framework
+    </div>
+  </div>
+
+  <!-- Right: Compliance blocks -->
+  <div class="grid grid-cols-1 gap-6 reveal" style="transition-delay:0.1s;">
+
+    <div class="compliance-block" style="border-left-color:#C6A75E;">
+      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.1.title">Aligned with Islamic Marital Principles</p>
+      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.1.body">
+        All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi'i, Maliki, and Hanafi schools of jurisprudence.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-      <!-- Left: Headline + sub -->
-      <div class="reveal">
-        <h2 class="font-display text-3xl lg:text-4xl font-medium text-white mb-6 leading-snug" data-i18n="compliance.headline">
-          Built for Legal and Sharia Compliance
-        </h2>
-        <p class="font-body text-sm leading-relaxed mb-8" style="color:rgba(255,255,255,0.6); font-weight:300;" data-i18n="compliance.sub">
-          Mithaq is developed in close consultation with Islamic scholars and legal practitioners in the UAE. The platform does not offer legal advice; it provides a structured, verified documentation framework within which couples may formally record their agreed terms.
-        </p>
-        <div class="compliance-badge" style="border-color:#C6A75E; color:#C6A75E;" data-i18n="compliance.badge">
-          <svg width="10" height="10" viewBox="0 0 10 10">
-            <rect x="0.5" y="0.5" width="9" height="9" stroke="#C6A75E" stroke-width="0.8"/>
-          </svg>
-          Sharia-Aware Framework
-        </div>
-      </div>
-
-      <!-- Right: Compliance blocks -->
-      <div class="grid grid-cols-1 gap-6 reveal" style="transition-delay:0.1s;">
-
-        <div class="compliance-block" style="border-left-color:#C6A75E;">
-          <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.1.title">Aligned with Islamic Marital Principles</p>
-          <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.1.body">
-            All agreement templates are structured to respect the foundational rights and obligations established in Islamic law, including mahr, nafaqah, and conditions permissible within Hanbali, Shafi'i, Maliki, and Hanafi schools of jurisprudence.
-          </p>
-        </div>
-
-        <div class="compliance-block" style="border-left-color:#C6A75E;">
-          <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.2.title">Supports Documentation Requirements</p>
-          <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.2.body">
-            Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.
-          </p>
-        </div>
-
-        <div class="compliance-block" style="border-left-color:#C6A75E;">
-          <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.3.title">Transparent and Voluntary Framework</p>
-          <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.3.body">
-            The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.
-          </p>
-        </div>
-
-        <div class="compliance-block" style="border-left-color:#C6A75E;">
-          <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.4.title">Structured for Legal Recognition</p>
-          <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.4.body">
-            Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.
-          </p>
-        </div>
-
-      </div>
+    <div class="compliance-block" style="border-left-color:#C6A75E;">
+      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.2.title">Supports Documentation Requirements</p>
+      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.2.body">
+        Agreements are formatted to meet the documentation standards required by the UAE Ministry of Justice and Personal Status Courts, and may be submitted as supplementary documentation to the official marriage registration process.
+      </p>
     </div>
 
-    <!-- Bottom strip -->
-    <div class="mt-16 pt-10 border-t reveal" style="border-top-color:rgba(255,255,255,0.1); transition-delay:0.18s;">
-      <p class="font-body text-xs text-center" style="color:rgba(255,255,255,0.35); font-weight:300; letter-spacing:0.04em;" data-i18n="compliance.disclaimer">
-        Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.
+    <div class="compliance-block" style="border-left-color:#C6A75E;">
+      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.3.title">Transparent and Voluntary Framework</p>
+      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.3.body">
+        The platform is designed to prevent coercion. Each party signs independently, with a mandatory review period. Agreements may not be executed by proxy without explicit documented authorization.
+      </p>
+    </div>
+
+    <div class="compliance-block" style="border-left-color:#C6A75E;">
+      <p class="font-body text-sm font-medium text-white mb-1" data-i18n="compliance.4.title">Structured for Legal Recognition</p>
+      <p class="font-body text-xs leading-relaxed" style="color:rgba(255,255,255,0.55); font-weight:300;" data-i18n="compliance.4.body">
+        Document structure, language, and formatting comply with requirements for legal instruments. Third-party notarization is supported where required by applicable jurisdiction.
       </p>
     </div>
 
   </div>
-</section>
+</div>
 
+<!-- Bottom strip -->
+<div class="mt-16 pt-10 border-t reveal" style="border-top-color:rgba(255,255,255,0.1); transition-delay:0.18s;">
+  <p class="font-body text-xs text-center" style="color:rgba(255,255,255,0.35); font-weight:300; letter-spacing:0.04em;" data-i18n="compliance.disclaimer">
+    Mithaq is not a law firm and does not provide legal advice. All agreements are documentation tools. Users are advised to consult a qualified legal practitioner in their jurisdiction.
+  </p>
+</div>
+```
+
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      SECURITY
 ═══════════════════════════════════════════════════════════ -->
+
 <section class="bg-white border-t border-border" id="security" data-i18n-section="security">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
 
-    <div class="flex items-center gap-4 mb-14 reveal">
-      <span class="gold-rule"></span>
-      <span class="section-label" data-i18n="security.label">Document Security</span>
-    </div>
+```
+<div class="flex items-center gap-4 mb-14 reveal">
+  <span class="gold-rule"></span>
+  <span class="section-label" data-i18n="security.label">Document Security</span>
+</div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-      <div class="reveal">
-        <h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-4" data-i18n="security.headline">
-          Infrastructure Built for Sensitive Documents.
-        </h2>
-        <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="security.sub">
-          Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.
-        </p>
+  <div class="reveal">
+    <h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-4" data-i18n="security.headline">
+      Infrastructure Built for Sensitive Documents.
+    </h2>
+    <p class="font-body text-sm text-muted leading-relaxed" style="font-weight:300;" data-i18n="security.sub">
+      Marriage agreements contain some of the most personally sensitive information a couple will ever commit to writing. Security and data integrity are treated as foundational requirements, not optional features.
+    </p>
+  </div>
+
+  <div class="reveal" style="transition-delay:0.1s;">
+
+    <div class="security-item">
+      <div class="flex-shrink-0 mt-0.5">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
+          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
+        </svg>
       </div>
-
-      <div class="reveal" style="transition-delay:0.1s;">
-
-        <div class="security-item">
-          <div class="flex-shrink-0 mt-0.5">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-              <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.1.title">End-to-End Encryption</p>
-            <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.1.body">All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.</p>
-          </div>
-        </div>
-
-        <div class="security-item">
-          <div class="flex-shrink-0 mt-0.5">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-              <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.2.title">Tamper-Proof Document Storage</p>
-            <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.2.body">Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.</p>
-          </div>
-        </div>
-
-        <div class="security-item">
-          <div class="flex-shrink-0 mt-0.5">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-              <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.3.title">Timestamped Agreements</p>
-            <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.3.body">Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.</p>
-          </div>
-        </div>
-
-        <div class="security-item">
-          <div class="flex-shrink-0 mt-0.5">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
-              <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.4.title">Digital Verification Integrity</p>
-            <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.4.body">Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.</p>
-          </div>
-        </div>
-
+      <div>
+        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.1.title">End-to-End Encryption</p>
+        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.1.body">All data in transit and at rest is encrypted using AES-256. No Mithaq personnel may access the content of any agreement without explicit user authorization.</p>
       </div>
     </div>
+
+    <div class="security-item">
+      <div class="flex-shrink-0 mt-0.5">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
+          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.2.title">Tamper-Proof Document Storage</p>
+        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.2.body">Documents are stored using content-addressed, cryptographically-verifiable storage. Any alteration to a stored agreement is immediately detectable.</p>
+      </div>
+    </div>
+
+    <div class="security-item">
+      <div class="flex-shrink-0 mt-0.5">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
+          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.3.title">Timestamped Agreements</p>
+        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.3.body">Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.</p>
+      </div>
+    </div>
+
+    <div class="security-item">
+      <div class="flex-shrink-0 mt-0.5">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="1" y="1" width="16" height="16" stroke="#0F3D2E" stroke-width="1"/>
+          <path d="M5 9l3 3 5-5" stroke="#C6A75E" stroke-width="1.2" stroke-linecap="square"/>
+        </svg>
+      </div>
+      <div>
+        <p class="font-body text-sm font-medium text-charcoal" data-i18n="security.4.title">Digital Verification Integrity</p>
+        <p class="font-body text-xs text-muted mt-1 leading-relaxed" style="font-weight:300;" data-i18n="security.4.body">Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
   </div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════
      AGREEMENT STRUCTURE OPTIONS
 ═══════════════════════════════════════════════════════════ -->
+
 <section id="pricing" class="border-t border-border" style="background:#F8F7F3;" data-i18n-section="pricing">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
 
-    <!-- Section label -->
-    <div class="flex items-center gap-4 mb-6 reveal">
-      <span class="gold-rule"></span>
-      <span class="section-label" data-i18n="pricing.label">Agreement Structure Options</span>
+```
+<!-- Section label -->
+<div class="flex items-center gap-4 mb-6 reveal">
+  <span class="gold-rule"></span>
+  <span class="section-label" data-i18n="pricing.label">Agreement Structure Options</span>
+</div>
+
+<!-- Headlines -->
+<h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-3 reveal" data-i18n="pricing.headline">
+  Agreement Structure Options
+</h2>
+<p class="font-body text-sm text-muted max-w-2xl mb-14 reveal" style="font-weight:300; transition-delay:0.06s;" data-i18n="pricing.sub">
+  Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.
+</p>
+
+<!-- Four cards — equal weight, full width -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-0 border border-border reveal" style="transition-delay:0.1s;">
+
+  <!-- ── SILVER ── -->
+  <div class="border-b sm:border-b-0 sm:border-r border-border flex flex-col" data-i18n-section="pricing.silver">
+    <!-- Tier header -->
+    <div class="px-7 pt-8 pb-6 border-b border-border">
+      <div class="flex items-center gap-2 mb-5">
+        <!-- Silver mark -->
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <rect x="0.5" y="0.5" width="11" height="11" stroke="#9CA3AF" stroke-width="1"/>
+          <rect x="2.5" y="2.5" width="7" height="7" fill="#9CA3AF" opacity="0.25"/>
+        </svg>
+        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#6B7280; letter-spacing:0.14em;" data-i18n="pricing.silver.tier">Silver</span>
+      </div>
+      <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.silver.desc">Standard asset and beneficiary documentation.</p>
+      <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
     </div>
+    <!-- Features -->
+    <ul class="flex-1 px-7 py-6 space-y-0">
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.silver.f1">Limited number of assets</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.silver.f2">Single jurisdiction</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.silver.f3">Standard beneficiary structure</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.silver.f4">Digital documentation</span>
+      </li>
+    </ul>
+  </div>
 
-    <!-- Headlines -->
-    <h2 class="font-display text-3xl lg:text-4xl font-medium text-charcoal mb-3 reveal" data-i18n="pricing.headline">
-      Agreement Structure Options
-    </h2>
-    <p class="font-body text-sm text-muted max-w-2xl mb-14 reveal" style="font-weight:300; transition-delay:0.06s;" data-i18n="pricing.sub">
-      Select the documentation level based on asset complexity, jurisdictions, and beneficiary structure.
-    </p>
-
-    <!-- Four cards — equal weight, full width -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-0 border border-border reveal" style="transition-delay:0.1s;">
-
-      <!-- ── SILVER ── -->
-      <div class="border-b sm:border-b-0 sm:border-r border-border flex flex-col" data-i18n-section="pricing.silver">
-        <!-- Tier header -->
-        <div class="px-7 pt-8 pb-6 border-b border-border">
-          <div class="flex items-center gap-2 mb-5">
-            <!-- Silver mark -->
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <rect x="0.5" y="0.5" width="11" height="11" stroke="#9CA3AF" stroke-width="1"/>
-              <rect x="2.5" y="2.5" width="7" height="7" fill="#9CA3AF" opacity="0.25"/>
-            </svg>
-            <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#6B7280; letter-spacing:0.14em;" data-i18n="pricing.silver.tier">Silver</span>
-          </div>
-          <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.silver.desc">Standard asset and beneficiary documentation.</p>
-          <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
-        </div>
-        <!-- Features -->
-        <ul class="flex-1 px-7 py-6 space-y-0">
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.silver.f1">Limited number of assets</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.silver.f2">Single jurisdiction</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.silver.f3">Standard beneficiary structure</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.silver.f4">Digital documentation</span>
-          </li>
-        </ul>
+  <!-- ── GOLD ── -->
+  <div class="border-b sm:border-b-0 sm:border-r border-border flex flex-col" data-i18n-section="pricing.gold">
+    <div class="px-7 pt-8 pb-6 border-b border-border">
+      <div class="flex items-center gap-2 mb-5">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <rect x="0.5" y="0.5" width="11" height="11" stroke="#C6A75E" stroke-width="1"/>
+          <rect x="2.5" y="2.5" width="7" height="7" fill="#C6A75E" opacity="0.3"/>
+        </svg>
+        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#C6A75E; letter-spacing:0.14em;" data-i18n="pricing.gold.tier">Gold</span>
       </div>
-
-      <!-- ── GOLD ── -->
-      <div class="border-b sm:border-b-0 sm:border-r border-border flex flex-col" data-i18n-section="pricing.gold">
-        <div class="px-7 pt-8 pb-6 border-b border-border">
-          <div class="flex items-center gap-2 mb-5">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <rect x="0.5" y="0.5" width="11" height="11" stroke="#C6A75E" stroke-width="1"/>
-              <rect x="2.5" y="2.5" width="7" height="7" fill="#C6A75E" opacity="0.3"/>
-            </svg>
-            <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#C6A75E; letter-spacing:0.14em;" data-i18n="pricing.gold.tier">Gold</span>
-          </div>
-          <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.gold.desc">Expanded listing with multi-category coverage.</p>
-          <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
-        </div>
-        <ul class="flex-1 px-7 py-6 space-y-0">
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.gold.f1">Expanded asset listing</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.gold.f2">Multiple asset categories</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.gold.f3">Optional cross-location documentation</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.gold.f4">Custom beneficiary designation</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- ── PLATINUM ── -->
-      <div class="border-b xl:border-b-0 xl:border-r border-border flex flex-col" data-i18n-section="pricing.platinum">
-        <div class="px-7 pt-8 pb-6 border-b border-border" style="background:#FAFAF8;">
-          <div class="flex items-center gap-2 mb-5">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <rect x="0.5" y="0.5" width="11" height="11" stroke="#0F3D2E" stroke-width="1"/>
-              <rect x="2.5" y="2.5" width="7" height="7" fill="#0F3D2E" opacity="0.2"/>
-            </svg>
-            <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#0F3D2E; letter-spacing:0.14em;" data-i18n="pricing.platinum.tier">Platinum</span>
-          </div>
-          <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.platinum.desc">Multi-jurisdiction and business asset inclusion.</p>
-          <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
-        </div>
-        <ul class="flex-1 px-7 py-6 space-y-0" style="background:#FAFAF8;">
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.platinum.f1">Multi-jurisdiction asset documentation</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.platinum.f2">Business ownership inclusion</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.platinum.f3">Detailed inheritance clauses</span>
-          </li>
-          <li class="feature-row">
-            <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span data-i18n="pricing.platinum.f4">Advanced beneficiary structures</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- ── DIAMOND ── -->
-      <div class="flex flex-col" style="background:#0F3D2E;" data-i18n-section="pricing.diamond">
-        <div class="px-7 pt-8 pb-6" style="border-bottom:1px solid rgba(255,255,255,0.12);">
-          <div class="flex items-center gap-2 mb-5">
-            <!-- Diamond mark -->
-            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <polygon points="7,1 13,7 7,13 1,7" stroke="#C6A75E" stroke-width="1" fill="none"/>
-              <polygon points="7,4 10,7 7,10 4,7" fill="#C6A75E" opacity="0.3"/>
-            </svg>
-            <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#C6A75E; letter-spacing:0.14em;" data-i18n="pricing.diamond.tier">Diamond</span>
-          </div>
-          <p class="font-display text-base font-medium leading-snug mb-2" style="color:#F8F7F3;" data-i18n="pricing.diamond.desc">Full cross-border and investment-grade structuring.</p>
-          <span class="inline-block font-body text-xs px-2 py-0.5" style="color:#C6A75E; border:1px solid rgba(198,167,94,0.4); letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
-        </div>
-        <ul class="flex-1 px-7 py-6 space-y-0">
-          <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
-            <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f1">Multi-country asset and investment structuring</span>
-          </li>
-          <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
-            <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f2">Business and partnership documentation</span>
-          </li>
-          <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
-            <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f3">Multi-layer beneficiary mapping</span>
-          </li>
-          <li class="feature-row" style="border-bottom-color:transparent;">
-            <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
-            <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f4">Enhanced legal documentation format</span>
-          </li>
-        </ul>
-      </div>
-
-    </div><!-- /grid -->
-
-    <!-- Bottom line + CTA -->
-    <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal" style="transition-delay:0.18s;">
-      <p class="font-body text-sm text-charcoal" style="letter-spacing:0.03em;" data-i18n="pricing.tagline">
-        Transparent.&ensp;Structured.&ensp;One-Time.
-      </p>
-      <a href="#start" class="btn-primary" data-i18n="pricing.cta">Select Your Structure</a>
+      <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.gold.desc">Expanded listing with multi-category coverage.</p>
+      <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
     </div>
+    <ul class="flex-1 px-7 py-6 space-y-0">
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.gold.f1">Expanded asset listing</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.gold.f2">Multiple asset categories</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.gold.f3">Optional cross-location documentation</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.gold.f4">Custom beneficiary designation</span>
+      </li>
+    </ul>
+  </div>
 
-    <!-- Clarification note -->
-    <p class="font-body text-xs text-muted mt-6 reveal" style="font-weight:300; transition-delay:0.22s;" data-i18n="pricing.note">
-      All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.
-    </p>
+  <!-- ── PLATINUM ── -->
+  <div class="border-b xl:border-b-0 xl:border-r border-border flex flex-col" data-i18n-section="pricing.platinum">
+    <div class="px-7 pt-8 pb-6 border-b border-border" style="background:#FAFAF8;">
+      <div class="flex items-center gap-2 mb-5">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <rect x="0.5" y="0.5" width="11" height="11" stroke="#0F3D2E" stroke-width="1"/>
+          <rect x="2.5" y="2.5" width="7" height="7" fill="#0F3D2E" opacity="0.2"/>
+        </svg>
+        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#0F3D2E; letter-spacing:0.14em;" data-i18n="pricing.platinum.tier">Platinum</span>
+      </div>
+      <p class="font-display text-base font-medium text-charcoal leading-snug mb-2" data-i18n="pricing.platinum.desc">Multi-jurisdiction and business asset inclusion.</p>
+      <span class="inline-block font-body text-xs text-muted border border-border px-2 py-0.5" style="letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
+    </div>
+    <ul class="flex-1 px-7 py-6 space-y-0" style="background:#FAFAF8;">
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.platinum.f1">Multi-jurisdiction asset documentation</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.platinum.f2">Business ownership inclusion</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.platinum.f3">Detailed inheritance clauses</span>
+      </li>
+      <li class="feature-row">
+        <svg class="check-icon flex-shrink-0" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span data-i18n="pricing.platinum.f4">Advanced beneficiary structures</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── DIAMOND ── -->
+  <div class="flex flex-col" style="background:#0F3D2E;" data-i18n-section="pricing.diamond">
+    <div class="px-7 pt-8 pb-6" style="border-bottom:1px solid rgba(255,255,255,0.12);">
+      <div class="flex items-center gap-2 mb-5">
+        <!-- Diamond mark -->
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+          <polygon points="7,1 13,7 7,13 1,7" stroke="#C6A75E" stroke-width="1" fill="none"/>
+          <polygon points="7,4 10,7 7,10 4,7" fill="#C6A75E" opacity="0.3"/>
+        </svg>
+        <span class="font-body text-xs font-medium tracking-widest uppercase" style="color:#C6A75E; letter-spacing:0.14em;" data-i18n="pricing.diamond.tier">Diamond</span>
+      </div>
+      <p class="font-display text-base font-medium leading-snug mb-2" style="color:#F8F7F3;" data-i18n="pricing.diamond.desc">Full cross-border and investment-grade structuring.</p>
+      <span class="inline-block font-body text-xs px-2 py-0.5" style="color:#C6A75E; border:1px solid rgba(198,167,94,0.4); letter-spacing:0.06em;" data-i18n="pricing.onetime">One-Time Fee</span>
+    </div>
+    <ul class="flex-1 px-7 py-6 space-y-0">
+      <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
+        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f1">Multi-country asset and investment structuring</span>
+      </li>
+      <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
+        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f2">Business and partnership documentation</span>
+      </li>
+      <li class="feature-row" style="border-bottom-color:rgba(255,255,255,0.1);">
+        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f3">Multi-layer beneficiary mapping</span>
+      </li>
+      <li class="feature-row" style="border-bottom-color:transparent;">
+        <svg class="check-icon flex-shrink-0" style="color:#C6A75E;" viewBox="0 0 16 16" fill="none"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg>
+        <span style="color:rgba(255,255,255,0.8);" data-i18n="pricing.diamond.f4">Enhanced legal documentation format</span>
+      </li>
+    </ul>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- Bottom line + CTA -->
+<div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal" style="transition-delay:0.18s;">
+  <p class="font-body text-sm text-charcoal" style="letter-spacing:0.03em;" data-i18n="pricing.tagline">
+    Transparent.&ensp;Structured.&ensp;One-Time.
+  </p>
+  <a href="#start" class="btn-primary" data-i18n="pricing.cta">Select Your Structure</a>
+</div>
+
+<!-- Clarification note -->
+<p class="font-body text-xs text-muted mt-6 reveal" style="font-weight:300; transition-delay:0.22s;" data-i18n="pricing.note">
+  All structures are completed as a single, one-time engagement. There are no recurring charges, renewal obligations, or hidden fees. Pricing is disclosed prior to agreement initiation.
+</p>
+```
 
   </div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════════════════
      FINAL CTA
 ═══════════════════════════════════════════════════════════ -->
+
 <section id="start" class="bg-white border-t border-border" data-i18n-section="cta">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-24 lg:py-36 text-center">
 
-    <div class="flex justify-center mb-8 reveal">
-      <span class="gold-rule mx-auto"></span>
-    </div>
+```
+<div class="flex justify-center mb-8 reveal">
+  <span class="gold-rule mx-auto"></span>
+</div>
 
-    <h2 class="font-display text-4xl lg:text-6xl font-medium text-charcoal mb-6 reveal" style="transition-delay:0.06s;" data-i18n="cta.headline">
-      Start With Clarity.
-    </h2>
+<h2 class="font-display text-4xl lg:text-6xl font-medium text-charcoal mb-6 reveal" style="transition-delay:0.06s;" data-i18n="cta.headline">
+  Start With Clarity.
+</h2>
 
-    <p class="font-body text-sm text-muted max-w-lg mx-auto mb-10 leading-relaxed reveal" style="font-weight:300; transition-delay:0.12s;" data-i18n="cta.sub">
-      A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.
-    </p>
+<p class="font-body text-sm text-muted max-w-lg mx-auto mb-10 leading-relaxed reveal" style="font-weight:300; transition-delay:0.12s;" data-i18n="cta.sub">
+  A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.
+</p>
 
-    <div class="flex flex-wrap gap-3 justify-center reveal" style="transition-delay:0.18s;">
-      <a href="#" class="btn-gold" data-i18n="cta.btn">Draft Your Agreement</a>
-    </div>
+<div class="flex flex-wrap gap-3 justify-center reveal" style="transition-delay:0.18s;">
+  <a href="#" class="btn-gold" data-i18n="cta.btn">Draft Your Agreement</a>
+</div>
 
-    <!-- Decorative rule -->
-    <div class="mt-16 pt-12 border-t border-border reveal" style="transition-delay:0.24s;">
-      <div class="flex flex-wrap items-center justify-center gap-8 text-xs font-body text-muted" style="font-weight:300; letter-spacing:0.05em;">
-        <span data-i18n="cta.trust1">Sharia-Aware Framework</span>
-        <span class="text-border">—</span>
-        <span data-i18n="cta.trust2">End-to-End Encrypted</span>
-        <span class="text-border">—</span>
-        <span data-i18n="cta.trust3">Court-Structured Format</span>
-        <span class="text-border">—</span>
-        <span data-i18n="cta.trust4">No Hidden Terms</span>
-      </div>
-    </div>
+<!-- Decorative rule -->
+<div class="mt-16 pt-12 border-t border-border reveal" style="transition-delay:0.24s;">
+  <div class="flex flex-wrap items-center justify-center gap-8 text-xs font-body text-muted" style="font-weight:300; letter-spacing:0.05em;">
+    <span data-i18n="cta.trust1">Sharia-Aware Framework</span>
+    <span class="text-border">—</span>
+    <span data-i18n="cta.trust2">End-to-End Encrypted</span>
+    <span class="text-border">—</span>
+    <span data-i18n="cta.trust3">Court-Structured Format</span>
+    <span class="text-border">—</span>
+    <span data-i18n="cta.trust4">No Hidden Terms</span>
+  </div>
+</div>
+```
 
   </div>
 </section>
 
-
 <!-- ═══════════════════════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════════════════════ -->
+
 <footer id="contact" class="border-t border-border" style="background:#F8F7F3;" data-i18n-section="footer">
   <div class="max-w-6xl mx-auto px-6 lg:px-8 py-10">
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
 
-      <!-- Brand -->
-      <div class="flex items-center gap-3">
-        <div class="w-6 h-6">
-          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-            <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-            <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-            <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-          </svg>
-        </div>
-        <span class="font-display text-base font-semibold text-charcoal" style="letter-spacing:0.05em;">Mithaq</span>
-      </div>
-
-      <!-- Links -->
-      <nav class="flex flex-wrap items-center gap-6" aria-label="Footer navigation">
-        <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.terms">Terms of Use</a>
-        <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.contact">Contact</a>
-      </nav>
-
-      <!-- Copyright -->
-      <p class="font-body text-xs text-muted" style="font-weight:300;" data-i18n="footer.copyright">
-        &copy; 2026 Mithaq. All rights reserved.
-      </p>
-
+```
+  <!-- Brand -->
+  <div class="flex items-center gap-3">
+    <div class="w-6 h-6">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
+        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
+        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
+        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
+      </svg>
     </div>
+    <span class="font-display text-base font-semibold text-charcoal" style="letter-spacing:0.05em;">Mithaq</span>
+  </div>
+
+  <!-- Links -->
+  <nav class="flex flex-wrap items-center gap-6" aria-label="Footer navigation">
+    <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.terms">Terms of Use</a>
+    <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="#" class="font-body text-xs text-muted hover:text-charcoal transition-colors" style="letter-spacing:0.04em;" data-i18n="footer.contact">Contact</a>
+  </nav>
+
+  <!-- Copyright -->
+  <p class="font-body text-xs text-muted" style="font-weight:300;" data-i18n="footer.copyright">
+    &copy; 2026 Mithaq. All rights reserved.
+  </p>
+
+</div>
+```
+
   </div>
 </footer>
-
 
 <!-- ═══════════════════════════════════════════════════════════
      SCRIPTS
 ═══════════════════════════════════════════════════════════ -->
+
 <script>
   // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
@@ -1283,8 +1314,8 @@
     });
 
     // Active button state
-    document.querySelectorAll('[lang="en"],[lang="ar"],[lang="hi"],[lang="ur"]').forEach(btn => {
-      const active = btn.getAttribute('lang') === lang;
+    document.querySelectorAll('[data-lang="en"],[data-lang="ar"],[data-lang="hi"],[data-lang="ur"]').forEach(btn => {
+      const active = btn.getAttribute('data-lang') === lang;
       btn.style.borderBottom = active ? '1px solid currentColor' : 'none';
       btn.style.fontWeight = active ? '500' : '400';
       btn.style.color = active ? '#1E1E1E' : '';
@@ -1293,7 +1324,7 @@
 
   // Wire up all language buttons
   ['en', 'ar', 'hi', 'ur'].forEach(lang => {
-    document.querySelectorAll(`[lang="${lang}"]`).forEach(btn => {
+    document.querySelectorAll(`[data-lang="${lang}"]`).forEach(btn => {
       btn.addEventListener('click', () => setLanguage(lang));
     });
   });
