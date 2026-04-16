@@ -338,7 +338,7 @@
       cursor: not-allowed;
     }
 
-    /* ── Error Banner ───────────────────────────────────────── */
+    /* ── Error Banner ────────────────────────────────────────── */
     .error-banner {
       display: none;
       padding: 12px 16px;
@@ -483,7 +483,7 @@ const API_BASE     = `${SUPABASE_URL}/functions/v1`;
 const PACKAGE_META = {
   'prenup-standard': {
     displayName: 'Silver — Standard Agreement',
-    tagline: 'Perfect for straightforward prenuptial agreements',
+    tagline: 'For straightforward prenuptial agreements',
     features: [
       'Up to 3 assets',
       '1 jurisdiction (country)',
@@ -493,9 +493,9 @@ const PACKAGE_META = {
       'Tamper-proof vault storage',
     ],
   },
-  'prenup-premium': {
+  'prenup-gold': {
     displayName: 'Gold — Premium Agreement',
-    tagline: 'For complex cross-border arrangements',
+    tagline: 'For expanded asset coverage and cross-border arrangements',
     features: [
       'Up to 8 assets',
       'Up to 2 jurisdictions',
@@ -505,13 +505,41 @@ const PACKAGE_META = {
       'Priority document generation',
     ],
   },
+  'prenup-platinum': {
+    displayName: 'Platinum — Advanced Agreement',
+    tagline: 'For multi-jurisdiction and business asset inclusion',
+    features: [
+      'Up to 20 assets',
+      'Up to 5 jurisdictions',
+      'Up to 8 beneficiaries',
+      'Business ownership structuring',
+      'Advanced inheritance logic',
+      'Legal audit layer',
+      'Express processing',
+    ],
+  },
+  'prenup-diamond': {
+    displayName: 'Diamond — Comprehensive Agreement',
+    tagline: 'For unlimited, fully bespoke agreement structures',
+    features: [
+      'Unlimited assets',
+      'Unlimited jurisdictions',
+      'Unlimited beneficiaries',
+      'Custom clause drafting',
+      'Dedicated onboarding support',
+      'Integrated legal review option',
+      '24-hour fast-track preparation',
+    ],
+  },
 };
 
 // Server-side price display map (fetched from /api/detect-currency response)
 // This is display-only — actual pricing enforced server-side via Stripe Price objects
 const PRICE_DISPLAY = {
-  'prenup-standard': { AED: 'AED 2,500', EUR: 'EUR 680', USD: 'USD 750' },
-  'prenup-premium':  { AED: 'AED 4,900', EUR: 'EUR 1,320', USD: 'USD 1,450' },
+  'prenup-standard': { AED: 'AED 2,500',  EUR: 'EUR 680',   USD: 'USD 750'   },
+  'prenup-gold':     { AED: 'AED 4,900',  EUR: 'EUR 1,320', USD: 'USD 1,450' },
+  'prenup-platinum': { AED: 'AED 9,500',  EUR: 'EUR 2,580', USD: 'USD 2,800' },
+  'prenup-diamond':  { AED: 'AED 18,000', EUR: 'EUR 4,900', USD: 'USD 5,300' },
 };
 
 const SUPPORTED_CURRENCIES = ['AED', 'EUR', 'USD'];
