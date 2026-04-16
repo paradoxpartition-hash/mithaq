@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Confirmed — Mithaq</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --emerald:#0F3D2E; --gold:#C6A75E; --offwhite:#F8F7F3;
+      --white:#FFFFFF; --charcoal:#1E1E1E; --muted:#6B6B6B; --border:#D8D4C9;
+      --f-display:'Cormorant Garamond',Georgia,serif;
+      --f-body:'DM Sans',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--offwhite);color:var(--charcoal);font-family:var(--f-body);
+         font-weight:300;-webkit-font-smoothing:antialiased;
+         min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;}
+    .card{border:1px solid var(--border);background:var(--white);
+          padding:48px 40px;max-width:480px;width:100%;text-align:center;}
+    .check-circle{width:64px;height:64px;border-radius:50%;background:var(--emerald);
+                  display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+    .gold-rule{display:block;width:48px;height:1px;background:var(--gold);margin:0 auto 20px;}
+    h1{font-family:var(--f-display);font-size:clamp(1.75rem,5vw,2.25rem);font-weight:500;margin-bottom:12px;}
+    p{font-size:0.9rem;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+    .ref{font-size:0.75rem;letter-spacing:0.08em;color:var(--muted);
+         background:var(--offwhite);padding:8px 12px;border:1px solid var(--border);word-break:break-all;}
+    .btn{display:inline-block;margin-top:28px;padding:14px 32px;background:var(--emerald);
+         color:var(--offwhite);font-family:var(--f-body);font-size:0.8125rem;font-weight:500;
+         letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+         border:1px solid var(--emerald);transition:background 0.2s;}
+    .btn:hover{background:#0A2B1F;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="check-circle">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="square">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <span class="gold-rule"></span>
+    <h1>Payment Confirmed</h1>
+    <p>Thank you. Your agreement has been initiated and you will receive a confirmation email shortly with next steps.</p>
+    <p id="session-ref" class="ref" style="display:none"></p>
+    <a href="./index.html" class="btn">Return to Mithaq</a>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    if (sessionId) {
+      const el = document.getElementById('session-ref');
+      el.textContent = 'Reference: ' + sessionId;
+      el.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
