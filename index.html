@@ -535,6 +535,15 @@
     .pricing-footer { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
     .pricing-tagline { font-size: 0.875rem; color: var(--charcoal); letter-spacing: 0.03em; }
     .pricing-note { font-size: 0.75rem; color: var(--muted); margin-top: 24px; font-weight: 300; }
+    .pricing-process-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
 
     /* ── CTA ───────────────────────────────────────────────────── */
     .cta-section { background: var(--white); border-top: 1px solid var(--border); text-align: center; }
@@ -678,7 +687,7 @@
       <h1 class="hero-headline reveal" style="transition-delay:0.08s" data-i18n="hero.headline">Clarity Before<br>Commitment.</h1>
       <p class="hero-sub reveal" style="transition-delay:0.14s" data-i18n="hero.sub">A Sharia-compliant digital marriage agreement platform designed for transparency, protection, and mutual respect.</p>
       <div class="hero-ctas reveal" style="transition-delay:0.2s">
-        <a href="#start" class="btn-primary" data-i18n="hero.cta1">Create Your Agreement</a>
+        <a href="#pricing" class="btn-primary" data-i18n="hero.cta1">Create Your Agreement</a>
         <a href="#how"   class="btn-secondary" data-i18n="hero.cta2">Learn How It Works</a>
       </div>
       <div class="info-box reveal" style="transition-delay:0.26s">
@@ -885,7 +894,7 @@
           <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f4">Standard clause structure</span></li>
           <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f5">Digital drafting &amp; signing</span></li>
         </ul>
-        <div style="padding:0 28px 28px"><a href="#start" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.silver.cta">Start Silver</a></div>
+        <div style="padding:0 28px 28px"><a href="./purchase.html?package=prenup-standard" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.silver.cta">Start Silver</a></div>
       </div>
       <!-- Gold -->
       <div class="pricing-card pricing-card-featured">
@@ -905,7 +914,7 @@
           <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f5">Cross-border clause support</span></li>
           <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f6">Priority document generation</span></li>
         </ul>
-        <div style="padding:0 28px 28px"><a href="#start" class="btn-primary" style="display:block;text-align:center" data-i18n="pricing.gold.cta">Start Gold</a></div>
+        <div style="padding:0 28px 28px"><a href="./purchase.html?package=prenup-standard" class="btn-primary" style="display:block;text-align:center" data-i18n="pricing.gold.cta">Start Gold</a></div>
       </div>
       <!-- Platinum -->
       <div class="pricing-card">
@@ -926,7 +935,7 @@
           <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f6">Legal audit layer</span></li>
           <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f7">Express processing</span></li>
         </ul>
-        <div style="padding:0 28px 28px;background:#FAFAF8"><a href="#start" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.platinum.cta">Start Platinum</a></div>
+        <div style="padding:0 28px 28px;background:#FAFAF8"><a href="./purchase.html?package=prenup-premium" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.platinum.cta">Start Platinum</a></div>
       </div>
       <!-- Diamond -->
       <div class="pricing-card pricing-card-dark">
@@ -947,13 +956,13 @@
           <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f6">Integrated legal review option</span></li>
           <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f7">24-hour fast-track preparation</span></li>
         </ul>
-        <div style="padding:0 28px 28px;background:var(--emerald)"><a href="#start" class="btn-gold" style="display:block;text-align:center" data-i18n="pricing.diamond.cta">Start Diamond</a></div>
+        <div style="padding:0 28px 28px;background:var(--emerald)"><a href="./purchase.html?package=prenup-premium" class="btn-gold" style="display:block;text-align:center" data-i18n="pricing.diamond.cta">Start Diamond</a></div>
       </div>
     </div>
 
+    <p class="pricing-process-note reveal" style="transition-delay:0.15s" data-i18n="pricing.process">Agreement drafting begins after successful payment confirmation.</p>
     <div class="pricing-footer reveal" style="transition-delay:0.18s">
       <p class="pricing-tagline" data-i18n="pricing.tagline">Transparent.&ensp;No Subscriptions.&ensp;One-Time.</p>
-      <a href="#start" class="btn-primary" data-i18n="pricing.cta">Select Your Structure</a>
     </div>
     <p class="pricing-note reveal" style="transition-delay:0.22s" data-i18n="pricing.note">Designed to replace traditional legal drafting costs of AED 5,000–25,000+, while maintaining structured, enforceable agreements.</p>
   </div>
@@ -1116,7 +1125,7 @@ const i18n = {
     'pricing.diamond.f3':'Unlimited beneficiaries','pricing.diamond.f4':'Custom clause drafting',
     'pricing.diamond.f5':'Dedicated onboarding support','pricing.diamond.f6':'Integrated legal review option',
     'pricing.diamond.f7':'24-hour fast-track preparation','pricing.diamond.cta':'Start Diamond',
-    'pricing.tagline':'Transparent. No Subscriptions. One-Time.','pricing.cta':'Select Your Structure',
+    'pricing.tagline':'Transparent. No Subscriptions. One-Time.','pricing.process':'Agreement drafting begins after successful payment confirmation.','pricing.cta':'Select Your Structure',
     'pricing.note':'Designed to replace traditional legal drafting costs of AED 5,000–25,000+, while maintaining structured, enforceable agreements.',
     'cta.headline':'Start With Clarity.','cta.btn':'Draft Your Agreement',
     'cta.sub':'A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.',
@@ -1197,7 +1206,7 @@ const i18n = {
     'pricing.diamond.f3':'مستفيدون غير محدودون','pricing.diamond.f4':'صياغة بنود مخصَّصة',
     'pricing.diamond.f5':'دعم تأهيل مخصَّص','pricing.diamond.f6':'خيار المراجعة القانونية المدمجة',
     'pricing.diamond.f7':'إعداد سريع خلال 24 ساعة','pricing.diamond.cta':'ابدأ الألماسي',
-    'pricing.tagline':'شفاف. بلا اشتراكات. لمرة واحدة.','pricing.cta':'اختر هيكلك',
+    'pricing.tagline':'شفاف. بلا اشتراكات. لمرة واحدة.','pricing.process':'تبدأ صياغة الاتفاقية بعد تأكيد الدفع.','pricing.cta':'اختر هيكلك',
     'pricing.note':'مصمَّم ليحلَّ محل تكاليف الصياغة القانونية التقليدية البالغة 5,000–25,000+ د.إ.',
     'cta.headline':'ابدأ بالوضوح.','cta.btn':'ابدأ صياغة اتفاقيتك',
     'cta.sub':'الاتفاقية المنظَّمة جيداً هي تعبير عن الرعاية — لشريكك وللأساس الذي تبنيانه معاً.',
@@ -1280,7 +1289,7 @@ const i18n = {
     'pricing.diamond.f3':'Неограниченное число бенефициаров','pricing.diamond.f4':'Индивидуальная разработка пунктов',
     'pricing.diamond.f5':'Персональная поддержка при подключении','pricing.diamond.f6':'Интегрированный вариант юридической проверки',
     'pricing.diamond.f7':'Подготовка за 24 часа','pricing.diamond.cta':'Начать — Бриллиантовый',
-    'pricing.tagline':'Прозрачно. Без подписок. Единовременно.','pricing.cta':'Выбрать структуру',
+    'pricing.tagline':'Прозрачно. Без подписок. Единовременно.','pricing.process':'Составление договора начинается после подтверждения оплаты.','pricing.cta':'Выбрать структуру',
     'pricing.note':'Призван заменить традиционные расходы на юридическое оформление в размере AED 5 000–25 000+ при сохранении структурированных, исполнимых договоров.',
     'cta.headline':'Начните с ясности.','cta.btn':'Составить договор',
     'cta.sub':'Хорошо структурированный договор, заключённый свободно и прозрачно, — это проявление заботы о партнёре и об основе, которую вы строите вместе.',
@@ -1362,7 +1371,7 @@ const i18n = {
     'pricing.diamond.f3':'无限受益人','pricing.diamond.f4':'自定义条款起草',
     'pricing.diamond.f5':'专属入职支持','pricing.diamond.f6':'综合法律审查选项',
     'pricing.diamond.f7':'24小时快速通道准备','pricing.diamond.cta':'开始 – 钻石',
-    'pricing.tagline':'透明。无订阅。一次性。','pricing.cta':'选择方案',
+    'pricing.tagline':'透明。无订阅。一次性。','pricing.process':'付款确认后开始起草协议。','pricing.cta':'选择方案',
     'pricing.note':'旨在替代AED 5,000–25,000+的传统法律起草费用，同时保持结构化、可执行的协议。',
     'cta.headline':'从清晰开始。','cta.btn':'起草您的协议',
     'cta.sub':'一份结构完善、自愿透明签署的协议，是对伴侣的关爱，也是对共同基础的承诺。',
@@ -1445,7 +1454,7 @@ const i18n = {
     'pricing.diamond.f3':'Beneficiarios ilimitados','pricing.diamond.f4':'Redacción personalizada de cláusulas',
     'pricing.diamond.f5':'Soporte de incorporación dedicado','pricing.diamond.f6':'Opción de revisión legal integrada',
     'pricing.diamond.f7':'Preparación en 24 horas','pricing.diamond.cta':'Comenzar – Diamante',
-    'pricing.tagline':'Transparente. Sin suscripciones. Pago único.','pricing.cta':'Elegir estructura',
+    'pricing.tagline':'Transparente. Sin suscripciones. Pago único.','pricing.process':'La redacción del acuerdo comienza tras la confirmación del pago.','pricing.cta':'Elegir estructura',
     'pricing.note':'Diseñado para reemplazar los costos tradicionales de redacción legal de AED 5.000–25.000+, manteniendo acuerdos estructurados y ejecutables.',
     'cta.headline':'Comience con claridad.','cta.btn':'Redactar su acuerdo',
     'cta.sub':'Un acuerdo bien estructurado, celebrado libremente y con transparencia, es un acto de cuidado — para su pareja y para la base que construyen juntos.',
@@ -1527,7 +1536,7 @@ const i18n = {
     'pricing.diamond.f3':'असीमित लाभार्थी','pricing.diamond.f4':'कस्टम खंड मसौदा',
     'pricing.diamond.f5':'समर्पित ऑनबोर्डिंग सहायता','pricing.diamond.f6':'एकीकृत कानूनी समीक्षा विकल्प',
     'pricing.diamond.f7':'24 घंटे फास्ट-ट्रैक तैयारी','pricing.diamond.cta':'डायमंड शुरू करें',
-    'pricing.tagline':'पारदर्शी। कोई सदस्यता नहीं। एकमुश्त।','pricing.cta':'अपनी संरचना चुनें',
+    'pricing.tagline':'पारदर्शी। कोई सदस्यता नहीं। एकमुश्त।','pricing.process':'भुगतान की पुष्टि के बाद समझौता मसौदा तैयार होना शुरू होता है।','pricing.cta':'अपनी संरचना चुनें',
     'pricing.note':'AED 5,000–25,000+ की पारंपरिक कानूनी मसौदा लागत को प्रतिस्थापित करने के लिए डिज़ाइन किया गया।',
     'cta.headline':'स्पष्टता के साथ शुरू करें।','cta.btn':'अपना समझौता तैयार करें',
     'cta.sub':'एक अच्छी तरह से संरचित समझौता देखभाल का कार्य है — आपके साथी के लिए।',
@@ -1609,7 +1618,7 @@ const i18n = {
     'pricing.diamond.f3':'لامحدود مستفیدین','pricing.diamond.f4':'کسٹم شق مسودہ سازی',
     'pricing.diamond.f5':'مخصوص آن بورڈنگ معاونت','pricing.diamond.f6':'مربوط قانونی جائزہ اختیار',
     'pricing.diamond.f7':'24 گھنٹے فاسٹ ٹریک تیاری','pricing.diamond.cta':'ڈائمنڈ شروع کریں',
-    'pricing.tagline':'شفاف۔ کوئی سبسکرپشن نہیں۔ یکمشت۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں',
+    'pricing.tagline':'شفاف۔ کوئی سبسکرپشن نہیں۔ یکمشت۔','pricing.process':'معاہدے کا مسودہ ادائیگی کی تصدیق کے بعد شروع ہوتا ہے۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں',
     'pricing.note':'AED 5,000–25,000+ کی روایتی قانونی مسودہ سازی لاگت کو تبدیل کرنے کے لیے ڈیزائن کیا گیا۔',
     'cta.headline':'وضاحت کے ساتھ شروع کریں۔','cta.btn':'اپنا معاہدہ تیار کریں',
     'cta.sub':'ایک اچھی طرح سے منظم معاہدہ دیکھ بھال کا عمل ہے — آپ کے ساتھی کے لیے۔',
