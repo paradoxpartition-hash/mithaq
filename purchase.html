@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Payment — Mithaq</title>
+  <meta name="description" content="Complete your Mithaq digital prenuptial agreement purchase securely." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Fonts: same as main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --emerald:   #0F3D2E;
+      --emerald-dk:#0A2B1F;
+      --gold:      #C6A75E;
+      --offwhite:  #F8F7F3;
+      --white:     #FFFFFF;
+      --charcoal:  #1E1E1E;
+      --muted:     #6B6B6B;
+      --border:    #D8D4C9;
+      --error:     #C0392B;
+      --f-display: 'Cormorant Garamond', Georgia, serif;
+      --f-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--offwhite);
+      color: var(--charcoal);
+      font-family: var(--f-body);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .site-header {
+      background: var(--offwhite);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-text {
+      font-family: var(--f-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .secure-badge svg { color: var(--emerald); }
+
+    /* ── Main Layout ─────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 560px;
+      width: 100%;
+      margin: 64px auto;
+      padding: 0 24px;
+    }
+
+    /* ── Breadcrumb ──────────────────────────────────────────── */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .breadcrumb a:hover { color: var(--charcoal); }
+    .breadcrumb-sep { color: var(--border); }
+
+    /* ── Section Label ───────────────────────────────────────── */
+    .section-label-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .label {
+      font-family: var(--f-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── Page Headline ───────────────────────────────────────── */
+    .page-headline {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .page-sub {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    /* ── Card ────────────────────────────────────────────────── */
+    .card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 32px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: var(--f-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* ── Package Summary ─────────────────────────────────────── */
+    .package-summary {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .package-name {
+      font-family: var(--f-display);
+      font-size: 1.375rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .package-desc {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .package-price {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .price-amount {
+      font-family: var(--f-display);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .price-currency {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .package-features {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      gap: 10px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8125rem;
+      color: var(--charcoal);
+    }
+    .feature-item svg {
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--emerald);
+    }
+
+    /* ── Currency Selector ───────────────────────────────────── */
+    .currency-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .currency-label {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-right: 4px;
+    }
+    .currency-btn {
+      padding: 6px 14px;
+      font-family: var(--f-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .currency-btn:hover {
+      border-color: var(--charcoal);
+      color: var(--charcoal);
+    }
+    .currency-btn.active {
+      border-color: var(--emerald);
+      background: var(--emerald);
+      color: var(--offwhite);
+    }
+    .currency-auto-note {
+      font-size: 0.6875rem;
+      color: var(--muted);
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Email Field ─────────────────────────────────────────── */
+    .field-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .field-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: var(--offwhite);
+      font-family: var(--f-body);
+      font-size: 0.9375rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field-input:focus {
+      border-color: var(--emerald);
+    }
+    .field-input.error {
+      border-color: var(--error);
+    }
+
+    /* ── Trust Indicators ────────────────────────────────────── */
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .trust-item svg { color: var(--emerald); }
+
+    /* ── CTA Button ──────────────────────────────────────────── */
+    .btn-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 32px;
+      background: var(--emerald);
+      color: var(--offwhite);
+      font-family: var(--f-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 24px;
+    }
+    .btn-cta:hover:not(:disabled) { background: var(--emerald-dk); }
+    .btn-cta:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ── Error Banner ───────────────────────────────────────── */
+    .error-banner {
+      display: none;
+      padding: 12px 16px;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: var(--error);
+      font-size: 0.8125rem;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .error-banner.visible { display: block; }
+
+    /* ── Spinner ─────────────────────────────────────────────── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .btn-cta.loading .spinner { display: block; }
+    .btn-cta.loading .btn-text { opacity: 0.7; }
+
+    /* ── Invalid Package ─────────────────────────────────────── */
+    .invalid-package {
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .invalid-package h1 {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .invalid-package p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      font-family: var(--f-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-back:hover { background: var(--emerald); color: var(--offwhite); }
+
+    /* ── Loading Skeleton ────────────────────────────────────── */
+    @keyframes shimmer {
+      0%   { background-position: -200% 0; }
+      100% { background-position:  200% 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #e8e4dc 25%, #f0ece4 50%, #e8e4dc 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 2px;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .card { padding: 24px 20px; }
+      .package-summary { flex-direction: column; }
+      .package-price { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="./index.html" class="logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
+        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
+        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
+        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
+      </svg>
+      <span class="logo-text">Mithaq</span>
+    </a>
+    <div class="secure-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+        <rect x="3" y="11" width="18" height="11" rx="0"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      Secure Checkout
+    </div>
+  </div>
+</header>
+
+<!-- ── Main ─────────────────────────────────────────────────── -->
+<main id="app">
+  <!-- JS renders content here -->
+  <div style="padding: 80px 0; text-align: center;">
+    <div class="skeleton" style="width: 200px; height: 24px; margin: 0 auto 16px;"></div>
+    <div class="skeleton" style="width: 320px; height: 14px; margin: 0 auto 8px;"></div>
+    <div class="skeleton" style="width: 260px; height: 14px; margin: 0 auto;"></div>
+  </div>
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p>© 2026 Mithaq. All rights reserved. &nbsp;·&nbsp; Payments processed securely by Stripe. &nbsp;·&nbsp;
+    <a href="./index.html#contact" style="color:inherit;">Contact</a>
+  </p>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- CLIENT SCRIPT                                             -->
+<!-- Prices are NEVER defined here — always fetched/validated  -->
+<!-- server-side. The UI only reads what the server returns.   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+// ─── Configuration ───────────────────────────────────────────
+// ⚠️  Replace with your actual Supabase project URL
+const SUPABASE_URL = 'https://xbbdigovnztxoxpydjav.supabase.co';
+const API_BASE     = `${SUPABASE_URL}/functions/v1`;
+
+// Package metadata (display only — prices come from server)
+const PACKAGE_META = {
+  'prenup-standard': {
+    displayName: 'Silver — Standard Agreement',
+    tagline: 'Perfect for straightforward prenuptial agreements',
+    features: [
+      'Up to 3 assets',
+      '1 jurisdiction (country)',
+      'Up to 2 beneficiaries',
+      'Standard clause structure',
+      'Digital drafting & signing',
+      'Tamper-proof vault storage',
+    ],
+  },
+  'prenup-premium': {
+    displayName: 'Gold — Premium Agreement',
+    tagline: 'For complex cross-border arrangements',
+    features: [
+      'Up to 8 assets',
+      'Up to 2 jurisdictions',
+      'Up to 4 beneficiaries',
+      'Custom asset allocation',
+      'Cross-border clause support',
+      'Priority document generation',
+    ],
+  },
+};
+
+// Server-side price display map (fetched from /api/detect-currency response)
+// This is display-only — actual pricing enforced server-side via Stripe Price objects
+const PRICE_DISPLAY = {
+  'prenup-standard': { AED: 'AED 2,500', EUR: 'EUR 680', USD: 'USD 750' },
+  'prenup-premium':  { AED: 'AED 4,900', EUR: 'EUR 1,320', USD: 'USD 1,450' },
+};
+
+const SUPPORTED_CURRENCIES = ['AED', 'EUR', 'USD'];
+const CURRENCY_LABELS = { AED: 'AED — UAE Dirham', EUR: 'EUR — Euro', USD: 'USD — US Dollar' };
+
+// ─── State ───────────────────────────────────────────────────
+let state = {
+  packageId: null,
+  packageMeta: null,
+  currency: 'AED',
+  detectedCountry: '',
+  loading: true,
+  submitting: false,
+  error: null,
+  currencyAutoDetected: false,
+};
+
+// ─── Boot ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const packageId = params.get('package') || '';
+  const cancelled = params.get('cancelled') === '1';
+
+  // Validate package client-side (server will re-validate)
+  if (!PACKAGE_META[packageId]) {
+    renderInvalidPackage(packageId);
+    return;
+  }
+
+  state.packageId = packageId;
+  state.packageMeta = PACKAGE_META[packageId];
+  state.error = cancelled ? 'Your previous payment was cancelled. You can try again below.' : null;
+
+  // Detect currency in parallel with rendering skeleton
+  detectCurrency().then(({ currency, country }) => {
+    state.currency = currency;
+    state.detectedCountry = country;
+    state.currencyAutoDetected = true;
+    state.loading = false;
+    render();
+  }).catch(() => {
+    state.currency = 'AED';
+    state.loading = false;
+    render();
+  });
+
+  // Render skeleton immediately
+  render();
+});
+
+// ─── Geo Detection ───────────────────────────────────────────
+async function detectCurrency() {
+  const res = await fetch(`${API_BASE}/detect-currency`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    signal: AbortSignal.timeout(5000),
+  });
+  if (!res.ok) throw new Error('Detection failed');
+  const data = await res.json();
+  return {
+    currency: SUPPORTED_CURRENCIES.includes(data.currency) ? data.currency : 'AED',
+    country: data.country || '',
+  };
+}
+
+// ─── Checkout ────────────────────────────────────────────────
+async function handleSubmit(e) {
+  e.preventDefault();
+  if (state.submitting) return;
+
+  const emailInput = document.getElementById('email-input');
+  const email = emailInput?.value?.trim() || '';
+  const errorBanner = document.getElementById('error-banner');
+
+  // Client-side validation (server will re-validate)
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    emailInput?.classList.add('error');
+    showError('Please enter a valid email address.');
+    return;
+  }
+  emailInput?.classList.remove('error');
+
+  state.submitting = true;
+  state.error = null;
+  updateSubmitButton(true);
+  hideError();
+
+  try {
+    const res = await fetch(`${API_BASE}/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        currency: state.currency,
+        package: state.packageId,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.url) {
+      throw new Error(data.error || 'Failed to create payment session. Please try again.');
+    }
+
+    // Redirect to Stripe Checkout
+    window.location.href = data.url;
+  } catch (err) {
+    state.submitting = false;
+    updateSubmitButton(false);
+    showError(err.message || 'An error occurred. Please try again.');
+  }
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-banner');
+  if (el) { el.textContent = msg; el.classList.add('visible'); }
+}
+function hideError() {
+  const el = document.getElementById('error-banner');
+  if (el) { el.classList.remove('visible'); }
+}
+function updateSubmitButton(loading) {
+  const btn = document.getElementById('submit-btn');
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.classList.toggle('loading', loading);
+}
+
+function selectCurrency(currency) {
+  if (!SUPPORTED_CURRENCIES.includes(currency)) return;
+  state.currency = currency;
+  state.currencyAutoDetected = false;
+  // Update UI without full re-render
+  document.querySelectorAll('.currency-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.currency === currency);
+  });
+  const priceEl = document.getElementById('price-display');
+  if (priceEl) {
+    priceEl.textContent = PRICE_DISPLAY[state.packageId]?.[currency] || '';
+  }
+  const noteEl = document.getElementById('currency-note');
+  if (noteEl) noteEl.textContent = '';
+}
+
+// ─── Render ──────────────────────────────────────────────────
+function render() {
+  const app = document.getElementById('app');
+  if (!app) return;
+
+  if (!state.packageId) return;
+
+  const pkg = state.packageMeta;
+  const priceDisplay = PRICE_DISPLAY[state.packageId]?.[state.currency] || '—';
+  const [priceValue, ...priceCurrencyParts] = priceDisplay.split(' ');
+  const priceCurrency = priceCurrencyParts.join(' ');
+
+  const cancelledNotice = new URLSearchParams(window.location.search).get('cancelled') === '1'
+    ? `<div class="error-banner visible" style="margin-bottom:16px;">Your previous payment was cancelled. You can try again below.</div>`
+    : '';
+
+  app.innerHTML = `
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./index.html">Mithaq</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Purchase</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="section-label-row">
+      <span class="gold-rule"></span>
+      <span class="label">Secure Payment</span>
+    </div>
+    <h1 class="page-headline">Complete Your Agreement</h1>
+    <p class="page-sub">Review your selection and proceed to secure payment via Stripe.</p>
+
+    ${cancelledNotice}
+
+    <!-- Package Card -->
+    <div class="card">
+      <p class="card-title">Your Package</p>
+      <div class="package-summary">
+        <div>
+          <p class="package-name">${pkg.displayName}</p>
+          <p class="package-desc">${pkg.tagline}</p>
+        </div>
+        <div class="package-price">
+          <div class="price-amount" id="price-display">${priceDisplay}</div>
+          <div class="price-currency">One-time fee</div>
+        </div>
+      </div>
+      <ul class="package-features">
+        ${pkg.features.map(f => `
+          <li class="feature-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/>
+              <path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/>
+            </svg>
+            ${f}
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <!-- Currency Selector -->
+    <div class="card">
+      <p class="card-title">Currency</p>
+      <div class="currency-row">
+        <span class="currency-label">Pay in:</span>
+        ${SUPPORTED_CURRENCIES.map(c => `
+          <button class="currency-btn${c === state.currency ? ' active' : ''}"
+                  data-currency="${c}"
+                  onclick="selectCurrency('${c}')"
+                  title="${CURRENCY_LABELS[c]}"
+                  aria-label="Select ${c}">
+            ${c}
+          </button>
+        `).join('')}
+      </div>
+      <p class="currency-auto-note" id="currency-note">
+        ${state.currencyAutoDetected && state.detectedCountry
+          ? `Auto-detected based on your location (${state.detectedCountry}). You can change this above.`
+          : ''}
+      </p>
+    </div>
+
+    <!-- Email + Submit -->
+    <form id="checkout-form" class="card" onsubmit="handleSubmit(event)" novalidate>
+      <p class="card-title">Your Details</p>
+
+      <label class="field-label" for="email-input">Email Address</label>
+      <input
+        id="email-input"
+        class="field-input"
+        type="email"
+        name="email"
+        autocomplete="email"
+        placeholder="you@example.com"
+        required
+        aria-required="true"
+        aria-describedby="error-banner"
+      />
+
+      <div id="error-banner" class="error-banner" role="alert"></div>
+
+      <button id="submit-btn" class="btn-cta" type="submit">
+        <div class="spinner" aria-hidden="true"></div>
+        <span class="btn-text">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" style="flex-shrink:0;">
+            <rect x="3" y="11" width="18" height="11"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          Proceed to Secure Payment
+        </span>
+      </button>
+
+      <!-- Trust indicators -->
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          SSL Encrypted
+        </div>
+        <div class="trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          Powered by Stripe
+        </div>
+        <div class="trust-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          No recurring charges
+        </div>
+      </div>
+    </form>
+
+    <!-- Legal note -->
+    <p style="font-size:0.6875rem; color:var(--muted); text-align:center; line-height:1.6; padding: 0 8px;">
+      By proceeding, you agree to Mithaq's
+      <a href="./index.html#contact" style="color:var(--charcoal); text-decoration:underline;">Terms of Use</a>.
+      Your payment is processed securely by Stripe. Mithaq does not store your card details.
+      This is a one-time, non-recurring charge.
+    </p>
+  `;
+}
+
+function renderInvalidPackage(packageId) {
+  const app = document.getElementById('app');
+  if (!app) return;
+  app.innerHTML = `
+    <div class="invalid-package">
+      <h1>Invalid Package</h1>
+      <p>The package "${packageId || '(none)'}" is not recognised.<br>
+         Please select a package from the pricing page.</p>
+      <a href="./index.html#pricing" class="btn-back">View Packages</a>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
