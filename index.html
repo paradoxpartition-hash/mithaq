@@ -545,6 +545,108 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ── Additional Legal Services (Will Registration) ─────────────────── */
+    .will-section { max-width: 100%; }
+    .will-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .will-card-head {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .will-tier-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .will-tier-mark .tier-name {
+      font-family: var(--f-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .will-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .will-card-body {
+      padding: 28px 32px 32px;
+    }
+    .will-price-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .will-price-grid {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 32px;
+        align-items: center;
+      }
+    }
+    .will-price-divider {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .will-price-divider {
+        display: block;
+        width: 1px;
+        height: 64px;
+        background: var(--border);
+      }
+    }
+    .will-price-item {
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      .will-price-item { padding: 0; border-top: none; }
+    }
+    .will-price-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .will-price-amount {
+      font-family: var(--f-display);
+      font-size: 1.625rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .will-price-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .will-preferential-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.02em;
+    }
+    .will-cta-row {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    @media (max-width: 480px) {
+      .will-card-head, .will-card-body { padding: 20px; }
+    }
+
     /* ── CTA ───────────────────────────────────────────────────── */
     .cta-section { background: var(--white); border-top: 1px solid var(--border); text-align: center; }
     .cta-section .section-pad { padding: 96px 0 144px; }
@@ -871,10 +973,10 @@
   <div class="container section-pad">
     <div class="section-label-row">
       <span class="gold-rule"></span>
-      <span class="label" data-i18n="pricing.label">Pricing – One-Time Payment Per Agreement</span>
+      <span class="label" data-i18n="pricing.label">Service Structure &amp; Registration Options</span>
     </div>
-    <h2 class="pricing-headline reveal" data-i18n="pricing.headline">Pricing – One-Time Payment Per Agreement</h2>
-    <p class="pricing-sub reveal" style="transition-delay:0.06s" data-i18n="pricing.sub">Transparent pricing based on agreement complexity. No subscriptions. No hidden fees.</p>
+    <h2 class="pricing-headline reveal" data-i18n="pricing.headline">Service Structure &amp; Registration Options</h2>
+    <p class="pricing-sub reveal" style="transition-delay:0.06s" data-i18n="pricing.sub">Select the appropriate documentation and registration services based on your legal and asset requirements.</p>
 
     <div class="pricing-grid reveal" style="transition-delay:0.1s">
       <!-- Silver -->
@@ -957,6 +1059,50 @@
           <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f7">24-hour fast-track preparation</span></li>
         </ul>
         <div style="padding:0 28px 28px;background:var(--emerald)"><a href="./purchase.html?package=prenup-diamond" class="btn-gold" style="display:block;text-align:center" data-i18n="pricing.diamond.cta">Start Diamond</a></div>
+      </div>
+    </div>
+
+
+    <!-- Additional Legal Services subsection -->
+    <div class="will-section reveal" style="transition-delay:0.13s">
+      <div class="section-label-row" style="margin-top:80px;margin-bottom:32px;">
+        <span class="gold-rule"></span>
+        <span class="label" data-i18n="will.label">Additional Legal Services</span>
+      </div>
+
+      <div class="will-card">
+        <div class="will-card-head">
+          <div class="will-tier-mark">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="0.5" y="0.5" width="13" height="13" stroke="#0F3D2E" stroke-width="1"/>
+              <path d="M3.5 4.5h7M3.5 7h7M3.5 9.5h4" stroke="#0F3D2E" stroke-width="1" stroke-linecap="square"/>
+            </svg>
+            <span class="tier-name" style="color:#0F3D2E" data-i18n="will.tier">Will Registration</span>
+          </div>
+          <p class="will-desc" data-i18n="will.desc">Official estate registration documentation. Government registration fees included.</p>
+        </div>
+
+        <div class="will-card-body">
+          <div class="will-price-grid">
+            <div class="will-price-item">
+              <p class="will-price-label" data-i18n="will.standalone.label">Standalone</p>
+              <p class="will-price-amount">AED 3,999</p>
+              <p class="will-price-meta" data-i18n="will.standalone.meta">When registered independently</p>
+            </div>
+            <div class="will-price-divider" aria-hidden="true"></div>
+            <div class="will-price-item">
+              <p class="will-price-label" data-i18n="will.bundled.label">Bundled with Prenuptial Agreement</p>
+              <p class="will-price-amount" style="color:#0F3D2E">AED 3,499</p>
+              <p class="will-price-meta" data-i18n="will.bundled.meta">When registered alongside a marital agreement</p>
+            </div>
+          </div>
+
+          <p class="will-preferential-note" data-i18n="will.preferential">Preferential rate applies when registered together with a marital agreement.</p>
+
+          <div class="will-cta-row">
+            <a href="./purchase.html?package=will-standalone" class="btn-secondary" data-i18n="will.cta">Register Will</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1104,8 +1250,8 @@ const i18n = {
     'security.3.body':'Each signature event is recorded with a certified timestamp from a trusted timestamping authority, establishing an irrefutable chronological record.',
     'security.4.title':'Digital Verification Integrity',
     'security.4.body':'Every finalized agreement carries a unique verification code. Third parties — including courts, notaries, and legal counsel — may independently verify authenticity without accessing the full document.',
-    'pricing.label':'Pricing – One-Time Payment Per Agreement','pricing.headline':'Pricing – One-Time Payment Per Agreement',
-    'pricing.sub':'Transparent pricing based on agreement complexity. No subscriptions. No hidden fees.',
+    'pricing.label':'Service Structure & Registration Options','pricing.headline':'Service Structure & Registration Options',
+    'pricing.sub':'Select the appropriate documentation and registration services based on your legal and asset requirements.',
     'pricing.onetime':'One-Time Fee',
     'pricing.silver.tier':'Silver','pricing.silver.desc':'AED 2,500',
     'pricing.silver.f1':'Up to 3 assets','pricing.silver.f2':'1 jurisdiction (country)',
@@ -1126,7 +1272,7 @@ const i18n = {
     'pricing.diamond.f3':'Unlimited beneficiaries','pricing.diamond.f4':'Custom clause drafting',
     'pricing.diamond.f5':'Dedicated onboarding support','pricing.diamond.f6':'Integrated legal review option',
     'pricing.diamond.f7':'24-hour fast-track preparation','pricing.diamond.cta':'Start Diamond',
-    'pricing.tagline':'Transparent. No Subscriptions. One-Time.','pricing.process':'Agreement drafting begins after successful payment confirmation.','pricing.aed':'All prices are listed in AED. International payments are automatically converted by your card provider.','pricing.cta':'Select Your Structure',
+    'pricing.tagline':'Transparent. No Subscriptions. One-Time.','pricing.process':'Agreement drafting begins after successful payment confirmation.','pricing.aed':'All prices are listed in AED. International payments are automatically converted by your card provider.','pricing.cta':'Select Your Structure','will.label':'Additional Legal Services','will.tier':'Will Registration','will.desc':'Official estate registration documentation. Government registration fees included.','will.standalone.label':'Standalone','will.standalone.meta':'When registered independently','will.bundled.label':'Bundled with Prenuptial Agreement','will.bundled.meta':'When registered alongside a marital agreement','will.preferential':'Preferential rate applies when registered together with a marital agreement.','will.cta':'Register Will',
     'pricing.note':'Designed to replace traditional legal drafting costs of AED 5,000–25,000+, while maintaining structured, enforceable agreements.',
     'cta.headline':'Start With Clarity.','cta.btn':'Draft Your Agreement',
     'cta.sub':'A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.',
@@ -1185,8 +1331,8 @@ const i18n = {
     'security.3.body':'يُسجَّل كل حدث توقيع بختم زمني معتمد.',
     'security.4.title':'نزاهة التحقق الرقمي',
     'security.4.body':'تحمل كل اتفاقية نهائية رمز تحقق فريداً.',
-    'pricing.label':'الأسعار – دفعة واحدة لكل اتفاقية','pricing.headline':'الأسعار – دفعة واحدة لكل اتفاقية',
-    'pricing.sub':'أسعار شفافة بناءً على تعقيد الاتفاقية. بدون اشتراكات. بدون رسوم خفية.',
+    'pricing.label':'هيكل الخدمات وخيارات التسجيل','pricing.headline':'هيكل الخدمات وخيارات التسجيل',
+    'pricing.sub':'اختر خدمات التوثيق والتسجيل المناسبة وفقاً لمتطلباتك القانونية والمالية.',
     'pricing.onetime':'رسوم لمرة واحدة',
     'pricing.silver.tier':'فضي','pricing.silver.desc':'د.إ 2,500',
     'pricing.silver.f1':'حتى 3 أصول','pricing.silver.f2':'ولاية قضائية واحدة',
@@ -1207,7 +1353,7 @@ const i18n = {
     'pricing.diamond.f3':'مستفيدون غير محدودون','pricing.diamond.f4':'صياغة بنود مخصَّصة',
     'pricing.diamond.f5':'دعم تأهيل مخصَّص','pricing.diamond.f6':'خيار المراجعة القانونية المدمجة',
     'pricing.diamond.f7':'إعداد سريع خلال 24 ساعة','pricing.diamond.cta':'ابدأ الألماسي',
-    'pricing.tagline':'شفاف. بلا اشتراكات. لمرة واحدة.','pricing.process':'تبدأ صياغة الاتفاقية بعد تأكيد الدفع.','pricing.aed':'جميع الأسعار بالدرهم الإماراتي. تُحوَّل المدفوعات الدولية تلقائياً من قِبل مُصدِر بطاقتك.','pricing.cta':'اختر هيكلك',
+    'pricing.tagline':'شفاف. بلا اشتراكات. لمرة واحدة.','pricing.process':'تبدأ صياغة الاتفاقية بعد تأكيد الدفع.','pricing.aed':'جميع الأسعار بالدرهم الإماراتي. تُحوَّل المدفوعات الدولية تلقائياً من قِبل مُصدِر بطاقتك.','pricing.cta':'اختر هيكلك','will.label':'خدمات قانونية إضافية','will.tier':'تسجيل الوصية','will.desc':'وثائق رسمية لتسجيل التركة. تشمل رسوم التسجيل الحكومية.','will.standalone.label':'مستقلة','will.standalone.meta':'عند التسجيل بشكل مستقل','will.bundled.label':'مدمجة مع اتفاقية الزواج','will.bundled.meta':'عند التسجيل مع اتفاقية الزواج','will.preferential':'يُطبَّق السعر التفضيلي عند التسجيل مع اتفاقية الزواج.','will.cta':'سجِّل الوصية',
     'pricing.note':'مصمَّم ليحلَّ محل تكاليف الصياغة القانونية التقليدية البالغة 5,000–25,000+ د.إ.',
     'cta.headline':'ابدأ بالوضوح.','cta.btn':'ابدأ صياغة اتفاقيتك',
     'cta.sub':'الاتفاقية المنظَّمة جيداً هي تعبير عن الرعاية — لشريكك وللأساس الذي تبنيانه معاً.',
@@ -1268,8 +1414,8 @@ const i18n = {
     'security.3.body':'Каждое событие подписи фиксируется с сертифицированной временно́й меткой.',
     'security.4.title':'Целостность цифровой верификации',
     'security.4.body':'Каждый финальный договор содержит уникальный код верификации.',
-    'pricing.label':'Цены – единовременный платёж за договор','pricing.headline':'Цены – единовременный платёж за договор',
-    'pricing.sub':'Прозрачные цены в зависимости от сложности договора. Без подписок. Без скрытых платежей.',
+    'pricing.label':'Структура услуг и варианты регистрации','pricing.headline':'Структура услуг и варианты регистрации',
+    'pricing.sub':'Выберите подходящие услуги документации и регистрации в соответствии с вашими юридическими и имущественными требованиями.',
     'pricing.onetime':'Единовременная плата',
     'pricing.silver.tier':'Серебряный','pricing.silver.desc':'AED 2 500',
     'pricing.silver.f1':'До 3 активов','pricing.silver.f2':'1 юрисдикция (страна)',
@@ -1290,7 +1436,7 @@ const i18n = {
     'pricing.diamond.f3':'Неограниченное число бенефициаров','pricing.diamond.f4':'Индивидуальная разработка пунктов',
     'pricing.diamond.f5':'Персональная поддержка при подключении','pricing.diamond.f6':'Интегрированный вариант юридической проверки',
     'pricing.diamond.f7':'Подготовка за 24 часа','pricing.diamond.cta':'Начать — Бриллиантовый',
-    'pricing.tagline':'Прозрачно. Без подписок. Единовременно.','pricing.process':'Составление договора начинается после подтверждения оплаты.','pricing.aed':'Все цены указаны в AED. Международные платежи автоматически конвертируются вашим банком.','pricing.cta':'Выбрать структуру',
+    'pricing.tagline':'Прозрачно. Без подписок. Единовременно.','pricing.process':'Составление договора начинается после подтверждения оплаты.','pricing.aed':'Все цены указаны в AED. Международные платежи автоматически конвертируются вашим банком.','pricing.cta':'Выбрать структуру','will.label':'Дополнительные юридические услуги','will.tier':'Регистрация завещания','will.desc':'Официальная документация по регистрации наследства. Государственные пошлины включены.','will.standalone.label':'Отдельно','will.standalone.meta':'При самостоятельной регистрации','will.bundled.label':'С брачным договором','will.bundled.meta':'При совместной регистрации с брачным договором','will.preferential':'Льготный тариф применяется при совместной регистрации с брачным договором.','will.cta':'Зарегистрировать завещание',
     'pricing.note':'Призван заменить традиционные расходы на юридическое оформление в размере AED 5 000–25 000+ при сохранении структурированных, исполнимых договоров.',
     'cta.headline':'Начните с ясности.','cta.btn':'Составить договор',
     'cta.sub':'Хорошо структурированный договор, заключённый свободно и прозрачно, — это проявление заботы о партнёре и об основе, которую вы строите вместе.',
@@ -1372,7 +1518,7 @@ const i18n = {
     'pricing.diamond.f3':'无限受益人','pricing.diamond.f4':'自定义条款起草',
     'pricing.diamond.f5':'专属入职支持','pricing.diamond.f6':'综合法律审查选项',
     'pricing.diamond.f7':'24小时快速通道准备','pricing.diamond.cta':'开始 – 钻石',
-    'pricing.tagline':'透明。无订阅。一次性。','pricing.process':'付款确认后开始起草协议。','pricing.aed':'所有价格均以迪拉姆（AED）计价。国际支付由您的发卡机构自动换算。','pricing.cta':'选择方案',
+    'pricing.tagline':'透明。无订阅。一次性。','pricing.process':'付款确认后开始起草协议。','pricing.aed':'所有价格均以迪拉姆（AED）计价。国际支付由您的发卡机构自动换算。','pricing.cta':'选择方案','will.label':'附加法律服务','will.tier':'遗嘱登记','will.desc':'官方遗产登记文件。包含政府登记费用。','will.standalone.label':'单独办理','will.standalone.meta':'独立登记时','will.bundled.label':'与婚前协议合并办理','will.bundled.meta':'与婚姻协议一同登记时','will.preferential':'与婚姻协议一同登记可享优惠价格。','will.cta':'登记遗嘱',
     'pricing.note':'旨在替代AED 5,000–25,000+的传统法律起草费用，同时保持结构化、可执行的协议。',
     'cta.headline':'从清晰开始。','cta.btn':'起草您的协议',
     'cta.sub':'一份结构完善、自愿透明签署的协议，是对伴侣的关爱，也是对共同基础的承诺。',
@@ -1434,7 +1580,7 @@ const i18n = {
     'security.4.title':'Integridad de verificación digital',
     'security.4.body':'Cada acuerdo finalizado lleva un código de verificación único.',
     'pricing.label':'Precios – pago único por acuerdo','pricing.headline':'Precios – pago único por acuerdo',
-    'pricing.sub':'Precios transparentes según la complejidad del acuerdo. Sin suscripciones. Sin tarifas ocultas.',
+    'pricing.sub':'Seleccione los servicios de documentación y registro apropiados según sus requisitos legales y patrimoniales.',
     'pricing.onetime':'Tarifa única',
     'pricing.silver.tier':'Plata','pricing.silver.desc':'AED 2.500',
     'pricing.silver.f1':'Hasta 3 activos','pricing.silver.f2':'1 jurisdicción (país)',
@@ -1455,7 +1601,7 @@ const i18n = {
     'pricing.diamond.f3':'Beneficiarios ilimitados','pricing.diamond.f4':'Redacción personalizada de cláusulas',
     'pricing.diamond.f5':'Soporte de incorporación dedicado','pricing.diamond.f6':'Opción de revisión legal integrada',
     'pricing.diamond.f7':'Preparación en 24 horas','pricing.diamond.cta':'Comenzar – Diamante',
-    'pricing.tagline':'Transparente. Sin suscripciones. Pago único.','pricing.process':'La redacción del acuerdo comienza tras la confirmación del pago.','pricing.aed':'Todos los precios están en AED. Los pagos internacionales se convierten automáticamente por su proveedor de tarjeta.','pricing.cta':'Elegir estructura',
+    'pricing.tagline':'Transparente. Sin suscripciones. Pago único.','pricing.process':'La redacción del acuerdo comienza tras la confirmación del pago.','pricing.aed':'Todos los precios están en AED. Los pagos internacionales se convierten automáticamente por su proveedor de tarjeta.','pricing.cta':'Elegir estructura','will.label':'Servicios legales adicionales','will.tier':'Registro de testamento','will.desc':'Documentación oficial de registro patrimonial. Tasas gubernamentales incluidas.','will.standalone.label':'Independiente','will.standalone.meta':'Cuando se registra de forma independiente','will.bundled.label':'Combinado con acuerdo prenupcial','will.bundled.meta':'Cuando se registra junto a un acuerdo matrimonial','will.preferential':'Se aplica la tarifa preferencial cuando se registra junto con un acuerdo matrimonial.','will.cta':'Registrar testamento',
     'pricing.note':'Diseñado para reemplazar los costos tradicionales de redacción legal de AED 5.000–25.000+, manteniendo acuerdos estructurados y ejecutables.',
     'cta.headline':'Comience con claridad.','cta.btn':'Redactar su acuerdo',
     'cta.sub':'Un acuerdo bien estructurado, celebrado libremente y con transparencia, es un acto de cuidado — para su pareja y para la base que construyen juntos.',
@@ -1537,7 +1683,7 @@ const i18n = {
     'pricing.diamond.f3':'असीमित लाभार्थी','pricing.diamond.f4':'कस्टम खंड मसौदा',
     'pricing.diamond.f5':'समर्पित ऑनबोर्डिंग सहायता','pricing.diamond.f6':'एकीकृत कानूनी समीक्षा विकल्प',
     'pricing.diamond.f7':'24 घंटे फास्ट-ट्रैक तैयारी','pricing.diamond.cta':'डायमंड शुरू करें',
-    'pricing.tagline':'पारदर्शी। कोई सदस्यता नहीं। एकमुश्त।','pricing.process':'भुगतान की पुष्टि के बाद समझौता मसौदा तैयार होना शुरू होता है।','pricing.aed':'सभी कीमतें AED में सूचीबद्ध हैं। अंतर्राष्ट्रीय भुगतान आपके कार्ड प्रदाता द्वारा स्वचालित रूप से परिवर्तित होते हैं।','pricing.cta':'अपनी संरचना चुनें',
+    'pricing.tagline':'पारदर्शी। कोई सदस्यता नहीं। एकमुश्त।','pricing.process':'भुगतान की पुष्टि के बाद समझौता मसौदा तैयार होना शुरू होता है।','pricing.aed':'सभी कीमतें AED में सूचीबद्ध हैं। अंतर्राष्ट्रीय भुगतान आपके कार्ड प्रदाता द्वारा स्वचालित रूप से परिवर्तित होते हैं।','pricing.cta':'अपनी संरचना चुनें','will.label':'अतिरिक्त कानूनी सेवाएँ','will.tier':'वसीयत पंजीकरण','will.desc':'आधिकारिक संपत्ति पंजीकरण दस्तावेज़। सरकारी पंजीकरण शुल्क शामिल।','will.standalone.label':'स्वतंत्र','will.standalone.meta':'स्वतंत्र रूप से पंजीकृत होने पर','will.bundled.label':'विवाह पूर्व समझौते के साथ संयुक्त','will.bundled.meta':'वैवाहिक समझौते के साथ पंजीकृत होने पर','will.preferential':'वैवाहिक समझौते के साथ पंजीकरण पर तरजीही दर लागू होती है।','will.cta':'वसीयत पंजीकृत करें',
     'pricing.note':'AED 5,000–25,000+ की पारंपरिक कानूनी मसौदा लागत को प्रतिस्थापित करने के लिए डिज़ाइन किया गया।',
     'cta.headline':'स्पष्टता के साथ शुरू करें।','cta.btn':'अपना समझौता तैयार करें',
     'cta.sub':'एक अच्छी तरह से संरचित समझौता देखभाल का कार्य है — आपके साथी के लिए।',
@@ -1597,8 +1743,8 @@ const i18n = {
     'security.3.body':'ہر دستخط کا واقعہ ایک قابلِ اعتماد ٹائم اسٹیمپ کے ساتھ ریکارڈ کیا جاتا ہے۔',
     'security.4.title':'ڈیجیٹل تصدیق سالمیت',
     'security.4.body':'ہر حتمی معاہدہ ایک منفرد تصدیقی کوڈ رکھتا ہے۔',
-    'pricing.label':'قیمتیں – فی معاہدہ یکمشت ادائیگی','pricing.headline':'قیمتیں – فی معاہدہ یکمشت ادائیگی',
-    'pricing.sub':'معاہدے کی پیچیدگی کی بنیاد پر شفاف قیمتیں۔ کوئی سبسکرپشن نہیں۔ کوئی پوشیدہ فیس نہیں۔',
+    'pricing.label':'خدمات کا ڈھانچہ اور اندراج کے اختیارات','pricing.headline':'خدمات کا ڈھانچہ اور اندراج کے اختیارات',
+    'pricing.sub':'اپنی قانونی اور اثاثہ جاتی ضروریات کی بنیاد پر مناسب دستاویزات اور اندراج کی خدمات منتخب کریں۔',
     'pricing.onetime':'یکمشت فیس',
     'pricing.silver.tier':'سلور','pricing.silver.desc':'AED 2,500',
     'pricing.silver.f1':'زیادہ سے زیادہ 3 اثاثے','pricing.silver.f2':'1 دائرہ اختیار (ملک)',
@@ -1619,7 +1765,7 @@ const i18n = {
     'pricing.diamond.f3':'لامحدود مستفیدین','pricing.diamond.f4':'کسٹم شق مسودہ سازی',
     'pricing.diamond.f5':'مخصوص آن بورڈنگ معاونت','pricing.diamond.f6':'مربوط قانونی جائزہ اختیار',
     'pricing.diamond.f7':'24 گھنٹے فاسٹ ٹریک تیاری','pricing.diamond.cta':'ڈائمنڈ شروع کریں',
-    'pricing.tagline':'شفاف۔ کوئی سبسکرپشن نہیں۔ یکمشت۔','pricing.process':'معاہدے کا مسودہ ادائیگی کی تصدیق کے بعد شروع ہوتا ہے۔','pricing.aed':'تمام قیمتیں AED میں درج ہیں۔ بین الاقوامی ادائیگیاں آپ کے کارڈ فراہم کنندہ کے ذریعے خودکار طور پر تبدیل کی جاتی ہیں۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں',
+    'pricing.tagline':'شفاف۔ کوئی سبسکرپشن نہیں۔ یکمشت۔','pricing.process':'معاہدے کا مسودہ ادائیگی کی تصدیق کے بعد شروع ہوتا ہے۔','pricing.aed':'تمام قیمتیں AED میں درج ہیں۔ بین الاقوامی ادائیگیاں آپ کے کارڈ فراہم کنندہ کے ذریعے خودکار طور پر تبدیل کی جاتی ہیں۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں','will.label':'اضافی قانونی خدمات','will.tier':'وصیت کا اندراج','will.desc':'جائیداد کی رسمی اندراج کی دستاویزات۔ سرکاری اندراج فیس شامل ہے۔','will.standalone.label':'مستقل','will.standalone.meta':'آزادانہ طور پر اندراج پر','will.bundled.label':'پری نپشل معاہدے کے ساتھ مشترکہ','will.bundled.meta':'ازدواجی معاہدے کے ساتھ اندراج پر','will.preferential':'ازدواجی معاہدے کے ساتھ اندراج پر ترجیحی نرخ لاگو ہوتا ہے۔','will.cta':'وصیت رجسٹر کریں',
     'pricing.note':'AED 5,000–25,000+ کی روایتی قانونی مسودہ سازی لاگت کو تبدیل کرنے کے لیے ڈیزائن کیا گیا۔',
     'cta.headline':'وضاحت کے ساتھ شروع کریں۔','cta.btn':'اپنا معاہدہ تیار کریں',
     'cta.sub':'ایک اچھی طرح سے منظم معاہدہ دیکھ بھال کا عمل ہے — آپ کے ساتھی کے لیے۔',
