@@ -143,6 +143,7 @@ const PACKAGE_NAMES = {
   'prenup-gold':     'Gold — Premium Agreement',
   'prenup-platinum': 'Platinum — Advanced Agreement',
   'prenup-diamond':  'Diamond — Comprehensive Agreement',
+  'will-standalone': 'Will Registration',
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -163,8 +164,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await res.json();
 
     if (data.paid) {
-      renderSuccess({ sessionId, email: data.email, packageType: data.packageType,
-                      currency: data.currency, amount: data.amount });
+      renderSuccess({
+        sessionId, email: data.email,
+        packageType:  data.packageType,
+        purchaseType: data.purchaseType  || '',
+        packageName:  data.packageName   || '',
+        willIncluded: data.willIncluded === true,
+        willOnly:     data.willOnly     === true,
+        currency:     data.currency, amount: data.amount,
+      });
     } else {
       renderError('Payment could not be confirmed.',
         'We were unable to verify your payment status. If you were charged, please contact us with your reference below.',
@@ -173,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (_) {
     // Verification timed out or failed — still show success since
     // Stripe redirected here only after successful payment.
-    renderSuccess({ sessionId, email: '', packageType: '', currency: '', amount: 0 });
+    renderSuccess({ sessionId, email: '', packageType: '', purchaseType: '', packageName: '', willIncluded: false, willOnly: false, currency: '', amount: 0 });
   }
 });
 
@@ -186,10 +194,23 @@ function fmtAmount(amount, currency) {
   } catch (_) { return ''; }
 }
 
-function renderSuccess({ sessionId, email, packageType, currency, amount }) {
-  const app         = document.getElementById('app');
-  const packageName = PACKAGE_NAMES[packageType] || 'Your Agreement Package';
-  const amtDisplay  = fmtAmount(amount, currency);
+function renderSuccess({ sessionId, email, packageType, purchaseType, packageName, willIncluded, willOnly, currency, amount }) {
+  const app        = document.getElementById('app');
+  const baseName   = packageName || PACKAGE_NAMES[packageType] || 'Your Service Package';
+  const amtDisplay = fmtAmount(amount, currency);
+
+  // Headline + description vary based on what was purchased
+  let title, description;
+  if (willOnly) {
+    title = 'Your Will Registration<br>Has Been Initiated.';
+    description = 'Thank you for choosing Mithaq. Your payment was received and your estate registration process has been activated. Please check your email for confirmation and registration instructions.';
+  } else if (willIncluded) {
+    title = 'Your Agreement &amp; Will<br>Have Been Initiated.';
+    description = 'Thank you for choosing Mithaq. Your payment was received and both your marital agreement and will registration processes have been activated. Please check your email for confirmation and login instructions.';
+  } else {
+    title = 'Your Agreement<br>Has Been Initiated.';
+    description = 'Thank you for choosing Mithaq. Your payment was received and your agreement process has been activated. Please check your email for confirmation and login instructions.';
+  }
 
   app.innerHTML = `
     <div style="text-align:center;margin-bottom:8px;">
@@ -201,20 +222,18 @@ function renderSuccess({ sessionId, email, packageType, currency, amount }) {
       </div>
       <span class="gold-rule"></span>
       <p class="section-label">Payment Confirmed</p>
-      <h1>Your Agreement<br>Has Been Initiated.</h1>
-      <p class="page-sub">
-        Thank you for choosing Mithaq. Your payment was received and your agreement
-        process has been activated. Please check your email for confirmation and login instructions.
-      </p>
+      <h1>${title}</h1>
+      <p class="page-sub">${description}</p>
     </div>
 
     <!-- Package card -->
     <div class="card">
-      <p class="card-title">Package Purchased</p>
+      <p class="card-title">${willOnly ? 'Service Purchased' : 'Package Purchased'}</p>
       <div class="package-row">
-        <span class="package-name">${packageName}</span>
+        <span class="package-name">${baseName}</span>
         <span class="package-badge">Confirmed</span>
       </div>
+      ${willIncluded ? `<p class="package-amount" style="margin-top:8px;color:var(--charcoal);">Includes Will Registration (bundled)</p>` : ''}
       ${amtDisplay ? `<p class="package-amount">Amount paid: ${amtDisplay}</p>` : ''}
       <div class="ref-box">Payment reference: ${sessionId}</div>
     </div>
@@ -235,10 +254,27 @@ function renderSuccess({ sessionId, email, packageType, currency, amount }) {
         <span class="step-num">2</span>
         <div>
           <p class="step-title">Login Instructions</p>
-          <p class="step-desc">A second email will contain your account credentials and instructions to access the Mithaq agreement platform.</p>
+          <p class="step-desc">A second email will contain your account credentials and instructions to access the Mithaq platform.</p>
         </div>
       </div>
 
+      ${willOnly ? `
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <div>
+          <p class="step-title">Submit Estate Documentation</p>
+          <p class="step-desc">Once logged in, you will provide the required information for your will registration. Our team prepares the documentation for official submission.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <span class="step-num">4</span>
+        <div>
+          <p class="step-title">Government Registration &amp; Vault Storage</p>
+          <p class="step-desc">Your will is officially registered with the relevant authorities and securely archived in your Mithaq vault, with a verifiable registration certificate.</p>
+        </div>
+      </div>
+      ` : `
       <div class="step-item">
         <span class="step-num">3</span>
         <div>
@@ -247,6 +283,23 @@ function renderSuccess({ sessionId, email, packageType, currency, amount }) {
         </div>
       </div>
 
+      ${willIncluded ? `
+      <div class="step-item">
+        <span class="step-num">4</span>
+        <div>
+          <p class="step-title">Will Registration Documentation</p>
+          <p class="step-desc">In parallel with your agreement, a separate workflow is initiated for your estate registration. You will receive specific instructions for the will documentation.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <span class="step-num">5</span>
+        <div>
+          <p class="step-title">Digital Signing &amp; Secure Storage</p>
+          <p class="step-desc">Both your finalised agreement and registered will are digitally signed, assigned unique verification codes, and stored in your tamper-proof vault.</p>
+        </div>
+      </div>
+      ` : `
       <div class="step-item">
         <span class="step-num">4</span>
         <div>
@@ -254,6 +307,8 @@ function renderSuccess({ sessionId, email, packageType, currency, amount }) {
           <p class="step-desc">Your finalised agreement is digitally signed, assigned a unique verification code, and stored in your tamper-proof vault.</p>
         </div>
       </div>
+      `}
+      `}
     </div>
 
     <!-- Notice -->
