@@ -10,163 +10,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --emerald:#0F3D2E; --emerald-dk:#0A2B1F; --gold:#C6A75E;
-      --offwhite:#F8F7F3; --white:#FFFFFF; --charcoal:#1E1E1E;
-      --muted:#6B6B6B; --border:#D8D4C9; --error:#C0392B;
+      --emerald:#0F3D2E;--emerald-dk:#0A2B1F;--gold:#C6A75E;
+      --offwhite:#F8F7F3;--white:#FFFFFF;--charcoal:#1E1E1E;
+      --muted:#6B6B6B;--border:#D8D4C9;--error:#C0392B;
       --f-display:'Cormorant Garamond',Georgia,serif;
       --f-body:'DM Sans',system-ui,sans-serif;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{background:var(--offwhite);color:var(--charcoal);font-family:var(--f-body);
-         font-weight:300;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;}
-    a{text-decoration:none;color:inherit;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--offwhite);color:var(--charcoal);font-family:var(--f-body);font-weight:300;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+    a{text-decoration:none;color:inherit}
 
-    .site-header{background:var(--offwhite);border-bottom:1px solid var(--border);padding:0 24px;}
-    .header-inner{max-width:680px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;}
-    .logo{display:flex;align-items:center;gap:12px;}
-    .logo-text{font-family:var(--f-display);font-size:1.25rem;font-weight:600;letter-spacing:0.05em;}
-    .secure-badge{display:flex;align-items:center;gap:6px;font-size:0.6875rem;font-weight:500;
-                  letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+    .site-header{background:var(--offwhite);border-bottom:1px solid var(--border);padding:0 24px}
+    .header-inner{max-width:620px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-text{font-family:var(--f-display);font-size:1.25rem;font-weight:600;letter-spacing:.05em}
+    .secure-badge{display:flex;align-items:center;gap:6px;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
-    main{flex:1;max-width:680px;width:100%;margin:48px auto;padding:0 24px;}
-    .breadcrumb{font-size:0.6875rem;letter-spacing:0.16em;text-transform:uppercase;
-                color:var(--muted);margin-bottom:8px;}
-    .breadcrumb a:hover{color:var(--charcoal);}
-    .gold-rule{display:block;width:48px;height:1px;background:var(--gold);margin-bottom:12px;}
-    .label{font-family:var(--f-body);font-size:0.6875rem;font-weight:500;letter-spacing:0.16em;
-           text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-    h1{font-family:var(--f-display);font-size:clamp(1.75rem,4vw,2.25rem);font-weight:500;
-       margin-bottom:8px;line-height:1.1;}
-    .page-sub{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:32px;}
+    main{flex:1;max-width:620px;width:100%;margin:40px auto;padding:0 24px}
+    .breadcrumb{font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .breadcrumb a:hover{color:var(--charcoal)}
+    .gold-rule{display:block;width:48px;height:1px;background:var(--gold);margin-bottom:12px}
+    .label{font-size:.6875rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    h1{font-family:var(--f-display);font-size:clamp(1.625rem,4vw,2rem);font-weight:500;margin-bottom:6px;line-height:1.15}
+    .page-sub{font-size:.8125rem;color:var(--muted);line-height:1.6;margin-bottom:28px}
 
-    .card{border:1px solid var(--border);background:var(--white);padding:28px 32px;margin-bottom:16px;}
-    .card-title{font-family:var(--f-body);font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
-                text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
-    .card-headline{font-family:var(--f-display);font-size:1.375rem;font-weight:500;
-                   color:var(--charcoal);margin-bottom:6px;line-height:1.2;}
-    .card-tagline{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:20px;}
+    .card{border:1px solid var(--border);background:var(--white);padding:24px 28px;margin-bottom:14px}
+    .card-label{font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
 
-    .pkg-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
-    .pkg-info{flex:1;min-width:200px;}
-    .pkg-name{font-family:var(--f-display);font-size:1.25rem;font-weight:500;color:var(--charcoal);margin-bottom:4px;}
-    .pkg-tag{font-size:0.8125rem;color:var(--muted);}
-    .pkg-price{text-align:right;}
-    .pkg-amount{font-family:var(--f-display);font-size:1.5rem;font-weight:500;color:var(--charcoal);}
-    .pkg-once{font-size:0.6875rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+    .pkg-row{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+    .pkg-info{flex:1;min-width:180px}
+    .pkg-name{font-family:var(--f-display);font-size:1.15rem;font-weight:500;color:var(--charcoal);margin-bottom:3px}
+    .pkg-tag{font-size:.8125rem;color:var(--muted);line-height:1.5}
+    .pkg-price{text-align:right}
+    .pkg-amount{font-family:var(--f-display);font-size:1.35rem;font-weight:500;color:var(--charcoal)}
+    .pkg-once{font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px}
 
-    .features{list-style:none;padding:0;margin-top:8px;border-top:1px solid var(--border);padding-top:16px;}
-    .feat{display:flex;align-items:flex-start;gap:10px;font-size:0.8125rem;color:var(--charcoal);padding:6px 0;}
-    .feat svg{flex-shrink:0;margin-top:2px;}
+    .form-group{margin-bottom:18px}
+    .form-label{display:block;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .form-input,.form-select{width:100%;padding:11px 14px;border:1px solid var(--border);background:var(--white);font-family:var(--f-body);font-size:.9375rem;color:var(--charcoal);transition:border-color .2s;appearance:none;-webkit-appearance:none}
+    .form-input:focus,.form-select:focus{outline:none;border-color:var(--emerald)}
+    .form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+    .form-help{font-size:.75rem;color:var(--muted);margin-top:5px;line-height:1.5}
 
-    /* Duration selector — full-width rows, AED total per option */
-    .duration-list{display:flex;flex-direction:column;gap:6px;}
-    .duration-opt{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-      border:1px solid var(--border);background:var(--white);
-      padding:14px 18px;cursor:pointer;text-align:left;
-      transition:border-color 0.15s,background 0.15s;
-      font-family:inherit;color:inherit;width:100%;
-    }
-    .duration-opt:hover{border-color:var(--charcoal);}
-    .duration-opt.selected{border-color:var(--emerald);background:#FAFAF6;
-                           box-shadow:inset 0 0 0 1px var(--emerald);}
-    .duration-opt-time{font-family:var(--f-display);font-size:1.125rem;font-weight:500;color:var(--charcoal);}
-    .duration-opt-price{font-size:0.875rem;color:var(--muted);font-weight:400;}
-    .duration-opt-price.included{color:var(--emerald);font-weight:500;}
+    .addon-fee{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;margin-top:8px;background:var(--offwhite);border:1px solid var(--border);border-left:3px solid var(--gold);font-size:.8125rem;color:var(--charcoal)}
+    .addon-fee-amount{font-family:var(--f-display);font-size:1rem;font-weight:500}
 
-    .complimentary-line{
-      display:flex;align-items:center;gap:8px;padding:12px 16px;margin-top:14px;
-      background:#FAFAF6;border:1px solid var(--border);border-left:3px solid var(--emerald);
-      font-size:0.8125rem;color:var(--charcoal);line-height:1.5;
-    }
-    .complimentary-line svg{flex-shrink:0;color:var(--emerald);}
-    .extended-line{
-      display:flex;align-items:center;gap:8px;padding:12px 16px;margin-top:14px;
-      background:var(--offwhite);border:1px solid var(--border);border-left:3px solid var(--gold);
-      font-size:0.8125rem;color:var(--charcoal);line-height:1.5;
-    }
-    .extended-line svg{flex-shrink:0;color:var(--gold);}
+    .checkbox-row{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid var(--border);background:var(--offwhite);cursor:pointer;transition:border-color .15s}
+    .checkbox-row:hover{border-color:var(--charcoal)}
+    .checkbox-row input[type="checkbox"]{width:18px;height:18px;accent-color:var(--emerald);flex-shrink:0;margin-top:2px;cursor:pointer}
+    .checkbox-label-main{font-size:.875rem;font-weight:500;color:var(--charcoal)}
+    .checkbox-label-sub{font-size:.75rem;color:var(--muted);margin-top:2px;line-height:1.5}
 
-    .microcopy{font-size:0.75rem;color:var(--muted);font-style:italic;margin-top:14px;line-height:1.6;}
+    .breakdown{margin-top:14px;border-top:1px solid var(--border);padding-top:14px}
+    .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.8125rem;color:var(--charcoal);padding:4px 0}
+    .breakdown-row .lbl{color:var(--muted)}
+    .breakdown-row.incl .val{color:var(--emerald);font-weight:500}
+    .total-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0 4px;border-top:1px solid var(--border);margin-top:6px}
+    .total-label{font-size:.875rem;font-weight:500;color:var(--charcoal)}
+    .total-amount{font-family:var(--f-display);font-size:1.5rem;font-weight:500;color:var(--charcoal)}
 
-    .form-group{margin-bottom:20px;}
-    .form-label{display:block;font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
-                text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-    .form-input{width:100%;padding:12px 14px;border:1px solid var(--border);background:var(--white);
-                font-family:var(--f-body);font-size:0.9375rem;color:var(--charcoal);
-                transition:border-color 0.2s;}
-    .form-input:focus{outline:none;border-color:var(--emerald);}
-    .form-help{font-size:0.75rem;color:var(--muted);margin-top:6px;}
+    .btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 32px;background:var(--emerald);color:var(--offwhite);font-family:var(--f-body);font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--emerald);cursor:pointer;transition:background .2s,opacity .2s;margin-top:8px}
+    .btn-primary:hover:not(:disabled){background:var(--emerald-dk)}
+    .btn-primary:disabled{opacity:.4;cursor:not-allowed}
+    .btn-secondary{display:block;width:100%;padding:13px 32px;background:transparent;color:var(--emerald);font-family:var(--f-body);font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-align:center;border:1px solid var(--border);cursor:pointer;transition:background .2s,color .2s;margin-top:10px}
+    .btn-secondary:hover{border-color:var(--emerald)}
 
-    .breakdown{margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;
-                   font-size:0.875rem;color:var(--charcoal);padding:6px 0;}
-    .breakdown-row .lbl{color:var(--muted);}
+    .trust-row{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:20px;font-size:.75rem;color:var(--muted);flex-wrap:wrap}
+    .trust-item{display:flex;align-items:center;gap:5px}
 
-    .total-row{display:flex;justify-content:space-between;align-items:center;
-               padding:16px 0 4px;border-top:1px solid var(--border);margin-top:8px;}
-    .total-label{font-size:0.875rem;font-weight:500;color:var(--charcoal);}
-    .total-amount{font-family:var(--f-display);font-size:1.625rem;font-weight:500;color:var(--charcoal);}
+    .error-banner{background:#FEF2F2;border:1px solid #FCA5A5;border-left:3px solid var(--error);padding:10px 14px;font-size:.8125rem;color:#7F1D1D;margin-bottom:14px}
+    .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-    .currency-note{background:var(--offwhite);border:1px solid var(--border);border-left:3px solid var(--gold);
-                   padding:12px 16px;font-size:0.75rem;color:var(--muted);line-height:1.6;margin-bottom:16px;}
-
-    .btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;
-                 width:100%;padding:16px 32px;background:var(--emerald);color:var(--offwhite);
-                 font-family:var(--f-body);font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;
-                 text-transform:uppercase;border:1px solid var(--emerald);cursor:pointer;
-                 transition:background 0.2s,opacity 0.2s;margin-top:8px;}
-    .btn-primary:hover:not(:disabled){background:var(--emerald-dk);}
-    .btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
-    .btn-secondary{display:block;width:100%;padding:14px 32px;background:transparent;color:var(--emerald);
-                   font-family:var(--f-body);font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;
-                   text-transform:uppercase;text-align:center;border:1px solid var(--border);
-                   cursor:pointer;transition:background 0.2s,color 0.2s;margin-top:12px;}
-    .btn-secondary:hover{border-color:var(--emerald);}
-
-    .trust-row{display:flex;align-items:center;justify-content:center;gap:24px;
-               margin-top:24px;font-size:0.75rem;color:var(--muted);flex-wrap:wrap;}
-    .trust-item{display:flex;align-items:center;gap:6px;}
-
-    .error-banner{background:#FEF2F2;border:1px solid #FCA5A5;border-left:3px solid var(--error);
-                  padding:12px 16px;font-size:0.8125rem;color:#7F1D1D;margin-bottom:16px;}
-
-    .spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,0.4);border-top-color:white;
-             border-radius:50%;animation:spin 0.7s linear infinite;}
-    @keyframes spin{to{transform:rotate(360deg);}}
-
-    /* Will Upsell Modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(15,61,46,0.55);
-                    display:none;align-items:center;justify-content:center;
-                    padding:24px;z-index:1000;animation:fade-in 0.2s ease-out;}
-    .modal-backdrop.open{display:flex;}
-    @keyframes fade-in{from{opacity:0}to{opacity:1}}
-    .modal{background:var(--white);border:1px solid var(--border);
-           max-width:520px;width:100%;max-height:90vh;overflow-y:auto;}
-    .modal-head{padding:32px 36px 0;}
-    .modal-label{font-family:var(--f-body);font-size:0.6875rem;font-weight:500;
-                 letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-    .modal-title{font-family:var(--f-display);font-size:1.625rem;font-weight:500;
-                 color:var(--charcoal);line-height:1.2;margin-bottom:16px;}
-    .modal-body{padding:0 36px 32px;}
-    .modal-desc{font-size:0.9375rem;color:var(--muted);line-height:1.7;margin-bottom:24px;}
-    .modal-offer{border:1px solid var(--border);background:var(--offwhite);
-                 padding:20px 24px;margin-bottom:24px;}
-    .modal-offer-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
-    .modal-offer-name{font-family:var(--f-display);font-size:1.125rem;font-weight:500;color:var(--charcoal);margin-bottom:4px;}
-    .modal-offer-tag{font-size:0.8125rem;color:var(--muted);line-height:1.5;}
-    .modal-offer-price{text-align:right;flex-shrink:0;}
-    .modal-offer-amount{font-family:var(--f-display);font-size:1.375rem;font-weight:500;color:var(--charcoal);}
-    .modal-offer-once{font-size:0.6875rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:2px;}
-    .modal-actions{display:flex;flex-direction:column;gap:8px;}
-    @media(max-width:520px){.modal-head,.modal-body{padding-left:24px;padding-right:24px;}}
-
-    .site-footer{border-top:1px solid var(--border);padding:24px;text-align:center;
-                 font-size:0.75rem;color:var(--muted);}
-    @media(max-width:480px){
-      main{margin:32px auto;}.card{padding:20px;}
-      .pkg-row{flex-direction:column;}.pkg-price{text-align:left;}
-    }
+    .site-footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.75rem;color:var(--muted)}
+    @media(max-width:480px){main{margin:28px auto}.card{padding:18px}}
   </style>
 </head>
 <body>
@@ -174,19 +91,11 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="./index.html" class="logo">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-      </svg>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/><rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width=".8"/><line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width=".8"/><line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width=".8"/></svg>
       <span class="logo-text">Mithaq</span>
     </a>
     <span class="secure-badge">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <rect x="3" y="11" width="18" height="11" rx="2"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       Secure Checkout
     </span>
   </div>
@@ -197,427 +106,170 @@
   <span class="gold-rule"></span>
   <p class="label">Secure Payment</p>
   <h1 id="page-title">Complete Your Agreement</h1>
-  <p class="page-sub" id="page-sub">Your agreement deserves precision. Begin with a complimentary 30-minute strategy session.</p>
-
+  <p class="page-sub" id="page-sub">Review your selection and proceed to payment.</p>
   <div id="app"></div>
 </main>
 
-<!-- Will Upsell Modal -->
-<div class="modal-backdrop" id="upsell-modal" role="dialog" aria-modal="true" aria-labelledby="upsell-title">
-  <div class="modal">
-    <div class="modal-head">
-      <p class="modal-label">Recommended Companion Service</p>
-      <h2 class="modal-title" id="upsell-title">Add Will Registration to Your Agreement</h2>
-    </div>
-    <div class="modal-body">
-      <p class="modal-desc">
-        Registering your estate planning documentation alongside your marital agreement
-        ensures structural clarity and continuity. A preferential bundled rate applies
-        when both are registered together.
-      </p>
-      <div class="modal-offer">
-        <div class="modal-offer-row">
-          <div>
-            <p class="modal-offer-name">Will Registration</p>
-            <p class="modal-offer-tag">Official estate registration documentation. Government registration fees included.</p>
-          </div>
-          <div class="modal-offer-price">
-            <p class="modal-offer-amount">AED 3,499</p>
-            <p class="modal-offer-once">Bundled Rate</p>
-          </div>
-        </div>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-primary" id="upsell-accept"><span>Add Will Registration — AED 3,499</span></button>
-        <button class="btn-secondary" id="upsell-decline">Continue Without Will</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <footer class="site-footer">
-  <p>© 2026 Mithaq. All rights reserved.&nbsp;·&nbsp;
-    <a href="./index.html#contact" style="color:inherit;">Contact Support</a>
-  </p>
+  <p>© 2026 Mithaq. All rights reserved.&nbsp;·&nbsp;<a href="./index.html#contact" style="color:inherit">Contact Support</a></p>
 </footer>
 
 <script>
 'use strict';
 
-// ── Config ────────────────────────────────────────────────────────
 const SUPABASE_URL = 'https://xbbdigovnztxoxpydjav.supabase.co';
-const API_BASE     = `${SUPABASE_URL}/functions/v1`;
-const SS_KEY       = 'mithaq_purchase_state';
+const API_BASE = `${SUPABASE_URL}/functions/v1`;
 
-// ── Pricing module ────────────────────────────────────────────────
-// Single source of truth for consultation pricing logic. Server validates
-// the same numbers; this is purely for live UI feedback.
-const PricingModule = (() => {
-  const PRICE_PER_30MIN = 875;  // AED
-  const MIN_DURATION    = 30;
-  const MAX_DURATION    = 240;
-
-  // Returns { ok, durationMin, extensionFee, totalConsultation }
-  function calc(durationMin) {
-    if (!Number.isInteger(durationMin) || durationMin < MIN_DURATION || durationMin > MAX_DURATION || durationMin % 30 !== 0) {
-      return { ok: false, durationMin: MIN_DURATION, extensionFee: 0, totalConsultation: 0 };
-    }
-    const extraBlocks = (durationMin - MIN_DURATION) / 30;
-    const fee         = extraBlocks * PRICE_PER_30MIN;
-    return { ok: true, durationMin, extensionFee: fee, totalConsultation: fee };
-  }
-
-  function durationOptions() {
-    const out = [];
-    for (let m = MIN_DURATION; m <= MAX_DURATION; m += 30) {
-      const fee = ((m - MIN_DURATION) / 30) * PRICE_PER_30MIN;
-      out.push({ min: m, label: `${m} minutes`, priceLabel: fee === 0 ? 'Included' : `${fee.toLocaleString('en-US')} AED` });
-    }
-    return out;
-  }
-
-  return { calc, durationOptions, PRICE_PER_30MIN, MIN_DURATION, MAX_DURATION };
-})();
-
-// ── Catalogue ─────────────────────────────────────────────────────
 const PACKAGES = {
-  'prenup-standard': {
-    type: 'prenup', name: 'Silver — Standard Agreement',
-    tagline: 'For straightforward prenuptial agreements',
-    price: 'AED 2,500', priceNum: 2500,
-    features: ['Up to 3 assets','1 jurisdiction (country)','Up to 2 beneficiaries','Standard clause structure','Digital drafting & signing','Tamper-proof vault storage'],
-  },
-  'prenup-gold': {
-    type: 'prenup', name: 'Gold — Premium Agreement',
-    tagline: 'For expanded asset coverage and cross-border arrangements',
-    price: 'AED 4,900', priceNum: 4900,
-    features: ['Up to 8 assets','Up to 2 jurisdictions','Up to 4 beneficiaries','Custom asset allocation','Cross-border clause support','Priority document generation'],
-  },
-  'prenup-platinum': {
-    type: 'prenup', name: 'Platinum — Advanced Agreement',
-    tagline: 'For multi-jurisdiction and business asset inclusion',
-    price: 'AED 9,500', priceNum: 9500,
-    features: ['Up to 20 assets','Up to 5 jurisdictions','Up to 8 beneficiaries','Business ownership structuring','Advanced inheritance logic','Legal audit layer','Express processing'],
-  },
-  'prenup-diamond': {
-    type: 'prenup', name: 'Diamond — Comprehensive Agreement',
-    tagline: 'For unlimited, fully bespoke agreement structures',
-    price: 'AED 18,000', priceNum: 18000,
-    features: ['Unlimited assets','Unlimited jurisdictions','Unlimited beneficiaries','Custom clause drafting','Dedicated onboarding support','Integrated legal review option','24-hour fast-track preparation'],
-  },
-  'will-standalone': {
-    type: 'will', name: 'Will Registration',
-    tagline: 'Official estate registration documentation. Government registration fees included.',
-    price: 'AED 3,999', priceNum: 3999,
-    features: ['Official UAE estate registration','Government registration fees included','Sharia-compliant inheritance structuring','Digital signing & vault storage','Verifiable registration certificate'],
-  },
+  'prenup-standard': { name:'Silver — Standard Agreement',      tagline:'For straightforward prenuptial agreements',                  price:2500 },
+  'prenup-gold':     { name:'Gold — Premium Agreement',        tagline:'For expanded asset coverage and cross-border arrangements',    price:4900 },
+  'prenup-platinum': { name:'Platinum — Advanced Agreement',   tagline:'For multi-jurisdiction and business asset inclusion',          price:9500 },
+  'prenup-diamond':  { name:'Diamond — Comprehensive Agreement', tagline:'For unlimited, fully bespoke agreement structures',         price:18000 },
+  'will-standalone': { name:'Will Registration',                tagline:'Official estate registration documentation',                  price:3999 },
 };
-
 const WILL_ADDON_PRICE = 3499;
 
-// ── State + persistence ───────────────────────────────────────────
+const params   = new URLSearchParams(window.location.search);
+const mode     = params.get('mode');
+const pkgId    = params.get('package');
+const isPrenup = pkgId && pkgId.startsWith('prenup-');
+
 const state = {
-  packageId:       null,
-  pkg:             null,
-  email:           '',
-  addWill:         false,
-  consultationMin: 30,
-  submitting:      false,
-  error:           null,
-  _upsellShown:    false,
+  email: '',
+  durationMin: 60,
+  addWill: false,
+  legalDurationMin: parseInt(params.get('duration'), 10) || 60,
+  submitting: false,
+  error: params.get('cancelled') === '1' ? 'Your previous payment was not completed. No charge was made.' : null,
 };
 
-function persistState() {
-  try {
-    sessionStorage.setItem(SS_KEY, JSON.stringify({
-      packageId:       state.packageId,
-      email:           state.email,
-      addWill:         state.addWill,
-      consultationMin: state.consultationMin,
-      _upsellShown:    state._upsellShown,
-    }));
-  } catch (_) {}
-}
-function restoreState(currentPackageId) {
-  try {
-    const raw = sessionStorage.getItem(SS_KEY);
-    if (!raw) return;
-    const saved = JSON.parse(raw);
-    if (saved.packageId !== currentPackageId) return;
-    if (typeof saved.email           === 'string')  state.email           = saved.email;
-    if (typeof saved.addWill         === 'boolean') state.addWill         = saved.addWill;
-    if (typeof saved.consultationMin === 'number')  state.consultationMin = saved.consultationMin;
-    if (typeof saved._upsellShown    === 'boolean') state._upsellShown    = saved._upsellShown;
-  } catch (_) {}
-}
-
-// ── Init ──────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  const params      = new URLSearchParams(window.location.search);
-  state.packageId   = params.get('package');
-  state.pkg         = PACKAGES[state.packageId];
-
-  if (params.get('addWill') === '1') state.addWill = true;
-  if (params.get('cancelled') === '1') {
-    state.error = 'Your previous payment was not completed. No charge was made. You can try again below.';
-  }
-
-  if (!state.pkg) { renderInvalidPackage(); return; }
-
-  restoreState(state.packageId);
-
-  if (state.pkg.type === 'will') {
+  if (mode === 'legal') {
+    document.getElementById('page-title').textContent = 'Legal Advisory Session';
+    document.getElementById('page-sub').textContent = 'Private consultation with a legal advisor. Full rate billed hourly.';
+  } else if (pkgId === 'will-standalone') {
     document.getElementById('page-title').textContent = 'Complete Your Will Registration';
-    document.getElementById('page-sub').textContent =
-      'Your registration deserves precision. Begin with a complimentary 30-minute strategy session.';
-  }
-
-  render();
-  wireUpsellModal();
-});
-
-// ── Render ────────────────────────────────────────────────────────
-function render() {
-  const app = document.getElementById('app');
-  const { pkg, email, submitting, error, addWill, consultationMin } = state;
-  const isPrenup = pkg.type === 'prenup';
-
-  const pricing  = PricingModule.calc(consultationMin);
-  const baseFee  = pkg.priceNum;
-  const willFee  = (isPrenup && addWill) ? WILL_ADDON_PRICE : 0;
-  const total    = baseFee + willFee + pricing.extensionFee;
-  const totalDisplay = `AED ${total.toLocaleString('en-US')}`;
-
-  app.innerHTML = `
-    ${error ? `<div class="error-banner">${escapeHtml(error)}</div>` : ''}
-
-    <!-- Step 1: Service summary -->
-    <div class="card">
-      <p class="card-title">${isPrenup ? 'Step 1 · Your Package' : 'Step 1 · Your Service'}</p>
-      <div class="pkg-row">
-        <div class="pkg-info">
-          <p class="pkg-name">${escapeHtml(pkg.name)}</p>
-          <p class="pkg-tag">${escapeHtml(pkg.tagline)}</p>
-        </div>
-        <div class="pkg-price">
-          <p class="pkg-amount">${pkg.price}</p>
-          <p class="pkg-once">One-Time Fee</p>
-        </div>
-      </div>
-      <ul class="features">
-        ${pkg.features.map(f => `
-          <li class="feat">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/>
-              <path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="square"/>
-            </svg>
-            <span>${escapeHtml(f)}</span>
-          </li>
-        `).join('')}
-      </ul>
-    </div>
-
-    ${isPrenup && addWill ? `
-    <div class="card">
-      <p class="card-title">Bundled Service</p>
-      <div class="pkg-row" style="margin-bottom:0">
-        <div class="pkg-info">
-          <p class="pkg-name">Will Registration</p>
-          <p class="pkg-tag">Bundled rate — registered alongside your prenuptial agreement.</p>
-        </div>
-        <div class="pkg-price">
-          <p class="pkg-amount">AED 3,499</p>
-          <p class="pkg-once">Add-On</p>
-        </div>
-      </div>
-    </div>
-    ` : ''}
-
-    <!-- Step 2: Advisory Duration -->
-    <div class="card">
-      <p class="card-title">Step 2 · Select Advisory Duration</p>
-      <p class="card-headline">Complimentary Strategy Session Included</p>
-      <p class="card-tagline">
-        Your engagement begins with a complimentary 30-minute consultation.
-        Extended advisory time is available if your matter requires it.
-        You will schedule your private strategy session after payment.
-      </p>
-
-      <div class="duration-list">
-        ${PricingModule.durationOptions().map(d => `
-          <button type="button" class="duration-opt ${d.min === consultationMin ? 'selected' : ''}" data-duration="${d.min}">
-            <span class="duration-opt-time">${d.label}</span>
-            <span class="duration-opt-price ${d.min === 30 ? 'included' : ''}">${d.priceLabel}</span>
-          </button>
-        `).join('')}
-      </div>
-
-      ${pricing.extensionFee === 0
-        ? `<div class="complimentary-line">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Your complimentary strategy session is included.</span>
-          </div>`
-        : `<div class="extended-line">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Extended advisory time added — ${consultationMin} total minutes.</span>
-          </div>`
-      }
-
-      <p class="microcopy">Most clients choose 60–90 minutes to fully map international assets.</p>
-    </div>
-
-    <!-- AED note -->
-    <div class="currency-note">
-      All prices are listed in AED. International payments are automatically converted by your card provider at the prevailing exchange rate.
-    </div>
-
-    <!-- Step 3: Contact + checkout -->
-    <div class="card">
-      <p class="card-title">Step 3 · Contact &amp; Confirmation</p>
-      <div class="form-group">
-        <label class="form-label" for="email">Email Address</label>
-        <input type="email" id="email" class="form-input"
-               value="${escapeHtml(email)}"
-               placeholder="you@example.com" autocomplete="email"
-               ${submitting ? 'disabled' : ''}>
-        <p class="form-help">Your payment confirmation, scheduling link, and account details will be sent to this address.</p>
-      </div>
-
-      <div class="breakdown">
-        <div class="breakdown-row">
-          <span class="lbl">${escapeHtml(pkg.name)}</span>
-          <span>AED ${baseFee.toLocaleString('en-US')}</span>
-        </div>
-        ${willFee > 0 ? `
-        <div class="breakdown-row">
-          <span class="lbl">Will Registration (bundled)</span>
-          <span>AED ${willFee.toLocaleString('en-US')}</span>
-        </div>` : ''}
-        <div class="breakdown-row">
-          <span class="lbl">Strategy Session — Complimentary 30 min</span>
-          <span style="color:var(--emerald)">Included</span>
-        </div>
-        ${pricing.extensionFee > 0 ? `
-        <div class="breakdown-row">
-          <span class="lbl">Extended Advisory (${consultationMin - 30} additional min)</span>
-          <span>AED ${pricing.extensionFee.toLocaleString('en-US')}</span>
-        </div>` : ''}
-      </div>
-
-      <div class="total-row">
-        <span class="total-label">Total Due Today</span>
-        <span class="total-amount">${totalDisplay}</span>
-      </div>
-
-      <button class="btn-primary" id="submit-btn" ${submitting ? 'disabled' : ''}>
-        ${submitting
-          ? `<span class="spinner"></span><span>Redirecting to Stripe…</span>`
-          : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-             <span>Proceed to Secure Payment</span>`
-        }
-      </button>
-
-      <a href="./index.html#pricing" class="btn-secondary">Change Selection</a>
-    </div>
-
-    <div class="trust-row">
-      <span class="trust-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 8l6-1z"/></svg>
-        Stripe Secured
-      </span>
-      <span class="trust-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        PCI Compliant
-      </span>
-      <span class="trust-item">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Instant Confirmation
-      </span>
-    </div>
-  `;
-
-  document.getElementById('email').addEventListener('input', e => { state.email = e.target.value; persistState(); });
-  document.querySelectorAll('[data-duration]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.consultationMin = parseInt(btn.getAttribute('data-duration'), 10);
-      persistState();
-      render();
-    });
-  });
-  const submitBtn = document.getElementById('submit-btn');
-  if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
-}
-
-function wireUpsellModal() {
-  document.getElementById('upsell-accept').addEventListener('click', () => {
-    state.addWill = true; persistState(); closeUpsell(); render(); proceedToCheckout();
-  });
-  document.getElementById('upsell-decline').addEventListener('click', () => {
-    state.addWill = false; persistState(); closeUpsell(); proceedToCheckout();
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('upsell-modal').classList.contains('open')) {
-      state.addWill = false; persistState(); closeUpsell(); proceedToCheckout();
-    }
-  });
-}
-function openUpsell()  { document.getElementById('upsell-modal').classList.add('open');    document.body.style.overflow = 'hidden'; }
-function closeUpsell() { document.getElementById('upsell-modal').classList.remove('open'); document.body.style.overflow = ''; }
-
-async function handleSubmit() {
-  state.error = null;
-  const email = state.email.trim();
-  if (!email || !email.includes('@') || !email.includes('.')) {
-    state.error = 'Please enter a valid email address.';
-    render(); return;
-  }
-  // Trigger Will upsell ONLY if: prenup tier AND no Will yet AND modal not yet shown
-  if (state.pkg.type === 'prenup' && !state.addWill && !state._upsellShown) {
-    state._upsellShown = true; persistState(); openUpsell();
+  } else if (!pkgId || !PACKAGES[pkgId]) {
+    document.getElementById('app').innerHTML = '<div class="error-banner">Invalid or missing package selection.</div><a href="./index.html#pricing" class="btn-secondary">Return to Service Options</a>';
     return;
   }
-  proceedToCheckout();
-}
-
-async function proceedToCheckout() {
-  state.submitting = true;
-  state.error      = null;
   render();
+});
 
+function consFee(min) { return Math.max(0, (min - 30) / 30) * 875; }
+
+function render() {
+  const app = document.getElementById('app');
+  mode === 'legal' ? renderLegal(app) : renderPrenup(app);
+}
+
+function renderLegal(app) {
+  const { legalDurationMin: d, email, submitting, error } = state;
+  const blocks = d / 30;
+  const total = blocks * 875;
+  const OPTS = [
+    {min:60,label:'1 hour'},  {min:90,label:'1.5 hours'}, {min:120,label:'2 hours'},
+    {min:150,label:'2.5 hours'},{min:180,label:'3 hours'}, {min:210,label:'3.5 hours'},{min:240,label:'4 hours'},
+  ];
+  app.innerHTML = `
+    ${error ? `<div class="error-banner">${esc(error)}</div>` : ''}
+    <div class="card">
+      <p class="card-label">Service</p>
+      <div class="pkg-row">
+        <div class="pkg-info"><p class="pkg-name">Private Legal Advisory Session</p><p class="pkg-tag">Dedicated advisory time for asset structuring, cross-border considerations, and marital agreement planning.</p></div>
+        <div class="pkg-price"><p class="pkg-amount">AED 1,750</p><p class="pkg-once">Per Hour</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="card-label">Duration &amp; Payment</p>
+      <div class="form-group">
+        <label class="form-label" for="legal-dur">Consultation Duration</label>
+        <select id="legal-dur" class="form-select" ${submitting?'disabled':''}>
+          ${OPTS.map(o => `<option value="${o.min}" ${o.min===d?'selected':''}>${o.label} — AED ${((o.min/30)*875).toLocaleString('en-US')}</option>`).join('')}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input type="email" id="email" class="form-input" value="${esc(email)}" placeholder="you@example.com" autocomplete="email" ${submitting?'disabled':''}>
+        <p class="form-help">Your confirmation and scheduling link will be sent here.</p>
+      </div>
+      <div class="total-row"><span class="total-label">Total Consultation Fee</span><span class="total-amount">AED ${total.toLocaleString('en-US')}</span></div>
+      <button class="btn-primary" id="submit-btn" ${submitting?'disabled':''}>${submitting?'<span class="spinner"></span><span>Redirecting…</span>':'<span>Proceed to Secure Payment</span>'}</button>
+      <a href="./index.html#legal-advisory" class="btn-secondary">Change Selection</a>
+    </div>
+    ${trust()}`;
+  wire('legal-dur','change',e=>{state.legalDurationMin=parseInt(e.target.value,10);render()});
+  wire('email','input',e=>{state.email=e.target.value});
+  wire('submit-btn','click',()=>go('legal'));
+}
+
+function renderPrenup(app) {
+  const pkg = PACKAGES[pkgId];
+  if (!pkg) return;
+  const { durationMin: d, addWill, email, submitting, error } = state;
+  const cf = consFee(d), wf = isPrenup && addWill ? WILL_ADDON_PRICE : 0, total = pkg.price + cf + wf;
+  const durOpts = [];
+  for (let m=60;m<=240;m+=30) { const h=m/60; const l=Number.isInteger(h)?`${h} hour${h>1?'s':''}`:h+' hours'; durOpts.push(`<option value="${m}" ${m===d?'selected':''}>${l} (first 30 min complimentary) — ${cf===consFee(m) ? '' : ''}${consFee(m)===0?'Included':consFee(m).toLocaleString('en-US')+' AED'}</option>`); }
+
+  app.innerHTML = `
+    ${error ? `<div class="error-banner">${esc(error)}</div>` : ''}
+    <div class="card">
+      <p class="card-label">Selected Service</p>
+      <div class="pkg-row">
+        <div class="pkg-info"><p class="pkg-name">${esc(pkg.name)}</p><p class="pkg-tag">${esc(pkg.tagline)}</p></div>
+        <div class="pkg-price"><p class="pkg-amount">AED ${pkg.price.toLocaleString('en-US')}</p><p class="pkg-once">One-Time</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="card-label">Options &amp; Payment</p>
+      <div class="form-group">
+        <label class="form-label" for="duration">Consultation Duration</label>
+        <select id="duration" class="form-select" ${submitting?'disabled':''}>${durOpts.join('')}</select>
+        <p class="form-help">First 30 minutes complimentary. Each additional 30 minutes: 875 AED.</p>
+      </div>
+      ${cf > 0
+        ? `<div class="addon-fee"><span>Additional consultation fee</span><span class="addon-fee-amount">AED ${cf.toLocaleString('en-US')}</span></div>`
+        : `<div class="addon-fee" style="border-left-color:var(--emerald)"><span>Complimentary consultation included</span><span class="addon-fee-amount" style="color:var(--emerald)">Included</span></div>`}
+      ${isPrenup ? `<div style="margin-top:16px"><label class="checkbox-row"><input type="checkbox" id="add-will" ${addWill?'checked':''} ${submitting?'disabled':''}><div><p class="checkbox-label-main">Add Sharia-Compliant Will Registration — AED 3,499</p><p class="checkbox-label-sub">Official estate registration. Government fees included. Bundle rate applied.</p></div></label></div>` : ''}
+      <div class="form-group" style="margin-top:18px">
+        <label class="form-label" for="email">Email Address</label>
+        <input type="email" id="email" class="form-input" value="${esc(email)}" placeholder="you@example.com" autocomplete="email" ${submitting?'disabled':''}>
+        <p class="form-help">Your confirmation and scheduling link will be sent here.</p>
+      </div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="lbl">${esc(pkg.name)}</span><span>AED ${pkg.price.toLocaleString('en-US')}</span></div>
+        <div class="breakdown-row ${cf===0?'incl':''}"><span class="lbl">Consultation (${d} min)</span><span class="val">${cf===0?'Included':'AED '+cf.toLocaleString('en-US')}</span></div>
+        ${wf>0?`<div class="breakdown-row"><span class="lbl">Will Registration (bundled)</span><span>AED ${wf.toLocaleString('en-US')}</span></div>`:''}
+      </div>
+      <div class="total-row"><span class="total-label">Total Due Today</span><span class="total-amount">AED ${total.toLocaleString('en-US')}</span></div>
+      <button class="btn-primary" id="submit-btn" ${submitting?'disabled':''}>${submitting?'<span class="spinner"></span><span>Redirecting…</span>':'<span>Proceed to Secure Payment</span>'}</button>
+      <a href="./index.html#pricing" class="btn-secondary">Change Selection</a>
+    </div>
+    ${trust()}`;
+  wire('duration','change',e=>{state.durationMin=parseInt(e.target.value,10);render()});
+  if(isPrenup) wire('add-will','change',e=>{state.addWill=e.target.checked;render()});
+  wire('email','input',e=>{state.email=e.target.value});
+  wire('submit-btn','click',()=>go('prenup'));
+}
+
+async function go(type) {
+  const e = state.email.trim();
+  if (!e||!e.includes('@')||!e.includes('.')) { state.error='Please enter a valid email address.'; render(); return; }
+  state.submitting=true; state.error=null; render();
+  const payload = type==='legal'
+    ? { email:e.toLowerCase(), serviceType:'legal_advisory', consultationDurationMin:state.legalDurationMin }
+    : { email:e.toLowerCase(), package:pkgId, addWill:state.addWill, consultationDurationMin:state.durationMin };
   try {
-    const res = await fetch(`${API_BASE}/create-checkout-session`, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({
-        email:                   state.email.trim(),
-        package:                 state.packageId,
-        addWill:                 state.addWill,
-        consultationDurationMin: state.consultationMin,
-      }),
-    });
-    const data = await res.json();
-
-    if (!res.ok || !data.url) throw new Error(data.error || 'Could not initiate payment.');
-    window.location.href = data.url;
-  } catch (err) {
-    state.error      = (err && err.message) || 'Could not connect to payment system. Please try again.';
-    state.submitting = false;
-    render();
-  }
+    const r = await fetch(`${API_BASE}/create-checkout-session`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+    const d = await r.json();
+    if (!r.ok||!d.url) throw new Error(d.error||'Payment could not be initiated.');
+    window.location.href = d.url;
+  } catch(err) { state.error=err.message||'Could not connect.'; state.submitting=false; render(); }
 }
 
-function renderInvalidPackage() {
-  document.getElementById('app').innerHTML = `
-    <div class="error-banner">Invalid or missing package selection.</div>
-    <a href="./index.html#pricing" class="btn-secondary">Return to Service Options</a>
-  `;
-}
-
-function escapeHtml(s) {
-  return String(s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
+function wire(id,ev,fn){const el=document.getElementById(id);if(el)el.addEventListener(ev,fn)}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function trust(){return`<div class="trust-row"><span class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 8l6-1z"/></svg>Stripe Secured</span><span class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>PCI Compliant</span><span class="trust-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Instant Confirmation</span></div>`}
 </script>
 </body>
 </html>

@@ -201,10 +201,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         email:                   data.email,
         packageType:             data.packageType,
         purchaseType:            data.purchaseType  || '',
+        serviceType:             data.serviceType   || 'prenup',
         packageName:             data.packageName   || '',
         willIncluded:            data.willIncluded === true,
         willOnly:                data.willOnly     === true,
         consultationDurationMin: data.consultationDurationMin || 30,
+        consultationHours:       data.consultationHours || 0,
         amount:                  data.amount,
         currency:                data.currency,
       });
@@ -215,9 +217,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (_) {
     renderSuccess({
-      sessionId, email: '', packageType: '', purchaseType: '', packageName: '',
+      sessionId, email: '', packageType: '', purchaseType: '', serviceType: 'prenup', packageName: '',
       willIncluded: false, willOnly: false,
-      consultationDurationMin: 30, amount: 0, currency: '',
+      consultationDurationMin: 30, consultationHours: 0, amount: 0, currency: '',
     });
   }
 });
