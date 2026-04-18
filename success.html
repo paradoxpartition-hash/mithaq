@@ -151,9 +151,8 @@ const API_BASE     = `${SUPABASE_URL}/functions/v1`;
 // auto-attached if enabled. Update CAL_USERNAME and event slugs below.
 const CAL_USERNAME = 'mithaq.appointments';
 
-// Map duration (minutes) → Cal.com event slug.
-// Default convention: "strategy-session-30", "strategy-session-60", etc.
-const CAL_EVENT_SLUGS = {
+// Map duration (minutes) → Cal.com event slug for STRATEGY SESSIONS (prenup/will).
+const CAL_STRATEGY_SLUGS = {
   30:  'strategy-session-30',
   60:  'strategy-session-60',
   90:  'strategy-session-90',
@@ -162,6 +161,14 @@ const CAL_EVENT_SLUGS = {
   180: 'strategy-session-180',
   210: 'strategy-session-210',
   240: 'strategy-session-240',
+};
+
+// Map hours → Cal.com event slug for LEGAL ADVISORY SESSIONS (standalone).
+const CAL_LEGAL_SLUGS = {
+  1: 'legal-advisory-1h',
+  2: 'legal-advisory-2h',
+  3: 'legal-advisory-3h',
+  4: 'legal-advisory-4h',
 };
 
 const PACKAGE_NAMES = {
@@ -225,8 +232,17 @@ function fmtAmount(amount, currency) {
 }
 
 // ── Scheduling component (independent, Cal.com-only) ──────────────
-function calBookingUrl(durationMin, email) {
-  const slug = CAL_EVENT_SLUGS[durationMin] || CAL_EVENT_SLUGS[30];
+function calBookingUrl(serviceType, consultationDurationMin, consultationHours, email) {
+  let slug;
+  
+  if (serviceType === 'legal_consultation') {
+    // Legal advisory: use hours-based slugs
+    slug = CAL_LEGAL_SLUGS[consultationHours] || CAL_LEGAL_SLUGS[1];
+  } else {
+    // Prenup/Will: use minute-based strategy session slugs
+    slug = CAL_STRATEGY_SLUGS[consultationDurationMin] || CAL_STRATEGY_SLUGS[30];
+  }
+  
   const params = new URLSearchParams();
   if (email) params.set('email', email);
   params.set('embed', 'true');
@@ -234,13 +250,23 @@ function calBookingUrl(durationMin, email) {
 }
 
 function renderSchedulingSection(p) {
-  const url = calBookingUrl(p.consultationDurationMin, p.email);
+  const url = calBookingUrl(p.serviceType, p.consultationDurationMin, p.consultationHours, p.email);
+  
+  // Display text depends on service type
+  let durationText;
+  if (p.serviceType === 'legal_consultation') {
+    const hrs = p.consultationHours || 1;
+    durationText = `${hrs}-hour private legal advisory session`;
+  } else {
+    durationText = `${p.consultationDurationMin}-minute private strategy session`;
+  }
+  
   return `
     <div class="card">
       <p class="card-title">Schedule Your Private Strategy Session</p>
       <p class="card-headline">Your Consultation Has Been Unlocked</p>
       <p class="card-tagline">
-        Your <strong>${p.consultationDurationMin}-minute private strategy session</strong> is ready.
+        Your <strong>${durationText}</strong> is ready.
         Use the calendar below to select a time that suits your schedule.
         A confirmation will be sent to your email once your session is scheduled.
       </p>
@@ -252,7 +278,7 @@ function renderSchedulingSection(p) {
         </div>
         <div class="booking-meta-item">
           <p class="booking-meta-label">Duration</p>
-          <p class="booking-meta-value">${p.consultationDurationMin} minutes</p>
+          <p class="booking-meta-value">${p.serviceType === 'legal_consultation' ? `${p.consultationHours} ${p.consultationHours === 1 ? 'hour' : 'hours'}` : `${p.consultationDurationMin} minutes`}</p>
         </div>
       </div>
 
@@ -281,7 +307,11 @@ function renderSuccess(p) {
   const amtDisplay = fmtAmount(p.amount, p.currency);
 
   let title, description;
-  if (p.willOnly) {
+  
+  if (p.serviceType === 'legal_consultation') {
+    title       = 'Your Legal Advisory Session<br>Has Been Confirmed.';
+    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your private legal advisory session below to discuss asset structuring, cross-border considerations, and marital agreement planning.';
+  } else if (p.willOnly) {
     title       = 'Your Will Registration<br>Has Been Initiated.';
     description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin the registration process.';
   } else if (p.willIncluded) {
@@ -308,7 +338,7 @@ function renderSuccess(p) {
 
     <!-- Order summary -->
     <div class="card">
-      <p class="card-title">${p.willOnly ? 'Service Purchased' : 'Package Purchased'}</p>
+      <p class="card-title">${p.serviceType === 'legal_consultation' ? 'Service Purchased' : (p.willOnly ? 'Service Purchased' : 'Package Purchased')}</p>
       <div class="package-row">
         <span class="package-name">${baseName}</span>
         <span class="package-badge">Confirmed</span>
@@ -329,19 +359,27 @@ function renderSuccess(p) {
         <span class="step-num">1</span>
         <div>
           <p class="step-title">Payment Confirmation Email</p>
-          <p class="step-desc">You will receive an email confirming your payment, your reference number, and a direct link to schedule your strategy session.</p>
+          <p class="step-desc">You will receive an email confirming your payment, your reference number, and a direct link to schedule your ${p.serviceType === 'legal_consultation' ? 'legal advisory' : 'strategy'} session.</p>
         </div>
       </div>
 
       <div class="step-item">
         <span class="step-num">2</span>
         <div>
-          <p class="step-title">Strategy Session Confirmation</p>
+          <p class="step-title">${p.serviceType === 'legal_consultation' ? 'Legal Advisory' : 'Strategy'} Session Confirmation</p>
           <p class="step-desc">After scheduling above, you will receive a calendar invitation with your appointment details and meeting link.</p>
         </div>
       </div>
 
-      ${p.willOnly ? `
+      ${p.serviceType === 'legal_consultation' ? `
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <div>
+          <p class="step-title">Private Advisory Session</p>
+          <p class="step-desc">Your private legal advisory session will be conducted by senior advisors familiar with UAE marital, inheritance, and asset structuring frameworks. All discussions are confidential.</p>
+        </div>
+      </div>
+      ` : p.willOnly ? `
       <div class="step-item">
         <span class="step-num">3</span>
         <div>
