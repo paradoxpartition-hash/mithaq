@@ -58,25 +58,10 @@
              background:var(--offwhite);border:1px solid var(--border);
              padding:10px 14px;word-break:break-all;margin-top:12px;}
 
-    /* Booking embed */
-    .booking-status-row{
-      display:flex;align-items:center;gap:10px;
-      padding:14px 18px;border:1px solid var(--border);
-      background:var(--offwhite);font-size:0.8125rem;color:var(--charcoal);
-      margin-bottom:16px;border-left:3px solid var(--gold);
-    }
-    .booking-status-row.confirmed{border-left-color:var(--emerald);background:#FAFAF6;}
-    .booking-status-row svg{flex-shrink:0;}
-
-    .setmore-frame{
-      width:100%;min-height:720px;border:1px solid var(--border);background:var(--white);
-      display:block;
-    }
-
     .booking-meta{
       display:grid;grid-template-columns:1fr 1fr;gap:0;
       border:1px solid var(--border);background:var(--white);
-      margin-top:16px;
+      margin-bottom:16px;
     }
     @media(max-width:480px){.booking-meta{grid-template-columns:1fr;}}
     .booking-meta-item{padding:16px 20px;border-right:1px solid var(--border);}
@@ -85,6 +70,13 @@
     .booking-meta-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
                         text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
     .booking-meta-value{font-family:var(--f-display);font-size:1.125rem;font-weight:500;color:var(--charcoal);}
+
+    /* Cal.com embed container */
+    .cal-embed-container{
+      width:100%;min-height:680px;border:1px solid var(--border);background:var(--white);
+      overflow:hidden;
+    }
+    .cal-iframe{width:100%;min-height:680px;border:none;display:block;}
 
     .step-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);}
     .step-item:last-child{border-bottom:none;}
@@ -153,17 +145,23 @@
 const SUPABASE_URL = 'https://xbbdigovnztxoxpydjav.supabase.co';
 const API_BASE     = `${SUPABASE_URL}/functions/v1`;
 
-// TODO: Replace with your real Setmore booking page URL once available.
-// Format: https://booking.setmore.com/scheduleappointment/<your-id>
-// We pass these query params (Setmore supports common ones):
-//   ?service-id=<service_key>&duration=<minutes>&email=<customer-email>
-const SETMORE_BASE_URL = 'https://booking.setmore.com/scheduleappointment/REPLACE-WITH-YOUR-ID';
+// ── Cal.com config ────────────────────────────────────────────────
+// Free-tier compatible. Create one event type per duration in your Cal.com
+// account, all priced at 0 (Stripe handled payment), with Google Meet
+// auto-attached if enabled. Update CAL_USERNAME and event slugs below.
+const CAL_USERNAME = 'REPLACE-WITH-YOUR-CAL-USERNAME';
 
-// Setmore service keys per consultation type. REPLACE these once Setmore
-// services are created.
-const SETMORE_SERVICE_KEYS = {
-  'video':     'REPLACE-WITH-VIDEO-SERVICE-KEY',
-  'in-person': 'REPLACE-WITH-INPERSON-SERVICE-KEY',
+// Map duration (minutes) → Cal.com event slug.
+// Default convention: "strategy-session-30", "strategy-session-60", etc.
+const CAL_EVENT_SLUGS = {
+  30:  'strategy-session-30',
+  60:  'strategy-session-60',
+  90:  'strategy-session-90',
+  120: 'strategy-session-120',
+  150: 'strategy-session-150',
+  180: 'strategy-session-180',
+  210: 'strategy-session-210',
+  240: 'strategy-session-240',
 };
 
 const PACKAGE_NAMES = {
@@ -173,8 +171,6 @@ const PACKAGE_NAMES = {
   'prenup-diamond':  'Diamond — Comprehensive Agreement',
   'will-standalone': 'Will Registration',
 };
-
-let pollHandle = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
   const params    = new URLSearchParams(window.location.search);
@@ -201,31 +197,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         packageName:             data.packageName   || '',
         willIncluded:            data.willIncluded === true,
         willOnly:                data.willOnly     === true,
-        consultationType:        data.consultationType        || null,
         consultationDurationMin: data.consultationDurationMin || 30,
-        setmoreBookingId:        data.setmoreBookingId        || null,
-        setmoreBookingStatus:    data.setmoreBookingStatus    || null,
         amount:                  data.amount,
         currency:                data.currency,
       });
-
-      // Start polling for Setmore booking confirmation if not yet booked
-      if (!data.setmoreBookingId) {
-        startBookingPolling(sessionId);
-      }
     } else {
       renderError('Payment could not be confirmed.',
         'We were unable to verify your payment status. If you were charged, please contact us with your reference below.',
         sessionId);
     }
   } catch (_) {
-    // Verification failed — show success anyway since Stripe only redirects after success
     renderSuccess({
       sessionId, email: '', packageType: '', purchaseType: '', packageName: '',
       willIncluded: false, willOnly: false,
-      consultationType: null, consultationDurationMin: 30,
-      setmoreBookingId: null, setmoreBookingStatus: null,
-      amount: 0, currency: '',
+      consultationDurationMin: 30, amount: 0, currency: '',
     });
   }
 });
@@ -239,38 +224,73 @@ function fmtAmount(amount, currency) {
   } catch (_) { return ''; }
 }
 
-function setmoreEmbedUrl({ consultationType, consultationDurationMin, email }) {
-  // Build the embed URL with service-id, duration, and email pre-fill where supported
-  const serviceKey = consultationType ? SETMORE_SERVICE_KEYS[consultationType] : null;
+// ── Scheduling component (independent, Cal.com-only) ──────────────
+function calBookingUrl(durationMin, email) {
+  const slug = CAL_EVENT_SLUGS[durationMin] || CAL_EVENT_SLUGS[30];
   const params = new URLSearchParams();
-  if (serviceKey)               params.set('service-id', serviceKey);
-  if (consultationDurationMin)  params.set('duration',   String(consultationDurationMin));
-  if (email)                    params.set('email',      email);
-  return `${SETMORE_BASE_URL}?${params.toString()}`;
+  if (email) params.set('email', email);
+  params.set('embed', 'true');
+  return `https://cal.com/${CAL_USERNAME}/${slug}?${params.toString()}`;
+}
+
+function renderSchedulingSection(p) {
+  const url = calBookingUrl(p.consultationDurationMin, p.email);
+  return `
+    <div class="card">
+      <p class="card-title">Schedule Your Private Strategy Session</p>
+      <p class="card-headline">Your Consultation Has Been Unlocked</p>
+      <p class="card-tagline">
+        Your <strong>${p.consultationDurationMin}-minute private strategy session</strong> is ready.
+        Use the calendar below to select a time that suits your schedule.
+        A confirmation will be sent to your email once your session is scheduled.
+      </p>
+
+      <div class="booking-meta">
+        <div class="booking-meta-item">
+          <p class="booking-meta-label">Format</p>
+          <p class="booking-meta-value">Private Consultation</p>
+        </div>
+        <div class="booking-meta-item">
+          <p class="booking-meta-label">Duration</p>
+          <p class="booking-meta-value">${p.consultationDurationMin} minutes</p>
+        </div>
+      </div>
+
+      <div class="cal-embed-container">
+        <iframe
+          class="cal-iframe"
+          src="${url}"
+          title="Schedule your strategy session"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allow="payment">
+        </iframe>
+      </div>
+
+      <p style="font-size:0.75rem;color:var(--muted);margin-top:12px;font-style:italic;line-height:1.6;">
+        If the calendar does not load, you can also schedule directly at
+        <a href="${url}" target="_blank" rel="noopener" style="color:var(--charcoal);text-decoration:underline;">our scheduling page</a>.
+      </p>
+    </div>
+  `;
 }
 
 function renderSuccess(p) {
   const app        = document.getElementById('app');
   const baseName   = p.packageName || PACKAGE_NAMES[p.packageType] || 'Your Service Package';
   const amtDisplay = fmtAmount(p.amount, p.currency);
-  const consultLabel = p.consultationType === 'video'
-    ? 'Video Consultation'
-    : p.consultationType === 'in-person' ? 'Private In-Person Consultation' : '—';
 
-  // Headline varies based on what was purchased
   let title, description;
   if (p.willOnly) {
     title       = 'Your Will Registration<br>Has Been Initiated.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Please schedule your strategy session below to begin the registration process.';
+    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin the registration process.';
   } else if (p.willIncluded) {
     title       = 'Your Agreement &amp; Will<br>Have Been Initiated.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Please schedule your strategy session below to begin both processes.';
+    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin both processes.';
   } else {
     title       = 'Your Agreement<br>Has Been Initiated.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Please schedule your strategy session below to begin the drafting process.';
+    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin the drafting process.';
   }
-
-  const isBooked = p.setmoreBookingId && p.setmoreBookingStatus !== 'cancelled';
 
   app.innerHTML = `
     <div style="text-align:center;margin-bottom:8px;">
@@ -298,49 +318,8 @@ function renderSuccess(p) {
       <div class="ref-box">Payment reference: ${p.sessionId}</div>
     </div>
 
-    <!-- Strategy Session booking -->
-    <div class="card">
-      <p class="card-title">Schedule Your Strategy Session</p>
-      <p class="card-headline">${isBooked ? 'Strategy Session Confirmed' : 'Select Your Time'}</p>
-      <p class="card-tagline">
-        ${isBooked
-          ? 'Your strategy session is scheduled. Confirmation details have been sent to your email.'
-          : `Use the calendar below to schedule your <strong>${p.consultationDurationMin}-minute ${consultLabel}</strong>. A confirmation will be sent to your email once booked.`}
-      </p>
-
-      <div class="booking-status-row ${isBooked ? 'confirmed' : ''}" id="booking-status">
-        ${isBooked
-          ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-             <span><strong>Booking confirmed</strong> — Reference: ${p.setmoreBookingId}</span>`
-          : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-             <span>Awaiting your booking. Please complete the calendar below.</span>`
-        }
-      </div>
-
-      <div class="booking-meta">
-        <div class="booking-meta-item">
-          <p class="booking-meta-label">Format</p>
-          <p class="booking-meta-value">${consultLabel}</p>
-        </div>
-        <div class="booking-meta-item">
-          <p class="booking-meta-label">Duration</p>
-          <p class="booking-meta-value">${p.consultationDurationMin} minutes</p>
-        </div>
-      </div>
-
-      <iframe
-        class="setmore-frame"
-        src="${setmoreEmbedUrl(p)}"
-        title="Schedule your strategy session"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-
-      <p style="font-size:0.75rem;color:var(--muted);margin-top:12px;font-style:italic;line-height:1.6;">
-        If the calendar does not load, you can also book directly at
-        <a href="${setmoreEmbedUrl(p)}" target="_blank" rel="noopener" style="color:var(--charcoal);text-decoration:underline;">our scheduling page</a>.
-      </p>
-    </div>
+    <!-- Scheduling (independent Cal.com component) -->
+    ${renderSchedulingSection(p)}
 
     <!-- Next steps -->
     <div class="card">
@@ -350,7 +329,7 @@ function renderSuccess(p) {
         <span class="step-num">1</span>
         <div>
           <p class="step-title">Payment Confirmation Email</p>
-          <p class="step-desc">You will receive an email confirming your payment and consultation details.</p>
+          <p class="step-desc">You will receive an email confirming your payment, your reference number, and a direct link to schedule your strategy session.</p>
         </div>
       </div>
 
@@ -358,7 +337,7 @@ function renderSuccess(p) {
         <span class="step-num">2</span>
         <div>
           <p class="step-title">Strategy Session Confirmation</p>
-          <p class="step-desc">After scheduling above, you will receive a calendar invitation with your appointment details and meeting link or office address.</p>
+          <p class="step-desc">After scheduling above, you will receive a calendar invitation with your appointment details and meeting link.</p>
         </div>
       </div>
 
@@ -421,32 +400,6 @@ function renderSuccess(p) {
 
     <a href="./index.html" class="btn-primary">Return to Mithaq</a>
   `;
-}
-
-function startBookingPolling(sessionId) {
-  // Poll every 8 seconds for up to 10 minutes
-  let attempts = 0;
-  const maxAttempts = 75;
-  pollHandle = setInterval(async () => {
-    attempts++;
-    if (attempts > maxAttempts) { clearInterval(pollHandle); return; }
-    try {
-      const res  = await fetch(`${API_BASE}/verify-payment?session_id=${encodeURIComponent(sessionId)}`);
-      const data = await res.json();
-      if (data.setmoreBookingId) {
-        clearInterval(pollHandle);
-        // Update just the status row without full re-render
-        const row = document.getElementById('booking-status');
-        if (row) {
-          row.classList.add('confirmed');
-          row.innerHTML = `
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Booking confirmed</strong> — Reference: ${data.setmoreBookingId}</span>
-          `;
-        }
-      }
-    } catch (_) { /* keep polling */ }
-  }, 8000);
 }
 
 function renderError(title, message, sessionId = '') {
