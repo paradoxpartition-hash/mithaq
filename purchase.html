@@ -46,7 +46,6 @@
                    color:var(--charcoal);margin-bottom:6px;line-height:1.2;}
     .card-tagline{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:20px;}
 
-    /* Package summary */
     .pkg-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
     .pkg-info{flex:1;min-width:200px;}
     .pkg-name{font-family:var(--f-display);font-size:1.25rem;font-weight:500;color:var(--charcoal);margin-bottom:4px;}
@@ -59,66 +58,37 @@
     .feat{display:flex;align-items:flex-start;gap:10px;font-size:0.8125rem;color:var(--charcoal);padding:6px 0;}
     .feat svg{flex-shrink:0;margin-top:2px;}
 
-    /* ── Consultation type selector ── */
-    .consult-types{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:24px;}
-    @media(min-width:560px){.consult-types{grid-template-columns:1fr 1fr;}}
-    .consult-type{
-      border:1px solid var(--border);background:var(--white);
-      padding:20px 22px;cursor:pointer;text-align:left;
-      transition:border-color 0.15s,background 0.15s;
-      font-family:inherit;color:inherit;
-    }
-    .consult-type:hover{border-color:var(--charcoal);}
-    .consult-type.selected{border-color:var(--emerald);background:#FAFAF6;
-                           box-shadow:inset 0 0 0 1px var(--emerald);}
-    .consult-type-icon{
-      width:40px;height:40px;border:1px solid var(--border);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;margin-bottom:12px;
-      color:var(--emerald);
-    }
-    .consult-type.selected .consult-type-icon{border-color:var(--emerald);background:var(--white);}
-    .consult-type-name{font-family:var(--f-display);font-size:1.125rem;font-weight:500;color:var(--charcoal);margin-bottom:4px;}
-    .consult-type-desc{font-size:0.8125rem;color:var(--muted);line-height:1.5;}
-
-    /* ── Duration selector ── */
-    .duration-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
-                    text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .duration-grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;
-    }
-    @media(max-width:480px){.duration-grid{grid-template-columns:repeat(2,1fr);}}
+    /* Duration selector — full-width rows, AED total per option */
+    .duration-list{display:flex;flex-direction:column;gap:6px;}
     .duration-opt{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
       border:1px solid var(--border);background:var(--white);
-      padding:12px 8px;cursor:pointer;text-align:center;
+      padding:14px 18px;cursor:pointer;text-align:left;
       transition:border-color 0.15s,background 0.15s;
-      font-family:inherit;
+      font-family:inherit;color:inherit;width:100%;
     }
     .duration-opt:hover{border-color:var(--charcoal);}
     .duration-opt.selected{border-color:var(--emerald);background:#FAFAF6;
                            box-shadow:inset 0 0 0 1px var(--emerald);}
     .duration-opt-time{font-family:var(--f-display);font-size:1.125rem;font-weight:500;color:var(--charcoal);}
-    .duration-opt-meta{font-size:0.6875rem;color:var(--muted);margin-top:2px;letter-spacing:0.04em;}
+    .duration-opt-price{font-size:0.875rem;color:var(--muted);font-weight:400;}
+    .duration-opt-price.included{color:var(--emerald);font-weight:500;}
 
     .complimentary-line{
-      display:flex;align-items:center;gap:8px;padding:12px 16px;
+      display:flex;align-items:center;gap:8px;padding:12px 16px;margin-top:14px;
       background:#FAFAF6;border:1px solid var(--border);border-left:3px solid var(--emerald);
       font-size:0.8125rem;color:var(--charcoal);line-height:1.5;
     }
     .complimentary-line svg{flex-shrink:0;color:var(--emerald);}
-
     .extended-line{
-      display:flex;align-items:center;gap:8px;padding:12px 16px;
+      display:flex;align-items:center;gap:8px;padding:12px 16px;margin-top:14px;
       background:var(--offwhite);border:1px solid var(--border);border-left:3px solid var(--gold);
       font-size:0.8125rem;color:var(--charcoal);line-height:1.5;
     }
     .extended-line svg{flex-shrink:0;color:var(--gold);}
 
-    .microcopy{
-      font-size:0.75rem;color:var(--muted);font-style:italic;
-      margin-top:14px;line-height:1.6;
-    }
+    .microcopy{font-size:0.75rem;color:var(--muted);font-style:italic;margin-top:14px;line-height:1.6;}
 
-    /* Form */
     .form-group{margin-bottom:20px;}
     .form-label{display:block;font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
                 text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
@@ -128,12 +98,10 @@
     .form-input:focus{outline:none;border-color:var(--emerald);}
     .form-help{font-size:0.75rem;color:var(--muted);margin-top:6px;}
 
-    /* Itemised total */
     .breakdown{margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
     .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;
                    font-size:0.875rem;color:var(--charcoal);padding:6px 0;}
     .breakdown-row .lbl{color:var(--muted);}
-    .breakdown-row .val{font-family:var(--f-body);font-weight:400;}
 
     .total-row{display:flex;justify-content:space-between;align-items:center;
                padding:16px 0 4px;border-top:1px solid var(--border);margin-top:8px;}
@@ -143,7 +111,6 @@
     .currency-note{background:var(--offwhite);border:1px solid var(--border);border-left:3px solid var(--gold);
                    padding:12px 16px;font-size:0.75rem;color:var(--muted);line-height:1.6;margin-bottom:16px;}
 
-    /* Buttons */
     .btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;
                  width:100%;padding:16px 32px;background:var(--emerald);color:var(--offwhite);
                  font-family:var(--f-body);font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;
@@ -157,9 +124,6 @@
                    cursor:pointer;transition:background 0.2s,color 0.2s;margin-top:12px;}
     .btn-secondary:hover{border-color:var(--emerald);}
 
-    .checkout-gate-msg{font-size:0.75rem;color:var(--muted);text-align:center;margin-top:12px;
-                       font-style:italic;}
-
     .trust-row{display:flex;align-items:center;justify-content:center;gap:24px;
                margin-top:24px;font-size:0.75rem;color:var(--muted);flex-wrap:wrap;}
     .trust-item{display:flex;align-items:center;gap:6px;}
@@ -171,12 +135,10 @@
              border-radius:50%;animation:spin 0.7s linear infinite;}
     @keyframes spin{to{transform:rotate(360deg);}}
 
-    /* ── Upsell Modal ── */
-    .modal-backdrop{
-      position:fixed;inset:0;background:rgba(15,61,46,0.55);
-      display:none;align-items:center;justify-content:center;
-      padding:24px;z-index:1000;animation:fade-in 0.2s ease-out;
-    }
+    /* Will Upsell Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(15,61,46,0.55);
+                    display:none;align-items:center;justify-content:center;
+                    padding:24px;z-index:1000;animation:fade-in 0.2s ease-out;}
     .modal-backdrop.open{display:flex;}
     @keyframes fade-in{from{opacity:0}to{opacity:1}}
     .modal{background:var(--white);border:1px solid var(--border);
@@ -266,9 +228,7 @@
         </div>
       </div>
       <div class="modal-actions">
-        <button class="btn-primary" id="upsell-accept">
-          <span>Add Will Registration — AED 3,499</span>
-        </button>
+        <button class="btn-primary" id="upsell-accept"><span>Add Will Registration — AED 3,499</span></button>
         <button class="btn-secondary" id="upsell-decline">Continue Without Will</button>
       </div>
     </div>
@@ -284,9 +244,42 @@
 <script>
 'use strict';
 
+// ── Config ────────────────────────────────────────────────────────
 const SUPABASE_URL = 'https://xbbdigovnztxoxpydjav.supabase.co';
 const API_BASE     = `${SUPABASE_URL}/functions/v1`;
+const SS_KEY       = 'mithaq_purchase_state';
 
+// ── Pricing module ────────────────────────────────────────────────
+// Single source of truth for consultation pricing logic. Server validates
+// the same numbers; this is purely for live UI feedback.
+const PricingModule = (() => {
+  const PRICE_PER_30MIN = 875;  // AED
+  const MIN_DURATION    = 30;
+  const MAX_DURATION    = 240;
+
+  // Returns { ok, durationMin, extensionFee, totalConsultation }
+  function calc(durationMin) {
+    if (!Number.isInteger(durationMin) || durationMin < MIN_DURATION || durationMin > MAX_DURATION || durationMin % 30 !== 0) {
+      return { ok: false, durationMin: MIN_DURATION, extensionFee: 0, totalConsultation: 0 };
+    }
+    const extraBlocks = (durationMin - MIN_DURATION) / 30;
+    const fee         = extraBlocks * PRICE_PER_30MIN;
+    return { ok: true, durationMin, extensionFee: fee, totalConsultation: fee };
+  }
+
+  function durationOptions() {
+    const out = [];
+    for (let m = MIN_DURATION; m <= MAX_DURATION; m += 30) {
+      const fee = ((m - MIN_DURATION) / 30) * PRICE_PER_30MIN;
+      out.push({ min: m, label: `${m} minutes`, priceLabel: fee === 0 ? 'Included' : `${fee.toLocaleString('en-US')} AED` });
+    }
+    return out;
+  }
+
+  return { calc, durationOptions, PRICE_PER_30MIN, MIN_DURATION, MAX_DURATION };
+})();
+
+// ── Catalogue ─────────────────────────────────────────────────────
 const PACKAGES = {
   'prenup-standard': {
     type: 'prenup', name: 'Silver — Standard Agreement',
@@ -320,81 +313,57 @@ const PACKAGES = {
   },
 };
 
-const WILL_ADDON_PRICE     = 3499;
-const ADVISORY_PRICE_PER_BLOCK = 875; // AED per 30-min block
-const MAX_BLOCKS = 7;
-const SS_KEY = 'mithaq_purchase_state';
+const WILL_ADDON_PRICE = 3499;
 
-// Duration options: minutes -> { blocks, label, meta }
-const DURATIONS = [
-  { min: 30,  blocks: 0, label: '30 min',  meta: 'Included' },
-  { min: 60,  blocks: 1, label: '60 min',  meta: '+1 block' },
-  { min: 90,  blocks: 2, label: '90 min',  meta: '+2 blocks' },
-  { min: 120, blocks: 3, label: '120 min', meta: '+3 blocks' },
-  { min: 150, blocks: 4, label: '150 min', meta: '+4 blocks' },
-  { min: 180, blocks: 5, label: '180 min', meta: '+5 blocks' },
-  { min: 210, blocks: 6, label: '210 min', meta: '+6 blocks' },
-  { min: 240, blocks: 7, label: '240 min', meta: '+7 blocks' },
-];
-
+// ── State + persistence ───────────────────────────────────────────
 const state = {
-  packageId:        null,
-  pkg:              null,
-  email:            '',
-  addWill:          false,
-  consultationType: null,    // 'video' | 'in-person' | null
-  consultationMin:  30,      // 30 default
-  submitting:       false,
-  error:            null,
-  _upsellShown:     false,
+  packageId:       null,
+  pkg:             null,
+  email:           '',
+  addWill:         false,
+  consultationMin: 30,
+  submitting:      false,
+  error:           null,
+  _upsellShown:    false,
 };
 
-// ── sessionStorage persistence ────────────────────────────────────
 function persistState() {
   try {
     sessionStorage.setItem(SS_KEY, JSON.stringify({
-      packageId:        state.packageId,
-      email:            state.email,
-      addWill:          state.addWill,
-      consultationType: state.consultationType,
-      consultationMin:  state.consultationMin,
-      _upsellShown:     state._upsellShown,
+      packageId:       state.packageId,
+      email:           state.email,
+      addWill:         state.addWill,
+      consultationMin: state.consultationMin,
+      _upsellShown:    state._upsellShown,
     }));
-  } catch (_) {/* sessionStorage may be disabled */}
+  } catch (_) {}
 }
 function restoreState(currentPackageId) {
   try {
     const raw = sessionStorage.getItem(SS_KEY);
     if (!raw) return;
     const saved = JSON.parse(raw);
-    // Only restore if it's the same package the user came back to
     if (saved.packageId !== currentPackageId) return;
-    if (typeof saved.email            === 'string') state.email            = saved.email;
-    if (typeof saved.addWill          === 'boolean') state.addWill         = saved.addWill;
-    if (typeof saved.consultationType === 'string' || saved.consultationType === null) state.consultationType = saved.consultationType;
-    if (typeof saved.consultationMin  === 'number') state.consultationMin  = saved.consultationMin;
-    if (typeof saved._upsellShown     === 'boolean') state._upsellShown    = saved._upsellShown;
-  } catch (_) {/* ignore */}
+    if (typeof saved.email           === 'string')  state.email           = saved.email;
+    if (typeof saved.addWill         === 'boolean') state.addWill         = saved.addWill;
+    if (typeof saved.consultationMin === 'number')  state.consultationMin = saved.consultationMin;
+    if (typeof saved._upsellShown    === 'boolean') state._upsellShown    = saved._upsellShown;
+  } catch (_) {}
 }
 
-// ── init ──────────────────────────────────────────────────────────
+// ── Init ──────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const params      = new URLSearchParams(window.location.search);
   state.packageId   = params.get('package');
   state.pkg         = PACKAGES[state.packageId];
 
   if (params.get('addWill') === '1') state.addWill = true;
-  const cancelled = params.get('cancelled') === '1';
-  if (cancelled) {
+  if (params.get('cancelled') === '1') {
     state.error = 'Your previous payment was not completed. No charge was made. You can try again below.';
   }
 
-  if (!state.pkg) {
-    renderInvalidPackage();
-    return;
-  }
+  if (!state.pkg) { renderInvalidPackage(); return; }
 
-  // Restore prior selections from sessionStorage
   restoreState(state.packageId);
 
   if (state.pkg.type === 'will') {
@@ -407,22 +376,17 @@ document.addEventListener('DOMContentLoaded', () => {
   wireUpsellModal();
 });
 
-// ── render ────────────────────────────────────────────────────────
+// ── Render ────────────────────────────────────────────────────────
 function render() {
   const app = document.getElementById('app');
-  const { pkg, email, submitting, error, addWill, consultationType, consultationMin } = state;
-  const isPrenup    = pkg.type === 'prenup';
-  const dur         = DURATIONS.find(d => d.min === consultationMin) || DURATIONS[0];
-  const advisoryFee = dur.blocks * ADVISORY_PRICE_PER_BLOCK;
+  const { pkg, email, submitting, error, addWill, consultationMin } = state;
+  const isPrenup = pkg.type === 'prenup';
 
-  const baseFee = pkg.priceNum;
-  const willFee = (isPrenup && addWill) ? WILL_ADDON_PRICE : 0;
-  const total   = baseFee + willFee + advisoryFee;
+  const pricing  = PricingModule.calc(consultationMin);
+  const baseFee  = pkg.priceNum;
+  const willFee  = (isPrenup && addWill) ? WILL_ADDON_PRICE : 0;
+  const total    = baseFee + willFee + pricing.extensionFee;
   const totalDisplay = `AED ${total.toLocaleString('en-US')}`;
-
-  // Checkout-ready ONLY when consultation type AND duration are picked
-  const consultReady   = consultationType !== null && consultationMin >= 30;
-  const checkoutEnabled = consultReady && !submitting;
 
   app.innerHTML = `
     ${error ? `<div class="error-banner">${escapeHtml(error)}</div>` : ''}
@@ -469,59 +433,33 @@ function render() {
     </div>
     ` : ''}
 
-    <!-- Step 2: Strategy Session -->
+    <!-- Step 2: Advisory Duration -->
     <div class="card">
-      <p class="card-title">Step 2 · Schedule Your Strategy Session</p>
+      <p class="card-title">Step 2 · Select Advisory Duration</p>
       <p class="card-headline">Complimentary Strategy Session Included</p>
       <p class="card-tagline">
         Your engagement begins with a complimentary 30-minute consultation.
-        Extended advisory time is available if needed at AED 1,750 per hour.
+        Extended advisory time is available if your matter requires it.
+        You will schedule your private strategy session after payment.
       </p>
 
-      <!-- Type selection -->
-      <p class="duration-label" style="margin-top:20px">Consultation Format</p>
-      <div class="consult-types">
-        <button type="button" class="consult-type ${consultationType === 'video' ? 'selected' : ''}" data-consult-type="video">
-          <div class="consult-type-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-              <rect x="2" y="6" width="14" height="12" rx="2"/>
-              <path d="M22 8l-6 4 6 4V8z"/>
-            </svg>
-          </div>
-          <p class="consult-type-name">Video Consultation</p>
-          <p class="consult-type-desc">Conducted privately via secure video link.</p>
-        </button>
-
-        <button type="button" class="consult-type ${consultationType === 'in-person' ? 'selected' : ''}" data-consult-type="in-person">
-          <div class="consult-type-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-              <path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/>
-            </svg>
-          </div>
-          <p class="consult-type-name">Private In-Person Consultation</p>
-          <p class="consult-type-desc">Conducted at our private advisory office.</p>
-        </button>
-      </div>
-
-      <!-- Duration selection -->
-      <p class="duration-label">Session Duration</p>
-      <div class="duration-grid">
-        ${DURATIONS.map(d => `
+      <div class="duration-list">
+        ${PricingModule.durationOptions().map(d => `
           <button type="button" class="duration-opt ${d.min === consultationMin ? 'selected' : ''}" data-duration="${d.min}">
-            <div class="duration-opt-time">${d.label}</div>
-            <div class="duration-opt-meta">${d.blocks === 0 ? 'Included' : `+AED ${(d.blocks * ADVISORY_PRICE_PER_BLOCK).toLocaleString('en-US')}`}</div>
+            <span class="duration-opt-time">${d.label}</span>
+            <span class="duration-opt-price ${d.min === 30 ? 'included' : ''}">${d.priceLabel}</span>
           </button>
         `).join('')}
       </div>
 
-      ${dur.blocks === 0
+      ${pricing.extensionFee === 0
         ? `<div class="complimentary-line">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Your complimentary strategy session is included.</span>
           </div>`
         : `<div class="extended-line">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Extended advisory time added — ${dur.min - 30} additional minutes.</span>
+            <span>Extended advisory time added — ${consultationMin} total minutes.</span>
           </div>`
       }
 
@@ -545,25 +483,24 @@ function render() {
         <p class="form-help">Your payment confirmation, scheduling link, and account details will be sent to this address.</p>
       </div>
 
-      <!-- Itemised breakdown -->
       <div class="breakdown">
         <div class="breakdown-row">
           <span class="lbl">${escapeHtml(pkg.name)}</span>
-          <span class="val">AED ${baseFee.toLocaleString('en-US')}</span>
+          <span>AED ${baseFee.toLocaleString('en-US')}</span>
         </div>
         ${willFee > 0 ? `
         <div class="breakdown-row">
           <span class="lbl">Will Registration (bundled)</span>
-          <span class="val">AED ${willFee.toLocaleString('en-US')}</span>
+          <span>AED ${willFee.toLocaleString('en-US')}</span>
         </div>` : ''}
         <div class="breakdown-row">
           <span class="lbl">Strategy Session — Complimentary 30 min</span>
-          <span class="val" style="color:var(--emerald)">Included</span>
+          <span style="color:var(--emerald)">Included</span>
         </div>
-        ${advisoryFee > 0 ? `
+        ${pricing.extensionFee > 0 ? `
         <div class="breakdown-row">
-          <span class="lbl">Extended Advisory (${dur.min - 30} additional min)</span>
-          <span class="val">AED ${advisoryFee.toLocaleString('en-US')}</span>
+          <span class="lbl">Extended Advisory (${consultationMin - 30} additional min)</span>
+          <span>AED ${pricing.extensionFee.toLocaleString('en-US')}</span>
         </div>` : ''}
       </div>
 
@@ -572,16 +509,13 @@ function render() {
         <span class="total-amount">${totalDisplay}</span>
       </div>
 
-      <button class="btn-primary" id="submit-btn" ${checkoutEnabled ? '' : 'disabled'}>
+      <button class="btn-primary" id="submit-btn" ${submitting ? 'disabled' : ''}>
         ${submitting
           ? `<span class="spinner"></span><span>Redirecting to Stripe…</span>`
           : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
              <span>Proceed to Secure Payment</span>`
         }
       </button>
-      ${!consultReady ? `
-        <p class="checkout-gate-msg">Please select a consultation format above to proceed.</p>
-      ` : ''}
 
       <a href="./index.html#pricing" class="btn-secondary">Change Selection</a>
     </div>
@@ -602,17 +536,7 @@ function render() {
     </div>
   `;
 
-  // Wire handlers
   document.getElementById('email').addEventListener('input', e => { state.email = e.target.value; persistState(); });
-
-  document.querySelectorAll('[data-consult-type]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.consultationType = btn.getAttribute('data-consult-type');
-      persistState();
-      render();
-    });
-  });
-
   document.querySelectorAll('[data-duration]').forEach(btn => {
     btn.addEventListener('click', () => {
       state.consultationMin = parseInt(btn.getAttribute('data-duration'), 10);
@@ -620,62 +544,38 @@ function render() {
       render();
     });
   });
-
   const submitBtn = document.getElementById('submit-btn');
   if (submitBtn) submitBtn.addEventListener('click', handleSubmit);
 }
 
 function wireUpsellModal() {
   document.getElementById('upsell-accept').addEventListener('click', () => {
-    state.addWill = true;
-    persistState();
-    closeUpsell();
-    render();
-    proceedToCheckout();
+    state.addWill = true; persistState(); closeUpsell(); render(); proceedToCheckout();
   });
   document.getElementById('upsell-decline').addEventListener('click', () => {
-    state.addWill = false;
-    persistState();
-    closeUpsell();
-    proceedToCheckout();
+    state.addWill = false; persistState(); closeUpsell(); proceedToCheckout();
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.getElementById('upsell-modal').classList.contains('open')) {
-      state.addWill = false;
-      persistState();
-      closeUpsell();
-      proceedToCheckout();
+      state.addWill = false; persistState(); closeUpsell(); proceedToCheckout();
     }
   });
 }
-
 function openUpsell()  { document.getElementById('upsell-modal').classList.add('open');    document.body.style.overflow = 'hidden'; }
 function closeUpsell() { document.getElementById('upsell-modal').classList.remove('open'); document.body.style.overflow = ''; }
 
 async function handleSubmit() {
   state.error = null;
-
   const email = state.email.trim();
   if (!email || !email.includes('@') || !email.includes('.')) {
     state.error = 'Please enter a valid email address.';
-    render();
-    return;
+    render(); return;
   }
-
-  if (state.consultationType === null) {
-    state.error = 'Please select a consultation format.';
-    render();
-    return;
-  }
-
-  // Trigger upsell ONLY if: prenup tier AND no Will yet AND modal not yet shown
+  // Trigger Will upsell ONLY if: prenup tier AND no Will yet AND modal not yet shown
   if (state.pkg.type === 'prenup' && !state.addWill && !state._upsellShown) {
-    state._upsellShown = true;
-    persistState();
-    openUpsell();
+    state._upsellShown = true; persistState(); openUpsell();
     return;
   }
-
   proceedToCheckout();
 }
 
@@ -684,26 +584,20 @@ async function proceedToCheckout() {
   state.error      = null;
   render();
 
-  const dur = DURATIONS.find(d => d.min === state.consultationMin) || DURATIONS[0];
-
   try {
     const res = await fetch(`${API_BASE}/create-checkout-session`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({
-        email:              state.email.trim(),
-        package:            state.packageId,
-        addWill:            state.addWill,
-        consultationType:   state.consultationType,
-        consultationBlocks: dur.blocks,
+        email:                   state.email.trim(),
+        package:                 state.packageId,
+        addWill:                 state.addWill,
+        consultationDurationMin: state.consultationMin,
       }),
     });
     const data = await res.json();
 
-    if (!res.ok || !data.url) {
-      throw new Error(data.error || 'Could not initiate payment.');
-    }
-
+    if (!res.ok || !data.url) throw new Error(data.error || 'Could not initiate payment.');
     window.location.href = data.url;
   } catch (err) {
     state.error      = (err && err.message) || 'Could not connect to payment system. Please try again.';
