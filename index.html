@@ -647,6 +647,158 @@
       .will-card-head, .will-card-body { padding: 20px; }
     }
 
+    /* ── Private Legal Advisory section ─────────────────────────── */
+    .legal-advisory-section {
+      background: var(--offwhite);
+      border-top: 1px solid var(--border);
+    }
+    .legal-advisory-section .section-pad { padding: 96px 0; }
+    @media (min-width: 1024px) { .legal-advisory-section .section-pad { padding: 120px 0; } }
+
+    .legal-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      max-width: 100%;
+      margin-top: 32px;
+    }
+    .legal-card-head {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-tier-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .legal-tier-mark .tier-name {
+      font-family: var(--f-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .legal-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 580px;
+    }
+    .legal-card-body { padding: 28px 32px 32px; }
+
+    .legal-section-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .legal-duration-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    @media (min-width: 640px) {
+      .legal-duration-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .legal-duration-list { grid-template-columns: repeat(4, 1fr); }
+    }
+    .legal-duration-opt {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 18px 20px;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s, background 0.15s;
+      font-family: inherit;
+      color: inherit;
+      width: 100%;
+    }
+    .legal-duration-opt:hover { border-color: var(--charcoal); }
+    .legal-duration-opt.selected {
+      border-color: var(--emerald);
+      background: #FAFAF6;
+      box-shadow: inset 0 0 0 1px var(--emerald);
+    }
+    .legal-duration-time {
+      font-family: var(--f-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .legal-duration-price {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .legal-summary {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-bottom: 20px;
+    }
+    .legal-summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .legal-summary-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .legal-summary-amount {
+      font-family: var(--f-display);
+      font-size: 1.625rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .legal-cta-row {
+      display: flex;
+      justify-content: stretch;
+    }
+    .btn-primary-emerald {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 16px 32px;
+      background: var(--emerald);
+      color: var(--offwhite);
+      font-family: var(--f-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--emerald);
+      transition: background 0.2s;
+    }
+    .btn-primary-emerald:hover { background: #0A2B1F; }
+
+    .legal-fineprint {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 16px;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 480px) {
+      .legal-card-head, .legal-card-body { padding: 20px; }
+    }
+
     /* ── CTA ───────────────────────────────────────────────────── */
     .cta-section { background: var(--white); border-top: 1px solid var(--border); text-align: center; }
     .cta-section .section-pad { padding: 96px 0 144px; }
@@ -1116,6 +1268,66 @@
 </section>
 
 
+<!-- PRIVATE LEGAL ADVISORY (standalone service) -->
+<section class="legal-advisory-section" id="legal-advisory">
+  <div class="container section-pad">
+    <div class="section-label-row">
+      <span class="gold-rule"></span>
+      <span class="label" data-i18n="legal.label">Standalone Advisory Services</span>
+    </div>
+    <h2 class="pricing-headline reveal" data-i18n="legal.headline">Private Legal Advisory</h2>
+    <p class="pricing-sub reveal" style="transition-delay:0.06s" data-i18n="legal.sub">Dedicated advisory time for asset structuring, cross-border considerations, and marital agreement planning. Available independently of any agreement purchase.</p>
+
+    <div class="legal-card reveal" style="transition-delay:0.1s">
+      <div class="legal-card-head">
+        <div class="legal-tier-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1l5 3v3.5c0 3-2 5-5 5.5-3-.5-5-2.5-5-5.5V4l5-3z" stroke="#0F3D2E" stroke-width="1" fill="none"/>
+          </svg>
+          <span class="tier-name" style="color:#0F3D2E" data-i18n="legal.tier">Private Legal Advisory Session</span>
+        </div>
+        <p class="legal-desc" data-i18n="legal.desc">Conducted in private, with senior advisors familiar with UAE marital, inheritance, and asset structuring frameworks. Confidential. One-time engagement.</p>
+      </div>
+
+      <div class="legal-card-body">
+        <p class="legal-section-label" data-i18n="legal.duration.label">Select Advisory Duration</p>
+        <div class="legal-duration-list" id="legal-duration-list">
+          <button type="button" class="legal-duration-opt selected" data-hours="1">
+            <span class="legal-duration-time">1 Hour</span>
+            <span class="legal-duration-price">AED 1,750</span>
+          </button>
+          <button type="button" class="legal-duration-opt" data-hours="2">
+            <span class="legal-duration-time">2 Hours</span>
+            <span class="legal-duration-price">AED 3,500</span>
+          </button>
+          <button type="button" class="legal-duration-opt" data-hours="3">
+            <span class="legal-duration-time">3 Hours</span>
+            <span class="legal-duration-price">AED 5,250</span>
+          </button>
+          <button type="button" class="legal-duration-opt" data-hours="4">
+            <span class="legal-duration-time">4 Hours</span>
+            <span class="legal-duration-price">AED 7,000</span>
+          </button>
+        </div>
+
+        <div class="legal-summary">
+          <div class="legal-summary-row">
+            <span class="legal-summary-label" data-i18n="legal.summary.label">Total</span>
+            <span class="legal-summary-amount" id="legal-summary-amount">AED 1,750</span>
+          </div>
+        </div>
+
+        <div class="legal-cta-row">
+          <a href="#" id="legal-checkout-btn" class="btn-primary-emerald" data-i18n="legal.cta">Proceed to Secure Payment</a>
+        </div>
+
+        <p class="legal-fineprint" data-i18n="legal.fineprint">Your session is scheduled after payment via our private booking system. Confirmation is sent to your email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- CTA -->
 <section class="cta-section" id="start">
   <div class="container section-pad">
@@ -1272,7 +1484,7 @@ const i18n = {
     'pricing.diamond.f3':'Unlimited beneficiaries','pricing.diamond.f4':'Custom clause drafting',
     'pricing.diamond.f5':'Dedicated onboarding support','pricing.diamond.f6':'Integrated legal review option',
     'pricing.diamond.f7':'24-hour fast-track preparation','pricing.diamond.cta':'Start Diamond',
-    'pricing.tagline':'Transparent. No Subscriptions. One-Time.','pricing.process':'Agreement drafting begins after successful payment confirmation.','pricing.aed':'All prices are listed in AED. International payments are automatically converted by your card provider.','pricing.cta':'Select Your Structure','will.label':'Additional Legal Services','will.tier':'Will Registration','will.desc':'Official estate registration documentation. Government registration fees included.','will.standalone.label':'Standalone','will.standalone.meta':'When registered independently','will.bundled.label':'Bundled with Prenuptial Agreement','will.bundled.meta':'When registered alongside a marital agreement','will.preferential':'Preferential rate applies when registered together with a marital agreement.','will.cta':'Register Will',
+    'pricing.tagline':'Transparent. No Subscriptions. One-Time.','pricing.process':'Agreement drafting begins after successful payment confirmation.','pricing.aed':'All prices are listed in AED. International payments are automatically converted by your card provider.','pricing.cta':'Select Your Structure','will.label':'Additional Legal Services','will.tier':'Will Registration','will.desc':'Official estate registration documentation. Government registration fees included.','will.standalone.label':'Standalone','will.standalone.meta':'When registered independently','will.bundled.label':'Bundled with Prenuptial Agreement','will.bundled.meta':'When registered alongside a marital agreement','will.preferential':'Preferential rate applies when registered together with a marital agreement.','will.cta':'Register Will','legal.label':'Standalone Advisory Services','legal.headline':'Private Legal Advisory','legal.sub':'Dedicated advisory time for asset structuring, cross-border considerations, and marital agreement planning. Available independently of any agreement purchase.','legal.tier':'Private Legal Advisory Session','legal.desc':'Conducted in private, with senior advisors familiar with UAE marital, inheritance, and asset structuring frameworks. Confidential. One-time engagement.','legal.duration.label':'Select Advisory Duration','legal.summary.label':'Total','legal.cta':'Proceed to Secure Payment','legal.fineprint':'Your session is scheduled after payment via our private booking system. Confirmation is sent to your email.',
     'pricing.note':'Designed to replace traditional legal drafting costs of AED 5,000–25,000+, while maintaining structured, enforceable agreements.',
     'cta.headline':'Start With Clarity.','cta.btn':'Draft Your Agreement',
     'cta.sub':'A well-structured agreement, entered into freely and transparently, is an act of care — for your partner, and for the foundation you are building together.',
@@ -1353,7 +1565,7 @@ const i18n = {
     'pricing.diamond.f3':'مستفيدون غير محدودون','pricing.diamond.f4':'صياغة بنود مخصَّصة',
     'pricing.diamond.f5':'دعم تأهيل مخصَّص','pricing.diamond.f6':'خيار المراجعة القانونية المدمجة',
     'pricing.diamond.f7':'إعداد سريع خلال 24 ساعة','pricing.diamond.cta':'ابدأ الألماسي',
-    'pricing.tagline':'شفاف. بلا اشتراكات. لمرة واحدة.','pricing.process':'تبدأ صياغة الاتفاقية بعد تأكيد الدفع.','pricing.aed':'جميع الأسعار بالدرهم الإماراتي. تُحوَّل المدفوعات الدولية تلقائياً من قِبل مُصدِر بطاقتك.','pricing.cta':'اختر هيكلك','will.label':'خدمات قانونية إضافية','will.tier':'تسجيل الوصية','will.desc':'وثائق رسمية لتسجيل التركة. تشمل رسوم التسجيل الحكومية.','will.standalone.label':'مستقلة','will.standalone.meta':'عند التسجيل بشكل مستقل','will.bundled.label':'مدمجة مع اتفاقية الزواج','will.bundled.meta':'عند التسجيل مع اتفاقية الزواج','will.preferential':'يُطبَّق السعر التفضيلي عند التسجيل مع اتفاقية الزواج.','will.cta':'سجِّل الوصية',
+    'pricing.tagline':'شفاف. بلا اشتراكات. لمرة واحدة.','pricing.process':'تبدأ صياغة الاتفاقية بعد تأكيد الدفع.','pricing.aed':'جميع الأسعار بالدرهم الإماراتي. تُحوَّل المدفوعات الدولية تلقائياً من قِبل مُصدِر بطاقتك.','pricing.cta':'اختر هيكلك','will.label':'خدمات قانونية إضافية','will.tier':'تسجيل الوصية','will.desc':'وثائق رسمية لتسجيل التركة. تشمل رسوم التسجيل الحكومية.','will.standalone.label':'مستقلة','will.standalone.meta':'عند التسجيل بشكل مستقل','will.bundled.label':'مدمجة مع اتفاقية الزواج','will.bundled.meta':'عند التسجيل مع اتفاقية الزواج','will.preferential':'يُطبَّق السعر التفضيلي عند التسجيل مع اتفاقية الزواج.','will.cta':'سجِّل الوصية','legal.label':'خدمات استشارية مستقلة','legal.headline':'استشارة قانونية خاصة','legal.sub':'وقت استشاري مخصّص لهيكلة الأصول، والاعتبارات العابرة للحدود، وتخطيط اتفاقيات الزواج. متاحة بشكل مستقل عن أي عملية شراء اتفاقية.','legal.tier':'جلسة استشارة قانونية خاصة','legal.desc':'تُعقَد بشكل خاص مع مستشارين كبار على دراية بالأطر الزوجية والإرثية وهياكل الأصول في الإمارات. سرية. ارتباط لمرة واحدة.','legal.duration.label':'اختر مدة الاستشارة','legal.summary.label':'الإجمالي','legal.cta':'المتابعة إلى الدفع الآمن','legal.fineprint':'يتم تحديد موعد جلستك بعد الدفع عبر نظام الحجز الخاص بنا. يُرسَل التأكيد إلى بريدك الإلكتروني.',
     'pricing.note':'مصمَّم ليحلَّ محل تكاليف الصياغة القانونية التقليدية البالغة 5,000–25,000+ د.إ.',
     'cta.headline':'ابدأ بالوضوح.','cta.btn':'ابدأ صياغة اتفاقيتك',
     'cta.sub':'الاتفاقية المنظَّمة جيداً هي تعبير عن الرعاية — لشريكك وللأساس الذي تبنيانه معاً.',
@@ -1436,7 +1648,7 @@ const i18n = {
     'pricing.diamond.f3':'Неограниченное число бенефициаров','pricing.diamond.f4':'Индивидуальная разработка пунктов',
     'pricing.diamond.f5':'Персональная поддержка при подключении','pricing.diamond.f6':'Интегрированный вариант юридической проверки',
     'pricing.diamond.f7':'Подготовка за 24 часа','pricing.diamond.cta':'Начать — Бриллиантовый',
-    'pricing.tagline':'Прозрачно. Без подписок. Единовременно.','pricing.process':'Составление договора начинается после подтверждения оплаты.','pricing.aed':'Все цены указаны в AED. Международные платежи автоматически конвертируются вашим банком.','pricing.cta':'Выбрать структуру','will.label':'Дополнительные юридические услуги','will.tier':'Регистрация завещания','will.desc':'Официальная документация по регистрации наследства. Государственные пошлины включены.','will.standalone.label':'Отдельно','will.standalone.meta':'При самостоятельной регистрации','will.bundled.label':'С брачным договором','will.bundled.meta':'При совместной регистрации с брачным договором','will.preferential':'Льготный тариф применяется при совместной регистрации с брачным договором.','will.cta':'Зарегистрировать завещание',
+    'pricing.tagline':'Прозрачно. Без подписок. Единовременно.','pricing.process':'Составление договора начинается после подтверждения оплаты.','pricing.aed':'Все цены указаны в AED. Международные платежи автоматически конвертируются вашим банком.','pricing.cta':'Выбрать структуру','will.label':'Дополнительные юридические услуги','will.tier':'Регистрация завещания','will.desc':'Официальная документация по регистрации наследства. Государственные пошлины включены.','will.standalone.label':'Отдельно','will.standalone.meta':'При самостоятельной регистрации','will.bundled.label':'С брачным договором','will.bundled.meta':'При совместной регистрации с брачным договором','will.preferential':'Льготный тариф применяется при совместной регистрации с брачным договором.','will.cta':'Зарегистрировать завещание','legal.label':'Самостоятельные консультационные услуги','legal.headline':'Частная юридическая консультация','legal.sub':'Выделенное консультационное время для структурирования активов, трансграничных вопросов и планирования брачного договора. Доступно независимо от покупки договора.','legal.tier':'Частная юридическая консультация','legal.desc':'Проводится конфиденциально со старшими консультантами, знакомыми с брачными, наследственными и имущественными рамками ОАЭ. Конфиденциально. Разовое взаимодействие.','legal.duration.label':'Выберите продолжительность консультации','legal.summary.label':'Итого','legal.cta':'Перейти к безопасной оплате','legal.fineprint':'Ваша сессия назначается после оплаты через нашу частную систему бронирования. Подтверждение отправляется на вашу электронную почту.',
     'pricing.note':'Призван заменить традиционные расходы на юридическое оформление в размере AED 5 000–25 000+ при сохранении структурированных, исполнимых договоров.',
     'cta.headline':'Начните с ясности.','cta.btn':'Составить договор',
     'cta.sub':'Хорошо структурированный договор, заключённый свободно и прозрачно, — это проявление заботы о партнёре и об основе, которую вы строите вместе.',
@@ -1518,7 +1730,7 @@ const i18n = {
     'pricing.diamond.f3':'无限受益人','pricing.diamond.f4':'自定义条款起草',
     'pricing.diamond.f5':'专属入职支持','pricing.diamond.f6':'综合法律审查选项',
     'pricing.diamond.f7':'24小时快速通道准备','pricing.diamond.cta':'开始 – 钻石',
-    'pricing.tagline':'透明。无订阅。一次性。','pricing.process':'付款确认后开始起草协议。','pricing.aed':'所有价格均以迪拉姆（AED）计价。国际支付由您的发卡机构自动换算。','pricing.cta':'选择方案','will.label':'附加法律服务','will.tier':'遗嘱登记','will.desc':'官方遗产登记文件。包含政府登记费用。','will.standalone.label':'单独办理','will.standalone.meta':'独立登记时','will.bundled.label':'与婚前协议合并办理','will.bundled.meta':'与婚姻协议一同登记时','will.preferential':'与婚姻协议一同登记可享优惠价格。','will.cta':'登记遗嘱',
+    'pricing.tagline':'透明。无订阅。一次性。','pricing.process':'付款确认后开始起草协议。','pricing.aed':'所有价格均以迪拉姆（AED）计价。国际支付由您的发卡机构自动换算。','pricing.cta':'选择方案','will.label':'附加法律服务','will.tier':'遗嘱登记','will.desc':'官方遗产登记文件。包含政府登记费用。','will.standalone.label':'单独办理','will.standalone.meta':'独立登记时','will.bundled.label':'与婚前协议合并办理','will.bundled.meta':'与婚姻协议一同登记时','will.preferential':'与婚姻协议一同登记可享优惠价格。','will.cta':'登记遗嘱','legal.label':'独立咨询服务','legal.headline':'私人法律咨询','legal.sub':'专门的咨询时间，用于资产结构、跨境考量和婚姻协议规划。可独立于任何协议购买。','legal.tier':'私人法律咨询会议','legal.desc':'由熟悉阿联酋婚姻、继承及资产结构框架的高级顾问私下进行。保密。一次性服务。','legal.duration.label':'选择咨询时长','legal.summary.label':'合计','legal.cta':'继续安全付款','legal.fineprint':'付款后通过我们的私人预约系统安排会议。确认将发送至您的电子邮箱。',
     'pricing.note':'旨在替代AED 5,000–25,000+的传统法律起草费用，同时保持结构化、可执行的协议。',
     'cta.headline':'从清晰开始。','cta.btn':'起草您的协议',
     'cta.sub':'一份结构完善、自愿透明签署的协议，是对伴侣的关爱，也是对共同基础的承诺。',
@@ -1601,7 +1813,7 @@ const i18n = {
     'pricing.diamond.f3':'Beneficiarios ilimitados','pricing.diamond.f4':'Redacción personalizada de cláusulas',
     'pricing.diamond.f5':'Soporte de incorporación dedicado','pricing.diamond.f6':'Opción de revisión legal integrada',
     'pricing.diamond.f7':'Preparación en 24 horas','pricing.diamond.cta':'Comenzar – Diamante',
-    'pricing.tagline':'Transparente. Sin suscripciones. Pago único.','pricing.process':'La redacción del acuerdo comienza tras la confirmación del pago.','pricing.aed':'Todos los precios están en AED. Los pagos internacionales se convierten automáticamente por su proveedor de tarjeta.','pricing.cta':'Elegir estructura','will.label':'Servicios legales adicionales','will.tier':'Registro de testamento','will.desc':'Documentación oficial de registro patrimonial. Tasas gubernamentales incluidas.','will.standalone.label':'Independiente','will.standalone.meta':'Cuando se registra de forma independiente','will.bundled.label':'Combinado con acuerdo prenupcial','will.bundled.meta':'Cuando se registra junto a un acuerdo matrimonial','will.preferential':'Se aplica la tarifa preferencial cuando se registra junto con un acuerdo matrimonial.','will.cta':'Registrar testamento',
+    'pricing.tagline':'Transparente. Sin suscripciones. Pago único.','pricing.process':'La redacción del acuerdo comienza tras la confirmación del pago.','pricing.aed':'Todos los precios están en AED. Los pagos internacionales se convierten automáticamente por su proveedor de tarjeta.','pricing.cta':'Elegir estructura','will.label':'Servicios legales adicionales','will.tier':'Registro de testamento','will.desc':'Documentación oficial de registro patrimonial. Tasas gubernamentales incluidas.','will.standalone.label':'Independiente','will.standalone.meta':'Cuando se registra de forma independiente','will.bundled.label':'Combinado con acuerdo prenupcial','will.bundled.meta':'Cuando se registra junto a un acuerdo matrimonial','will.preferential':'Se aplica la tarifa preferencial cuando se registra junto con un acuerdo matrimonial.','will.cta':'Registrar testamento','legal.label':'Servicios de asesoría independientes','legal.headline':'Asesoría legal privada','legal.sub':'Tiempo de asesoría dedicado a la estructuración patrimonial, consideraciones transfronterizas y planificación de acuerdos matrimoniales. Disponible independientemente de cualquier compra de acuerdo.','legal.tier':'Sesión de asesoría legal privada','legal.desc':'Realizada en privado por asesores senior familiarizados con los marcos matrimoniales, sucesorios y de estructuración patrimonial de los EAU. Confidencial. Compromiso único.','legal.duration.label':'Seleccione la duración de la asesoría','legal.summary.label':'Total','legal.cta':'Proceder al pago seguro','legal.fineprint':'Su sesión se programa tras el pago a través de nuestro sistema privado de reservas. La confirmación se envía a su correo electrónico.',
     'pricing.note':'Diseñado para reemplazar los costos tradicionales de redacción legal de AED 5.000–25.000+, manteniendo acuerdos estructurados y ejecutables.',
     'cta.headline':'Comience con claridad.','cta.btn':'Redactar su acuerdo',
     'cta.sub':'Un acuerdo bien estructurado, celebrado libremente y con transparencia, es un acto de cuidado — para su pareja y para la base que construyen juntos.',
@@ -1683,7 +1895,7 @@ const i18n = {
     'pricing.diamond.f3':'असीमित लाभार्थी','pricing.diamond.f4':'कस्टम खंड मसौदा',
     'pricing.diamond.f5':'समर्पित ऑनबोर्डिंग सहायता','pricing.diamond.f6':'एकीकृत कानूनी समीक्षा विकल्प',
     'pricing.diamond.f7':'24 घंटे फास्ट-ट्रैक तैयारी','pricing.diamond.cta':'डायमंड शुरू करें',
-    'pricing.tagline':'पारदर्शी। कोई सदस्यता नहीं। एकमुश्त।','pricing.process':'भुगतान की पुष्टि के बाद समझौता मसौदा तैयार होना शुरू होता है।','pricing.aed':'सभी कीमतें AED में सूचीबद्ध हैं। अंतर्राष्ट्रीय भुगतान आपके कार्ड प्रदाता द्वारा स्वचालित रूप से परिवर्तित होते हैं।','pricing.cta':'अपनी संरचना चुनें','will.label':'अतिरिक्त कानूनी सेवाएँ','will.tier':'वसीयत पंजीकरण','will.desc':'आधिकारिक संपत्ति पंजीकरण दस्तावेज़। सरकारी पंजीकरण शुल्क शामिल।','will.standalone.label':'स्वतंत्र','will.standalone.meta':'स्वतंत्र रूप से पंजीकृत होने पर','will.bundled.label':'विवाह पूर्व समझौते के साथ संयुक्त','will.bundled.meta':'वैवाहिक समझौते के साथ पंजीकृत होने पर','will.preferential':'वैवाहिक समझौते के साथ पंजीकरण पर तरजीही दर लागू होती है।','will.cta':'वसीयत पंजीकृत करें',
+    'pricing.tagline':'पारदर्शी। कोई सदस्यता नहीं। एकमुश्त।','pricing.process':'भुगतान की पुष्टि के बाद समझौता मसौदा तैयार होना शुरू होता है।','pricing.aed':'सभी कीमतें AED में सूचीबद्ध हैं। अंतर्राष्ट्रीय भुगतान आपके कार्ड प्रदाता द्वारा स्वचालित रूप से परिवर्तित होते हैं।','pricing.cta':'अपनी संरचना चुनें','will.label':'अतिरिक्त कानूनी सेवाएँ','will.tier':'वसीयत पंजीकरण','will.desc':'आधिकारिक संपत्ति पंजीकरण दस्तावेज़। सरकारी पंजीकरण शुल्क शामिल।','will.standalone.label':'स्वतंत्र','will.standalone.meta':'स्वतंत्र रूप से पंजीकृत होने पर','will.bundled.label':'विवाह पूर्व समझौते के साथ संयुक्त','will.bundled.meta':'वैवाहिक समझौते के साथ पंजीकृत होने पर','will.preferential':'वैवाहिक समझौते के साथ पंजीकरण पर तरजीही दर लागू होती है।','will.cta':'वसीयत पंजीकृत करें','legal.label':'स्टैंडअलोन सलाहकार सेवाएँ','legal.headline':'निजी कानूनी सलाह','legal.sub':'संपत्ति संरचना, सीमा-पार विचार और वैवाहिक समझौते की योजना के लिए समर्पित सलाहकार समय। किसी भी समझौते की खरीद से स्वतंत्र रूप से उपलब्ध।','legal.tier':'निजी कानूनी सलाह सत्र','legal.desc':'यूएई वैवाहिक, उत्तराधिकार और संपत्ति संरचना ढाँचों से परिचित वरिष्ठ सलाहकारों द्वारा निजी तौर पर आयोजित। गोपनीय। एकमुश्त संलग्नता।','legal.duration.label':'सलाह की अवधि चुनें','legal.summary.label':'कुल','legal.cta':'सुरक्षित भुगतान पर आगे बढ़ें','legal.fineprint':'आपका सत्र भुगतान के बाद हमारी निजी बुकिंग प्रणाली के माध्यम से निर्धारित किया जाता है। पुष्टिकरण आपके ईमेल पर भेजा जाता है।',
     'pricing.note':'AED 5,000–25,000+ की पारंपरिक कानूनी मसौदा लागत को प्रतिस्थापित करने के लिए डिज़ाइन किया गया।',
     'cta.headline':'स्पष्टता के साथ शुरू करें।','cta.btn':'अपना समझौता तैयार करें',
     'cta.sub':'एक अच्छी तरह से संरचित समझौता देखभाल का कार्य है — आपके साथी के लिए।',
@@ -1765,7 +1977,7 @@ const i18n = {
     'pricing.diamond.f3':'لامحدود مستفیدین','pricing.diamond.f4':'کسٹم شق مسودہ سازی',
     'pricing.diamond.f5':'مخصوص آن بورڈنگ معاونت','pricing.diamond.f6':'مربوط قانونی جائزہ اختیار',
     'pricing.diamond.f7':'24 گھنٹے فاسٹ ٹریک تیاری','pricing.diamond.cta':'ڈائمنڈ شروع کریں',
-    'pricing.tagline':'شفاف۔ کوئی سبسکرپشن نہیں۔ یکمشت۔','pricing.process':'معاہدے کا مسودہ ادائیگی کی تصدیق کے بعد شروع ہوتا ہے۔','pricing.aed':'تمام قیمتیں AED میں درج ہیں۔ بین الاقوامی ادائیگیاں آپ کے کارڈ فراہم کنندہ کے ذریعے خودکار طور پر تبدیل کی جاتی ہیں۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں','will.label':'اضافی قانونی خدمات','will.tier':'وصیت کا اندراج','will.desc':'جائیداد کی رسمی اندراج کی دستاویزات۔ سرکاری اندراج فیس شامل ہے۔','will.standalone.label':'مستقل','will.standalone.meta':'آزادانہ طور پر اندراج پر','will.bundled.label':'پری نپشل معاہدے کے ساتھ مشترکہ','will.bundled.meta':'ازدواجی معاہدے کے ساتھ اندراج پر','will.preferential':'ازدواجی معاہدے کے ساتھ اندراج پر ترجیحی نرخ لاگو ہوتا ہے۔','will.cta':'وصیت رجسٹر کریں',
+    'pricing.tagline':'شفاف۔ کوئی سبسکرپشن نہیں۔ یکمشت۔','pricing.process':'معاہدے کا مسودہ ادائیگی کی تصدیق کے بعد شروع ہوتا ہے۔','pricing.aed':'تمام قیمتیں AED میں درج ہیں۔ بین الاقوامی ادائیگیاں آپ کے کارڈ فراہم کنندہ کے ذریعے خودکار طور پر تبدیل کی جاتی ہیں۔','pricing.cta':'اپنا ڈھانچہ منتخب کریں','will.label':'اضافی قانونی خدمات','will.tier':'وصیت کا اندراج','will.desc':'جائیداد کی رسمی اندراج کی دستاویزات۔ سرکاری اندراج فیس شامل ہے۔','will.standalone.label':'مستقل','will.standalone.meta':'آزادانہ طور پر اندراج پر','will.bundled.label':'پری نپشل معاہدے کے ساتھ مشترکہ','will.bundled.meta':'ازدواجی معاہدے کے ساتھ اندراج پر','will.preferential':'ازدواجی معاہدے کے ساتھ اندراج پر ترجیحی نرخ لاگو ہوتا ہے۔','will.cta':'وصیت رجسٹر کریں','legal.label':'اسٹینڈ ایلون مشاورتی خدمات','legal.headline':'نجی قانونی مشاورت','legal.sub':'اثاثوں کی ساخت، سرحد پار غور و فکر، اور ازدواجی معاہدے کی منصوبہ بندی کے لیے مخصوص مشاورتی وقت۔ کسی بھی معاہدے کی خریداری سے آزادانہ طور پر دستیاب۔','legal.tier':'نجی قانونی مشاورتی سیشن','legal.desc':'یو اے ای کے ازدواجی، وراثتی اور اثاثہ جاتی ساختی فریم ورک سے واقف سینئر مشیروں کے ساتھ نجی طور پر منعقد۔ خفیہ۔ ایک بار کی مصروفیت۔','legal.duration.label':'مشاورت کی مدت منتخب کریں','legal.summary.label':'کل','legal.cta':'محفوظ ادائیگی پر جاری رکھیں','legal.fineprint':'آپ کا سیشن ادائیگی کے بعد ہمارے نجی بکنگ سسٹم کے ذریعے طے کیا جاتا ہے۔ تصدیق آپ کے ای میل پر بھیجی جاتی ہے۔',
     'pricing.note':'AED 5,000–25,000+ کی روایتی قانونی مسودہ سازی لاگت کو تبدیل کرنے کے لیے ڈیزائن کیا گیا۔',
     'cta.headline':'وضاحت کے ساتھ شروع کریں۔','cta.btn':'اپنا معاہدہ تیار کریں',
     'cta.sub':'ایک اچھی طرح سے منظم معاہدہ دیکھ بھال کا عمل ہے — آپ کے ساتھی کے لیے۔',
@@ -1878,6 +2090,77 @@ document.querySelectorAll('[data-lang]').forEach(btn => {
 
   // 3. Default to EN
   setLanguage('en');
+})();
+</script>
+
+<!-- ── Private Legal Advisory: duration selector + checkout ── -->
+<script>
+(function() {
+  'use strict';
+  const SUPABASE_URL = 'https://xbbdigovnztxoxpydjav.supabase.co';
+  const API_BASE     = `${SUPABASE_URL}/functions/v1`;
+  const HOURLY_RATE  = 1750;
+
+  const list      = document.getElementById('legal-duration-list');
+  const amountEl  = document.getElementById('legal-summary-amount');
+  const ctaBtn    = document.getElementById('legal-checkout-btn');
+  if (!list || !amountEl || !ctaBtn) return;
+
+  let selectedHours = 1;
+
+  function updateUI() {
+    const total = selectedHours * HOURLY_RATE;
+    amountEl.textContent = `AED ${total.toLocaleString('en-US')}`;
+    list.querySelectorAll('.legal-duration-opt').forEach(b => {
+      b.classList.toggle('selected', parseInt(b.getAttribute('data-hours'), 10) === selectedHours);
+    });
+  }
+
+  list.addEventListener('click', e => {
+    const btn = e.target.closest('[data-hours]');
+    if (!btn) return;
+    selectedHours = parseInt(btn.getAttribute('data-hours'), 10) || 1;
+    updateUI();
+  });
+
+  ctaBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    if (ctaBtn.dataset.busy === '1') return;
+
+    // Prompt for email (lightweight — we don't have a form here, just the section)
+    const email = window.prompt(
+      'Please enter your email to receive your booking confirmation:',
+      ''
+    );
+    if (!email || !email.includes('@') || !email.includes('.')) return;
+
+    ctaBtn.dataset.busy = '1';
+    const originalText = ctaBtn.textContent;
+    ctaBtn.textContent = 'Redirecting to Stripe…';
+    ctaBtn.style.opacity = '0.6';
+
+    try {
+      const res = await fetch(`${API_BASE}/create-checkout-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email:             email.trim().toLowerCase(),
+          serviceType:       'legal_consultation',
+          consultationHours: selectedHours,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error || 'Could not initiate payment.');
+      window.location.href = data.url;
+    } catch (err) {
+      window.alert((err && err.message) || 'Could not initiate payment. Please try again.');
+      ctaBtn.dataset.busy = '0';
+      ctaBtn.textContent = originalText;
+      ctaBtn.style.opacity = '';
+    }
+  });
+
+  updateUI();
 })();
 </script>
 </body>
