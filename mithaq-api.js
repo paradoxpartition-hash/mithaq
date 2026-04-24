@@ -18,7 +18,7 @@
   // Reads locale set by the frontend language switcher (localStorage)
   // Falls back to browser language, then 'en'
   function getLocale() {
-    const stored = localStorage.getItem('mithaq_locale');
+    const stored = localStorage.getItem('mithaq_lang');
     if (stored && SUPPORTED_LOCALES.includes(stored)) return stored;
     const browser = (navigator.language || 'en').split('-')[0].toLowerCase();
     return SUPPORTED_LOCALES.includes(browser) ? browser : 'en';
@@ -26,7 +26,7 @@
 
   function setLocale(locale) {
     if (SUPPORTED_LOCALES.includes(locale)) {
-      localStorage.setItem('mithaq_locale', locale);
+      localStorage.setItem('mithaq_lang', locale);
     }
   }
 
