@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Mithaq</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #b8922a;
+      --dark:    #0e0e0e;
+      --mid:     #1c1c1c;
+      --light:   #f5f2ec;
+      --border:  #ddd8ce;
+      --muted:   #888;
+      --text:    #2a2a2a;
+      --error:   #c0392b;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--light);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Left panel */
+    .panel-left {
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .panel-left::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border: 1px solid rgba(184,146,42,0.15);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .panel-left::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      left: -8%;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(184,146,42,0.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .panel-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      display: block;
+    }
+
+    .panel-tagline {
+      position: relative;
+      z-index: 1;
+    }
+    .panel-tagline blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .panel-tagline p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel-footer {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* Right panel */
+    .panel-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 4rem;
+    }
+
+    .form-container { width: 100%; max-width: 380px; }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .form-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus { border-color: var(--gold); }
+
+    .password-wrap { position: relative; }
+    .toggle-pw {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      padding: 0;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+    }
+    .btn-primary:hover:not(:disabled) { background: #1a1a1a; }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .btn-uaepass {
+      width: 100%;
+      padding: 0.85rem;
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+    .btn-uaepass:hover { border-color: #00a651; background: #f9fdf9; }
+    .uaepass-badge {
+      background: #00a651;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+    }
+
+    .form-footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .form-footer a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-footer a:hover { border-color: var(--gold); }
+
+    .alert {
+      padding: 0.75rem 1rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+      display: none;
+      line-height: 1.5;
+    }
+    .alert-error   { background: #fff5f5; border: 1px solid #fcc; color: var(--error); display: block; }
+    .alert-success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; display: block; }
+    .alert-info    { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; display: block; }
+
+    @media (max-width: 768px) {
+      body { grid-template-columns: 1fr; }
+      .panel-left { display: none; }
+      .panel-right { padding: 2rem; justify-content: flex-start; padding-top: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left branding panel -->
+  <div class="panel-left">
+    <a href="/mithaq/" class="panel-logo">MITHAQ</a>
+    <div class="panel-tagline">
+      <blockquote>"Clarity before commitment."</blockquote>
+      <p>Secure access to your agreement portal</p>
+    </div>
+    <p class="panel-footer">© 2026 Mithaq. All rights reserved.</p>
+  </div>
+
+  <!-- Right login panel -->
+  <div class="panel-right">
+    <div class="form-container">
+      <h1 class="form-title">Sign In</h1>
+      <p class="form-subtitle">Access your account using your email and password, or via UAE PASS.</p>
+
+      <div id="alert" class="alert" role="alert"></div>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Your password" required />
+            <button type="button" class="toggle-pw" id="toggle-pw">Show</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submit-btn">Sign In</button>
+      </form>
+
+      <div class="divider"><span>or continue with</span></div>
+
+      <button class="btn-uaepass" id="uaepass-btn">
+        <span class="uaepass-badge">UAE</span>
+        Sign in with UAE PASS
+      </button>
+
+      <div class="form-footer">
+        <p>Don't have an account? <a href="/mithaq/#pricing">Purchase a package</a> to get started.</p>
+        <br />
+        <p>Forgot your password? <a href="/mithaq/reset-password.html">Reset it here</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/mithaq/mithaq-api.js"></script>
+  <script>
+    (function () {
+      const form       = document.getElementById("login-form");
+      const emailEl    = document.getElementById("email");
+      const passwordEl = document.getElementById("password");
+      const submitBtn  = document.getElementById("submit-btn");
+      const alertEl    = document.getElementById("alert");
+      const togglePw   = document.getElementById("toggle-pw");
+      const uaepassBtn = document.getElementById("uaepass-btn");
+
+      // Redirect if already logged in
+      if (MithaqAPI.auth.isAuthenticated()) {
+        const params   = new URLSearchParams(window.location.search);
+        const returnTo = params.get("returnTo") || "/mithaq/dashboard.html";
+        window.location.href = returnTo;
+        return;
+      }
+
+      // Handle magic link in URL hash (password reset / first login)
+      if (window.location.hash.includes("access_token")) {
+        showAlert("Completing sign-in…", "info");
+        MithaqAPI.auth.handleMagicLink().then(result => {
+          if (result?.session) {
+            const params   = new URLSearchParams(window.location.search);
+            const returnTo = params.get("returnTo") || "/mithaq/dashboard.html";
+            window.location.href = returnTo;
+          } else {
+            showAlert("Login link expired or invalid. Please request a new one.", "error");
+          }
+        });
+        return;
+      }
+
+      function showAlert(msg, type) {
+        alertEl.textContent = msg;
+        alertEl.className   = `alert alert-${type}`;
+      }
+
+      function clearAlert() { alertEl.className = "alert"; alertEl.textContent = ""; }
+
+      // Toggle password visibility
+      togglePw.addEventListener("click", function () {
+        const isText = passwordEl.type === "text";
+        passwordEl.type    = isText ? "password" : "text";
+        togglePw.textContent = isText ? "Show" : "Hide";
+      });
+
+      // Email/password login
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        MithaqAPI.ui.clearErrors(form);
+        clearAlert();
+
+        const email    = emailEl.value.trim();
+        const password = passwordEl.value;
+
+        let valid = true;
+        if (!email || !email.includes("@")) {
+          MithaqAPI.ui.fieldError(emailEl, "Please enter a valid email address.");
+          valid = false;
+        }
+        if (!password) {
+          MithaqAPI.ui.fieldError(passwordEl, "Please enter your password.");
+          valid = false;
+        }
+        if (!valid) return;
+
+        MithaqAPI.ui.setButtonLoading(submitBtn, true, "Signing in…");
+
+        try {
+          await MithaqAPI.auth.signIn(email, password);
+          const params   = new URLSearchParams(window.location.search);
+          const returnTo = params.get("returnTo") || "/mithaq/dashboard.html";
+          window.location.href = returnTo;
+        } catch (err) {
+          const msg = err.message || "Sign in failed.";
+          if (msg.toLowerCase().includes("invalid")) {
+            showAlert("Incorrect email or password. Please try again.", "error");
+          } else if (msg.toLowerCase().includes("email not confirmed")) {
+            showAlert("Please check your email and click the confirmation link first.", "info");
+          } else {
+            showAlert(msg, "error");
+          }
+          MithaqAPI.ui.setButtonLoading(submitBtn, false);
+        }
+      });
+
+      // UAE PASS login
+      uaepassBtn.addEventListener("click", function () {
+        const clientId   = "mithaq_uaepass"; // placeholder — update with real Client ID
+        const redirectUri = encodeURIComponent(
+          window.location.origin + "/mithaq/auth/uaepass-callback.html"
+        );
+        const state = btoa(JSON.stringify({
+          returnTo: new URLSearchParams(window.location.search).get("returnTo") || "/mithaq/dashboard.html",
+          nonce:    Math.random().toString(36).slice(2),
+        }));
+
+        // UAE PASS staging authorization endpoint
+        const authUrl = `https://stg-id.uaepass.ae/idshub/authorize` +
+          `?response_type=code` +
+          `&client_id=${clientId}` +
+          `&scope=urn:uae:digitalid:profile:general` +
+          `&redirect_uri=${redirectUri}` +
+          `&state=${state}` +
+          `&acr_values=urn:safelayer:tws:policies:authentication:level:low`;
+
+        window.location.href = authUrl;
+      });
+    })();
+  </script>
+</body>
+</html>

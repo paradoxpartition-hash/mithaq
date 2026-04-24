@@ -4,474 +4,304 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payment Confirmed — Mithaq</title>
-  <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --emerald:#0F3D2E; --emerald-dk:#0A2B1F; --gold:#C6A75E;
-      --offwhite:#F8F7F3; --white:#FFFFFF; --charcoal:#1E1E1E;
-      --muted:#6B6B6B; --border:#D8D4C9; --error:#C0392B;
-      --f-display:'Cormorant Garamond',Georgia,serif;
-      --f-body:'DM Sans',system-ui,sans-serif;
+      --gold:    #b8922a;
+      --dark:    #0e0e0e;
+      --mid:     #1c1c1c;
+      --light:   #f5f2ec;
+      --muted:   #888;
+      --text:    #2a2a2a;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{background:var(--offwhite);color:var(--charcoal);font-family:var(--f-body);
-         font-weight:300;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;}
-    a{text-decoration:none;color:inherit;}
 
-    .site-header{background:var(--offwhite);border-bottom:1px solid var(--border);padding:0 24px;}
-    .header-inner{max-width:760px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;}
-    .logo{display:flex;align-items:center;gap:12px;}
-    .logo-text{font-family:var(--f-display);font-size:1.25rem;font-weight:600;letter-spacing:0.05em;}
-
-    main{flex:1;max-width:760px;width:100%;margin:64px auto;padding:0 24px;}
-
-    .icon-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;
-                 justify-content:center;margin:0 auto 28px;}
-    .icon-circle.success{background:var(--emerald);}
-    .icon-circle.error{background:var(--error);}
-
-    .gold-rule{display:block;width:48px;height:1px;background:var(--gold);margin:0 auto 20px;}
-    .section-label{font-family:var(--f-body);font-size:0.6875rem;font-weight:500;letter-spacing:0.16em;
-                   text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:16px;}
-    h1{font-family:var(--f-display);font-size:clamp(1.875rem,5vw,2.5rem);font-weight:500;
-       color:var(--charcoal);text-align:center;margin-bottom:12px;line-height:1.1;}
-    .page-sub{font-size:0.9375rem;color:var(--muted);text-align:center;line-height:1.7;
-              margin-bottom:48px;max-width:520px;margin-left:auto;margin-right:auto;}
-
-    .card{border:1px solid var(--border);background:var(--white);padding:28px 32px;margin-bottom:16px;}
-    .card-title{font-family:var(--f-body);font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
-                text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
-    .card-headline{font-family:var(--f-display);font-size:1.375rem;font-weight:500;color:var(--charcoal);
-                   margin-bottom:6px;line-height:1.2;}
-    .card-tagline{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:20px;}
-
-    .package-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-    .package-name{font-family:var(--f-display);font-size:1.25rem;font-weight:500;color:var(--charcoal);}
-    .package-badge{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-                   color:var(--emerald);border:1px solid var(--emerald);padding:3px 10px;white-space:nowrap;}
-    .package-amount{font-size:0.8125rem;color:var(--muted);margin-top:8px;}
-
-    .ref-box{font-size:0.75rem;font-family:monospace;letter-spacing:0.05em;color:var(--muted);
-             background:var(--offwhite);border:1px solid var(--border);
-             padding:10px 14px;word-break:break-all;margin-top:12px;}
-
-    .booking-meta{
-      display:grid;grid-template-columns:1fr 1fr;gap:0;
-      border:1px solid var(--border);background:var(--white);
-      margin-bottom:16px;
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--light);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
     }
-    @media(max-width:480px){.booking-meta{grid-template-columns:1fr;}}
-    .booking-meta-item{padding:16px 20px;border-right:1px solid var(--border);}
-    @media(max-width:480px){.booking-meta-item{border-right:none;border-bottom:1px solid var(--border);}}
-    .booking-meta-item:last-child{border-right:none;border-bottom:none;}
-    .booking-meta-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.14em;
-                        text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-    .booking-meta-value{font-family:var(--f-display);font-size:1.125rem;font-weight:500;color:var(--charcoal);}
 
-    /* Cal.com embed container */
-    .cal-embed-container{
-      width:100%;min-height:680px;border:1px solid var(--border);background:var(--white);
-      overflow:hidden;
+    .container {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
     }
-    .cal-iframe{width:100%;min-height:680px;border:none;display:block;}
 
-    .step-item{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);}
-    .step-item:last-child{border-bottom:none;}
-    .step-num{font-family:var(--f-display);font-size:1.5rem;font-weight:400;color:var(--gold);
-              opacity:0.7;line-height:1;flex-shrink:0;width:24px;text-align:center;}
-    .step-title{font-size:0.875rem;font-weight:500;color:var(--charcoal);margin-bottom:3px;}
-    .step-desc{font-size:0.8125rem;color:var(--muted);line-height:1.6;}
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 3rem;
+    }
 
-    .notice{background:var(--offwhite);border:1px solid var(--border);border-left:3px solid var(--gold);
-            padding:16px 20px;font-size:0.8125rem;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+    /* States */
+    .state { display: none; }
+    .state.active { display: block; }
 
-    .btn-primary{display:block;width:100%;padding:16px 32px;background:var(--emerald);color:var(--offwhite);
-                 font-family:var(--f-body);font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;
-                 text-transform:uppercase;text-align:center;border:1px solid var(--emerald);
-                 transition:background 0.2s;margin-top:8px;}
-    .btn-primary:hover{background:var(--emerald-dk);}
-    .btn-secondary{display:block;width:100%;padding:15px 32px;background:transparent;color:var(--emerald);
-                   font-family:var(--f-body);font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;
-                   text-transform:uppercase;text-align:center;border:1px solid var(--emerald);
-                   transition:background 0.2s,color 0.2s;margin-top:8px;}
-    .btn-secondary:hover{background:var(--emerald);color:var(--offwhite);}
+    /* Loading */
+    #state-loading .spinner {
+      width: 36px; height: 36px;
+      border: 2px solid #ddd;
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #state-loading p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+    }
 
-    @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-    .skeleton{background:linear-gradient(90deg,#e8e4dc 25%,#f0ece4 50%,#e8e4dc 75%);
-              background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:2px;}
+    /* Success */
+    #state-success .icon {
+      width: 56px; height: 56px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem;
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+    #state-success h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      letter-spacing: 0.03em;
+    }
+    #state-success p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+    #state-success strong { color: var(--text); font-weight: 500; }
 
-    .site-footer{border-top:1px solid var(--border);padding:24px;text-align:center;
-                 font-size:0.75rem;color:var(--muted);}
-    @media(max-width:480px){main{margin:40px auto;}.card{padding:20px;}}
+    .divider {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin: 2rem auto;
+      opacity: 0.5;
+    }
+
+    .next-steps {
+      text-align: left;
+      background: #fff;
+      border: 1px solid #e8e4dc;
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+    .next-steps h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 0.9rem;
+    }
+    .step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 22px; height: 22px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+    .step strong { color: var(--text); font-weight: 400; }
+
+    .btn {
+      display: inline-block;
+      background: var(--dark);
+      color: var(--light);
+      padding: 0.85rem 2.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+    }
+    .btn:hover { background: #1a1a1a; }
+
+    /* Already activated */
+    #state-already p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* Error */
+    #state-error h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    #state-error p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    #error-detail {
+      font-size: 0.8rem;
+      color: #c0392b;
+      background: #fff5f5;
+      border: 1px solid #fcc;
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <a href="/mithaq/" class="logo">MITHAQ</a>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="./index.html" class="logo">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-        <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-        <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-        <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-      </svg>
-      <span class="logo-text">Mithaq</span>
-    </a>
+    <!-- Loading -->
+    <div id="state-loading" class="state active">
+      <div class="spinner"></div>
+      <p>Confirming your payment…</p>
+    </div>
+
+    <!-- Success -->
+    <div id="state-success" class="state">
+      <div class="icon">✓</div>
+      <h1>Payment Confirmed.</h1>
+      <p>Your account is being prepared. A login email has been sent to</p>
+      <p><strong id="success-email">your email address</strong>.</p>
+
+      <div class="divider"></div>
+
+      <div class="next-steps">
+        <h3>What Happens Next</h3>
+        <div class="step">
+          <div class="step-num">1</div>
+          <p><strong>Check your inbox</strong> — A secure login link has been sent. It expires in 24 hours.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <p><strong>Set your password</strong> — You will be prompted to create a private password on first login.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <p><strong>Begin your agreement</strong> — Once logged in, your <strong id="success-package">agreement</strong> drafting process will begin.</p>
+        </div>
+      </div>
+
+      <a href="/mithaq/login.html" class="btn">Go to Login</a>
+    </div>
+
+    <!-- Already activated -->
+    <div id="state-already" class="state">
+      <div class="divider"></div>
+      <p>This payment has already been processed and your account is active.</p>
+      <br />
+      <a href="/mithaq/login.html" class="btn">Login to Your Account</a>
+    </div>
+
+    <!-- Error -->
+    <div id="state-error" class="state">
+      <h2>Something went wrong.</h2>
+      <p>We were unable to activate your account. Please contact support with your payment reference.</p>
+      <div id="error-detail"></div>
+      <a href="mailto:support@mithaq.ae" class="btn">Contact Support</a>
+    </div>
   </div>
-</header>
 
-<main id="app">
-  <div style="text-align:center;padding:40px 0;">
-    <div class="skeleton" style="width:72px;height:72px;border-radius:50%;margin:0 auto 28px;"></div>
-    <div class="skeleton" style="width:180px;height:18px;margin:0 auto 12px;"></div>
-    <div class="skeleton" style="width:300px;height:14px;margin:0 auto 8px;"></div>
-    <div class="skeleton" style="width:240px;height:14px;margin:0 auto;"></div>
-  </div>
-</main>
+  <script src="/mithaq/mithaq-api.js"></script>
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get("session_id");
 
-<footer class="site-footer">
-  <p>© 2026 Mithaq. All rights reserved.&nbsp;·&nbsp;
-    <a href="./index.html#contact" style="color:inherit;">Contact Support</a>
-  </p>
-</footer>
+      function show(id) {
+        document.querySelectorAll(".state").forEach(s => s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+      }
 
-<script>
-'use strict';
+      function showError(msg) {
+        show("state-error");
+        const detail = document.getElementById("error-detail");
+        if (msg) { detail.textContent = msg; detail.style.display = "block"; }
+      }
 
-const SUPABASE_URL = 'https://xbbdigovnztxoxpydjav.supabase.co';
-const API_BASE     = `${SUPABASE_URL}/functions/v1`;
+      if (!sessionId) {
+        showError("No payment session found in URL.");
+        return;
+      }
 
-// ── Cal.com config ────────────────────────────────────────────────
-// Free-tier compatible. Create one event type per duration in your Cal.com
-// account, all priced at 0 (Stripe handled payment), with Google Meet
-// auto-attached if enabled. Update CAL_USERNAME and event slugs below.
-const CAL_USERNAME = 'mithaq.appointments';
+      // We need email + package from the session — fetch via verify-payment first
+      try {
+        const verify = await fetch(
+          `${MithaqAPI.FN_BASE}/verify-payment?session_id=${encodeURIComponent(sessionId)}`
+        );
+        const vData = await verify.json().catch(() => ({}));
 
-// Map duration (minutes) → Cal.com event slug for STRATEGY SESSIONS (prenup/will).
-const CAL_STRATEGY_SLUGS = {
-  30:  'strategy-session-30',
-  60:  'strategy-session-60',
-  90:  'strategy-session-90',
-  120: 'strategy-session-120',
-  150: 'strategy-session-150',
-  180: 'strategy-session-180',
-  210: 'strategy-session-210',
-  240: 'strategy-session-240',
-};
+        if (!verify.ok || !vData.payment) {
+          showError(vData.error || "Payment verification failed.");
+          return;
+        }
 
-// Map hours → Cal.com event slug for LEGAL ADVISORY SESSIONS (standalone).
-const CAL_LEGAL_SLUGS = {
-  1: 'legal-advisory-1h',
-  2: 'legal-advisory-2h',
-  3: 'legal-advisory-3h',
-  4: 'legal-advisory-4h',
-};
+        const email       = vData.payment.user_email || vData.payment.customer_email;
+        const packageType = vData.payment.package_type || vData.payment.purchase_type || "prenup-standard";
+        const packageName = vData.payment.package_name || packageType;
 
-const PACKAGE_NAMES = {
-  'prenup-standard': 'Silver — Standard Agreement',
-  'prenup-gold':     'Gold — Premium Agreement',
-  'prenup-platinum': 'Platinum — Advanced Agreement',
-  'prenup-diamond':  'Diamond — Comprehensive Agreement',
-  'will-standalone': 'Will Registration',
-};
+        // Activate account
+        try {
+          const result = await MithaqAPI.payment.activateAccount(email, packageType, sessionId);
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const params    = new URLSearchParams(window.location.search);
-  const sessionId = params.get('session_id');
+          document.getElementById("success-email").textContent    = email;
+          document.getElementById("success-package").textContent  = packageName;
+          show("state-success");
 
-  if (!sessionId) {
-    renderError('No payment reference found.',
-      'If you completed a payment please check your email for a confirmation, or contact our support team.');
-    return;
-  }
+        } catch (err) {
+          if (err.message && err.message.includes("already created")) {
+            show("state-already");
+          } else {
+            showError(err.message);
+          }
+        }
 
-  try {
-    const res  = await fetch(`${API_BASE}/verify-payment?session_id=${encodeURIComponent(sessionId)}`, {
-      signal: AbortSignal.timeout(8000),
-    });
-    const data = await res.json();
-
-    if (data.paid) {
-      renderSuccess({
-        sessionId,
-        email:                   data.email,
-        packageType:             data.packageType,
-        purchaseType:            data.purchaseType  || '',
-        serviceType:             data.serviceType   || 'prenup',
-        packageName:             data.packageName   || '',
-        willIncluded:            data.willIncluded === true,
-        willOnly:                data.willOnly     === true,
-        consultationDurationMin: data.consultationDurationMin || 30,
-        consultationHours:       data.consultationHours || 0,
-        amount:                  data.amount,
-        currency:                data.currency,
-      });
-    } else {
-      renderError('Payment could not be confirmed.',
-        'We were unable to verify your payment status. If you were charged, please contact us with your reference below.',
-        sessionId);
-    }
-  } catch (_) {
-    renderSuccess({
-      sessionId, email: '', packageType: '', purchaseType: '', serviceType: 'prenup', packageName: '',
-      willIncluded: false, willOnly: false,
-      consultationDurationMin: 30, consultationHours: 0, amount: 0, currency: '',
-    });
-  }
-});
-
-function fmtAmount(amount, currency) {
-  if (!amount || !currency) return '';
-  try {
-    return (amount / 100).toLocaleString('en-US', {
-      style: 'currency', currency: currency.toUpperCase(), minimumFractionDigits: 0,
-    });
-  } catch (_) { return ''; }
-}
-
-// ── Scheduling component (independent, Cal.com-only) ──────────────
-function calBookingUrl(serviceType, consultationDurationMin, consultationHours, email) {
-  let slug;
-  
-  if (serviceType === 'legal_consultation') {
-    // Legal advisory: use hours-based slugs
-    slug = CAL_LEGAL_SLUGS[consultationHours] || CAL_LEGAL_SLUGS[1];
-  } else {
-    // Prenup/Will: use minute-based strategy session slugs
-    slug = CAL_STRATEGY_SLUGS[consultationDurationMin] || CAL_STRATEGY_SLUGS[30];
-  }
-  
-  const params = new URLSearchParams();
-  if (email) params.set('email', email);
-  params.set('embed', 'true');
-  return `https://cal.com/${CAL_USERNAME}/${slug}?${params.toString()}`;
-}
-
-function renderSchedulingSection(p) {
-  const url = calBookingUrl(p.serviceType, p.consultationDurationMin, p.consultationHours, p.email);
-  
-  // Display text depends on service type
-  let durationText;
-  if (p.serviceType === 'legal_consultation') {
-    const hrs = p.consultationHours || 1;
-    durationText = `${hrs}-hour private legal advisory session`;
-  } else {
-    durationText = `${p.consultationDurationMin}-minute private strategy session`;
-  }
-  
-  return `
-    <div class="card">
-      <p class="card-title">Schedule Your Private Strategy Session</p>
-      <p class="card-headline">Your Consultation Has Been Unlocked</p>
-      <p class="card-tagline">
-        Your <strong>${durationText}</strong> is ready.
-        Use the calendar below to select a time that suits your schedule.
-        A confirmation will be sent to your email once your session is scheduled.
-      </p>
-
-      <div class="booking-meta">
-        <div class="booking-meta-item">
-          <p class="booking-meta-label">Format</p>
-          <p class="booking-meta-value">Private Consultation</p>
-        </div>
-        <div class="booking-meta-item">
-          <p class="booking-meta-label">Duration</p>
-          <p class="booking-meta-value">${p.serviceType === 'legal_consultation' ? `${p.consultationHours} ${p.consultationHours === 1 ? 'hour' : 'hours'}` : `${p.consultationDurationMin} minutes`}</p>
-        </div>
-      </div>
-
-      <div class="cal-embed-container">
-        <iframe
-          class="cal-iframe"
-          src="${url}"
-          title="Schedule your strategy session"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allow="payment">
-        </iframe>
-      </div>
-
-      <p style="font-size:0.75rem;color:var(--muted);margin-top:12px;font-style:italic;line-height:1.6;">
-        If the calendar does not load, you can also schedule directly at
-        <a href="${url}" target="_blank" rel="noopener" style="color:var(--charcoal);text-decoration:underline;">our scheduling page</a>.
-      </p>
-    </div>
-  `;
-}
-
-function renderSuccess(p) {
-  const app        = document.getElementById('app');
-  const baseName   = p.packageName || PACKAGE_NAMES[p.packageType] || 'Your Service Package';
-  const amtDisplay = fmtAmount(p.amount, p.currency);
-
-  let title, description;
-  
-  if (p.serviceType === 'legal_consultation') {
-    title       = 'Your Legal Advisory Session<br>Has Been Confirmed.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your private legal advisory session below to discuss asset structuring, cross-border considerations, and marital agreement planning.';
-  } else if (p.willOnly) {
-    title       = 'Your Will Registration<br>Has Been Initiated.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin the registration process.';
-  } else if (p.willIncluded) {
-    title       = 'Your Agreement &amp; Will<br>Have Been Initiated.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin both processes.';
-  } else {
-    title       = 'Your Agreement<br>Has Been Initiated.';
-    description = 'Thank you for choosing Mithaq. Your payment was received. Schedule your strategy session below to begin the drafting process.';
-  }
-
-  app.innerHTML = `
-    <div style="text-align:center;margin-bottom:8px;">
-      <div class="icon-circle success">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white"
-             stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      </div>
-      <span class="gold-rule"></span>
-      <p class="section-label">Payment Confirmed</p>
-      <h1>${title}</h1>
-      <p class="page-sub">${description}</p>
-    </div>
-
-    <!-- Order summary -->
-    <div class="card">
-      <p class="card-title">${p.serviceType === 'legal_consultation' ? 'Service Purchased' : (p.willOnly ? 'Service Purchased' : 'Package Purchased')}</p>
-      <div class="package-row">
-        <span class="package-name">${baseName}</span>
-        <span class="package-badge">Confirmed</span>
-      </div>
-      ${p.willIncluded ? `<p class="package-amount" style="margin-top:8px;color:var(--charcoal);">Includes Will Registration (bundled)</p>` : ''}
-      ${amtDisplay ? `<p class="package-amount">Amount paid: ${amtDisplay}</p>` : ''}
-      <div class="ref-box">Payment reference: ${p.sessionId}</div>
-    </div>
-
-    <!-- Scheduling (independent Cal.com component) -->
-    ${renderSchedulingSection(p)}
-
-    <!-- Next steps -->
-    <div class="card">
-      <p class="card-title">What Happens Next</p>
-
-      <div class="step-item">
-        <span class="step-num">1</span>
-        <div>
-          <p class="step-title">Payment Confirmation Email</p>
-          <p class="step-desc">You will receive an email confirming your payment, your reference number, and a direct link to schedule your ${p.serviceType === 'legal_consultation' ? 'legal advisory' : 'strategy'} session.</p>
-        </div>
-      </div>
-
-      <div class="step-item">
-        <span class="step-num">2</span>
-        <div>
-          <p class="step-title">${p.serviceType === 'legal_consultation' ? 'Legal Advisory' : 'Strategy'} Session Confirmation</p>
-          <p class="step-desc">After scheduling above, you will receive a calendar invitation with your appointment details and meeting link.</p>
-        </div>
-      </div>
-
-      ${p.serviceType === 'legal_consultation' ? `
-      <div class="step-item">
-        <span class="step-num">3</span>
-        <div>
-          <p class="step-title">Private Advisory Session</p>
-          <p class="step-desc">Your private legal advisory session will be conducted by senior advisors familiar with UAE marital, inheritance, and asset structuring frameworks. All discussions are confidential.</p>
-        </div>
-      </div>
-      ` : p.willOnly ? `
-      <div class="step-item">
-        <span class="step-num">3</span>
-        <div>
-          <p class="step-title">Submit Estate Documentation</p>
-          <p class="step-desc">During and after your consultation, you will provide the required information for your will registration. Our team prepares the documentation for official submission.</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <span class="step-num">4</span>
-        <div>
-          <p class="step-title">Government Registration &amp; Vault Storage</p>
-          <p class="step-desc">Your will is officially registered with the relevant authorities and securely archived in your Mithaq vault, with a verifiable registration certificate.</p>
-        </div>
-      </div>
-      ` : `
-      <div class="step-item">
-        <span class="step-num">3</span>
-        <div>
-          <p class="step-title">Begin Drafting Your Agreement</p>
-          <p class="step-desc">Following your strategy session, you will begin the guided drafting process. Our team reviews all submissions for Sharia compliance and legal structure.</p>
-        </div>
-      </div>
-      ${p.willIncluded ? `
-      <div class="step-item">
-        <span class="step-num">4</span>
-        <div>
-          <p class="step-title">Will Registration Documentation</p>
-          <p class="step-desc">In parallel, a separate workflow is initiated for your estate registration with specific instructions for the will documentation.</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <span class="step-num">5</span>
-        <div>
-          <p class="step-title">Digital Signing &amp; Secure Storage</p>
-          <p class="step-desc">Both your finalised agreement and registered will are digitally signed, assigned unique verification codes, and stored in your tamper-proof vault.</p>
-        </div>
-      </div>
-      ` : `
-      <div class="step-item">
-        <span class="step-num">4</span>
-        <div>
-          <p class="step-title">Digital Signing &amp; Secure Storage</p>
-          <p class="step-desc">Your finalised agreement is digitally signed, assigned a unique verification code, and stored in your tamper-proof vault.</p>
-        </div>
-      </div>
-      `}
-      `}
-    </div>
-
-    <div class="notice">
-      <strong style="font-weight:500;color:var(--charcoal);">Did not receive a confirmation email?</strong><br>
-      Please check your spam or junk folder. If you still have not received it within 30 minutes,
-      <a href="./index.html#contact" style="color:var(--charcoal);text-decoration:underline;">contact our support team</a>
-      with your payment reference above.
-    </div>
-
-    <a href="./index.html" class="btn-primary">Return to Mithaq</a>
-  `;
-}
-
-function renderError(title, message, sessionId = '') {
-  const app = document.getElementById('app');
-  app.innerHTML = `
-    <div style="text-align:center;margin-bottom:8px;">
-      <div class="icon-circle error">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white"
-             stroke-width="2.5" stroke-linecap="square" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </div>
-      <span class="gold-rule"></span>
-      <p class="section-label">Action Required</p>
-      <h1>${title}</h1>
-      <p class="page-sub">${message}</p>
-    </div>
-    ${sessionId ? `
-    <div class="card">
-      <p class="card-title">Payment Reference</p>
-      <div class="ref-box">${sessionId}</div>
-    </div>` : ''}
-    <div class="notice">
-      If you believe this is an error, please
-      <a href="./index.html#contact" style="color:var(--charcoal);text-decoration:underline;">contact our support team</a>
-      and include your payment reference. We will investigate and respond promptly.
-    </div>
-    <a href="./index.html#pricing" class="btn-primary">Try Again</a>
-    <a href="./index.html" class="btn-secondary">Return to Mithaq</a>
-  `;
-}
-</script>
+      } catch (err) {
+        showError(err.message || "Unexpected error. Please contact support.");
+      }
+    })();
+  </script>
 </body>
 </html>
