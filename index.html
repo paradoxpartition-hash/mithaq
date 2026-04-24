@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
@@ -14,889 +13,881 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
-```
-/* ── Tokens ────────────────────────────────────────────────── */
-:root {
-  --emerald:   #0F3D2E;
-  --emerald-dk:#0A2B1F;
-  --gold:      #C6A75E;
-  --offwhite:  #F8F7F3;
-  --white:     #FFFFFF;
-  --charcoal:  #1E1E1E;
-  --muted:     #6B6B6B;
-  --border:    #D8D4C9;
-  --f-display: 'Cormorant Garamond', Georgia, serif;
-  --f-body:    'DM Sans', system-ui, sans-serif;
-}
+    /* ── Tokens ────────────────────────────────────────────────── */
+    :root {
+      --emerald:   #0F3D2E;
+      --emerald-dk:#0A2B1F;
+      --gold:      #C6A75E;
+      --offwhite:  #F8F7F3;
+      --white:     #FFFFFF;
+      --charcoal:  #1E1E1E;
+      --muted:     #6B6B6B;
+      --border:    #D8D4C9;
+      --f-display: 'Cormorant Garamond', Georgia, serif;
+      --f-body:    'DM Sans', system-ui, sans-serif;
+    }
 
-/* ── Base ──────────────────────────────────────────────────── */
-body {
-  background: var(--offwhite);
-  color: var(--charcoal);
-  font-family: var(--f-body);
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-}
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-button { background: none; border: none; cursor: pointer; font-family: inherit; }
+    /* ── Base ──────────────────────────────────────────────────── */
+    body {
+      background: var(--offwhite);
+      color: var(--charcoal);
+      font-family: var(--f-body);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { background: none; border: none; cursor: pointer; font-family: inherit; }
 
-/* ── Layout helpers ────────────────────────────────────────── */
-.container {
-  max-width: 1152px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-@media (min-width: 1024px) { .container { padding: 0 32px; } }
+    /* ── Layout helpers ────────────────────────────────────────── */
+    .container {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 1024px) { .container { padding: 0 32px; } }
 
-/* ── Gold rule ─────────────────────────────────────────────── */
-.gold-rule {
-  display: block;
-  width: 48px;
-  height: 1px;
-  background: var(--gold);
-  flex-shrink: 0;
-  font-size: 0;
-  line-height: 0;
-  border: none;
-  overflow: hidden;
-  speak: none;
-}
-.gold-rule-center { margin: 0 auto; }
+    /* ── Gold rule ─────────────────────────────────────────────── */
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+      font-size: 0;
+      line-height: 0;
+      border: none;
+      overflow: hidden;
+      speak: none;
+    }
+    .gold-rule-center { margin: 0 auto; }
 
-/* ── Section label ─────────────────────────────────────────── */
-.label {
-  font-family: var(--f-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
+    /* ── Section label ─────────────────────────────────────────── */
+    .label {
+      font-family: var(--f-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
 
-/* ── Buttons ───────────────────────────────────────────────── */
-.btn-primary {
-  display: inline-block;
-  background: var(--emerald);
-  color: var(--offwhite);
-  font-family: var(--f-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border: 1px solid var(--emerald);
-  transition: background 0.2s;
-}
-.btn-primary:hover { background: var(--emerald-dk); }
+    /* ── Buttons ───────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-block;
+      background: var(--emerald);
+      color: var(--offwhite);
+      font-family: var(--f-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 1px solid var(--emerald);
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--emerald-dk); }
 
-.btn-secondary {
-  display: inline-block;
-  background: transparent;
-  color: var(--emerald);
-  font-family: var(--f-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 13px 32px;
-  border: 1px solid var(--emerald);
-  transition: background 0.2s, color 0.2s;
-}
-.btn-secondary:hover { background: var(--emerald); color: var(--offwhite); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--emerald);
+      font-family: var(--f-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 13px 32px;
+      border: 1px solid var(--emerald);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { background: var(--emerald); color: var(--offwhite); }
 
-.btn-gold {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--emerald);
-  font-family: var(--f-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 14px 36px;
-  border: 1px solid var(--gold);
-  transition: background 0.2s;
-}
-.btn-gold:hover { background: #A8864A; border-color: #A8864A; }
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--emerald);
+      font-family: var(--f-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border: 1px solid var(--gold);
+      transition: background 0.2s;
+    }
+    .btn-gold:hover { background: #A8864A; border-color: #A8864A; }
 
-/* ── Nav link ──────────────────────────────────────────────── */
-.nav-link {
-  font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--charcoal);
-  transition: color 0.2s;
-}
-.nav-link:hover { color: var(--emerald); }
+    /* ── Nav link ──────────────────────────────────────────────── */
+    .nav-link {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--emerald); }
 
-/* ── HEADER ────────────────────────────────────────────────── */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: var(--offwhite);
-  border-bottom: 1px solid var(--border);
-}
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
+    /* ── HEADER ────────────────────────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--offwhite);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
 
-/* Logo */
-.logo { display: flex; align-items: center; gap: 12px; }
-.logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
-.logo-text {
-  font-family: var(--f-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--charcoal);
-}
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { width: 28px; height: 28px; flex-shrink: 0; }
+    .logo-text {
+      font-family: var(--f-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+    }
 
-/* Desktop nav — hidden on mobile */
-.desktop-nav {
-  display: none;
-  align-items: center;
-  gap: 32px;
-}
-@media (min-width: 768px) { .desktop-nav { display: flex; } }
+    /* Desktop nav — hidden on mobile */
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 32px;
+    }
+    @media (min-width: 768px) { .desktop-nav { display: flex; } }
 
-/* Header right side */
-.header-right { display: flex; align-items: center; gap: 16px; }
+    /* Header right side */
+    .header-right { display: flex; align-items: center; gap: 16px; }
 
-/* Language dropdown */
-.lang-dropdown-wrap {
-  position: relative;
-  display: none;
-}
-@media (min-width: 768px) { .lang-dropdown-wrap { display: block; } }
+    /* Language dropdown */
+    .lang-dropdown-wrap {
+      position: relative;
+      display: none;
+    }
+    @media (min-width: 768px) { .lang-dropdown-wrap { display: block; } }
 
-.lang-dropdown-trigger {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 10px;
-  font-family: var(--f-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--charcoal);
-  border: 1px solid var(--border);
-  background: transparent;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color 0.15s;
-}
-.lang-dropdown-trigger:hover { border-color: var(--charcoal); }
-.lang-dropdown-trigger svg {
-  width: 10px; height: 10px;
-  flex-shrink: 0;
-  transition: transform 0.15s;
-}
-.lang-dropdown-wrap.open .lang-dropdown-trigger svg { transform: rotate(180deg); }
+    .lang-dropdown-trigger {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      font-family: var(--f-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.15s;
+    }
+    .lang-dropdown-trigger:hover { border-color: var(--charcoal); }
+    .lang-dropdown-trigger svg {
+      width: 10px; height: 10px;
+      flex-shrink: 0;
+      transition: transform 0.15s;
+    }
+    .lang-dropdown-wrap.open .lang-dropdown-trigger svg { transform: rotate(180deg); }
 
-.lang-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 4px);
-  right: 0;
-  min-width: 100%;
-  background: var(--offwhite);
-  border: 1px solid var(--border);
-  z-index: 100;
-}
-.lang-dropdown-wrap.open .lang-dropdown-menu { display: block; }
+    .lang-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      min-width: 100%;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      z-index: 100;
+    }
+    .lang-dropdown-wrap.open .lang-dropdown-menu { display: block; }
 
-.lang-dropdown-menu button {
-  display: block;
-  width: 100%;
-  padding: 8px 14px;
-  font-family: var(--f-body);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: left;
-  color: var(--muted);
-  background: transparent;
-  transition: color 0.15s, background 0.15s;
-  white-space: nowrap;
-}
-[dir="rtl"] .lang-dropdown-menu button { text-align: right; }
-.lang-dropdown-menu button:hover { color: var(--charcoal); background: rgba(0,0,0,0.03); }
-.lang-dropdown-menu button.active {
-  color: var(--emerald);
-  font-weight: 500;
-}
+    .lang-dropdown-menu button {
+      display: block;
+      width: 100%;
+      padding: 8px 14px;
+      font-family: var(--f-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+      color: var(--muted);
+      background: transparent;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    [dir="rtl"] .lang-dropdown-menu button { text-align: right; }
+    .lang-dropdown-menu button:hover { color: var(--charcoal); background: rgba(0,0,0,0.03); }
+    .lang-dropdown-menu button.active {
+      color: var(--emerald);
+      font-weight: 500;
+    }
 
-/* Mobile lang selector — same dropdown style inline */
-.mobile-lang-wrap { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
-.mobile-lang-label {
-  font-family: var(--f-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.mobile-lang-grid {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: start;
-  gap: 4px 2px;
-}
-.mobile-lang-grid button {
-  padding: 5px 10px;
-  font-family: var(--f-body);
-  font-size: 0.6875rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid transparent;
-  background: transparent;
-  transition: color 0.15s, border-color 0.15s;
-}
-.mobile-lang-grid button:hover { color: var(--charcoal); border-color: var(--border); }
-.mobile-lang-grid button.active {
-  color: var(--emerald);
-  font-weight: 500;
-  border-color: var(--emerald);
-}
+    /* Mobile lang selector — same dropdown style inline */
+    .mobile-lang-wrap { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .mobile-lang-label {
+      font-family: var(--f-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .mobile-lang-grid {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      justify-content: start;
+      gap: 4px 2px;
+    }
+    .mobile-lang-grid button {
+      padding: 5px 10px;
+      font-family: var(--f-body);
+      font-size: 0.6875rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid transparent;
+      background: transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .mobile-lang-grid button:hover { color: var(--charcoal); border-color: var(--border); }
+    .mobile-lang-grid button.active {
+      color: var(--emerald);
+      font-weight: 500;
+      border-color: var(--emerald);
+    }
 
-/* Desktop CTA */
-.header-cta { display: none; }
-@media (min-width: 768px) { .header-cta { display: inline-block; } }
+    /* Desktop CTA */
+    .header-cta { display: none; }
+    @media (min-width: 768px) { .header-cta { display: inline-block; } }
 
-/* Hamburger */
-.hamburger { display: flex; padding: 8px; color: var(--charcoal); }
-@media (min-width: 768px) { .hamburger { display: none; } }
+    /* Hamburger */
+    .hamburger { display: flex; padding: 8px; color: var(--charcoal); }
+    @media (min-width: 768px) { .hamburger { display: none; } }
 
-/* ── MOBILE MENU ───────────────────────────────────────────── */
-.mobile-menu {
-  display: none;
-  border-top: 1px solid var(--border);
-  background: var(--offwhite);
-  padding: 0 24px 24px;
-}
-.mobile-menu.open { display: block; }
-.mobile-nav { display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
+    /* ── MOBILE MENU ───────────────────────────────────────────── */
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: var(--offwhite);
+      padding: 0 24px 24px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-nav { display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
 
-.mobile-cta { display: block; margin-top: 16px; text-align: center; }
+    .mobile-cta { display: block; margin-top: 16px; text-align: center; }
 
-/* ── HERO ──────────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  overflow: hidden;
-  background: var(--offwhite);
-  padding: 96px 0 144px;
-}
-@media (min-width: 1024px) { .hero { padding: 144px 0; } }
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--offwhite);
+      padding: 96px 0 144px;
+    }
+    @media (min-width: 1024px) { .hero { padding: 144px 0; } }
 
-.geo-corner {
-  position: absolute;
-  top: 0; right: 0;
-  width: 220px; height: 220px;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: 0.055;
-}
+    .geo-corner {
+      position: absolute;
+      top: 0; right: 0;
+      width: 220px; height: 220px;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.055;
+    }
 
-.hero-label { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
-.hero-headline {
-  font-family: var(--f-display);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--charcoal);
-  margin-bottom: 24px;
-  max-width: 600px;
-}
-.hero-sub {
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 480px;
-  margin-bottom: 40px;
-  font-weight: 300;
-}
-@media (min-width: 1024px) { .hero-sub { font-size: 1.125rem; } }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 64px; }
+    .hero-label { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .hero-headline {
+      font-family: var(--f-display);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+    @media (min-width: 1024px) { .hero-sub { font-size: 1.125rem; } }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 64px; }
 
-.info-box {
-  border: 1px solid var(--border);
-  background: var(--white);
-  padding: 24px;
-  max-width: 560px;
-}
-@media (min-width: 1024px) { .info-box { padding: 32px; } }
-.info-box-inner { display: flex; align-items: flex-start; gap: 16px; }
-.info-box-title {
-  font-family: var(--f-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 4px;
-}
-.info-box-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .info-box {
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 24px;
+      max-width: 560px;
+    }
+    @media (min-width: 1024px) { .info-box { padding: 32px; } }
+    .info-box-inner { display: flex; align-items: flex-start; gap: 16px; }
+    .info-box-title {
+      font-family: var(--f-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .info-box-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
-/* ── WHY SECTION ───────────────────────────────────────────── */
-.why-section { background: var(--white); border-top: 1px solid var(--border); }
-.section-pad { padding: 80px 0; }
-@media (min-width: 1024px) { .section-pad { padding: 112px 0; } }
+    /* ── WHY SECTION ───────────────────────────────────────────── */
+    .why-section { background: var(--white); border-top: 1px solid var(--border); }
+    .section-pad { padding: 80px 0; }
+    @media (min-width: 1024px) { .section-pad { padding: 112px 0; } }
 
-.section-label-row { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; }
-.three-col {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid var(--border);
-}
-@media (min-width: 768px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
-.three-col-item { padding: 32px; border-bottom: 1px solid var(--border); }
-@media (min-width: 768px) {
-  .three-col-item { border-bottom: none; border-right: 1px solid var(--border); }
-  .three-col-item:last-child { border-right: none; }
-}
-@media (min-width: 1024px) { .three-col-item { padding: 40px; } }
-.col-icon { margin-bottom: 20px; }
-.col-title {
-  font-family: var(--f-display);
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 12px;
-}
-.col-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .section-label-row { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; }
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      border: 1px solid var(--border);
+    }
+    @media (min-width: 768px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
+    .three-col-item { padding: 32px; border-bottom: 1px solid var(--border); }
+    @media (min-width: 768px) {
+      .three-col-item { border-bottom: none; border-right: 1px solid var(--border); }
+      .three-col-item:last-child { border-right: none; }
+    }
+    @media (min-width: 1024px) { .three-col-item { padding: 40px; } }
+    .col-icon { margin-bottom: 20px; }
+    .col-title {
+      font-family: var(--f-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .col-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
-/* ── HOW IT WORKS ──────────────────────────────────────────── */
-.how-section { background: var(--offwhite); border-top: 1px solid var(--border); }
-.section-headline {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 64px;
-  max-width: 480px;
-}
-.four-col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-@media (min-width: 1024px) { .four-col { grid-template-columns: repeat(4, 1fr); } }
-.step-item { padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-@media (min-width: 1024px) {
-  .step-item { padding-bottom: 0; border-bottom: none; border-right: 1px solid var(--border); padding-right: 40px; }
-  .step-item:not(:first-child) { padding-left: 40px; }
-  .step-item:last-child { border-right: none; }
-}
-.step-item:not(:last-child) { margin-bottom: 40px; }
-@media (min-width: 1024px) { .step-item:not(:last-child) { margin-bottom: 0; } }
-.step-num {
-  font-family: var(--f-display);
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: var(--gold);
-  line-height: 1;
-  opacity: 0.7;
-}
-.step-rule { border: none; border-top: 1px solid var(--border); margin: 16px 0 20px; }
-.step-title {
-  font-family: var(--f-display);
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 8px;
-}
-.step-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    /* ── HOW IT WORKS ──────────────────────────────────────────── */
+    .how-section { background: var(--offwhite); border-top: 1px solid var(--border); }
+    .section-headline {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 64px;
+      max-width: 480px;
+    }
+    .four-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 1024px) { .four-col { grid-template-columns: repeat(4, 1fr); } }
+    .step-item { padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    @media (min-width: 1024px) {
+      .step-item { padding-bottom: 0; border-bottom: none; border-right: 1px solid var(--border); padding-right: 40px; }
+      .step-item:not(:first-child) { padding-left: 40px; }
+      .step-item:last-child { border-right: none; }
+    }
+    .step-item:not(:last-child) { margin-bottom: 40px; }
+    @media (min-width: 1024px) { .step-item:not(:last-child) { margin-bottom: 0; } }
+    .step-num {
+      font-family: var(--f-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.7;
+    }
+    .step-rule { border: none; border-top: 1px solid var(--border); margin: 16px 0 20px; }
+    .step-title {
+      font-family: var(--f-display);
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .step-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
-/* ── COMPLIANCE ────────────────────────────────────────────── */
-.compliance-section { background: var(--emerald); }
-.compliance-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 64px;
-  align-items: start;
-}
-@media (min-width: 1024px) { .compliance-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
-.compliance-headline {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 500;
-  color: var(--white);
-  margin-bottom: 24px;
-  line-height: 1.2;
-}
-.compliance-sub { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 32px; }
-.compliance-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  font-weight: 500;
-}
-.compliance-blocks { display: grid; grid-template-columns: 1fr; gap: 24px; }
-.compliance-block { border-left: 2px solid var(--gold); padding-left: 20px; }
-.compliance-block-title { font-size: 0.875rem; font-weight: 500; color: var(--white); margin-bottom: 4px; }
-.compliance-block-body { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; }
-.compliance-footer {
-  margin-top: 64px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  text-align: center;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.35);
-  font-weight: 300;
-  letter-spacing: 0.04em;
-}
+    /* ── COMPLIANCE ────────────────────────────────────────────── */
+    .compliance-section { background: var(--emerald); }
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (min-width: 1024px) { .compliance-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
+    .compliance-headline {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    .compliance-sub { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 32px; }
+    .compliance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      font-weight: 500;
+    }
+    .compliance-blocks { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .compliance-block { border-left: 2px solid var(--gold); padding-left: 20px; }
+    .compliance-block-title { font-size: 0.875rem; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+    .compliance-block-body { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; }
+    .compliance-footer {
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
 
-/* ── SECURITY ──────────────────────────────────────────────── */
-.security-section { background: var(--white); border-top: 1px solid var(--border); }
-.security-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 64px;
-  align-items: start;
-}
-@media (min-width: 1024px) { .security-grid { grid-template-columns: 1fr 1fr; } }
-.security-headline {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 16px;
-}
-.security-sub { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
-.security-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
-.security-item:last-child { border-bottom: none; }
-.security-title { font-size: 0.875rem; font-weight: 500; color: var(--charcoal); }
-.security-body { font-size: 0.75rem; color: var(--muted); margin-top: 4px; line-height: 1.7; font-weight: 300; }
+    /* ── SECURITY ──────────────────────────────────────────────── */
+    .security-section { background: var(--white); border-top: 1px solid var(--border); }
+    .security-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (min-width: 1024px) { .security-grid { grid-template-columns: 1fr 1fr; } }
+    .security-headline {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .security-sub { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .security-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .security-item:last-child { border-bottom: none; }
+    .security-title { font-size: 0.875rem; font-weight: 500; color: var(--charcoal); }
+    .security-body { font-size: 0.75rem; color: var(--muted); margin-top: 4px; line-height: 1.7; font-weight: 300; }
 
-/* ── PRICING ───────────────────────────────────────────────── */
-.pricing-section { background: var(--offwhite); border-top: 1px solid var(--border); }
-.pricing-headline {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 12px;
-}
-.pricing-sub { font-size: 0.875rem; color: var(--muted); max-width: 480px; margin-bottom: 56px; font-weight: 300; }
-.pricing-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid var(--border);
-}
-@media (min-width: 640px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1280px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+    /* ── PRICING ───────────────────────────────────────────────── */
+    .pricing-section { background: var(--offwhite); border-top: 1px solid var(--border); }
+    .pricing-headline {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .pricing-sub { font-size: 0.875rem; color: var(--muted); max-width: 480px; margin-bottom: 56px; font-weight: 300; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border: 1px solid var(--border);
+    }
+    @media (min-width: 640px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1280px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
 
-.pricing-card { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
-.pricing-card-featured { border: 2px solid var(--gold) !important; position: relative; z-index: 1; }
-@media (min-width: 640px) {
-  .pricing-card { border-bottom: none; border-right: 1px solid var(--border); }
-  .pricing-card:nth-child(2n) { border-right: none; }
-}
-@media (min-width: 1280px) {
-  .pricing-card { border-right: 1px solid var(--border); }
-  .pricing-card:last-child { border-right: none; }
-}
-.pricing-card-head { padding: 28px 28px 24px; border-bottom: 1px solid var(--border); }
-.pricing-card-dark { background: var(--emerald); }
-.pricing-card-dark .pricing-card-head { border-bottom-color: rgba(255,255,255,0.12); }
-.tier-mark { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
-.tier-name { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
-.tier-desc { font-family: var(--f-display); font-size: 1rem; font-weight: 500; color: var(--charcoal); line-height: 1.3; margin-bottom: 8px; }
-.tier-desc-light { color: var(--offwhite); }
-.tier-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  padding: 2px 8px;
-  letter-spacing: 0.06em;
-}
-.tier-badge-dark { color: var(--gold); border-color: rgba(198,167,94,0.4); }
-.pricing-features { flex: 1; padding: 24px 28px; }
-.feature-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EAE8E2; font-size: 0.875rem; color: var(--charcoal); }
-.feature-row:last-child { border-bottom: none; }
-.feature-row-dark { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
-.feature-row-dark:last-child { border-bottom: none; }
-.check-icon { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .pricing-card { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+    .pricing-card-featured { border: 2px solid var(--gold) !important; position: relative; z-index: 1; }
+    @media (min-width: 640px) {
+      .pricing-card { border-bottom: none; border-right: 1px solid var(--border); }
+      .pricing-card:nth-child(2n) { border-right: none; }
+    }
+    @media (min-width: 1280px) {
+      .pricing-card { border-right: 1px solid var(--border); }
+      .pricing-card:last-child { border-right: none; }
+    }
+    .pricing-card-head { padding: 28px 28px 24px; border-bottom: 1px solid var(--border); }
+    .pricing-card-dark { background: var(--emerald); }
+    .pricing-card-dark .pricing-card-head { border-bottom-color: rgba(255,255,255,0.12); }
+    .tier-mark { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .tier-name { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+    .tier-desc { font-family: var(--f-display); font-size: 1rem; font-weight: 500; color: var(--charcoal); line-height: 1.3; margin-bottom: 8px; }
+    .tier-desc-light { color: var(--offwhite); }
+    .tier-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      letter-spacing: 0.06em;
+    }
+    .tier-badge-dark { color: var(--gold); border-color: rgba(198,167,94,0.4); }
+    .pricing-features { flex: 1; padding: 24px 28px; }
+    .feature-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EAE8E2; font-size: 0.875rem; color: var(--charcoal); }
+    .feature-row:last-child { border-bottom: none; }
+    .feature-row-dark { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
+    .feature-row-dark:last-child { border-bottom: none; }
+    .check-icon { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
 
-.pricing-footer { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
-.pricing-tagline { font-size: 0.875rem; color: var(--charcoal); letter-spacing: 0.03em; }
-.pricing-note { font-size: 0.75rem; color: var(--muted); margin-top: 24px; font-weight: 300; }
-.pricing-process-note {
-  font-size: 0.75rem;
-  color: var(--muted);
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  margin-top: 32px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
+    .pricing-footer { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+    .pricing-tagline { font-size: 0.875rem; color: var(--charcoal); letter-spacing: 0.03em; }
+    .pricing-note { font-size: 0.75rem; color: var(--muted); margin-top: 24px; font-weight: 300; }
+    .pricing-process-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
 
-/* ── Additional Legal Services (Will Registration) ─────────────────── */
-.will-section { max-width: 100%; }
-.will-card {
-  border: 1px solid var(--border);
-  background: var(--white);
-  transition: border-color 0.2s;
-}
-.will-card-head {
-  padding: 28px 32px 20px;
-  border-bottom: 1px solid var(--border);
-}
-.will-tier-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.will-tier-mark .tier-name {
-  font-family: var(--f-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.will-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 520px;
-}
-.will-card-body {
-  padding: 28px 32px 32px;
-}
-.will-price-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 768px) {
-  .will-price-grid {
-    grid-template-columns: 1fr auto 1fr;
-    gap: 32px;
-    align-items: center;
-  }
-}
-.will-price-divider {
-  display: none;
-}
-@media (min-width: 768px) {
-  .will-price-divider {
-    display: block;
-    width: 1px;
-    height: 64px;
-    background: var(--border);
-  }
-}
-.will-price-item {
-  padding: 16px 0;
-  border-top: 1px solid var(--border);
-}
-@media (min-width: 768px) {
-  .will-price-item { padding: 0; border-top: none; }
-}
-.will-price-label {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-.will-price-amount {
-  font-family: var(--f-display);
-  font-size: 1.625rem;
-  font-weight: 500;
-  color: var(--charcoal);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.will-price-meta {
-  font-size: 0.75rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.will-preferential-note {
-  font-size: 0.75rem;
-  color: var(--muted);
-  font-style: italic;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  letter-spacing: 0.02em;
-}
-.will-cta-row {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-start;
-}
-@media (max-width: 480px) {
-  .will-card-head, .will-card-body { padding: 20px; }
-}
+    /* ── Additional Legal Services (Will Registration) ─────────────────── */
+    .will-section { max-width: 100%; }
+    .will-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .will-card-head {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .will-tier-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .will-tier-mark .tier-name {
+      font-family: var(--f-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .will-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .will-card-body {
+      padding: 28px 32px 32px;
+    }
+    .will-price-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .will-price-grid {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 32px;
+        align-items: center;
+      }
+    }
+    .will-price-divider {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .will-price-divider {
+        display: block;
+        width: 1px;
+        height: 64px;
+        background: var(--border);
+      }
+    }
+    .will-price-item {
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      .will-price-item { padding: 0; border-top: none; }
+    }
+    .will-price-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .will-price-amount {
+      font-family: var(--f-display);
+      font-size: 1.625rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .will-price-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .will-preferential-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.02em;
+    }
+    .will-cta-row {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    @media (max-width: 480px) {
+      .will-card-head, .will-card-body { padding: 20px; }
+    }
 
-/* ── Private Legal Advisory section ─────────────────────────── */
-.legal-advisory-section {
-  background: var(--offwhite);
-  border-top: 1px solid var(--border);
-}
-.legal-advisory-section .section-pad { padding: 96px 0; }
-@media (min-width: 1024px) { .legal-advisory-section .section-pad { padding: 120px 0; } }
+    /* ── Private Legal Advisory section ─────────────────────────── */
+    .legal-advisory-section {
+      background: var(--offwhite);
+      border-top: 1px solid var(--border);
+    }
+    .legal-advisory-section .section-pad { padding: 96px 0; }
+    @media (min-width: 1024px) { .legal-advisory-section .section-pad { padding: 120px 0; } }
 
-.legal-card {
-  border: 1px solid var(--border);
-  background: var(--white);
-  max-width: 100%;
-  margin-top: 32px;
-}
-.legal-card-head {
-  padding: 28px 32px 20px;
-  border-bottom: 1px solid var(--border);
-}
-.legal-tier-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.legal-tier-mark .tier-name {
-  font-family: var(--f-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.legal-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 580px;
-}
-.legal-card-body { padding: 28px 32px 32px; }
+    .legal-card {
+      border: 1px solid var(--border);
+      background: var(--white);
+      max-width: 100%;
+      margin-top: 32px;
+    }
+    .legal-card-head {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-tier-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .legal-tier-mark .tier-name {
+      font-family: var(--f-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .legal-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 580px;
+    }
+    .legal-card-body { padding: 28px 32px 32px; }
 
-.legal-section-label {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.form-group-legal { margin-bottom: 20px; }
-.legal-form-label {
-  display: block;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-.legal-form-select {
-  width: 100%;
-  padding: 13px 40px 13px 16px;
-  border: 1px solid var(--border);
-  background: var(--white);
-  font-family: var(--f-body);
-  font-size: 0.9375rem;
-  color: var(--charcoal);
-  transition: border-color 0.2s;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  cursor: pointer;
-}
-.legal-form-select:focus { outline: none; border-color: var(--emerald); }
+    .legal-section-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .form-group-legal { margin-bottom: 20px; }
+    .legal-form-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .legal-form-select {
+      width: 100%;
+      padding: 13px 40px 13px 16px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      font-family: var(--f-body);
+      font-size: 0.9375rem;
+      color: var(--charcoal);
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      cursor: pointer;
+    }
+    .legal-form-select:focus { outline: none; border-color: var(--emerald); }
 
-.legal-credit-notice {
-  font-size: 0.75rem;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-top: 16px;
-  padding: 14px 18px;
-  background: var(--offwhite);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--gold);
-}
+    .legal-credit-notice {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+    }
 
-.legal-summary {
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
-  margin-bottom: 20px;
-}
-.legal-summary-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.legal-summary-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--charcoal);
-}
-.legal-summary-amount {
-  font-family: var(--f-display);
-  font-size: 1.625rem;
-  font-weight: 500;
-  color: var(--charcoal);
-}
+    .legal-summary {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-bottom: 20px;
+    }
+    .legal-summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .legal-summary-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .legal-summary-amount {
+      font-family: var(--f-display);
+      font-size: 1.625rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
 
-.legal-cta-row {
-  display: flex;
-  justify-content: stretch;
-}
-.btn-primary-emerald {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 16px 32px;
-  background: var(--emerald);
-  color: var(--offwhite);
-  font-family: var(--f-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 1px solid var(--emerald);
-  transition: background 0.2s;
-}
-.btn-primary-emerald:hover { background: #0A2B1F; }
+    .legal-cta-row {
+      display: flex;
+      justify-content: stretch;
+    }
+    .btn-primary-emerald {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 16px 32px;
+      background: var(--emerald);
+      color: var(--offwhite);
+      font-family: var(--f-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--emerald);
+      transition: background 0.2s;
+    }
+    .btn-primary-emerald:hover { background: #0A2B1F; }
 
-.legal-fineprint {
-  font-size: 0.75rem;
-  color: var(--muted);
-  font-style: italic;
-  margin-top: 16px;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
-}
+    .legal-fineprint {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 16px;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
 
-@media (max-width: 480px) {
-  .legal-card-head, .legal-card-body { padding: 20px; }
-}
+    @media (max-width: 480px) {
+      .legal-card-head, .legal-card-body { padding: 20px; }
+    }
 
-/* ── CTA ───────────────────────────────────────────────────── */
-.cta-section { background: var(--white); border-top: 1px solid var(--border); text-align: center; }
-.cta-section .section-pad { padding: 96px 0 144px; }
-@media (min-width: 1024px) { .cta-section .section-pad { padding: 144px 0; } }
-.cta-headline {
-  font-family: var(--f-display);
-  font-size: clamp(2.5rem, 6vw, 3.75rem);
-  font-weight: 500;
-  color: var(--charcoal);
-  margin-bottom: 24px;
-}
-.cta-sub { font-size: 0.875rem; color: var(--muted); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
-.cta-trust { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; font-weight: 300; }
-.trust-sep { color: var(--border); }
+    /* ── CTA ───────────────────────────────────────────────────── */
+    .cta-section { background: var(--white); border-top: 1px solid var(--border); text-align: center; }
+    .cta-section .section-pad { padding: 96px 0 144px; }
+    @media (min-width: 1024px) { .cta-section .section-pad { padding: 144px 0; } }
+    .cta-headline {
+      font-family: var(--f-display);
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+    .cta-sub { font-size: 0.875rem; color: var(--muted); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
+    .cta-trust { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; font-weight: 300; }
+    .trust-sep { color: var(--border); }
 
-/* ── FOOTER ────────────────────────────────────────────────── */
-.site-footer { background: var(--offwhite); border-top: 1px solid var(--border); }
-.footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 0; }
-.footer-brand { display: flex; align-items: center; gap: 12px; }
-.footer-brand-text { font-family: var(--f-display); font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; color: var(--charcoal); }
-.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
-.footer-link { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
-.footer-link:hover { color: var(--charcoal); }
-.footer-copy { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    .site-footer { background: var(--offwhite); border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 40px 0; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-brand-text { font-family: var(--f-display); font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; color: var(--charcoal); }
+    .footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+    .footer-link { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; transition: color 0.2s; }
+    .footer-link:hover { color: var(--charcoal); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
 
-/* ── Scroll reveal ─────────────────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
-.gold-rule { opacity: 1 !important; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ── Scroll reveal ─────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .gold-rule { opacity: 1 !important; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Bordered box ──────────────────────────────────────────── */
-.bordered-box { border: 1px solid var(--border); background: var(--white); }
-```
-
+    /* ── Bordered box ──────────────────────────────────────────── */
+    .bordered-box { border: 1px solid var(--border); background: var(--white); }
   </style>
 </head>
 <body>
 
 <!-- HEADER -->
-
 <header class="site-header">
   <div class="container">
     <div class="header-inner">
 
-```
-  <!-- Logo -->
-  <a href="#" class="logo">
-    <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
-      <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
-      <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
-      <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
-    </svg>
-    <span class="logo-text">Mithaq</span>
-  </a>
-
-  <!-- Desktop nav -->
-  <nav class="desktop-nav" aria-label="Main navigation">
-    <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
-    <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
-    <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
-    <a href="#pricing"    class="nav-link" data-i18n="nav.pricing">Pricing</a>
-    <a href="#contact"    class="nav-link" data-i18n="nav.contact">Contact</a>
-  </nav>
-
-  <!-- Right side -->
-  <div class="header-right">
-    <!-- Language dropdown -->
-    <div class="lang-dropdown-wrap" id="langDropdown" aria-label="Language selection">
-      <button class="lang-dropdown-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
-        <span id="langLabel">EN</span>
-        <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/>
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <svg class="logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="1" y="1" width="26" height="26" stroke="#0F3D2E" stroke-width="1.2"/>
+          <rect x="5" y="5" width="18" height="18" stroke="#C6A75E" stroke-width="0.8"/>
+          <line x1="14" y1="5" x2="14" y2="23" stroke="#0F3D2E" stroke-width="0.8"/>
+          <line x1="5" y1="14" x2="23" y2="14" stroke="#0F3D2E" stroke-width="0.8"/>
         </svg>
-      </button>
-      <div class="lang-dropdown-menu" role="listbox">
-        <button class="active" data-lang="en" role="option">EN</button>
-        <button data-lang="ar" role="option">AR</button>
-        <button data-lang="ru" role="option">RU</button>
-        <button data-lang="zh" role="option">CH</button>
-        <button data-lang="es" role="option">ES</button>
-        <button data-lang="hi" role="option">HI</button>
-        <button data-lang="ur" role="option">UR</button>
+        <span class="logo-text">Mithaq</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
+        <a href="#how"        class="nav-link" data-i18n="nav.how">How It Works</a>
+        <a href="#compliance" class="nav-link" data-i18n="nav.compliance">Compliance</a>
+        <a href="#pricing"    class="nav-link" data-i18n="nav.pricing">Pricing</a>
+        <a href="#contact"    class="nav-link" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <!-- Right side -->
+      <div class="header-right">
+        <!-- Language dropdown -->
+        <div class="lang-dropdown-wrap" id="langDropdown" aria-label="Language selection">
+          <button class="lang-dropdown-trigger" id="langTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <span id="langLabel">EN</span>
+            <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" role="listbox">
+            <button class="active" data-lang="en" role="option">EN</button>
+            <button data-lang="ar" role="option">AR</button>
+            <button data-lang="ru" role="option">RU</button>
+            <button data-lang="zh" role="option">CH</button>
+            <button data-lang="es" role="option">ES</button>
+            <button data-lang="hi" role="option">HI</button>
+            <button data-lang="ur" role="option">UR</button>
+          </div>
+        </div>
+        <a href="#start" class="btn-primary header-cta" data-i18n="nav.cta">Get Started</a>
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+            <line y1="1"  x2="20" y2="1"  stroke="currentColor" stroke-width="1.5"/>
+            <line y1="7"  x2="20" y2="7"  stroke="currentColor" stroke-width="1.5"/>
+            <line y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
       </div>
+
     </div>
-    <a href="#start" class="btn-primary header-cta" data-i18n="nav.cta">Get Started</a>
-    <!-- Hamburger -->
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
-        <line y1="1"  x2="20" y2="1"  stroke="currentColor" stroke-width="1.5"/>
-        <line y1="7"  x2="20" y2="7"  stroke="currentColor" stroke-width="1.5"/>
-        <line y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/>
-      </svg>
-    </button>
-  </div>
-
-</div>
-```
-
   </div>
 
   <!-- Mobile menu -->
-
   <div id="mobile-menu" class="mobile-menu">
     <nav class="mobile-nav">
       <a href="#about"      class="nav-link" data-i18n="nav.about">About</a>
@@ -921,8 +912,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </header>
 
-<!-- HERO -->
 
+<!-- HERO -->
 <section id="about" class="hero">
   <div class="geo-corner" aria-hidden="true">
     <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -962,8 +953,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- WHY THIS MATTERS -->
 
+<!-- WHY THIS MATTERS -->
 <section class="why-section" id="why">
   <div class="container section-pad">
     <div class="section-label-row">
@@ -996,8 +987,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 
+<!-- HOW IT WORKS -->
 <section class="how-section" id="how">
   <div class="container section-pad">
     <div class="section-label-row">
@@ -1034,8 +1025,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- COMPLIANCE -->
 
+<!-- COMPLIANCE -->
 <section class="compliance-section" id="compliance">
   <div class="container section-pad">
     <div class="section-label-row" style="margin-bottom:56px">
@@ -1074,8 +1065,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- SECURITY -->
 
+<!-- SECURITY -->
 <section class="security-section" id="security">
   <div class="container section-pad">
     <div class="section-label-row">
@@ -1121,8 +1112,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- PRICING -->
 
+<!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="container section-pad">
     <div class="section-label-row">
@@ -1132,148 +1123,145 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     <h2 class="pricing-headline reveal" data-i18n="pricing.headline">Service Structure &amp; Registration Options</h2>
     <p class="pricing-sub reveal" style="transition-delay:0.06s" data-i18n="pricing.sub">Select the appropriate documentation and registration services based on your legal and asset requirements.</p>
 
-```
-<div class="pricing-grid reveal" style="transition-delay:0.1s">
-  <!-- Silver -->
-  <div class="pricing-card">
-    <div class="pricing-card-head">
-      <div class="tier-mark">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#9CA3AF" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#9CA3AF" opacity="0.25"/></svg>
-        <span class="tier-name" style="color:#6B7280" data-i18n="pricing.silver.tier">Silver</span>
-      </div>
-      <p class="tier-desc" data-i18n="pricing.silver.desc">AED 2,500</p>
-      <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
-    </div>
-    <ul class="pricing-features">
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f1">Up to 3 assets</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f2">1 jurisdiction (country)</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f3">Up to 2 beneficiaries</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f4">Standard clause structure</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f5">Digital drafting &amp; signing</span></li>
-    </ul>
-    <div style="padding:0 28px 28px"><a href="./purchase.html?package=prenup-standard" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.silver.cta">Start Silver</a></div>
-  </div>
-  <!-- Gold -->
-  <div class="pricing-card pricing-card-featured">
-    <div class="pricing-card-head">
-      <div class="tier-mark">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#C6A75E" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#C6A75E" opacity="0.3"/></svg>
-        <span class="tier-name" style="color:#C6A75E" data-i18n="pricing.gold.tier">Gold</span>
-      </div>
-      <p class="tier-desc" data-i18n="pricing.gold.desc">AED 4,900</p>
-      <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
-    </div>
-    <ul class="pricing-features">
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f1">Up to 8 assets</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f2">Up to 2 jurisdictions</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f3">Up to 4 beneficiaries</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f4">Custom asset allocation</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f5">Cross-border clause support</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f6">Priority document generation</span></li>
-    </ul>
-    <div style="padding:0 28px 28px"><a href="./purchase.html?package=prenup-gold" class="btn-primary" style="display:block;text-align:center" data-i18n="pricing.gold.cta">Start Gold</a></div>
-  </div>
-  <!-- Platinum -->
-  <div class="pricing-card">
-    <div class="pricing-card-head" style="background:#FAFAF8">
-      <div class="tier-mark">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#0F3D2E" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#0F3D2E" opacity="0.2"/></svg>
-        <span class="tier-name" style="color:#0F3D2E" data-i18n="pricing.platinum.tier">Platinum</span>
-      </div>
-      <p class="tier-desc" data-i18n="pricing.platinum.desc">AED 9,500</p>
-      <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
-    </div>
-    <ul class="pricing-features" style="background:#FAFAF8">
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f1">Up to 20 assets</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f2">Up to 5 jurisdictions</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f3">Up to 8 beneficiaries</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f4">Business ownership structuring</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f5">Advanced inheritance logic</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f6">Legal audit layer</span></li>
-      <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f7">Express processing</span></li>
-    </ul>
-    <div style="padding:0 28px 28px;background:#FAFAF8"><a href="./purchase.html?package=prenup-platinum" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.platinum.cta">Start Platinum</a></div>
-  </div>
-  <!-- Diamond -->
-  <div class="pricing-card pricing-card-dark">
-    <div class="pricing-card-head pricing-card-dark">
-      <div class="tier-mark">
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><polygon points="7,1 13,7 7,13 1,7" stroke="#C6A75E" stroke-width="1" fill="none"/><polygon points="7,4 10,7 7,10 4,7" fill="#C6A75E" opacity="0.3"/></svg>
-        <span class="tier-name" style="color:#C6A75E" data-i18n="pricing.diamond.tier">Diamond</span>
-      </div>
-      <p class="tier-desc tier-desc-light" data-i18n="pricing.diamond.desc">AED 18,000</p>
-      <span class="tier-badge tier-badge-dark" data-i18n="pricing.onetime">One-Time Fee</span>
-    </div>
-    <ul class="pricing-features pricing-card-dark">
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f1">Unlimited assets</span></li>
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f2">Unlimited jurisdictions</span></li>
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f3">Unlimited beneficiaries</span></li>
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f4">Custom clause drafting</span></li>
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f5">Dedicated onboarding support</span></li>
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f6">Integrated legal review option</span></li>
-      <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f7">24-hour fast-track preparation</span></li>
-    </ul>
-    <div style="padding:0 28px 28px;background:var(--emerald)"><a href="./purchase.html?package=prenup-diamond" class="btn-gold" style="display:block;text-align:center" data-i18n="pricing.diamond.cta">Start Diamond</a></div>
-  </div>
-</div>
-
-
-<!-- Additional Legal Services subsection -->
-<div class="will-section reveal" style="transition-delay:0.13s">
-  <div class="section-label-row" style="margin-top:80px;margin-bottom:32px;">
-    <span class="gold-rule"></span>
-    <span class="label" data-i18n="will.label">Additional Legal Services</span>
-  </div>
-
-  <div class="will-card">
-    <div class="will-card-head">
-      <div class="will-tier-mark">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="13" height="13" stroke="#0F3D2E" stroke-width="1"/>
-          <path d="M3.5 4.5h7M3.5 7h7M3.5 9.5h4" stroke="#0F3D2E" stroke-width="1" stroke-linecap="square"/>
-        </svg>
-        <span class="tier-name" style="color:#0F3D2E" data-i18n="will.tier">Will Registration</span>
-      </div>
-      <p class="will-desc" data-i18n="will.desc">Official estate registration documentation. Government registration fees included.</p>
-    </div>
-
-    <div class="will-card-body">
-      <div class="will-price-grid">
-        <div class="will-price-item">
-          <p class="will-price-label" data-i18n="will.standalone.label">Standalone</p>
-          <p class="will-price-amount">AED 3,999</p>
-          <p class="will-price-meta" data-i18n="will.standalone.meta">When registered independently</p>
+    <div class="pricing-grid reveal" style="transition-delay:0.1s">
+      <!-- Silver -->
+      <div class="pricing-card">
+        <div class="pricing-card-head">
+          <div class="tier-mark">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#9CA3AF" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#9CA3AF" opacity="0.25"/></svg>
+            <span class="tier-name" style="color:#6B7280" data-i18n="pricing.silver.tier">Silver</span>
+          </div>
+          <p class="tier-desc" data-i18n="pricing.silver.desc">AED 2,500</p>
+          <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
         </div>
-        <div class="will-price-divider" aria-hidden="true"></div>
-        <div class="will-price-item">
-          <p class="will-price-label" data-i18n="will.bundled.label">Bundled with Prenuptial Agreement</p>
-          <p class="will-price-amount" style="color:#0F3D2E">AED 3,499</p>
-          <p class="will-price-meta" data-i18n="will.bundled.meta">When registered alongside a marital agreement</p>
-        </div>
+        <ul class="pricing-features">
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f1">Up to 3 assets</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f2">1 jurisdiction (country)</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f3">Up to 2 beneficiaries</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f4">Standard clause structure</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#9CA3AF" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.silver.f5">Digital drafting &amp; signing</span></li>
+        </ul>
+        <div style="padding:0 28px 28px"><a href="./purchase.html?package=prenup-standard" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.silver.cta">Start Silver</a></div>
       </div>
-
-      <p class="will-preferential-note" data-i18n="will.preferential">Preferential rate applies when registered together with a marital agreement.</p>
-
-      <div class="will-cta-row">
-        <a href="./purchase.html?package=will-standalone" class="btn-secondary" data-i18n="will.cta">Register Will</a>
+      <!-- Gold -->
+      <div class="pricing-card pricing-card-featured">
+        <div class="pricing-card-head">
+          <div class="tier-mark">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#C6A75E" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#C6A75E" opacity="0.3"/></svg>
+            <span class="tier-name" style="color:#C6A75E" data-i18n="pricing.gold.tier">Gold</span>
+          </div>
+          <p class="tier-desc" data-i18n="pricing.gold.desc">AED 4,900</p>
+          <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
+        </div>
+        <ul class="pricing-features">
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f1">Up to 8 assets</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f2">Up to 2 jurisdictions</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f3">Up to 4 beneficiaries</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f4">Custom asset allocation</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f5">Cross-border clause support</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.gold.f6">Priority document generation</span></li>
+        </ul>
+        <div style="padding:0 28px 28px"><a href="./purchase.html?package=prenup-gold" class="btn-primary" style="display:block;text-align:center" data-i18n="pricing.gold.cta">Start Gold</a></div>
+      </div>
+      <!-- Platinum -->
+      <div class="pricing-card">
+        <div class="pricing-card-head" style="background:#FAFAF8">
+          <div class="tier-mark">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="11" height="11" stroke="#0F3D2E" stroke-width="1"/><rect x="2.5" y="2.5" width="7" height="7" fill="#0F3D2E" opacity="0.2"/></svg>
+            <span class="tier-name" style="color:#0F3D2E" data-i18n="pricing.platinum.tier">Platinum</span>
+          </div>
+          <p class="tier-desc" data-i18n="pricing.platinum.desc">AED 9,500</p>
+          <span class="tier-badge" data-i18n="pricing.onetime">One-Time Fee</span>
+        </div>
+        <ul class="pricing-features" style="background:#FAFAF8">
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f1">Up to 20 assets</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f2">Up to 5 jurisdictions</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f3">Up to 8 beneficiaries</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f4">Business ownership structuring</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f5">Advanced inheritance logic</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f6">Legal audit layer</span></li>
+          <li class="feature-row"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#0F3D2E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#0F3D2E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.platinum.f7">Express processing</span></li>
+        </ul>
+        <div style="padding:0 28px 28px;background:#FAFAF8"><a href="./purchase.html?package=prenup-platinum" class="btn-secondary" style="display:block;text-align:center" data-i18n="pricing.platinum.cta">Start Platinum</a></div>
+      </div>
+      <!-- Diamond -->
+      <div class="pricing-card pricing-card-dark">
+        <div class="pricing-card-head pricing-card-dark">
+          <div class="tier-mark">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><polygon points="7,1 13,7 7,13 1,7" stroke="#C6A75E" stroke-width="1" fill="none"/><polygon points="7,4 10,7 7,10 4,7" fill="#C6A75E" opacity="0.3"/></svg>
+            <span class="tier-name" style="color:#C6A75E" data-i18n="pricing.diamond.tier">Diamond</span>
+          </div>
+          <p class="tier-desc tier-desc-light" data-i18n="pricing.diamond.desc">AED 18,000</p>
+          <span class="tier-badge tier-badge-dark" data-i18n="pricing.onetime">One-Time Fee</span>
+        </div>
+        <ul class="pricing-features pricing-card-dark">
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f1">Unlimited assets</span></li>
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f2">Unlimited jurisdictions</span></li>
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f3">Unlimited beneficiaries</span></li>
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f4">Custom clause drafting</span></li>
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f5">Dedicated onboarding support</span></li>
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f6">Integrated legal review option</span></li>
+          <li class="feature-row feature-row-dark"><svg class="check-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="15" height="15" stroke="#C6A75E" stroke-width="0.8"/><path d="M4 8l3 3 5-5" stroke="#C6A75E" stroke-width="1.1" stroke-linecap="square"/></svg><span data-i18n="pricing.diamond.f7">24-hour fast-track preparation</span></li>
+        </ul>
+        <div style="padding:0 28px 28px;background:var(--emerald)"><a href="./purchase.html?package=prenup-diamond" class="btn-gold" style="display:block;text-align:center" data-i18n="pricing.diamond.cta">Start Diamond</a></div>
       </div>
     </div>
-  </div>
-</div>
 
-<p class="pricing-process-note reveal" style="transition-delay:0.15s" data-i18n="pricing.process">Agreement drafting begins after successful payment confirmation.</p>
-<p class="pricing-process-note reveal" style="transition-delay:0.16s;margin-top:12px;padding-top:0;border-top:none;" data-i18n="pricing.aed">All prices are listed in AED. International payments are automatically converted by your card provider.</p>
-<div class="pricing-footer reveal" style="transition-delay:0.18s">
-  <p class="pricing-tagline" data-i18n="pricing.tagline">Transparent.&ensp;No Subscriptions.&ensp;One-Time.</p>
-</div>
-<p class="pricing-note reveal" style="transition-delay:0.22s" data-i18n="pricing.note">Designed to replace traditional legal drafting costs of AED 5,000–25,000+, while maintaining structured, enforceable agreements.</p>
-```
 
+    <!-- Additional Legal Services subsection -->
+    <div class="will-section reveal" style="transition-delay:0.13s">
+      <div class="section-label-row" style="margin-top:80px;margin-bottom:32px;">
+        <span class="gold-rule"></span>
+        <span class="label" data-i18n="will.label">Additional Legal Services</span>
+      </div>
+
+      <div class="will-card">
+        <div class="will-card-head">
+          <div class="will-tier-mark">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="0.5" y="0.5" width="13" height="13" stroke="#0F3D2E" stroke-width="1"/>
+              <path d="M3.5 4.5h7M3.5 7h7M3.5 9.5h4" stroke="#0F3D2E" stroke-width="1" stroke-linecap="square"/>
+            </svg>
+            <span class="tier-name" style="color:#0F3D2E" data-i18n="will.tier">Will Registration</span>
+          </div>
+          <p class="will-desc" data-i18n="will.desc">Official estate registration documentation. Government registration fees included.</p>
+        </div>
+
+        <div class="will-card-body">
+          <div class="will-price-grid">
+            <div class="will-price-item">
+              <p class="will-price-label" data-i18n="will.standalone.label">Standalone</p>
+              <p class="will-price-amount">AED 3,999</p>
+              <p class="will-price-meta" data-i18n="will.standalone.meta">When registered independently</p>
+            </div>
+            <div class="will-price-divider" aria-hidden="true"></div>
+            <div class="will-price-item">
+              <p class="will-price-label" data-i18n="will.bundled.label">Bundled with Prenuptial Agreement</p>
+              <p class="will-price-amount" style="color:#0F3D2E">AED 3,499</p>
+              <p class="will-price-meta" data-i18n="will.bundled.meta">When registered alongside a marital agreement</p>
+            </div>
+          </div>
+
+          <p class="will-preferential-note" data-i18n="will.preferential">Preferential rate applies when registered together with a marital agreement.</p>
+
+          <div class="will-cta-row">
+            <a href="./purchase.html?package=will-standalone" class="btn-secondary" data-i18n="will.cta">Register Will</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="pricing-process-note reveal" style="transition-delay:0.15s" data-i18n="pricing.process">Agreement drafting begins after successful payment confirmation.</p>
+    <p class="pricing-process-note reveal" style="transition-delay:0.16s;margin-top:12px;padding-top:0;border-top:none;" data-i18n="pricing.aed">All prices are listed in AED. International payments are automatically converted by your card provider.</p>
+    <div class="pricing-footer reveal" style="transition-delay:0.18s">
+      <p class="pricing-tagline" data-i18n="pricing.tagline">Transparent.&ensp;No Subscriptions.&ensp;One-Time.</p>
+    </div>
+    <p class="pricing-note reveal" style="transition-delay:0.22s" data-i18n="pricing.note">Designed to replace traditional legal drafting costs of AED 5,000–25,000+, while maintaining structured, enforceable agreements.</p>
   </div>
 </section>
 
-<!-- PRIVATE LEGAL ADVISORY (standalone service) -->
 
+<!-- PRIVATE LEGAL ADVISORY (standalone service) -->
 <section class="legal-advisory-section" id="legal-advisory">
   <div class="container section-pad">
     <div class="section-label-row">
@@ -1283,55 +1271,52 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     <h2 class="pricing-headline reveal" data-i18n="legal.headline">Private Legal Advisory</h2>
     <p class="pricing-sub reveal" style="transition-delay:0.06s" data-i18n="legal.sub">Dedicated advisory time for asset structuring, cross-border considerations, and marital agreement planning. Available independently of any agreement purchase.</p>
 
-```
-<div class="legal-card reveal" style="transition-delay:0.1s">
-  <div class="legal-card-head">
-    <div class="legal-tier-mark">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path d="M7 1l5 3v3.5c0 3-2 5-5 5.5-3-.5-5-2.5-5-5.5V4l5-3z" stroke="#0F3D2E" stroke-width="1" fill="none"/>
-      </svg>
-      <span class="tier-name" style="color:#0F3D2E" data-i18n="legal.tier">Private Legal Advisory Session</span>
-    </div>
-    <p class="legal-desc" data-i18n="legal.desc">Conducted in private, with senior advisors familiar with UAE marital, inheritance, and asset structuring frameworks. Confidential. One-time engagement.</p>
-  </div>
+    <div class="legal-card reveal" style="transition-delay:0.1s">
+      <div class="legal-card-head">
+        <div class="legal-tier-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1l5 3v3.5c0 3-2 5-5 5.5-3-.5-5-2.5-5-5.5V4l5-3z" stroke="#0F3D2E" stroke-width="1" fill="none"/>
+          </svg>
+          <span class="tier-name" style="color:#0F3D2E" data-i18n="legal.tier">Private Legal Advisory Session</span>
+        </div>
+        <p class="legal-desc" data-i18n="legal.desc">Conducted in private, with senior advisors familiar with UAE marital, inheritance, and asset structuring frameworks. Confidential. One-time engagement.</p>
+      </div>
 
-  <div class="legal-card-body">
-    <div class="form-group-legal">
-      <label class="legal-form-label" for="legal-duration-select" data-i18n="legal.duration.label">Consultation Duration</label>
-      <select id="legal-duration-select" class="legal-form-select">
-        <option value="60" selected>1 hour — AED 1,750</option>
-        <option value="90">1.5 hours — AED 2,625</option>
-        <option value="120">2 hours — AED 3,500</option>
-        <option value="150">2.5 hours — AED 4,375</option>
-        <option value="180">3 hours — AED 5,250</option>
-        <option value="210">3.5 hours — AED 6,125</option>
-        <option value="240">4 hours — AED 7,000</option>
-      </select>
-    </div>
+      <div class="legal-card-body">
+        <div class="form-group-legal">
+          <label class="legal-form-label" for="legal-duration-select" data-i18n="legal.duration.label">Consultation Duration</label>
+          <select id="legal-duration-select" class="legal-form-select">
+            <option value="60" selected>1 hour — AED 1,750</option>
+            <option value="90">1.5 hours — AED 2,625</option>
+            <option value="120">2 hours — AED 3,500</option>
+            <option value="150">2.5 hours — AED 4,375</option>
+            <option value="180">3 hours — AED 5,250</option>
+            <option value="210">3.5 hours — AED 6,125</option>
+            <option value="240">4 hours — AED 7,000</option>
+          </select>
+        </div>
 
-    <div class="legal-summary">
-      <div class="legal-summary-row">
-        <span class="legal-summary-label" data-i18n="legal.summary.label">Total Consultation Fee</span>
-        <span class="legal-summary-amount" id="legal-summary-amount">AED 1,750</span>
+        <div class="legal-summary">
+          <div class="legal-summary-row">
+            <span class="legal-summary-label" data-i18n="legal.summary.label">Total Consultation Fee</span>
+            <span class="legal-summary-amount" id="legal-summary-amount">AED 1,750</span>
+          </div>
+        </div>
+
+        <div class="legal-cta-row">
+          <a href="./purchase.html?mode=legal&duration=60" id="legal-checkout-btn" class="btn-primary-emerald" data-i18n="legal.cta">Book Legal Advisory Session</a>
+        </div>
+
+        <p class="legal-credit-notice" data-i18n="legal.credit">Your consultation is an investment — not a cost. If you proceed with a Prenup or Will within 30 days, any unused consultation time will be credited toward your selected service.</p>
+
+        <p class="legal-fineprint" data-i18n="legal.fineprint">Your session is scheduled after payment via our private booking system. Confirmation is sent to your email.</p>
       </div>
     </div>
-
-    <div class="legal-cta-row">
-      <a href="./purchase.html?mode=legal&duration=60" id="legal-checkout-btn" class="btn-primary-emerald" data-i18n="legal.cta">Book Legal Advisory Session</a>
-    </div>
-
-    <p class="legal-credit-notice" data-i18n="legal.credit">Your consultation is an investment — not a cost. If you proceed with a Prenup or Will within 30 days, any unused consultation time will be credited toward your selected service.</p>
-
-    <p class="legal-fineprint" data-i18n="legal.fineprint">Your session is scheduled after payment via our private booking system. Confirmation is sent to your email.</p>
-  </div>
-</div>
-```
-
   </div>
 </section>
 
-<!-- CTA -->
 
+<!-- CTA -->
 <section class="cta-section" id="start">
   <div class="container section-pad">
     <div style="display:flex;justify-content:center;margin-bottom:32px">
@@ -1354,8 +1339,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- FOOTER -->
 
+<!-- FOOTER -->
 <footer class="site-footer" id="contact">
   <div class="container">
     <div class="footer-inner">
@@ -1377,6 +1362,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
     </div>
   </div>
 </footer>
+
 
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
@@ -2096,7 +2082,6 @@ document.querySelectorAll('[data-lang]').forEach(btn => {
 </script>
 
 <!-- ── Private Legal Advisory: dropdown + dynamic pricing ── -->
-
 <script>
 (function() {
   'use strict';
@@ -2118,6 +2103,5 @@ document.querySelectorAll('[data-lang]').forEach(btn => {
   update();
 })();
 </script>
-
 </body>
 </html>
