@@ -331,7 +331,7 @@
       </div>
 
       <div class="form-footer">
-        <p>Don't have an account? <a href="/mithaq/#pricing">Purchase a package</a> to get started.</p>
+        <p>Don't have an account? <a href="/mithaq/purchase.html">Create one here</a> to get started.</p>
         <p>Forgot your password? <a href="#" id="reset-link">Send reset link</a></p>
       </div>
 
@@ -356,8 +356,10 @@
 
       // ── Redirect if already logged in ──────────────────────────────
       if (MithaqAPI.auth.isAuthenticated()) {
-        const params   = new URLSearchParams(window.location.search);
-        const returnTo = params.get("returnTo") || "/mithaq/dashboard.html";
+        const params      = new URLSearchParams(window.location.search);
+        const packageType = params.get("package") || "";
+        const returnTo    = params.get("returnTo") ||
+          (packageType ? `/mithaq/dashboard.html?package=${encodeURIComponent(packageType)}` : "/mithaq/dashboard.html");
         window.location.href = returnTo;
         return;
       }
