@@ -441,7 +441,7 @@
 
           // Build the redirect URL — Supabase handles the full OAuth flow
           const redirectTo = encodeURIComponent(
-            window.location.origin + "/mithaq/auth/google-callback.html?returnTo=" + encodeURIComponent(returnTo)
+            window.location.origin + "/mithaq/login.html?returnTo=" + encodeURIComponent(returnTo)
           );
 
           const authUrl = `${SUPABASE_URL}/auth/v1/authorize` +
