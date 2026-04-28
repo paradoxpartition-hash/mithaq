@@ -212,7 +212,7 @@ function renderLegal(app) {
       <div class="form-group">
         <label class="form-label" for="legal-dur">Consultation Duration</label>
         <select id="legal-dur" class="form-select" ${submitting?'disabled':''}>
-          ${OPTS.map(o => `<option value="${o.min}" ${o.min===d?'selected':''}>${o.label} — AED ${((o.min/30)*875).toLocaleString('en-US')}</option>`).join('')}
+          ${OPTS.map(o => `<option value="${o.min}" ${o.min===d?'selected':''}>${o.label} AED ${((o.min/30)*875).toLocaleString('en-US')}</option>`).join('')}
         </select>
       </div>
       <div class="social-btns">
