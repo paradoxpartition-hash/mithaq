@@ -265,7 +265,7 @@ function renderPrenup(app) {
   for (let m = 30; m <= 240; m += 30) {
     const fee  = consFee(m);
     const lbl  = durationLabel(m);
-    const cost = fee === 0 ? 'Included' : `+ AED ${fee.toLocaleString('en-US')}`;
+    #const cost = fee === 0 ? 'Included' : `+ AED ${fee.toLocaleString('en-US')}`;
     durOpts.push(`<option value="${m}" ${m === d ? 'selected' : ''}>${lbl} — ${cost}</option>`);
   }
 
